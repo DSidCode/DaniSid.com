@@ -11,27 +11,26 @@ on:
 
 # ¿Qué trabajos se deben realizar?
 jobs:
-  ftp-deploy:
-    name: FTP Deploy
+  deploy:
+    name: Deploy to IONOS via SFTP
     # Usaremos una máquina virtual con la última versión de Ubuntu
     runs-on: ubuntu-latest
     steps:
       # 1. Clona tu repositorio para tener acceso a los archivos
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      # 2. Sube los archivos a tu servidor FTP de IONOS
+      # 2. Sube los archivos a tu servidor usando SFTP
       - name: SFTP Deploy
-        uses: larytet/sftp-deploy-action@v1.0
+        uses: easing-themes/sftp-deploy@v3
         with:
           # El servidor SFTP de IONOS (el mismo que usabas para FTP)
-          host: ${{ secrets.FTP_SERVER }}
+          server: ${{ secrets.FTP_SERVER }}
           # Tu nombre de usuario de SFTP
           username: ${{ secrets.FTP_USERNAME }}
           # Tu contraseña de SFTP
           password: ${{ secrets.FTP_PASSWORD }}
-          # Protocolo y puerto para la conexión segura
-          protocol: sftp
-          port: 22
-          # La carpeta en el servidor donde se subirán los archivos
-          remote_path: /
+          # Indica que la conexión es exclusivamente SFTP
+          sftp_only: true
+          # La carpeta en el servidor donde se subirán los archivos. Usamos './' que apunta al directorio raíz del usuario SFTP.
+          remote_path: ./
