@@ -20,19 +20,13 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      # 2. Sube los archivos a tu servidor usando SFTP
+      # 2. Desplegar usando SFTP con clave SSH
       - name: SFTP Deploy
         uses: appleboy/sftp-action@v1.0.3
         with:
-          # El servidor SFTP de IONOS (el mismo que usabas para FTP)
           host: ${{ secrets.FTP_SERVER }}
-          # Tu nombre de usuario de SFTP
           username: ${{ secrets.FTP_USERNAME }}
-          # Tu contraseña de SFTP
-          password: ${{ secrets.FTP_PASSWORD }}
-          # El puerto estándar para SFTP
-          port: 22
-          # La carpeta de origen en el repositorio (todo el repositorio)
-          source: "."
-          # La carpeta de destino en el servidor (la raíz)
-          target: "/"
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22 # El puerto estándar para SFTP
+          source: "." # La carpeta de origen (todo el repositorio)
+          target: "/" # La carpeta de destino en el servidor
