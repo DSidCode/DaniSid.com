@@ -84,3 +84,26 @@ Se inicia una nueva fase enfocada en refinar la marca personal, mejorar la exper
         - Se introdujeron subtítulos ("Desarrollo Web y Tecnológico" y "Diseño Visual y Gráfico") en la sección de proyectos para organizar y diferenciar claramente las áreas de especialización.
 
 **Estado Actual**: El proyecto ha entrado en una fase de refinamiento profesional. El despliegue automático está verificado y se han implementado mejoras significativas en la interfaz y estructura de la página principal para reflejar mejor el enfoque tecnológico y la amplitud de habilidades del autor.
+
+---
+
+## 9. Depuración y Estabilización del Despliegue Automático (CI/CD)
+
+- **Objetivo**: Resolver los fallos persistentes en el flujo de despliegue automático a IONOS.
+- **Diagnóstico**: A pesar de que el workflow se activaba, el despliegue fallaba. El análisis de los logs reveló problemas con la acción de despliegue y el método de autenticación.
+- **Acciones y Soluciones**:
+    - **Migración de FTP a SFTP con Clave SSH**: Se abandonó la autenticación por usuario/contraseña (FTP) en favor de un método más seguro y robusto utilizando una clave SSH (SFTP). Se generó un par de claves y se configuraron los secretos de GitHub (`SSH_PRIVATE_KEY`).
+    - **Iteración y Corrección de la Acción de Despliegue**:
+        - Se probó con la acción `appleboy/sftp-action`, que resultó ser incorrecta o inexistente, causando fallos.
+        - Se corrigió el flujo para usar la acción correcta y mantenida: `appleboy/scp-action@v0.1.4`.
+    - **Ajuste de Parámetros**: Se identificó que faltaban parámetros esenciales como `host` y `username` en una de las versiones, lo que impedía la conexión. Se restauraron todos los parámetros necesarios (`host`, `username`, `key`, `port`).
+    - **Habilitación de Depuración**: Se añadió el parámetro `debug: true` a la acción para obtener logs detallados, lo que fue crucial para confirmar que el problema no residía en la configuración del servidor o las credenciales, sino en la propia configuración del workflow.
+- **Resultado**: El pipeline de CI/CD es ahora completamente funcional, estable y seguro. Cada `push` a las ramas `main` o `master` despliega automáticamente el sitio en el servidor de IONOS utilizando autenticación por clave SSH.
+
+---
+
+## 10. Limpieza Post-Depuración del Workflow
+
+- **Objetivo**: Finalizar la configuración del despliegue automático y mantener los logs limpios.
+- **Acción**: Se eliminó el parámetro `debug: true` del archivo `.github/workflows/deploy.yml`.
+- **Resultado**: El workflow de despliegue sigue siendo funcional, pero ahora los registros de ejecución serán más concisos, mostrando solo la información esencial o los errores, lo que facilita su supervisión a largo plazo.

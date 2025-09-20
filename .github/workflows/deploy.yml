@@ -1,32 +1,25 @@
-# Nombre del flujo de trabajo que aparecerá en la pestaña "Actions" de GitHub
 name: Deploy to IONOS Hosting
 
-# ¿Cuándo se debe ejecutar esta acción?
 on:
-  # Se ejecutará cada vez que hagas un "push" a la rama "main"
   push:
     branches:
-      - main   # Rama principal por defecto en GitHub
-      - master # Rama principal por defecto en Git local
+      - main
+      - master
 
-# ¿Qué trabajos se deben realizar?
 jobs:
-  deploy:
-    name: Deploy to IONOS via SFTP
-    # Usaremos una máquina virtual con la última versión de Ubuntu
+  sftp-deploy:
+    name: SFTP Deploy
     runs-on: ubuntu-latest
     steps:
-      # 1. Clona tu repositorio para tener acceso a los archivos
       - name: Check out repository
         uses: actions/checkout@v4
 
-      # 2. Desplegar usando SFTP con clave SSH
       - name: SFTP Deploy
-        uses: appleboy/sftp-action@v1.0.3
+        uses: appleboy/scp-action@v0.1.4  # Acción correcta y existente
         with:
           host: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: 22 # El puerto estándar para SFTP
-          source: "." # La carpeta de origen (todo el repositorio)
-          target: "/" # La carpeta de destino en el servidor
+          port: 22
+          source: "."
+          target: "/"
