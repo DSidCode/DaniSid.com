@@ -22,15 +22,17 @@ jobs:
 
       # 2. Sube los archivos a tu servidor usando SFTP
       - name: SFTP Deploy
-        uses: easing-themes/sftp-deploy@v3
+        uses: appleboy/sftp-action@v1.0.3
         with:
           # El servidor SFTP de IONOS (el mismo que usabas para FTP)
-          server: ${{ secrets.FTP_SERVER }}
+          host: ${{ secrets.FTP_SERVER }}
           # Tu nombre de usuario de SFTP
           username: ${{ secrets.FTP_USERNAME }}
           # Tu contraseña de SFTP
           password: ${{ secrets.FTP_PASSWORD }}
-          # Indica que la conexión es exclusivamente SFTP
-          sftp_only: true
-          # La carpeta en el servidor donde se subirán los archivos. Usamos './' que apunta al directorio raíz del usuario SFTP.
-          remote_path: ./
+          # El puerto estándar para SFTP
+          port: 22
+          # La carpeta de origen en el repositorio (todo el repositorio)
+          source: "."
+          # La carpeta de destino en el servidor (la raíz)
+          target: "/"
