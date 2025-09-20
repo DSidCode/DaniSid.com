@@ -1,44 +1,14 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
 
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
 <html lang="es">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z70W962LDP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Z70W962LDP');
+</script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -92,11 +62,27 @@
             .text-xl { font-size: 1.125rem; }
             .space-x-6 { gap: 1rem; flex-wrap: wrap; }
         }
+
+        /* Estilos para impresión */
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact; /* Chrome, Safari */
+                color-adjust: exact; /* Firefox */
+            }
+            /* Ocultar elementos no deseados en la impresión */
+            header, footer, .print-hide {
+                display: none !important;
+            }
+            main {
+                margin: 0;
+                box-shadow: none;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
     <!-- Header -->
-    <header class="bg-gradient text-white text-center py-8 sm:py-12">
+    <header class="bg-gradient text-white text-center py-8 sm:py-12" style="position: relative;">
         <div class="max-w-4xl mx-auto px-4">
             <h1 class="text-4xl sm:text-5xl font-bold tracking-tight fade-in">Daniel Garcia</h1>
             <p class="text-lg sm:text-xl mt-3 font-light fade-in fade-in-delay-1">Diseñador Visual | Desarrollador Web Junior | Madrid, España</p>
@@ -104,8 +90,11 @@
                 <a href="https://danisid.com" target="_blank" class="hover:text-blue-200 hover-scale"><i class="fas fa-link mr-2"></i>danisid.com</a>
                 <a href="https://github.com/DSidCode" target="_blank" class="hover:text-blue-200 hover-scale"><i class="fab fa-github mr-2"></i>github.com/DSidCode</a>
                 <a href="mailto:danisidcode@gmail.com" class="hover:text-blue-200 hover-scale"><i class="fas fa-at mr-2"></i>danisidcode@gmail.com</a>
-                <a href="tel:+34600123456" class="hover:text-blue-200 hover-scale"><i class="fas fa-phone mr-2"></i>+34 641868620</a>
+                <a href="tel:+34641868620" class="hover:text-blue-200 hover-scale"><i class="fas fa-phone mr-2"></i>+34 641868620</a>
             </div>
+            <button onclick="window.print()" class="print-hide absolute top-4 right-4 bg-white text-blue-800 px-3 py-2 rounded-lg shadow-md hover:bg-gray-100 transition-transform hover:scale-105">
+                <i class="fas fa-print mr-2"></i>Imprimir / PDF
+            </button>
         </div>
     </header>
 
@@ -276,74 +265,5 @@
             observer.observe(element);
         });
     </script>
-</body>
-</html>
-                <li>Fundamentos de Ingeniería de Software - Platzi</li>
-                <li>Curso Básico de Computadores e Informática - Platzi</li>
-                <li>Pensamiento Lógico: Algoritmos y Diagramas de Flujo - Platzi</li>
-                <li>Pensamiento Lógico: Lenguajes de Programación - Platzi</li>
-                <li>Pensamiento Lógico: Manejo de Datos, Estructuras y Funciones - Platzi</li>
-            </ul>
-        </section>
-
-        <section id="formacion-academica">
-            <h2>FORMACIÓN ACADÉMICA</h2>
-            <ul>
-                <li><strong>42 Madrid</strong> - Piscina intensiva de programación (Shell, C, Git, algoritmos) y piscina Discovery Web (HTML, CSS, JS)</li>
-                <li><strong>Certificado de Profesionalidad</strong> - Confección y Publicación de Páginas Web (SEPE - Aspasia)</li>
-                <li><strong>Universidad de Caldas</strong> - Diseño Visual (80% completado)</li>
-                <li><strong>Técnico en Animación 3D para Videojuegos</strong> (50% completado)</li>
-                <li><strong>Auxiliar en Ensamble y Mantenimiento de Computadores</strong></li>
-                <li><strong>Universidad Rey Juan Carlos</strong> - Curso de Extensión Universitaria (Instituciones, Servicios Administrativos, Contabilidad, Gestión Pública y Privada)</li>
-            </ul>
-        </section>
-
-        <section id="experiencia-profesional">
-            <h2>EXPERIENCIA PROFESIONAL</h2>
-            <div class="experience-item">
-                <h3>Diseñador Visual Freelance / Web Developer Junior</h3>
-                <p>Madrid & Colombia | 2012 - Actualidad</p>
-                <ul>
-                    <li>Desarrollo de sitios web responsivos con HTML, CSS, JavaScript y WordPress</li>
-                    <li>Integración de herramientas de inteligencia artificial generativa en procesos creativos</li>
-                    <li>Automatización de flujos repetitivos utilizando plataformas no-code</li>
-                    <li>Diseño de interfaces digitales centradas en la experiencia de usuario</li>
-                </ul>
-            </div>
-            <div class="experience-item">
-                <h3>Asistente de desarrollo web - Prácticas profesionales | Pipote SL</h3>
-                <p>Madrid | 2025</p>
-                <ul>
-                    <li>Gestión y personalización de sitios WordPress con Divi y plugins como Forminator, Divi Torque y Divi Supreme</li>
-                    <li>Edición de código en HTML, CSS, JavaScript y apoyo puntual en PHP</li>
-                    <li>Uso de herramientas de inteligencia artificial para optimización de código</li>
-                    <li>Integración de vídeos en bucle con pausas programadas para mejorar la experiencia de usuario</li>
-                    <li>Actualización y modificación de contenidos en diferentes proyectos web</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="proyectos-personales">
-            <h2>PROYECTOS PERSONALES DESTACADOS</h2>
-            <div class="project-item">
-                <h3>Asistente Web con IA (ChatGPT)</h3>
-                <p>Desarrollo de una herramienta web que permite generar contenido visual y textual mediante el uso de APIs de OpenAI.</p>
-                <a href="https://danisid.com/ia-assistant" target="_blank">danisid.com/ia-assistant (en desarrollo)</a>
-            </div>
-            <div class="project-item">
-                <h3>Portafolio personal - danisid.com</h3>
-                <p>Web personal destinada a la presentación de proyectos, habilidades técnicas y evolución profesional.</p>
-                <a href="https://danisid.com" target="_blank">danisid.com</a>
-            </div>
-        </section>
-
-        <section id="idiomas">
-            <h2>IDIOMAS</h2>
-            <ul>
-                <li>Español - Nativo</li>
-                <li>Inglés - Nivel A2 (básico funcional)</li>
-            </ul>
-        </section>
-    </div>
 </body>
 </html>
