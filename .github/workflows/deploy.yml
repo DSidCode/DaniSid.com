@@ -21,14 +21,17 @@ jobs:
         uses: actions/checkout@v3
 
       # 2. Sube los archivos a tu servidor FTP de IONOS
-      - name: FTP Deploy
-        uses: SamKirkland/FTP-Deploy-Action@4.3.3
+      - name: SFTP Deploy
+        uses: larytet/sftp-deploy-action@v1.0
         with:
-          # El servidor FTP de IONOS (lo encuentras en tu panel de IONOS)
-          server: ${{ secrets.FTP_SERVER }}
-          # Tu nombre de usuario de FTP
+          # El servidor SFTP de IONOS (el mismo que usabas para FTP)
+          host: ${{ secrets.FTP_SERVER }}
+          # Tu nombre de usuario de SFTP
           username: ${{ secrets.FTP_USERNAME }}
-          # Tu contraseña de FTP
+          # Tu contraseña de SFTP
           password: ${{ secrets.FTP_PASSWORD }}
-          # La carpeta en el servidor donde se subirán los archivos (normalmente la raíz o 'www')
-          server-dir: /
+          # Protocolo y puerto para la conexión segura
+          protocol: sftp
+          port: 22
+          # La carpeta en el servidor donde se subirán los archivos
+          remote_path: /
