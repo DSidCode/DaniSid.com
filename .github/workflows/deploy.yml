@@ -22,4 +22,5 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           source: "."
-          target: "/"
+          target: "/htdocs" # Probable ruta correcta para IONOS
+          debug: true

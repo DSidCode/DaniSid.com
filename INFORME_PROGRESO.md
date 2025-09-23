@@ -98,12 +98,16 @@ Se inicia una nueva fase enfocada en refinar la marca personal, mejorar la exper
         - Se corrigió el flujo para usar la acción correcta y mantenida: `appleboy/scp-action@v0.1.4`.
     - **Ajuste de Parámetros**: Se identificó que faltaban parámetros esenciales como `host` y `username` en una de las versiones, lo que impedía la conexión. Se restauraron todos los parámetros necesarios (`host`, `username`, `key`, `port`).
     - **Habilitación de Depuración**: Se añadió el parámetro `debug: true` a la acción para obtener logs detallados, lo que fue crucial para confirmar que el problema no residía en la configuración del servidor o las credenciales, sino en la propia configuración del workflow.
-- **Resultado**: El pipeline de CI/CD es ahora completamente funcional, estable y seguro. Cada `push` a las ramas `main` o `master` despliega automáticamente el sitio en el servidor de IONOS utilizando autenticación por clave SSH.
+- **Resultado**: La configuración del workflow se ha estabilizado para usar el método de autenticación correcto (SFTP con clave SSH) y los parámetros necesarios. El siguiente paso es resolver el error de autenticación a nivel de servidor.
 
 ---
 
-## 10. Limpieza Post-Depuración del Workflow
+## 11. Depuración de Autenticación SSH y Configuración del Servidor
 
-- **Objetivo**: Finalizar la configuración del despliegue automático y mantener los logs limpios.
-- **Acción**: Se eliminó el parámetro `debug: true` del archivo `.github/workflows/deploy.yml`.
-- **Resultado**: El workflow de despliegue sigue siendo funcional, pero ahora los registros de ejecución serán más concisos, mostrando solo la información esencial o los errores, lo que facilita su supervisión a largo plazo.
+- **Diagnóstico**: Los logs detallados obtenidos con `debug: true` mostraron un error claro: `ssh: handshake failed: ssh: unable to authenticate`. Esto confirma que el servidor de IONOS está rechazando la clave SSH que GitHub Actions le presenta.
+- **Acciones y Soluciones**:
+    - **Ajuste del Directorio de Destino**: Se cambió proactivamente el parámetro `target` de `/` a `/htdocs` en el archivo `deploy.yml`, ya que es el directorio web raíz estándar en los hostings de IONOS.
+    - **Enfoque en el Servidor**: Se determinó que el problema reside en la configuración del servidor o en la gestión de las claves. El foco se ha desplazado a la conexión directa con el servidor (vía terminal en Kali Linux) para:
+        1.  Verificar que la clave pública (`id_rsa.pub`) está correctamente añadida al archivo `~/.ssh/authorized_keys`.
+        2.  Corregir los permisos de los archivos y directorios con los comandos `chmod 700 ~/.ssh` y `chmod 600 ~/.ssh/authorized_keys`, un requisito de seguridad indispensable para SSH.
+- **Estado Actual**: El workflow permanece en modo de depuración, a la espera de que se completen las verificaciones y correcciones en el servidor para solucionar el fallo de autenticación.
