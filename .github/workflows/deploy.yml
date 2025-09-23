@@ -15,11 +15,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: SFTP Deploy
-        uses: appleboy/scp-action@v0.1.4  # Acción correcta y existente
+        uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          password: ${{ secrets.FTP_PASSWORD }} # Cambia esto
           port: 22
           source: "."
-          target: "/htdocs" # Probable ruta correcta para IONOS
+          target: "/htdocs"
