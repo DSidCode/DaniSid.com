@@ -121,3 +121,50 @@ Se inicia una nueva fase enfocada en refinar la marca personal, mejorar la exper
         1.  Verificar que la clave pública (`id_rsa.pub`) está correctamente añadida al archivo `~/.ssh/authorized_keys`.
         2.  Corregir los permisos de los archivos y directorios con los comandos `chmod 700 ~/.ssh` y `chmod 600 ~/.ssh/authorized_keys`, un requisito de seguridad indispensable para SSH.
 - **Estado Actual**: El workflow permanece en modo de depuración, a la espera de que se completen las verificaciones y correcciones en el servidor para solucionar el fallo de autenticación.
+
+---
+
+## 12. Resolución Final del Despliegue Automático y Limpieza
+
+- **Diagnóstico Final**: La ejecución del comando `ls -l` en el servidor de IONOS reveló la causa raíz del problema de autenticación:
+    1.  **Error Tipográfico**: El archivo de claves se llamaba `autho**tiz**ed_keys` en lugar del nombre correcto `autho**riz**ed_keys`.
+    2.  **Permisos Incorrectos**: El archivo tenía permisos `755` (`-rwxr-xr-x`), lo cual es inseguro y provoca que SSH ignore el archivo.
+- **Solución Aplicada**:
+    - Se renombró el archivo al nombre correcto con `mv authotized_keys authorized_keys`.
+    - Se corrigieron los permisos a `600` (`-rw-------`) con `chmod 600 authorized_keys`.
+- **Limpieza del Workflow**: Se eliminó la línea `debug: true` del archivo `.github/workflows/deploy.yml` para mantener los logs de despliegue limpios y concisos.
+- **Resultado**: **¡Despliegue automático 100% funcional!** El pipeline de CI/CD ahora despliega con éxito cada `push` a la rama `main` de forma segura y automática.
+
+---
+
+## 13. Anexo: Guía Detallada de la Solución de Autenticación SSH
+
+Esta sección documenta en detalle el diagnóstico y la solución del error de autenticación `ssh: handshake failed`, que impedía el despliegue automático.
+
+### Diagnóstico del Error
+
+El error completo era: `ssh: handshake failed: ssh: unable to authenticate, attempted methods [none publickey], no supported methods remain`.
+
+- **Significado**: El servidor de despliegue (IONOS) y el runner de GitHub Actions se comunicaban, pero el servidor rechazaba la conexión porque no podía autenticar la identidad del runner usando la clave SSH proporcionada.
+
+### Pasos para la Solución
+
+La solución se centró en verificar y corregir la configuración de las claves SSH entre GitHub y el servidor.
+
+1.  **Verificación de los Secretos de GitHub**:
+    *   `FTP_SERVER`: Confirmar que el nombre de host era el correcto para la conexión SFTP.
+    *   `FTP_USERNAME`: Asegurarse de que el nombre de usuario correspondía con el del servidor.
+    *   `SSH_PRIVATE_KEY`: Verificar que la clave privada estuviera correctamente configurada en los secretos del repositorio.
+
+2.  **Formato Correcto de la Clave Privada**:
+    *   La clave `SSH_PRIVATE_KEY` debe estar en formato PEM, comenzando con `-----BEGIN OPENSSH PRIVATE KEY-----` (o similar).
+    *   Es crucial que no contenga espacios extra ni saltos de línea al principio o al final al ser copiada en los secretos de GitHub.
+
+3.  **Configuración del Servidor (Causa Raíz del Problema)**:
+    *   **Generación de Claves**: Si no existían, se debía generar un nuevo par de claves SSH con `ssh-keygen -t rsa -b 4096 -C "tu_email@ejemplo.com"`.
+    *   **Autorización de la Clave Pública**: El contenido de la clave pública (`~/.ssh/id_rsa.pub`) debe ser añadido al archivo `~/.ssh/authorized_keys` en el servidor.
+    *   **Errores Encontrados y Corregidos**:
+        *   **Nombre de archivo incorrecto**: El archivo se llamaba `authotized_keys` en lugar de `authorized_keys`.
+        *   **Permisos incorrectos**: El archivo tenía permisos `755`. Se corrigieron a `600` (`chmod 600 ~/.ssh/authorized_keys`) y la carpeta contenedora a `700` (`chmod 700 ~/.ssh`) para cumplir con los estrictos requisitos de seguridad de SSH.
+
+Una vez que los secretos en GitHub estuvieron correctos y, fundamentalmente, el archivo `authorized_keys` en el servidor tuvo el nombre y los permisos adecuados, el despliegue automático comenzó a funcionar correctamente.

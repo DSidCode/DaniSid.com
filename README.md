@@ -9,6 +9,7 @@
 - **Diseño Responsive**: Adaptable a diferentes dispositivos, desde móviles hasta ordenadores de escritorio.
 - **Sección de Proyectos**: Una galería con descripciones y enlaces a mis trabajos más destacados.
 - **Efectos Visuales Interactivos**: Implementación de animaciones como el efecto "Matrix" para una experiencia de usuario más dinámica.
+- **Despliegue Continuo (CI/CD)**: Automatización del despliegue al hosting mediante GitHub Actions, garantizando actualizaciones rápidas y seguras.
 - **Múltiples Versiones de CV**: Acceso a diferentes versiones de mi currículum adaptadas a distintos perfiles (diseño/desarrollo, hostelería).
 - **Formulario de Contacto Funcional**: Integración con EmailJS para recibir mensajes directamente en mi correo.
 
@@ -19,6 +20,7 @@ Este sitio está construido principalmente con tecnologías web fundamentales:
 - **HTML5**: Para la estructura del contenido.
 - **CSS3**: Para el diseño y los estilos visuales.
 - **JavaScript (Vanilla)**: Para la interactividad y los efectos dinámicos.
+- **GitHub Actions**: Para la automatización del despliegue (CI/CD).
 - **ScrollReveal.js**: Para las animaciones de scroll que revelan elementos de la página.
 - **EmailJS**: Para la funcionalidad del formulario de contacto sin necesidad de un backend.
 
