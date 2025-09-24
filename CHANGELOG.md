@@ -217,3 +217,35 @@ Esta sección resume una conversación clave sobre la conexión con el hosting, 
     - **Visión del Proyecto**: `danisid.com` es más que un sitio web; es "el alma digital", una ventana al potencial como creativo, desarrollador y ser humano. Su infraestructura debe reflejar esta visión de futuro, modernidad y excelencia técnica.
 
 - **Próximo Paso**: Iniciar el proceso de despliegue en una de las nuevas plataformas y reconfigurar el dominio.
+
+---
+
+## 16. Migración de Hosting: Despliegue Exitoso en Netlify y Migración de Dominio
+
+- **Hito Alcanzado**: El proyecto `danisid.com` ha sido desplegado con éxito en **Netlify**.
+- **Resultado**: El sitio ahora está en vivo y funcionando en una infraestructura moderna, con despliegues automáticos directamente desde la rama `main` del repositorio de GitHub. El antiguo flujo de trabajo de despliegue a IONOS (`deploy.yml`) ha sido desactivado.
+- **Migración de Dominio Completada**: Se han cambiado los "Servidores de Nombres" (Nameservers) en el panel de control de IONOS para que apunten a los proporcionados por Netlify. El dominio `danisid.com` ahora es gestionado por Netlify.
+- **Limpieza de Secretos**: Se han eliminado los secretos obsoletos (`FTP_SERVER`, `FTP_USERNAME`, `SSH_PRIVATE_KEY`, etc.) del repositorio de GitHub, ya que no son necesarios para el despliegue en Netlify, mejorando la seguridad y limpieza del proyecto.
+
+---
+
+## 17. Sincronización del Repositorio y Resolución de Conflictos Git
+
+Esta sección documenta el proceso de sincronización del repositorio local con los cambios realizados en remoto (desde otro dispositivo), superando varios desafíos comunes de Git.
+
+- **Objetivo**: Actualizar el repositorio local con los cambios del repositorio remoto en GitHub usando `git pull`.
+
+- **Proceso y Soluciones**:
+    1.  **Dificultad 1: Rama Incorrecta.**
+        -   **Problema**: El comando `git pull` falló porque la rama principal en el repositorio local se llamaba `master` en lugar de `main`.
+        -   **Solución**: Se especificó la rama correcta explícitamente: `git pull origin master`.
+
+    2.  **Dificultad 2: Conflicto de Sobrescritura de Archivos.**
+        -   **Problema**: Git detectó que el archivo `deploy.yml` (eliminado en remoto) sería sobrescrito, impidiendo la fusión.
+        -   **Solución**: Se descartó la versión local del archivo en conflicto para aceptar la versión del servidor con `git checkout -- .github/workflows/deploy.yml`.
+
+    3.  **Dificultad 3: Ramas Divergentes.**
+        -   **Problema**: Una vez resuelto el conflicto, Git identificó que los historiales de commits local y remoto se habían separado, requiriendo una estrategia de fusión manual.
+        -   **Solución Final**: Se utilizó la opción `rebase` para crear un historial de commits limpio y lineal. El comando `git pull --rebase origin master` descargó los cambios remotos y aplicó los commits locales "encima" de ellos.
+
+- **Resultado**: Se logró una sincronización exitosa del repositorio. Este proceso sirvió como un ejercicio práctico en la resolución de conflictos de Git, incluyendo la corrección de nombres de ramas, la gestión de archivos en conflicto y la elección de una estrategia de fusión (`rebase`) para mantener un historial limpio.
