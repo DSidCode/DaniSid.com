@@ -4,6 +4,22 @@ Este documento detalla las próximas mejoras y funcionalidades a implementar en 
 
 ---
 
+## 0. Gestión de Infraestructura y Servicios
+
+- **Cancelar Suscripción de IONOS**:
+    - **Objetivo**: Dar de baja los servicios de hosting con IONOS para optimizar costes, dado que el proyecto ha sido migrado exitosamente a Netlify.
+    - **Acción**: Proceder con la cancelación de la suscripción mensual/anual desde el panel de cliente de IONOS.
+
+- **Migrar Subdominio `cyberpunk.danisid.com` a Netlify**:
+    - **Objetivo**: Mover el proyecto Cyberpunk del hosting de IONOS a Netlify para unificar la infraestructura y aprovechar las ventajas de CI/CD.
+    - **Acciones**:
+        1. Desplegar el proyecto Cyberpunk en Netlify como un nuevo sitio (si es un repositorio separado).
+        2. En la configuración de DNS de `danisid.com` dentro de Netlify, añadir un registro (probablemente CNAME) para que el subdominio `cyberpunk` apunte al nuevo sitio desplegado.
+
+Este documento detalla las próximas mejoras y funcionalidades a implementar en `danisid.com` y sus subproyectos, con un enfoque en la especialización, la experiencia de usuario y la escalabilidad técnica.
+
+---
+
 ## 1. Página Principal (`index.html`) - El Centro de Operaciones
 
 El objetivo es refinar la página de inicio para que refleje claramente la nueva dirección profesional hacia el desarrollo de software y la IA.
@@ -19,6 +35,7 @@ El objetivo es refinar la página de inicio para que refleje claramente la nueva
         *   Logo de Gemini (usando el nuevo archivo `gemini.svg`).
         *   Logo de Visual Studio Code (usando el nuevo archivo `vscode.svg`).
     *   **Implementar un botón "Ver más":** Añadir un icono (ej. `+` o `...`) que al hacer clic despliegue una vista con el resto de las habilidades (Figma, WordPress, Photoshop, etc.) para mantener la barra principal limpia y enfocada.
+    *   **Ampliar barra secundaria**: Añadir logos para After Effects, Premiere Pro, Krita, Inkscape, GIMP, Kdenlive.
     *   **Revisar:** El resto de los iconos para asegurar que la barra principal sea concisa y potente.
 
 ### 1.2. Categorizar Proyectos
@@ -27,8 +44,11 @@ El objetivo es refinar la página de inicio para que refleje claramente la nueva
     *   **Añadir Tarjeta de Proyecto:** Crear una nueva tarjeta en la sección "ULTIMOS PROYECTOS" para **"Aventuras de Adrián"**, destacando su valor como proyecto de desarrollo personal y pedagógico.
     *   **Crear Categorías Visuales:** Reestructurar la presentación de proyectos para separarlos en dos grandes grupos:
         *   **Desarrollo Web y Tecnológico:** Incluirá `Antología`, `Cyberpunk`, `Portafolio DSid`, `Aventuras de Adrián`.
-        *   **Diseño Visual y Gráfico:** Incluirá `Leyenda Del Dorado`, `Logos`, `Ilustración Digital`, `Motion Graphics`.
+        *   **Diseño Visual y Gráfico:** Incluirá `Leyenda Del Dorado`, `Logos`, `Ilustración Digital`, `Motion Graphics`, `Publicidad Yedra Pub`.
         *   *Nota: Se puede lograr creando dos sub-títulos dentro de la sección `projects` o utilizando la sección `lab` para los proyectos más personales/experimentales.*
+    *   **Actualizar Imágenes de Proyectos**:
+        - **Antología**: Reemplazar la imagen actual por un screenshot de la página del proyecto.
+        - **Aventuras de Adrián**: Reemplazar la imagen actual por el screenshot `assets/img/aventuras_adrian.png`.
 
 ### 1.3. Revisión de Estructura y Semántica
 *   **Objetivo:** Asegurar que el HTML sea limpio, semántico y no contenga elementos fuera de lugar que afecten el diseño o la UX.

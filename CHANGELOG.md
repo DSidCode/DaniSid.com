@@ -249,3 +249,19 @@ Esta sección documenta el proceso de sincronización del repositorio local con 
         -   **Solución Final**: Se utilizó la opción `rebase` para crear un historial de commits limpio y lineal. El comando `git pull --rebase origin master` descargó los cambios remotos y aplicó los commits locales "encima" de ellos.
 
 - **Resultado**: Se logró una sincronización exitosa del repositorio. Este proceso sirvió como un ejercicio práctico en la resolución de conflictos de Git, incluyendo la corrección de nombres de ramas, la gestión de archivos en conflicto y la elección de una estrategia de fusión (`rebase`) para mantener un historial limpio.
+
+---
+
+## 18. Consolidación en Netlify y Planificación de Nuevas Tareas
+
+- **Hito Confirmado**: El despliegue en Netlify es completamente funcional y estable. Múltiples cambios realizados localmente se han reflejado correctamente en producción, validando el flujo de CI/CD.
+
+- **Nuevas Tareas y Decisiones Estratégicas**:
+    - **Gestión de Infraestructura**: Se ha añadido la tarea de cancelar formalmente los servicios de hosting con IONOS para optimizar costes, ya que la migración a Netlify ha sido un éxito.
+    - **Ampliación de Skills**: Se planea añadir más logos a la barra de habilidades secundaria para reflejar competencias en software de edición de video y diseño (After Effects, Premiere Pro, Krita, Inkscape, GIMP, Kdenlive).
+    - **Actualización de Proyectos**:
+        - Las imágenes de los proyectos "Antología" y "Aventuras de Adrián" serán reemplazadas por screenshots reales de las webs para dar una previsualización más fiel.
+        - Se ha añadido un nuevo proyecto al portafolio: "Publicidad Web para Yedra Disco Pub", enfocado en diseño y marketing digital.
+    - **Corrección de Responsividad**: Se ha solucionado un problema de alineación en la sección "hero" de la página principal para que se visualice correctamente en dispositivos de escritorio.
+
+- **Estado Actual**: El proyecto se encuentra en una fase de crecimiento de contenido y refinamiento de la UI, con una infraestructura de despliegue robusta y automatizada.
