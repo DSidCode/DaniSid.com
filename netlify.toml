@@ -1,0 +1,12 @@
+# netlify.toml
+
+# Configuración principal del despliegue
+[build]
+  publish = "/" # Directorio raíz de tu proyecto
+
+# Regla de reescritura para el subdominio de Cyberpunk
+[[redirects]]
+  from = "/*"
+  to = "/projects/cyberpunk/:splat"
+  status = 200 # Código para una reescritura (no cambia la URL en el navegador)
+  conditions = {Host = "cyberpunk.danisid.com"}
