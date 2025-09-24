@@ -664,21 +664,26 @@ img{
 }
 @media screen and (min-width:768px) {
     .hero_container {
-        grid-template-columns: repeat(2, 350px);
+        grid-template-columns: 1fr 1fr;
         align-items: center;
-        gap: 4rem;
+        gap: 3rem;
+        padding-block: 3rem;
     }
     .hero_data {
         text-align: left;
     }
     .hero_description {
         margin-left: 0;
+        margin-right: 0;
     }
     .hero_buttons {
         justify-content: flex-start;
     }
     .hero_image {
-        height: 400px;
+        justify-self: stretch;
+    }
+    .hero_img {
+        width: 320px;
     }
     .projects_container, .services_container{
         grid-template-columns: repeat(2, 350px);
@@ -717,13 +722,15 @@ img{
         margin-bottom: 4rem;
     }
     .hero_container {
-        padding-block: 4rem;
+        padding-block: 3rem;
+        gap: 5rem;
     }
     .hero_title {
         font-size: 3.5rem; /* Using a specific value instead of var */
     }
     .hero_subtitle {
         font-size: var(--h1-font-size);
+        margin-bottom: 2rem;
     }
     .hero_image {
         height: 450px;

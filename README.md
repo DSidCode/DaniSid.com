@@ -9,7 +9,7 @@
 - **Diseño Responsive**: Adaptable a diferentes dispositivos, desde móviles hasta ordenadores de escritorio.
 - **Sección de Proyectos**: Una galería con descripciones y enlaces a mis trabajos más destacados.
 - **Efectos Visuales Interactivos**: Implementación de animaciones como el efecto "Matrix" para una experiencia de usuario más dinámica.
-- **Despliegue Continuo (CI/CD)**: El sitio está desplegado en **Netlify** con integración continua. Cada `push` a la rama `main` actualiza el sitio automáticamente. La migración del dominio `danisid.com` está pendiente.
+- **Despliegue Continuo (CI/CD)**: El sitio está desplegado en **Netlify** con integración continua. Cada `push` a la rama principal actualiza el sitio automáticamente.
 - **Múltiples Versiones de CV**: Acceso a diferentes versiones de mi currículum adaptadas a distintos perfiles (diseño/desarrollo, hostelería).
 - **Formulario de Contacto Funcional**: Integración con EmailJS para recibir mensajes directamente en mi correo.
 
