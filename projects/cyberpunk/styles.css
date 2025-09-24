@@ -233,6 +233,7 @@ body {
     cursor: pointer;
     margin-top: 1.5rem;
     text-transform: uppercase;
+    display: inline-block; /* Corrige el solapamiento al ser un <a> */
     letter-spacing: 3px;
     transition: all 0.4s ease;
 }
@@ -492,6 +493,13 @@ input:focus, textarea:focus {
     outline: none;
     border-color: var(--neon-pink);
     box-shadow: 0 0 15px var(--neon-pink);
+}
+
+.link-message {
+    color: var(--neon-green);
+    font-family: 'Roboto Mono', monospace;
+    text-align: center;
+    margin-top: 1rem;
 }
 
 /* Footer */

@@ -96,23 +96,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Form transmission
     const form = document.getElementById('cyber-link');
-    form.addEventListener('submit', async (e) => {
+    const messageElement = document.getElementById('link-message');
+
+    const sendEmail = (e) => {
         e.preventDefault();
-        const submitBtn = form.querySelector('.cyber-btn');
-        submitBtn.textContent = 'Transmitiendo...';
-        submitBtn.disabled = true;
-        try {
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            form.reset();
-            submitBtn.textContent = 'Enviar Transmisión';
-            submitBtn.disabled = false;
-            alert('Transmisión exitosa :: Paquete recibido en el núcleo');
-        } catch (error) {
-            submitBtn.textContent = 'Enviar Transmisión';
-            submitBtn.disabled = false;
-            alert('Fallo en la transmisión :: Revisa los protocolos');
-        }
-    });
+
+        // Reemplaza con tus IDs de EmailJS
+        const serviceID = 'service_xpehlje';
+        const templateID = 'template_2dxcchi';
+        const publicKey = '6bkCAtg67JZMrjE_vY';
+
+        emailjs.sendForm(serviceID, templateID, form, publicKey)
+            .then(() => {
+                messageElement.textContent = 'Transmisión exitosa :: Paquete recibido en el núcleo.';
+                setTimeout(() => {
+                    messageElement.textContent = '';
+                }, 5000);
+                form.reset();
+            }, (error) => {
+                messageElement.textContent = `Fallo en la transmisión :: Error ${error.status}. Revisa los protocolos.`;
+                setTimeout(() => {
+                    messageElement.textContent = '';
+                }, 5000);
+            });
+    };
+
+    form.addEventListener('submit', sendEmail);
 
     // Core visuals parallax
     window.addEventListener('scroll', () => {
