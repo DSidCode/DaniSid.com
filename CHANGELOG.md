@@ -265,3 +265,28 @@ Esta sección documenta el proceso de sincronización del repositorio local con 
     - **Corrección de Responsividad**: Se ha solucionado un problema de alineación en la sección "hero" de la página principal para que se visualice correctamente en dispositivos de escritorio.
 
 - **Estado Actual**: El proyecto se encuentra en una fase de crecimiento de contenido y refinamiento de la UI, con una infraestructura de despliegue robusta y automatizada.
+
+---
+
+## 19. Expansión de Proyectos y Funcionalidades (Fase 2)
+
+- **Objetivo**: Profesionalizar los sub-proyectos, añadir nuevas funcionalidades y mejorar la presentación del portafolio principal.
+
+- **Refactorización del Proyecto `Antologia`**:
+    - Se movió todo el código CSS y JavaScript que estaba en línea a archivos externos (`assets/css/style.css`, `assets/js/script.js`), mejorando la mantenibilidad y el rendimiento.
+    - Se implementó un formulario de contacto funcional utilizando EmailJS, reemplazando el enlace `mailto:`.
+
+- **Creación del Proyecto `human-design-reports`**:
+    - Se creó desde cero una nueva sección dedicada a los informes de Diseño Humano.
+    - Se desarrolló una página `index.html` con contenido informativo y un formulario de solicitud de informes.
+    - Se estructuró el proyecto con sus propios archivos CSS y JavaScript, siguiendo las mejores prácticas.
+    - Se configuró EmailJS con una nueva plantilla de correo personalizada para gestionar las solicitudes de informes.
+
+- **Mejoras en la Página Principal (`index.html`)**:
+    - **Corrección de Rutas de Imágenes**: Se ajustaron las rutas de las imágenes de previsualización de los proyectos para que se mostraran correctamente.
+    - **Ampliación de Habilidades por Proyecto**: Se añadieron iconos de tecnologías y herramientas específicas (VS Code, Linux, Terminal, Premiere, After Effects, GIMP, Krita, etc.) a las tarjetas de los proyectos correspondientes.
+    - **Corrección de Video**: Se solucionó un problema de visualización con el video de "Motion Graphics", asegurando que se adapte correctamente al contenedor sin distorsionarse.
+    - **Mejora de Accesibilidad**: Se actualizó la etiqueta `aria-label` del video para describir su contenido de forma precisa.
+    - **Actualización de Enlaces**: Se corrigió el enlace en la sección "Laboratorio" para que apunte correctamente a la nueva página `human-desing-reports/index.html`.
+
+- **Estado Actual**: El portafolio ha crecido significativamente con una nueva sección completamente funcional. Los proyectos existentes han sido mejorados en estructura y contenido, y la presentación general es más detallada y profesional.

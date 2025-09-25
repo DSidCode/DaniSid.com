@@ -1,73 +1,78 @@
 document.addEventListener('DOMContentLoaded', () => {
     const storageKey = 'adrianMissionsProgress';
-
-    // Función para actualizar la interfaz de una misión completada
-    function markMissionAsCompleted(missionElement) {
-        const button = missionElement.querySelector('.complete-btn');
-        missionElement.classList.add('completed');
-        if (button) {
-            button.textContent = '¡Misión Lograda! 🎉';
-            button.disabled = true;
-        }
-    }
-
-    // Función para reiniciar la interfaz de una misión
-    function resetMissionState(missionElement) {
-        const button = missionElement.querySelector('.complete-btn');
-        missionElement.classList.remove('completed');
-        if (button) {
-            button.textContent = 'Marcar como Misión Cumplida';
-            button.disabled = false;
-        }
-    }
-
     const allMissions = document.querySelectorAll('details[data-mission-id]');
+    const resetButton = document.getElementById('reset-progress-btn');
+    const missionsContainer = document.querySelector('main'); // Asumiendo que las misiones están en <main>
 
-    // 1. Cargar el progreso desde localStorage cuando la página se carga
-    const savedProgress = JSON.parse(localStorage.getItem(storageKey)) || {};
-    allMissions.forEach(mission => {
-        const missionId = mission.dataset.missionId;
-        if (savedProgress[missionId]) {
-            markMissionAsCompleted(mission);
+    // --- Funciones de Ayuda para localStorage ---
+    const getProgress = () => JSON.parse(localStorage.getItem(storageKey)) || {};
+    const saveProgress = (progress) => localStorage.setItem(storageKey, JSON.stringify(progress));
+
+    // --- Funciones para manipular la UI ---
+
+    /**
+     * Actualiza la apariencia de una misión según su estado (completada o no).
+     * @param {HTMLElement} missionElement - El elemento <details> de la misión.
+     * @param {boolean} isCompleted - True si la misión está completada.
+     */
+    function updateMissionUI(missionElement, isCompleted) {
+        const button = missionElement.querySelector('.complete-btn');
+        missionElement.classList.toggle('completed', isCompleted);
+        if (button) { // Asegurarse de que el botón existe
+            button.textContent = isCompleted ? '¡Misión Lograda! 🎉' : 'Marcar como Misión Cumplida';
+            button.disabled = isCompleted;
         }
-    });
+    }
 
-    // 2. Añadir listeners a los botones para guardar el progreso al hacer clic
-    document.querySelectorAll('.complete-btn').forEach(button => {
-        button.addEventListener('click', function() {
-            const missionElement = this.closest('details');
-            const missionId = missionElement.dataset.missionId;
+    // --- Lógica Principal ---
 
-            if (missionId) {
+    // 1. Cargar el estado inicial al cargar la página
+    function loadInitialState() {
+        const savedProgress = getProgress();
+        allMissions.forEach(mission => {
+            const missionId = mission.dataset.missionId;
+            updateMissionUI(mission, savedProgress[missionId]);
+        });
+    }
+
+    // 2. Manejar clics en los botones de completar misión (Delegación de eventos)
+    if (missionsContainer) {
+        missionsContainer.addEventListener('click', (event) => {
+            const button = event.target.closest('.complete-btn');
+            if (!button) return; // Si el clic no fue en un botón, no hacer nada
+
+            const missionElement = button.closest('details[data-mission-id]');
+            const missionId = missionElement?.dataset.missionId;
+
+            if (missionId && !button.disabled) {
                 // ¡Lanzar confeti para celebrar!
-                confetti({
-                    particleCount: 150,
-                    spread: 90,
-                    origin: { y: 0.6 },
-                    colors: ['#ff7043', '#0d47a1', '#388e3c', '#ffb300', '#2196F3']
-                });
+                confetti({ particleCount: 150, spread: 90, origin: { y: 0.6 } });
 
-                // Actualizar la interfaz
-                markMissionAsCompleted(missionElement);
+                // Actualizar la UI
+                updateMissionUI(missionElement, true);
 
                 // Guardar en localStorage
-                const currentProgress = JSON.parse(localStorage.getItem(storageKey)) || {};
+                const currentProgress = getProgress();
                 currentProgress[missionId] = true;
-                localStorage.setItem(storageKey, JSON.stringify(currentProgress));
+                saveProgress(currentProgress);
             }
         });
-    });
+    }
 
-    // 3. Añadir listener al botón de reiniciar progreso
-    const resetButton = document.getElementById('reset-progress-btn');
+    // 3. Manejar clic en el botón de reiniciar
+    function handleReset() {
+        if (confirm('¿Estás seguro de que quieres reiniciar todo el progreso? Las misiones volverán a estar sin completar.')) {
+            localStorage.removeItem(storageKey);
+            allMissions.forEach(mission => {
+                updateMissionUI(mission, false);
+            });
+        }
+    }
+
+    // --- Inicialización ---
+
+    loadInitialState();
     if (resetButton) {
-        resetButton.addEventListener('click', function() {
-            if (confirm('¿Estás seguro de que quieres reiniciar todo el progreso? Las misiones volverán a estar sin completar.')) {
-                localStorage.removeItem(storageKey);
-                allMissions.forEach(mission => {
-                    resetMissionState(mission);
-                });
-            }
-        });
+        resetButton.addEventListener('click', handleReset);
     }
 });

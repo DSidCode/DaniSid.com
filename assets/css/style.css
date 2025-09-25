@@ -357,6 +357,13 @@ img{
 .projects_img{
     transition: transform .4s;
 }
+.projects_video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que el video cubra el contenedor, recortando si es necesario */
+    object-position: center; /* Centra el video dentro del contenedor */
+}
+
 .projects_name{
     font-size: var(--h3-font-size);
     margin-bottom: .5rem;

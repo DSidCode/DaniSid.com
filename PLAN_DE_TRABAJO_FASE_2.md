@@ -81,24 +81,24 @@ El objetivo es convertir la Antología en un proyecto web robusto, funcional y f
 
 ### 2.1. Reorganización de Archivos
 *   **Objetivo:** Aplicar la misma estructura de `assets` que en el proyecto principal para mejorar la escalabilidad.
-*   **Acciones:**
+*   **Acciones:** `[x]`
     *   Crear las carpetas `Antologia/assets/css/` y `Antologia/assets/js/`.
     *   Mover el CSS y el JavaScript que actualmente están en línea en `index.html` a archivos externos (`style.css`, `script.js`) dentro de sus nuevas carpetas.
 
 ### 2.2. Completar Contenido y Navegación
 *   **Objetivo:** Ofrecer una experiencia completa y funcional al lector.
 *   **Acciones:**
-    *   **Autobiografía:** Redactar y añadir el contenido final en la sección correspondiente.
-    *   **Escríbeme:** Reemplazar el `mailto:` actual por un formulario de contacto funcional, posiblemente utilizando EmailJS para mantener la coherencia con el portafolio principal.
+    *   `[ ]` **Autobiografía:** Redactar y añadir el contenido final en la sección correspondiente.
+    *   `[x]` **Escríbeme:** Reemplazar el `mailto:` actual por un formulario de contacto funcional, posiblemente utilizando EmailJS para mantener la coherencia con el portafolio principal.
 
 ### 2.3. Implementar Funciones Dinámicas
 *   **Objetivo:** Aumentar la viralidad del contenido y facilitar el apoyo de los lectores.
 *   **Acciones:**
-    *   **Botones de Compartir:** Programar en JavaScript una función que:
+    *   `[ ]` **Botones de Compartir:** Programar en JavaScript una función que:
         1.  Detecte el poema que el usuario está viendo.
         2.  Obtenga su título y URL única (ej: `.../Antologia/index.html#poema-1`).
         3.  Genere dinámicamente los enlaces para compartir en X (Twitter) y Facebook.
-    *   **Botones de Donación:** Investigar y configurar los enlaces directos a las pasarelas de pago o perfiles de donación para:
+    *   `[ ]` **Botones de Donación:** Investigar y configurar los enlaces directos a las pasarelas de pago o perfiles de donación para:
         *   PayPal (PayPal.Me).
         *   Bizum (posiblemente a través de un QR o número de teléfono).
         *   Nequi (similar a Bizum).
@@ -139,6 +139,23 @@ El objetivo es convertir la Antología en un proyecto web robusto, funcional y f
     *   **Asegurar la Integridad del Diseño:** Confirmar que no haya elementos fuera de las etiquetas semánticas principales (`<main>`, `<footer>`) que afecten la maquetación y la experiencia de usuario.
     *   **Añadir Botón de Impresión:** Integrar un botón visible (ej. "Imprimir CV") en la página `cv.html`.
     *   **Crear Estilos de Impresión:** Desarrollar una hoja de estilos específica para impresión (`@media print`) que formatee el contenido del CV para que se ajuste estéticamente en una o dos páginas A4, ocultando elementos no necesarios como la navegación, el footer y el propio botón de imprimir.
+
+---
+
+## 5. Optimización Técnica
+
+*   **Objetivo:** Mejorar drásticamente la velocidad de carga y la experiencia de usuario del sitio principal.
+*   **Acciones:**
+    *   **Conversión de GIF a Video:**
+        -   `[x]` Convertir el archivo `motion.gif` a formato `motion.mp4`.
+        -   `[x]` Reemplazar la etiqueta `<img>` en `index.html` por una etiqueta `<video>` con los atributos `autoplay`, `loop`, `muted` y `playsinline` para imitar el comportamiento de un GIF pero con un peso mucho menor.
+    *   **Optimización de Imágenes a WebP:**
+        -   `[ ]` Convertir las imágenes de los proyectos (formatos `.png`) al formato moderno `.webp` para reducir su tamaño sin perder calidad.
+        -   `[x]` Actualizar las rutas en `index.html` para que apunten a las nuevas imágenes `.webp`.
+    *   **Priorización de Carga:**
+        -   Añadir el atributo `fetchpriority="high"` a la imagen principal de la sección "hero" (`foto3.webp`) para indicarle al navegador que la cargue con la máxima prioridad, mejorando el LCP (Largest Contentful Paint).
+    *   **Mejora Visual de Proyecto:**
+        -   Añadir el logo de Instagram a la tarjeta del proyecto "Yedra Disco Pub" para reflejar que fue una campaña para redes sociales.
 
 ---
 

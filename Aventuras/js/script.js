@@ -1,0 +1,1 @@
+/* Pega aquí todo el código JavaScript que cortes de la etiqueta <script> en Antologia/index.html */
