@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // IMPORTANTE: Crea una nueva plantilla en EmailJS para este formulario
             // que incluya los nuevos campos (fecha, hora y lugar de nacimiento).
             const serviceID = 'service_gi6v0na'; // Tu Service ID
-            const templateID = 'template_dpmqc3m';
+            const templateID = 'template_ia8ly1n';
             const publicKey = 'sYgC-7nYnvQHkfqRJ'; // Tu Public Key
 
             emailjs.sendForm(serviceID, templateID, contactForm, publicKey)
