@@ -31,6 +31,7 @@
     <!-- Se mantiene el enlace a Font Awesome, ya que es el framework que usaremos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="assets/img/antologia.svg" type="image/x-icon">
 </head>
 <body>
     <header>
@@ -374,19 +375,20 @@
             <div>
                 <h2>Escríbeme</h2>
                 <p>
-                    ¿Tienes alguna pregunta, un comentario o simplemente quieres saludar? Me encantaría saber de ti. 
-                    Usa el siguiente formulario para enviarme un mensaje directamente a mi bandeja de entrada.
+                    ¿Tienes alguna pregunta, un comentario o simplemente quieres saludar? Me encantaría saber de ti. <br> Puedes contactarme a través de los siguientes canales:
                 </p>
-                <!-- Formulario de contacto -->
-                <form class="contact-form" id="contact-form-antologia">
-                    <div class="contact-group">
-                        <input type="text" name="user_name" placeholder="Tu nombre" required>
-                        <input type="email" name="user_email" placeholder="Tu email" required>
-                    </div>
-                    <textarea name="user_message" placeholder="Tu mensaje..." required></textarea>
-                    <button type="submit" class="pill">Enviar Mensaje</button>
-                    <p class="contact-message" id="contact-message-antologia"></p>
-                </form>
+                <!-- Botones de Contacto -->
+                <div class="action-buttons" style="margin-top: 2rem; justify-content: center;">
+                    <a class="icon-btn whatsapp-icon" title="Escribir por WhatsApp" target="_blank" href="https://wa.me/34641868620" aria-label="Escribir por WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a class="icon-btn ig-icon" title="Enviar mensaje en Instagram" target="_blank" href="https://www.instagram.com/danielsid/" aria-label="Enviar mensaje en Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a class="icon-btn email-icon" title="Enviar un correo electrónico" href="mailto:garciadanielsid@gmail.com" aria-label="Enviar un correo electrónico">
+                        <i class="fa-regular fa-envelope"></i>
+                    </a>
+                </div>
             </div>
             <div class="pager">
                 <a href="#indice" class="nav-link prev" data-prev="0"><span aria-hidden="true">←</span> Volver al índice</a>
@@ -428,7 +430,7 @@
     </div>
 
     <footer>
-        &copy; 2025 DaniSid Garcia Alzate · Compartir libremente
+        &copy; 2025 DaniSid Garcia Alzate | <a href="../index.html" class="footer-link">Volver al portafolio principal</a>
     </footer>
 
     <!-- EmailJS SDK -->

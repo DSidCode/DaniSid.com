@@ -28,12 +28,12 @@ El objetivo es refinar la página de inicio para que refleje claramente la nueva
 *   **Objetivo:** Reflejar las tecnologías más relevantes y de uso reciente.
 *   **Acciones:**
     *   **Mantener:** HTML, CSS, JavaScript como base fundamental.
-    *   **Añadir:**
-        *   Icono de Tux (el pingüino de Linux).
-        *   Icono de Kali Linux.
-        *   Icono de la Terminal/CLI.
-        *   Logo de Gemini (usando el nuevo archivo `gemini.svg`).
-        *   Logo de Visual Studio Code (usando el nuevo archivo `vscode.svg`).
+    *   `[x]` **Añadir:**
+        *   `[x]` Icono de Tux (el pingüino de Linux).
+        *   `[x]` Icono de Kali Linux.
+        *   `[x]` Icono de la Terminal/CLI.
+        *   `[x]` Logo de Gemini (usando el nuevo archivo `gemini.svg`).
+        *   `[x]` Logo de Visual Studio Code (usando el nuevo archivo `vscode.svg`).
     *   **Implementar un botón "Ver más":** Añadir un icono (ej. `+` o `...`) que al hacer clic despliegue una vista con el resto de las habilidades (Figma, WordPress, Photoshop, etc.) para mantener la barra principal limpia y enfocada.
     *   **Ampliar barra secundaria**: Añadir logos para After Effects, Premiere Pro, Krita, Inkscape, GIMP, Kdenlive.
     *   **Revisar:** El resto de los iconos para asegurar que la barra principal sea concisa y potente.
@@ -41,14 +41,14 @@ El objetivo es refinar la página de inicio para que refleje claramente la nueva
 ### 1.2. Categorizar Proyectos
 *   **Objetivo:** Diferenciar claramente los proyectos de desarrollo de los de diseño gráfico para enfocar la atención del visitante.
 *   **Acciones:**
-    *   **Añadir Tarjeta de Proyecto:** Crear una nueva tarjeta en la sección "ULTIMOS PROYECTOS" para **"Aventuras de Adrián"**, destacando su valor como proyecto de desarrollo personal y pedagógico.
-    *   **Crear Categorías Visuales:** Reestructurar la presentación de proyectos para separarlos en dos grandes grupos:
+    *   `[x]` **Añadir Tarjeta de Proyecto:** Crear una nueva tarjeta en la sección "ULTIMOS PROYECTOS" para **"Aventuras de Adrián"**, destacando su valor como proyecto de desarrollo personal y pedagógico.
+    *   `[x]` **Crear Categorías Visuales:** Reestructurar la presentación de proyectos para separarlos en dos grandes grupos:
         *   **Desarrollo Web y Tecnológico:** Incluirá `Antología`, `Cyberpunk`, `Portafolio DSid`, `Aventuras de Adrián`.
         *   **Diseño Visual y Gráfico:** Incluirá `Leyenda Del Dorado`, `Logos`, `Ilustración Digital`, `Motion Graphics`, `Publicidad Yedra Pub`.
         *   *Nota: Se puede lograr creando dos sub-títulos dentro de la sección `projects` o utilizando la sección `lab` para los proyectos más personales/experimentales.*
-    *   **Actualizar Imágenes de Proyectos**:
-        - **Antología**: Reemplazar la imagen actual por un screenshot de la página del proyecto.
-        - **Aventuras de Adrián**: Reemplazar la imagen actual por el screenshot `assets/img/aventuras_adrian.png`.
+    *   `[x]` **Actualizar Imágenes de Proyectos**:
+        - `[x]` **Antología**: Reemplazar la imagen actual por un screenshot de la página del proyecto.
+        - `[x]` **Aventuras de Adrián**: Reemplazar la imagen actual por el screenshot `assets/img/aventuras_adrian.png`.
 
 ### 1.3. Revisión de Estructura y Semántica
 *   **Objetivo:** Asegurar que el HTML sea limpio, semántico y no contenga elementos fuera de lugar que afecten el diseño o la UX.
@@ -59,7 +59,7 @@ El objetivo es refinar la página de inicio para que refleje claramente la nueva
 ### 1.4. Mejoras de UI en Hero Section
 *   **Objetivo:** Simplificar y clarificar las llamadas a la acción principales.
 *   **Acciones:**
-    *   Modificar el texto del botón "Descargar CV" a simplemente "CV" o una palabra similar que indique la visualización del currículum.
+    *   `[x]` Modificar el texto del botón "Descargar CV" a simplemente "CV" o una palabra similar que indique la visualización del currículum.
 
 ### 1.5. Ampliar Laboratorio Creativo
 *   **Objetivo:** Reflejar los intereses actuales y conceptualizar un nuevo proyecto técnico en el área de ciberseguridad.
@@ -89,7 +89,7 @@ El objetivo es convertir la Antología en un proyecto web robusto, funcional y f
 *   **Objetivo:** Ofrecer una experiencia completa y funcional al lector.
 *   **Acciones:**
     *   `[ ]` **Autobiografía:** Redactar y añadir el contenido final en la sección correspondiente.
-    *   `[x]` **Escríbeme:** Reemplazar el `mailto:` actual por un formulario de contacto funcional, posiblemente utilizando EmailJS para mantener la coherencia con el portafolio principal.
+    *   `[x]` **Escríbeme:** Reemplazar el formulario no funcional por botones de contacto directo (WhatsApp, Instagram, Email).
 
 ### 2.3. Implementar Funciones Dinámicas
 *   **Objetivo:** Aumentar la viralidad del contenido y facilitar el apoyo de los lectores.
@@ -147,13 +147,62 @@ El objetivo es convertir la Antología en un proyecto web robusto, funcional y f
 *   **Objetivo:** Mejorar drásticamente la velocidad de carga y la experiencia de usuario del sitio principal.
 *   **Acciones:**
     *   **Conversión de GIF a Video:**
-        -   `[x]` Convertir el archivo `motion.gif` a formato `motion.mp4`.
-        -   `[x]` Reemplazar la etiqueta `<img>` en `index.html` por una etiqueta `<video>` con los atributos `autoplay`, `loop`, `muted` y `playsinline` para imitar el comportamiento de un GIF pero con un peso mucho menor.
+        -   `[x]` Convertir el archivo `motion.gif` a formato `motion.mp4` y reemplazar la etiqueta `<img>` por `<video>`.
     *   **Optimización de Imágenes a WebP:**
-        -   `[ ]` Convertir las imágenes de los proyectos (formatos `.png`) al formato moderno `.webp` para reducir su tamaño sin perder calidad.
+        -   `[x]` Convertir las imágenes de los proyectos (formatos `.png`) al formato moderno `.webp` para reducir su tamaño sin perder calidad.
         -   `[x]` Actualizar las rutas en `index.html` para que apunten a las nuevas imágenes `.webp`.
     *   **Priorización de Carga:**
-        -   Añadir el atributo `fetchpriority="high"` a la imagen principal de la sección "hero" (`foto3.webp`) para indicarle al navegador que la cargue con la máxima prioridad, mejorando el LCP (Largest Contentful Paint).
+        -   `[x]` Añadir el atributo `fetchpriority="high"` a la imagen principal de la sección "hero" (`foto3.webp`).
+        -   `[x]` Eliminar `loading="lazy"` de las primeras imágenes para mejorar la fluidez del scroll.
+    *   **Mejora Visual de Proyecto:**
+        -   Añadir el logo de Instagram a la tarjeta del proyecto "Yedra Disco Pub" para reflejar que fue una campaña para redes sociales.
+
+---
+
+## 6. Integración de Backend y Formularios
+
+### 6.1. Configurar Formulario de Contacto con Firebase
+
+- **Objetivo**: Migrar el formulario de contacto principal de EmailJS a Firebase (Firestore) para tener un control más robusto sobre los mensajes recibidos.
+
+- **Guía Paso a Paso**:
+
+    #### **Paso 1: Crear el Proyecto en Firebase**
+
+    1.  **Ir a la Consola de Firebase:** Entra en `console.firebase.google.com`.
+    2.  **Crear un nuevo proyecto:** Dale un nombre (ej. `danisid-portfolio`) y sigue los pasos.
+
+    #### **Paso 2: Configurar la Base de Datos (Firestore)**
+
+    1.  En el menú del proyecto, ve a **Compilación > Firestore Database**.
+    2.  Haz clic en **"Crear base de datos"**.
+    3.  Elige **"Iniciar en modo de prueba"** para el desarrollo.
+    4.  Selecciona una ubicación para el servidor.
+
+    #### **Paso 3: Conectar la Web con Firebase**
+
+    1.  Ve a **Configuración del proyecto** (icono de engranaje).
+    2.  En "Tus apps", haz clic en el icono web **`</>`**.
+    3.  Dale un apodo y registra la aplicación.
+    4.  Copia el objeto de configuración `firebaseConfig`.
+
+    #### **Paso 4: Añadir los Scripts de Firebase a `index.html`**
+
+    1.  Reemplaza el script de EmailJS por los de Firebase SDK:
+        ```html
+        <!-- Firebase SDK -->
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js" defer></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js" defer></script>
+        ```
+
+    #### **Paso 5: Actualizar `javascript.js` para Guardar en Firestore**
+
+    1.  Pega el objeto `firebaseConfig` al inicio del script.
+    2.  Inicializa Firebase y obtén la referencia a la base de datos.
+    3.  Modifica la función `submitForm` para que guarde los datos del formulario en una colección de Firestore llamada "messages", añadiendo un `timestamp`.
+    *   **Priorización de Carga:**
+        -   `[x]` Añadir el atributo `fetchpriority="high"` a la imagen principal de la sección "hero" (`foto3.webp`).
+        -   `[x]` Eliminar `loading="lazy"` de las primeras imágenes para mejorar la fluidez del scroll.
     *   **Mejora Visual de Proyecto:**
         -   Añadir el logo de Instagram a la tarjeta del proyecto "Yedra Disco Pub" para reflejar que fue una campaña para redes sociales.
 

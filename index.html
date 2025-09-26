@@ -26,10 +26,16 @@
     <meta property="og:description" content="Transformo ideas en experiencias digitales memorables. Explora mis proyectos.">
     <meta property="og:image" content="https://danisid.com/assets/img/og-image.png"> <!-- Sugerencia: Crear una imagen de 1200x630px para redes -->
 
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Daniel Sid | Diseñador Visual & Desarrollador Web Creativo">
+    <meta name="twitter:description" content="Transformo ideas en experiencias digitales memorables. Explora mis proyectos.">
+    <meta name="twitter:image" content="https://danisid.com/assets/img/og-image.png">
+
     <!-- Font Optimization -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Grechen+Fuemen&family=Montserrat+Alternates:wght@400;500;600&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Grechen+Fuemen&family=Montserrat+Alternates:wght@400;500;600&family=Orbitron:wght@400;600;700&family=Roboto+Mono&display=swap" rel="stylesheet">
     <!-- Icons and Styles -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css" integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
@@ -79,7 +85,7 @@
         <section class="hero section" id="home">
             <div class="hero_container container grid">
                 <div class="hero_data">
-                    <h1 class="hero_title">Daniel Sid</h1>
+                    <h1 class="hero_title glitch" data-text="Daniel Sid">Daniel Sid</h1>
                     <h2 class="hero_subtitle">Diseñador Visual & Desarrollador Web Creativo</h2>
                     <p class="hero_description">
                         Transformo ideas en experiencias digitales memorables. Mi pasión es combinar diseño estético con código funcional para construir sitios web que no solo se ven bien, sino que también cuentan una historia.
@@ -131,7 +137,7 @@
 
                 <article class="projects_card">
                     <a href="Antologia/index.html" class="projects_image" target="_blank">
-                       <img src="assets/img/antologia.webp" alt="Screenshot del proyecto Antología Poética" class="projects_img" loading="lazy">
+                       <img src="assets/img/antologia.webp" alt="Screenshot del proyecto Antología Poética" class="projects_img">
                     </a>
                     <div class="projects_data">
                         <h3 class="projects_name">Antología: Del Amor y Otras Nostalgias</h3>
@@ -148,7 +154,7 @@
                 </article>
                 <article class="projects_card">
                     <a href="Aventuras/index.html" class="projects_image" target="_blank">
-                       <img src="assets/img/aventuras_adrian.webp" alt="Screenshot del proyecto Aventuras de Adrián" class="projects_img" loading="lazy">
+                       <img src="assets/img/aventuras_adrian.webp" alt="Screenshot del proyecto Aventuras de Adrián" class="projects_img">
                     </a>
                     <div class="projects_data">
                         <h3 class="projects_name">Aventuras de Adrián</h3>
@@ -165,7 +171,7 @@
                 </article>
                 <article class="projects_card">
                     <a href="projects/cyberpunk/index.html" class="projects_image" target="_blank">
-                       <img src="assets/img/projects-1.webp" alt="Vista previa del proyecto web Cyberpunk" class="projects_img" loading="lazy">
+                       <img src="assets/img/projects-1.webp" alt="Vista previa del proyecto web Cyberpunk" class="projects_img">
                     </a>
                 <div class="projects_data">
                     <h3 class="projects_name">Web personal - CyberPunk</h3>
@@ -185,7 +191,7 @@
                 </article>
                 <article class="projects_card">
                     <a href="https://danisid.com" class="projects_image" target="_blank">
-                       <img src="assets/img/projects-2.webp" alt="Vista previa del portafolio personal DSid" class="projects_img" loading="lazy">
+                       <img src="assets/img/projects-2.webp" alt="Vista previa del portafolio personal DSid" class="projects_img">
                     </a>
                 <div class="projects_data">
                     <h3 class="projects_name">DSid - Portfolio Web</h3>
@@ -398,7 +404,7 @@
         </section>
     <!-- EXPEREINCE -->
         <section class="experience section" id="experience">
-            <h2 class="section_title">Experiencia Profecional</h2>
+            <h2 class="section_title">Experiencia Profesional</h2>
             <div class="experience_container container grid">
                 <article class="experience_card">
                     <h2 class="experience_company">danisid.com - Portafolio Personal</h2>
@@ -506,6 +512,9 @@
                 <a href="https://www.instagram.com/danielsid/" class="footer_social_link" target="_blank" aria-label="Visita mi perfil de Instagram">
                     <i class="ri-instagram-line"></i>
                 </a>
+                <a href="https://wa.me/34641868620" class="footer_social_link" target="_blank" title="Escríbeme" aria-label="Escríbeme por WhatsApp">
+                    <i class="ri-whatsapp-line"></i>
+                </a>
             </div>
         </div>
         <span class="footer_copy">
@@ -518,10 +527,10 @@
     </a>
     <!-- scrollreveal -->
      <script src="assets/js/scrollreveal.min.js" defer></script>
-    <!-- emailjs -->
-    <script
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer>
-    </script>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js" defer></script>
+
     <script src="assets/js/javascript.js" defer></script>
 </body>
 

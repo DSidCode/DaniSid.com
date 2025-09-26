@@ -5,6 +5,8 @@
     --brand-paypal: #003087;
     --brand-bizum: #00B9B3;
     --brand-nequi: #5A2D82;
+    --brand-whatsapp: #25D366;
+    --brand-email: #c71610;
     --ink: #222;
     --paper: #fdfcf9;
     --line: #e0e0e0;
@@ -396,6 +398,25 @@ header p {
     color: white;
 }
 
+.icon-btn.whatsapp-icon { 
+    color: var(--brand-whatsapp);
+    border-color: var(--brand-whatsapp);
+}
+.icon-btn.whatsapp-icon:hover { 
+    background-color: var(--brand-whatsapp);
+    color: white;
+}
+
+.icon-btn.email-icon { 
+    color: var(--brand-email);
+    border-color: var(--brand-email);
+}
+.icon-btn.email-icon:hover { 
+    background-color: var(--brand-email);
+    color: white;
+}
+
+
 /* Footer */
 footer {
     padding: 1.5rem;
@@ -403,6 +424,16 @@ footer {
     color: #666;
     font-size: 0.92rem;
     margin-top: auto;
+}
+
+.footer-link {
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
 }
 
 /* Mobile Adjustments */

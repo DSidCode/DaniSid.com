@@ -7,24 +7,27 @@ font-family: "Montserrat Alternates", serif; */
 
     /* Colores */
 
-    --hue: 200;
-    --first-color: hsl(var(--hue), 90%, 60%);
-    --first-color-alt: hsl(var(--hue), 90%, 45%);
+    --hue-cyan: 190;
+    --hue-magenta: 300;
+    --hue-green: 99; /* Nuevo tono verde ácido */
+    --first-color: hsl(var(--hue-cyan), 100%, 50%);
+    --first-color-alt: hsl(var(--hue-magenta), 100%, 60%);
+    --third-color: hsl(var(--hue-green), 100%, 50%); /* Verde neón */
     --white-color: hsl(0,0%,95%);
-    --black-color: hsl(var(--hue), 20%, 5%);
-    --text-color: hsl(var(--hue), 70%, 88%);
-    --body-color: hsl(var(--hue), 50%, 2%);
-    --container-color : hsl(var(--hue), 40%, 10%, 0.9);
+    --black-color: hsl(var(--hue-cyan), 20%, 5%);
+    --text-color: hsl(var(--hue-cyan), 70%, 88%);
+    --body-color: hsl(var(--hue-cyan), 50%, 2%);
+    --container-color : hsl(var(--hue-cyan), 40%, 10%, 0.9);
     --conic-gradient: conic-gradient(
         from 150deg at 50% 45%, 
-        hsl(var(--hue), 100%, 20%) 0deg,
-        hsl(var(--hue), 100%, 50%) 140deg, 
-        hsl(var(--hue), 100%, 20%) 360deg);
-    --neon-glow: 0 0 10px hsl(var(--hue), 90%, 60%), 0 0 20px hsl(var(--hue), 90%, 60%), 0 0 30px hsl(var(--hue), 90%, 60%);
+        hsl(var(--hue-cyan), 100%, 20%) 0deg,
+        hsl(var(--hue-cyan), 100%, 50%) 140deg, 
+        hsl(var(--hue-cyan), 100%, 20%) 360deg); 
+    --neon-glow: 0 0 10px hsl(var(--hue-cyan), 90%, 60%), 0 0 20px hsl(var(--hue-cyan), 90%, 60%), 0 0 30px hsl(var(--hue-cyan), 90%, 60%);
     
     /* fuentes y tamaños */
     
-    --body-font:  "Montserrat Alternates", serif;
+    --body-font:  'Roboto Mono', monospace;
     --secound-font: "Orbitron", sans-serif;
     --biggest-font-size: 2.5rem;
     --h1-font-size: 1.5rem;
@@ -71,7 +74,7 @@ body, input, textarea, button{
     font-size: var(--normal-font-size);
 }
 body{
-    background: linear-gradient(135deg, var(--body-color), hsl(var(--hue), 40%, 8%));
+    background: linear-gradient(135deg, var(--body-color), hsl(var(--hue-cyan), 40%, 8%));
     background-color: var(--body-color);
     color: var(--text-color);
     overflow-x: hidden;
@@ -81,7 +84,8 @@ input, button, textarea{
     outline: none;
 }
 h1, h2, h3, h4{
-    color: var(--white-color);
+    font-family: var(--secound-font);
+    color: var(--first-color); /* Color base para títulos */
     font-weight: var(--font-semi-bold);
 }
 ul{
@@ -113,7 +117,7 @@ img{
     margin-bottom: 2rem;
 }
 .main{
-    overflow: hidden;
+    /* overflow: hidden; */ /* Se comenta para que el glitch no se corte */
 
 }
 .visually-hidden {
@@ -146,7 +150,7 @@ img{
 
 .hero_subtitle {
     font-size: var(--h2-font-size);
-    color: var(--first-color);
+    color: var(--text-color);
     margin-bottom: 1.5rem;
     font-weight: var(--font-medium);
 }
@@ -154,7 +158,7 @@ img{
 .hero_description {
     max-width: 600px;
     margin: 0 auto 2.5rem;
-    color: var(--text-color);
+    color: var(--first-color);
 }
 
 .hero_buttons {
@@ -226,7 +230,7 @@ img{
     transition: background-color .6s;
 }
 .active-link {
-    background-color: var(--first-color);
+    background-color: var(--third-color); /* Usamos verde para el link activo */
 }
 /* BUTTON */
 .button {
@@ -240,7 +244,7 @@ img{
     transition: background-color .4s;
 }
 .button:hover{
-    background-color: var(--first-color-alt);
+    background-color: var(--third-color);
 }
 .button_black{
     background-color: var(--black-color);
@@ -313,7 +317,7 @@ img{
 }
 
 .skills_more:hover i {
-    color: var(--container-color);
+    color: var(--white-color);
 }
 
 .skills_secondary {
@@ -329,18 +333,68 @@ img{
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
+/* ==================== GLITCH EFFECT ======================== */
+.glitch {
+    position: relative;
+    color: var(--first-color); /* Color base para el glitch */
+    transition: text-shadow .3s ease; /* Transición suave para el hover */
+    text-shadow: 0 0 8px hsla(var(--hue-cyan), 100%, 75%, 0.8),
+                 0 0 20px hsla(var(--hue-cyan), 100%, 65%, 0.6);
+}
+
+.glitch:hover {
+    text-shadow: 0 0 12px hsla(var(--hue-cyan), 100%, 75%, 1),
+                 0 0 30px hsla(var(--hue-magenta), 100%, 60%, 0.7);
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch::before {
+    color: var(--first-color-alt); /* Magenta */
+    animation: glitch-top 2.5s linear infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+    z-index: -1; /* Coloca la capa magenta detrás */
+}
+
+.glitch::after {
+    color: var(--third-color); /* Verde */
+    animation: glitch-bottom 2.5s linear infinite;
+    clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+    z-index: -2; /* Coloca la capa verde aún más atrás */
+}
+
+@keyframes glitch-top {
+    2%, 64% { transform: translate(1px, -1px); }
+    4%, 60% { transform: translate(-1px, 1px); }
+    62% { transform: translate(5px, -1px) skew(-5deg); }
+}
+
+@keyframes glitch-bottom {
+    2%, 64% { transform: translate(-1px, 0); }
+    4%, 60% { transform: translate(-1px, 0); }
+    62% { transform: translate(-8px, 2px) skew(8deg); }
+}
 
 /* PROJECTS */
 .projects_card{
     background-color: var(--container-color);
     padding: 1.5rem;
     border-radius: 2rem;
+    transition: transform .3s ease, box-shadow .3s ease;
 }
 .projects_category_title {
     grid-column: 1 / -1; /* Span all columns in the grid */
     font-size: var(--h3-font-size);
     font-family: var(--secound-font);
-    color: var(--first-color-alt);
+    color: var(--first-color);
     text-align: center;
     margin-block: 2rem 0;
     padding-bottom: .5rem;
@@ -409,6 +463,10 @@ img{
 .projects_card:hover .projects_img{
     transform: scale(1.2);
 }
+.projects_card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 20px hsla(var(--hue-cyan), 100%, 50%, 0.5), 0 0 35px hsla(var(--hue-green), 100%, 50%, 0.3);
+}
 /* SERVICES */
 .services_card{
     background-color: var(--container-color);
@@ -416,6 +474,7 @@ img{
     border-radius: 2rem;
 }
 .services_icon{
+    transition: transform .3s ease, box-shadow .3s ease;
     display: inline-block;
     position: relative;
     margin-bottom: 2rem;
@@ -445,6 +504,10 @@ img{
 .services_card:hover .services_circle{
     transform: translate(.25rem, -.25rem);
 }
+.services_card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 20px hsla(var(--hue-cyan), 100%, 50%, 0.5), 0 0 35px hsla(var(--hue-green), 100%, 50%, 0.3);
+}
 
 /* EXPERIENCE */
 .experience_container{
@@ -453,14 +516,20 @@ img{
 .experience_card{
     display: grid;
     row-gap: 1rem;
+    border-radius: 2rem;
+    transition: transform .3s ease, box-shadow .3s ease;
 }
 .experience_company{
     font-size: var(--h2-font-size);
+    font-size: var(--h3-font-size);
+    color: var(--text-color);
+    margin: 2rem 0;
+    padding: 0 1.5rem;
 }
 .experience_data{
     background-color: var(--container-color);
     padding: 1.5rem;
-    border-radius: 1.5rem;
+    border-radius: 2rem;
 }
 .experience_profession{
     font-size: var(--h3-font-size);
@@ -474,6 +543,10 @@ img{
 .experience_description{
     color: var(--text-color);
 }
+.experience_card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 20px hsla(var(--hue-cyan), 100%, 50%, 0.5), 0 0 35px hsla(var(--hue-green), 100%, 50%, 0.3);
+}
 /* ==================== LABORATORIO ======================== */
 .lab_container {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -486,16 +559,18 @@ img{
     border-radius: 1.5rem;
     text-align: center;
     border: 1px solid transparent;
-    transition: border-color .4s;
+    transition: border-color .4s, transform .3s ease, box-shadow .3s ease;
 }
 
 .lab_card:hover {
     border-color: var(--first-color);
+    transform: translateY(-8px);
+    box-shadow: 0 0 20px hsla(var(--hue-cyan), 100%, 50%, 0.5), 0 0 35px hsla(var(--hue-green), 100%, 50%, 0.3);
 }
 
 .lab_icon {
     font-size: 3rem;
-    color: var(--first-color);
+    color: var(--third-color);
     margin-bottom: 1rem;
     display: block;
 }
@@ -566,7 +641,7 @@ img{
     row-gap: 2.5rem;
 }
 .footer_logo{
-    color: var(--white-color);
+    color: var(--first-color); /* Color para el logo del footer */
     font: var(--font-regular) var(--biggest-font-size) var(--secound-font);
     justify-self: center;
 }
@@ -736,7 +811,7 @@ img{
         font-size: 3.5rem; /* Using a specific value instead of var */
     }
     .hero_subtitle {
-        font-size: var(--h1-font-size);
+        font-size: 1.4rem;
         margin-bottom: 2rem;
     }
     .hero_image {

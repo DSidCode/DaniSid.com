@@ -74,6 +74,7 @@ body {
     height: 100%;
     pointer-events: none;
     z-index: 100;
+    will-change: transform; /* Optimización para el drone que se mueve con JS */
 }
 
 .scanlines {
@@ -127,6 +128,7 @@ body {
 .glitch {
     position: relative;
     animation: glitch 2s linear infinite alternate;
+    will-change: transform; /* Optimización para la animación glitch */
 }
 
 .cyber-nav ul {

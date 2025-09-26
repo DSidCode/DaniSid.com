@@ -124,6 +124,35 @@ Se inicia una nueva fase enfocada en refinar la marca personal, mejorar la exper
 
 ---
 
+## 21. Optimización y Refactorización (Fase 2)
+
+- **Objetivo**: Mejorar la visibilidad en redes, el rendimiento, la estructura de los sub-proyectos y la consistencia de la marca.
+
+- **Metadatos para Redes Sociales**:
+    - Se añadieron metadatos de **Open Graph (Facebook, WhatsApp)** y **Twitter Cards** a la página principal (`index.html`) y a la sección `human-design-reports/index.html`.
+    - Esto asegura que al compartir los enlaces, se muestre una previsualización rica con título, descripción e imagen, mejorando drásticamente el impacto visual.
+
+- **Optimización de Rendimiento y UX**:
+    - Se eliminó el atributo `loading="lazy"` de las primeras imágenes de proyectos en `index.html` para solucionar un problema de carga lenta durante el scroll, mejorando la fluidez de la experiencia de usuario.
+
+- **Mejoras en Sub-Proyectos**:
+    - **Antología**:
+        - Se añadió un enlace de retorno al portafolio principal en el pie de página.
+        - Se reemplazó el formulario de contacto no funcional por botones de acción directa a **WhatsApp, Instagram y correo electrónico**, ofreciendo una solución más efectiva.
+    - **Human Design Reports**:
+        - Se añadió un pie de página consistente con la firma "Creado por DaniSid" y un enlace al portafolio en los informes de Ángela y Eva.
+
+- **Refactorización del Proyecto `Cyberpunk`**:
+    - **Estructura de Archivos**: Se refactorizó completamente el proyecto para usar una estructura de carpetas profesional (`assets/css`, `assets/js`, `assets/img`), mejorando la organización y mantenibilidad.
+    - **Limpieza de Archivos**: Se eliminaron todos los archivos de configuración obsoletos de Firebase (`.firebaserc`, `firebase.json`, `404.html`), ya que el proyecto no utiliza esta plataforma.
+    - **Expansión de Contenido**:
+        - Se amplió la sección "Ciberherramientas" para incluir nuevos logos de habilidades: Kali Linux, VS Code, WordPress, y herramientas de IA (Gemini, Grok, OpenAI, Deepseek).
+        - Se añadieron logos de software de diseño de código abierto (Kdenlive, Inkscape, GIMP, Krita).
+    - **Depuración de CSS (Aciertos y Desaciertos)**:
+        - Se intentó aplicar un efecto de `hover` (brillo y color) a los nuevos iconos de IA para que coincidiera con el resto.
+        - **Desacierto**: Los intentos iniciales de refactorización del CSS rompieron el efecto de escalado y no lograron el resultado deseado debido a conflictos en las reglas de `filter`.
+        - **Acierto (Solución Pragmática)**: Se revirtieron los cambios en el CSS al estado original y se tomó la decisión de mover los iconos de IA a la cuadrícula principal de herramientas para mantener la consistencia visual y funcional sin necesidad de CSS complejo.
+
 ## 12. Resolución Final del Despliegue Automático y Limpieza
 
 - **Diagnóstico Final**: La ejecución del comando `ls -l` en el servidor de IONOS reveló la causa raíz del problema de autenticación:
@@ -290,3 +319,58 @@ Esta sección documenta el proceso de sincronización del repositorio local con 
     - **Actualización de Enlaces**: Se corrigió el enlace en la sección "Laboratorio" para que apunte correctamente a la nueva página `human-desing-reports/index.html`.
 
 - **Estado Actual**: El portafolio ha crecido significativamente con una nueva sección completamente funcional. Los proyectos existentes han sido mejorados en estructura y contenido, y la presentación general es más detallada y profesional.
+
+---
+
+## 20. Depuración y Verificación Final de Funcionalidades
+
+- **Objetivo**: Asegurar que todas las nuevas implementaciones estén 100% operativas y libres de errores.
+
+- **Depuración del Formulario `human-design-reports`**:
+    - **Diagnóstico**: Se detectó un error `The template ID not found` al probar el formulario de solicitud de informes.
+    - **Solución**: Se verificó el ID de la plantilla de EmailJS y se actualizó en el archivo `human-desing-reports/assets/js/script.js` con el valor correcto (`template_ia8ly1n`).
+    - **Resultado**: El formulario ahora funciona correctamente, enviando las solicitudes al correo configurado.
+
+- **Estado Actual**: Todas las funcionalidades implementadas en la Fase 2 han sido verificadas y están estables. El proyecto está listo para continuar con las siguientes tareas de mejora.
+
+---
+
+## 21. Optimización de Rendimiento del Proyecto Cyberpunk
+
+- **Objetivo**: Mejorar el rendimiento del sub-proyecto `cyberpunk`, reduciendo el tiempo de carga inicial y el consumo de recursos de las animaciones.
+
+- **Acciones Realizadas**:
+    - **Optimización de Carga de Imágenes**:
+        - **Acción**: Se aplicó el atributo `loading="lazy"` a todas las imágenes de la sección "Ciberherramientas" (`#tools`) en `projects/cyberpunk/index.html`.
+        - **Beneficio**: Reduce drásticamente el tiempo de carga inicial de la página, ya que los iconos de habilidades solo se descargan cuando el usuario se desplaza hacia ellos.
+
+    - **Optimización de Animaciones CSS**:
+        - **Acción**: Se añadió la propiedad `will-change: transform;` a las clases `.hud-overlay` y `.glitch` en `projects/cyberpunk/assets/css/styles.css`.
+        - **Beneficio**: Le indica al navegador que se prepare para animar estos elementos, permitiéndole optimizar el renderizado y logrando que efectos constantes como el `drone` y el `glitch` consuman menos CPU/GPU.
+
+**Estado Actual**: El proyecto `cyberpunk` es ahora más eficiente, ofreciendo una experiencia más fluida sin sacrificar su estética visual.
+
+---
+
+## 22. Modernización de la Estética a Cyberpunk
+
+- **Objetivo**: Renovar la identidad visual del portafolio principal (`danisid.com`) para alinearla con una estética cyberpunk más vibrante y moderna, inspirada en el sub-proyecto `cyberpunk`.
+
+- **Acciones Realizadas**:
+    - **Nueva Paleta de Colores**:
+        - **Acción**: Se modificaron las variables de color en `assets/css/style.css` para introducir una paleta más "ácida" con un cian eléctrico, un magenta neón y un verde ácido como color de acento.
+        - **Beneficio**: El sitio ahora tiene una apariencia más dinámica y llamativa.
+
+    - **Efecto de Brillo Neón**:
+        - **Acción**: Se implementó un `box-shadow` multicolor en el `hover` de todas las tarjetas de proyecto, servicios y experiencia, combinando el cian y el verde neón para un efecto de brillo más profundo.
+        - **Beneficio**: Mejora la interactividad y refuerza la estética futurista.
+
+    - **Animación de Título con `glitch`**:
+        - **Acción**: Se aplicó una animación de `glitch` avanzada al título principal ("Daniel Sid"), utilizando `clip-path` y tres capas de color (cian, magenta, verde). Se aseguró que la capa cian principal permaneciera en primer plano con un brillo "glossy" constante.
+        - **Beneficio**: El título principal ahora es un punto focal dinámico y temático.
+
+    - **Ajustes Tipográficos y de Color**:
+        - **Acción**: Se cambió la fuente principal del sitio a 'Roboto Mono' para unificar el estilo hacia una estética más técnica. Se ajustaron los colores de subtítulos y otros textos para eliminar los tonos blancos y usar la nueva paleta de neones.
+        - **Beneficio**: La tipografía y los colores ahora son consistentes con el tema cyberpunk, mejorando la coherencia visual.
+
+**Estado Actual**: El portafolio principal ahora tiene una identidad visual audaz, moderna y coherente con la marca personal del autor.

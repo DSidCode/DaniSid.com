@@ -130,22 +130,35 @@ document.addEventListener('DOMContentLoaded', () => {
         coreVisuals.style.transform = `translateY(${scrollPos * 0.5}px)`;
     });
 
-    // Cyber trail
+    // Optimización de animaciones del cursor con requestAnimationFrame
+    const drone = document.querySelector('.cyber-drone');
     const trail = document.createElement('div');
     trail.className = 'cyber-trail';
     document.body.appendChild(trail);
+
+    let mouseX = 0, mouseY = 0;
+    let trailX = 0, trailY = 0;
+    let droneX = 0, droneY = 0;
+
     document.addEventListener('mousemove', (e) => {
-        trail.style.left = `${e.pageX}px`;
-        trail.style.top = `${e.pageY}px`;
+        mouseX = e.pageX;
+        mouseY = e.pageY;
     });
 
-    // Cyber drone interaction
-    const drone = document.querySelector('.cyber-drone');
-    document.addEventListener('mousemove', (e) => {
-        const x = (e.clientX / window.innerWidth - 0.5) * 50;
-        const y = (e.clientY / window.innerHeight - 0.5) * 50;
-        drone.style.transform = `translate(${x}px, ${y}px)`;
-    });
+    function animateCursor() {
+        // Drone movement
+        const targetDroneX = (mouseX / window.innerWidth - 0.5) * 50;
+        const targetDroneY = (mouseY / window.innerHeight - 0.5) * 50;
+        drone.style.transform = `translate(${targetDroneX}px, ${targetDroneY}px)`;
+
+        // Trail movement
+        trail.style.left = `${mouseX}px`;
+        trail.style.top = `${mouseY}px`;
+
+        requestAnimationFrame(animateCursor);
+    }
+
+    animateCursor();
 });
 
 // Cyber trail CSS

@@ -1,28 +1,44 @@
-/* =============== EMAIL JS ============*/
+/* =============== FIREBASE FORM ============*/
+// 1. Pega aquí la configuración de Firebase que copiaste en el Paso 3
+const firebaseConfig = {
+  apiKey: "TU_API_KEY",
+  authDomain: "TU_AUTH_DOMAIN",
+  projectId: "TU_PROJECT_ID",
+  storageBucket: "TU_STORAGE_BUCKET",
+  messagingSenderId: "TU_MESSAGING_SENDER_ID",
+  appId: "TU_APP_ID"
+};
+
+// 2. Inicializa Firebase
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
 const   contactForm = document.getElementById('contact-form'),
         contactMessage = document.getElementById('contact-message');
 
-const sendEmail = (e) =>{
+const submitForm = (e) =>{
     e.preventDefault();
     
-    // serviceID - templateID - #form - publicKay
-    emailjs.sendForm('service_gi6v0na','template_umpgkuo','contact-form','sYgC-7nYnvQHkfqRJ')
+    // 3. Obtenemos los datos del formulario
+    const name = contactForm.user_name.value;
+    const email = contactForm.user_email.value;
+    const message = contactForm.user_message.value;
 
-    .then(() =>{
-        // Mostramos el mensaje de envio
-        contactMessage.textContent = 'Tu mensaje ha sido enviado ✔'
-        // Eliminamos el mensaje de envio
-        setTimeout(() =>{
-            contactMessage.textContent = ''
-        }, 5000)
-        //  Reseteamos el formulario
-        contactForm.reset()
-    }, () => {
-        // Mostrat mensaje de error
-        contactMessage.textContent = 'Mensaje no Enviado (error de servidor) ❌'
-    })
+    // 4. Guardamos los datos en una colección de Firestore llamada "messages"
+    db.collection("messages").add({
+        name: name,
+        email: email,
+        message: message,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    }).then(() => {
+        contactMessage.textContent = 'Tu mensaje ha sido enviado ✔';
+        contactForm.reset();
+    }).catch((error) => {
+        contactMessage.textContent = 'Mensaje no Enviado (error de servidor) ❌';
+        console.error("Error al escribir en la base de datos: ", error);
+    });
 }
-contactForm.addEventListener('submit', sendEmail);
+contactForm.addEventListener('submit', submitForm);
 /* =============== SHOW SCROLL UP ============*/
 const scrollUp = () =>{
     const scrollUp = document.getElementById('scroll-up')
@@ -53,14 +69,14 @@ window.addEventListener('scroll', scrollActive)
 const sr = ScrollReveal({
     origin: 'top',
     distance: '60px',
-    duration: 2500,
-    delay: 400,
+    duration: 2000,
+    delay: 300,
     // reset: true, //repeticin de la animacion
 })
 sr.reveal(`.pefil, .contact_from`)
-sr.reveal(`.info`, {origin: 'left', delay:800})
-sr.reveal(`.skills`, {origin: 'left', delay:1400})
-sr.reveal(`.about`, {origin: 'right', delay:1200})
+sr.reveal(`.info`, {origin: 'left', delay:600})
+sr.reveal(`.skills`, {origin: 'left', delay:800})
+sr.reveal(`.about`, {origin: 'right', delay:700})
 sr.reveal(`.projects_card, .services_card, .experience_card`, {interval: 100})
 
 // Seleccionar todos los canvases con la clase matrix-effect
