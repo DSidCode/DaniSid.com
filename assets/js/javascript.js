@@ -1,28 +1,34 @@
 const   contactForm = document.getElementById('contact-form'),
         contactMessage = document.getElementById('contact-message');
 
+// Función auxiliar para codificar los datos del formulario para Netlify
+const encode = (data) => {
+    return Object.keys(data)
+        .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+        .join("&");
+}
+
 const submitForm = (e) =>{
     e.preventDefault();
 
-    const myForm = e.target;
-    const formData = new FormData(myForm);
+    const formData = new FormData(contactForm);
+    const formObject = Object.fromEntries(formData.entries());
 
-    fetch(myForm.action, {
+    fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData).toString()
+        body: encode({
+            "form-name": contactForm.getAttribute("name"),
+            ...formObject
+        })
     })
-    .then(response => {
-        if (response.ok) {
-            // Muestra el mensaje de éxito
-            contactMessage.textContent = 'Tu mensaje ha sido enviado ✔';
-            // Limpia el formulario
-            contactForm.reset();
-            // Oculta el mensaje después de 5 segundos
-            setTimeout(() => { contactMessage.textContent = '' }, 5000);
-        } else {
-            throw new Error('Error en el envío del formulario.');
-        }
+    .then(() => {
+        // Muestra el mensaje de éxito
+        contactMessage.textContent = 'Tu mensaje ha sido enviado ✔';
+        // Limpia el formulario
+        contactForm.reset();
+        // Oculta el mensaje después de 5 segundos
+        setTimeout(() => { contactMessage.textContent = '' }, 5000);
     })
     .catch((error) => {
         contactMessage.textContent = 'Mensaje no Enviado (error de servidor) ❌';
