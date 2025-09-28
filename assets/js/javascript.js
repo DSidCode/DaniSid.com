@@ -1,24 +1,28 @@
-/* =============== CONTACT FORM (NETLIFY) ============*/
 const   contactForm = document.getElementById('contact-form'),
         contactMessage = document.getElementById('contact-message');
 
 const submitForm = (e) =>{
     e.preventDefault();
 
-    const formData = new FormData(contactForm);
+    const myForm = e.target;
+    const formData = new FormData(myForm);
 
-    fetch("/", {
+    fetch(myForm.action, {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" }, // Netlify requiere este encabezado
+        headers: { "Accept": "application/x-www-form-urlencoded" },
         body: new URLSearchParams(formData).toString()
     })
-    .then(() => {
-        // Muestra el mensaje de éxito
-        contactMessage.textContent = 'Tu mensaje ha sido enviado ✔';
-        // Limpia el formulario
-        contactForm.reset();
-        // Oculta el mensaje después de 5 segundos
-        setTimeout(() => { contactMessage.textContent = '' }, 5000);
+    .then(response => {
+        if (response.ok) {
+            // Muestra el mensaje de éxito
+            contactMessage.textContent = 'Tu mensaje ha sido enviado ✔';
+            // Limpia el formulario
+            contactForm.reset();
+            // Oculta el mensaje después de 5 segundos
+            setTimeout(() => { contactMessage.textContent = '' }, 5000);
+        } else {
+            throw new Error('Error en el envío del formulario.');
+        }
     })
     .catch((error) => {
         contactMessage.textContent = 'Mensaje no Enviado (error de servidor) ❌';
@@ -27,6 +31,8 @@ const submitForm = (e) =>{
 }
 
 contactForm.addEventListener('submit', submitForm);
+
+/* =============== SHOW SCROLL UP ============*/
 /* =============== SHOW SCROLL UP ============*/
 const scrollUp = () =>{
     const scrollUp = document.getElementById('scroll-up')
