@@ -425,12 +425,15 @@ Esta sección documenta el proceso de sincronización del repositorio local con 
 
 - **Objetivo**: Implementar una solución robusta para el formulario de contacto principal y refinar la experiencia de usuario en base a las últimas implementaciones.
 - **Acciones Realizadas**:
-    - **Migración a Netlify Forms**: Se configuró el formulario de contacto principal para usar Netlify Forms, eliminando la dependencia de Firebase. Se implementó una lógica de envío asíncrona para una experiencia de usuario fluida sin recargas de página.
+    - **Migración a Netlify Forms**:
+        - **Acción**: Se configuró el formulario de contacto principal para usar Netlify Forms, eliminando la dependencia de Firebase.
+        - **Implementación AJAX**: Se desarrolló una lógica de envío asíncrona con JavaScript (`fetch`) para una experiencia de usuario fluida, mostrando mensajes de éxito/error sin recargar la página.
+        - **Depuración y Solución**: Se resolvió un problema persistente de envío de formularios a Netlify. La solución final implicó ajustar el atributo del formulario a `data-netlify="true"`, añadir un campo `netlify-honeypot` y refactorizar el script de envío para codificar manualmente los datos y asegurar el `Content-Type` correcto, garantizando la recepción por parte de Netlify.
     - **Mejoras de Usabilidad**:
         - Se añadió un cuadro de diálogo de confirmación al botón "Reiniciar Progreso" en el proyecto "Aventuras" para prevenir la pérdida accidental de datos.
         - Se corrigió un problema de superposición de los botones flotantes en la versión de escritorio del proyecto "Aventuras", logrando un diseño equilibrado.
         - Se optimizó la velocidad de las animaciones de carga en la página principal para una experiencia más ágil.
-- **Estado Actual**: El portafolio es ahora más funcional y robusto, con un formulario de contacto operativo y una experiencia de usuario mejorada en todos sus componentes.
+- **Estado Actual**: El portafolio es ahora más funcional y robusto, con un formulario de contacto 100% operativo y una experiencia de usuario mejorada en todos sus componentes.
 
 - **Objetivo**: Mejorar la funcionalidad y la experiencia de usuario del CV profesional, especialmente en dispositivos móviles, y refactorizar su estructura técnica.
 
@@ -446,3 +449,26 @@ Esta sección documenta el proceso de sincronización del repositorio local con 
         - **Beneficio**: El código del CV ahora es más limpio, modular y fácil de mantener, siguiendo las mejores prácticas de desarrollo web.
 
 **Estado Actual**: El CV profesional es ahora completamente responsivo, funcional y ofrece una experiencia de usuario inteligente y sin fricciones. Su base de código ha sido profesionalizada para facilitar futuras actualizaciones.
+
+
+---
+
+## 26. Estabilización y Refactorización Completa de 'Antología'
+
+- **Objetivo**: Transformar el proyecto "Antología" en una experiencia de lectura digital más inmersiva y profesional, mejorando la navegación y la estética.
+
+- **Acciones Realizadas**:
+    - **Resolución de Bug Crítico**: Se solucionó el error principal que impedía mostrar el contenido del libro después de hacer clic en la portada. La refactorización se centró en unificar la lógica de visibilidad mediante una clase `book-is-open` en el `<body>`.
+    - **Mejora de Navegación y UX**:
+        - Se implementó la navegación con los botones de "atrás" y "adelante" del navegador usando `history.pushState`.
+        - Se añadió la navegación entre poemas mediante las flechas del teclado.
+    - **Optimización de Animaciones**: Se reemplazaron las animaciones 3D (que causaban inestabilidad) por una transición de fundido y deslizamiento (`fade and slide`), más robusta y elegante.
+    - **Refactorización del Layout**:
+        - Se añadió un contenedor `.page-content` con `overflow-y: auto` y `min-height: 0` para asegurar que el scroll funcione correctamente en poemas largos en todos los dispositivos.
+        - Se ajustó el layout para que la "hoja" del libro tenga una proporción vertical (similar a un folio A4) y esté siempre centrada, mejorando la estética.
+    - **Unificación de Estilos**: Se aplicó el diseño de menús con botones flotantes y fondo transparente a todas las versiones (móvil y escritorio) para una experiencia coherente.
+    - **Revisión Completa del Diseño Responsivo**:
+        - **Vista de Escritorio y Tableta**: Se mantiene una experiencia de libro con menús flotantes fijos y una "hoja" central.
+        - **Vista Móvil**: Se transformó el layout para que funcione como una página web con scroll natural. Los menús de navegación del libro se integran en el flujo del contenido (arriba y abajo del poema) y el pie de página principal es visible al final, eliminando por completo los problemas de superposición.
+
+- **Estado Actual**: El proyecto "Antología" es ahora estable, completamente funcional y ofrece una experiencia de usuario pulida y coherente en todos los dispositivos. La base de código es limpia, robusta y fácil de mantener.

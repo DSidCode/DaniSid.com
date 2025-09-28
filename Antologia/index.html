@@ -34,21 +34,29 @@
     <link rel="icon" href="assets/img/antologia.svg" type="image/x-icon">
 </head>
 <body>
-    <header>
-        <h1 class="italic-font">Antología</h1>
-        <h1>Del Amor Y Otras Nostalgias</h1>
-        <p>Escribo para no perderme en los laberintos de mi propia mente.</p>
-        <nav class="main-nav flex-center">
-            <a class="pill" href="#indice" id="btn-inicio">Índice</a>
-            <a class="pill" href="#bio">Autobiografía</a>
-            <a class="pill" href="#apoyo">Apóyame</a>
-            <a class="pill" href="#escribeme">Escríbeme</a>
-        </nav>
+    <!-- Nueva sección de portada -->
+    <header class="book-cover">
+        <div class="cover-content">
+            <h1 class="italic-font">Antología</h1>
+            <h2>Del Amor Y Otras Nostalgias</h2>
+            <p class="quote">"Escribo para no perderme en los laberintos de mi propia mente."</p>
+            <a href="#indice" class="cta-button" id="btn-inicio">Leer Antología</a>
+            <a href="../index.html" class="back-to-portfolio">Volver al Portafolio</a>
+        </div>
     </header>
+
+    <!-- Navegación Fija del Libro (inicialmente oculta) -->
+    <nav class="book-header">
+        <a href="#cover" class="nav-pill">Portada</a>
+        <a href="#indice" class="nav-pill">Índice</a>
+        <a href="#bio" class="nav-pill">Autobiografía</a>
+        <a href="#apoyo" class="nav-pill">Apóyame</a>
+        <a href="#escribeme" class="nav-pill">Escríbeme</a>
+    </nav>
 
     <main class="book">
         <!-- Índice -->
-        <section class="indice-container active" id="indice">
+        <section class="indice-container" id="indice">
             <div class="indice-intro">
                 <h2>Índice</h2>
                 <p>
@@ -59,7 +67,7 @@
             </div>
             
             <ul class="indice-list">
-                <li><a href="#intro" class="indice-link" data-target="1">Introducción</a></li>
+                <li><a href="#intro" class="indice-link" data-target="1">Introducción (Leer primero)</a></li>
                 <li><a href="#poema-1" class="indice-link" data-target="2">Conejo Blanco</a></li>
                 <li><a href="#poema-2" class="indice-link" data-target="3">Sed de ti</a></li>
                 <li><a href="#poema-3" class="indice-link" data-target="4">Aquí me tienes</a></li>
@@ -71,7 +79,7 @@
 
         <!-- Páginas de poemas -->
           <section class="page" id="intro" data-title="Introduccion" data-index="1">
-            <div>
+            <div class="page-content">
                 <h2></h2>
                 <p>
                     Si escribo lo que siento es porque así disminuyo la fiebre de sentir. <br>
@@ -89,7 +97,7 @@
             </div>
         </section>
         <section class="page" id="poema-1" data-title="Conejo Blanco" data-index="2">
-            <div>
+            <div class="page-content">
                 <h2>Conejo Blanco</h2>
                 <p>
                     Llegas tarde como de costumbre -me dijo-…
@@ -126,7 +134,7 @@
         </section>
 
         <section class="page" id="poema-2" data-title="Sed de ti" data-index="3">
-            <div>
+            <div class="page-content">
                 <h2>Sed de ti</h2>
                 <p>
                     Porque tengo sed de ti y de tu cuerpo cálido, <br>
@@ -156,9 +164,9 @@
         </section>
 
         <section class="page" id="poema-3" data-title="Aquí me tienes" data-index="4">
-            <div>
+            <div class="page-content">
                 <h2>Aquí me tienes</h2>
-                <div class="poem-columns">
+                <div>
                     <p>
                         Aquí me tienes,<br>
                         buscando palabras para ti,<br>
@@ -246,7 +254,7 @@
         </section>
 
         <section class="page" id="poema-4" data-title="Los Diminutos (Versión poética)" data-index="5">
-            <div>
+            <div class="page-content">
                 <h2>Los Diminutos<br><small>Versión poética</small></h2>
                 <p>
                     En las esquinas de la casa<br>
@@ -294,7 +302,7 @@
         </section>
 
         <section class="page" id="poema-5" data-title="Los Diminutos (Versión fantasía)" data-index="6">
-            <div>
+            <div class="page-content">
                 <h2>Los Diminutos<br><small>Versión fantasía</small></h2>
                 <p>
                     En mi casa habitan unos seres muy pequeños,<br>
@@ -344,7 +352,7 @@
 
         <!-- Sección de autobiografía (placeholder) -->
         <section class="page" id="bio" data-title="Autobiografía" data-index="7">
-            <div>
+            <div class="page-content">
                 <h2>Autobiografía</h2>
                 <p>Aquí aparecerá la autobiografía del autor.</p>
             </div>
@@ -355,7 +363,7 @@
         
         <!-- Nueva sección de apoyo -->
         <section class="page" id="apoyo" data-title="Apoya al autor" data-index="8">
-            <div>
+            <div class="page-content">
                 <h2>Apoya al autor</h2>
                 <p>
                     Si te gusta el contenido que creo, puedes mostrar tu apoyo a través de una pequeña contribución económica. <br>
@@ -372,7 +380,7 @@
 
         <!-- Nueva sección de Escríbeme (Formulario) -->
         <section class="page" id="escribeme" data-title="Escríbeme" data-index="9">
-            <div>
+            <div class="page-content">
                 <h2>Escríbeme</h2>
                 <p>
                     ¿Tienes alguna pregunta, un comentario o simplemente quieres saludar? Me encantaría saber de ti. <br> Puedes contactarme a través de los siguientes canales:
@@ -408,7 +416,7 @@
                 <a class="icon-btn fb-icon" title="Compartir en Facebook" target="_blank" id="share-fb" aria-label="Compartir en Facebook">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <a class="icon-btn ig-icon" title="Ver en Instagram" target="_blank" href="#" aria-label="Instagram">
+                <a class="icon-btn ig-icon" title="Ver en Instagram" target="_blank" href="https://www.instagram.com/danielsid/" aria-label="Instagram">
                     <i class="fab fa-instagram"></i>
                 </a>
             </div>
@@ -429,6 +437,15 @@
         </div>
     </div>
 
+    <!-- Navegación Inferior del Libro -->
+    <footer class="book-footer">
+        <a href="#cover" class="nav-pill">Portada</a>
+        <a href="#indice" class="nav-pill">Índice</a>
+        <a href="#bio" class="nav-pill">Autobiografía</a>
+        <a href="#apoyo" class="nav-pill">Apóyame</a>
+        <a href="#escribeme" class="nav-pill">Escríbeme</a>
+        <a href="../index.html" class="nav-pill portfolio-link">← Portafolio</a>
+    </footer>
     <footer>
         &copy; 2025 DaniSid Garcia Alzate | <a href="../index.html" class="footer-link">Volver al portafolio principal</a>
     </footer>

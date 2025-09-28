@@ -17,10 +17,7 @@ const submitForm = (e) =>{
     fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({
-            "form-name": contactForm.getAttribute("name"),
-            ...formObject
-        })
+        body: encode(formObject)
     })
     .then(() => {
         // Muestra el mensaje de éxito
@@ -38,7 +35,6 @@ const submitForm = (e) =>{
 
 contactForm.addEventListener('submit', submitForm);
 
-/* =============== SHOW SCROLL UP ============*/
 /* =============== SHOW SCROLL UP ============*/
 const scrollUp = () =>{
     const scrollUp = document.getElementById('scroll-up')
