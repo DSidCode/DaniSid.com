@@ -190,7 +190,7 @@
                 </div>
                 </article>
                 <article class="projects_card">
-                    <a href="https://danisid.com" class="projects_image" target="_blank">
+                    <a href="https://github.com/DSidCode" class="projects_image" target="_blank">
                        <img src="assets/img/projects-2.webp" alt="Vista previa del portafolio personal DSid" class="projects_img">
                     </a>
                 <div class="projects_data">
@@ -206,7 +206,7 @@
                         
                     </div>
 
-                    <a href="https://danisid.com" class="projects_button" target="_blank" aria-label="Visitar el proyecto DSid Portfolio">
+                    <a href="https://github.com/DSidCode" class="projects_button" target="_blank" aria-label="Visitar el repositorio del proyecto en GitHub">
                         visita el proyecto <i class="ri-link"></i>
                     </a>
                 </div>
@@ -467,7 +467,8 @@
         <section class="contact section" id="contact">
             <h2 class="section_title">CONTACTO</h2>
             <div class="contact_container container grid">
-                <form action="" class="contact-form grid" id="contact-form">
+                <form name="contact" method="POST" data-netlify="true" class="contact-form grid" id="contact-form">
+                    <input type="hidden" name="form-name" value="contact">
                     <div class="contact_group grid">
                         <div>
                             <label for="user_name" class="visually-hidden">Nombre</label>
@@ -503,16 +504,19 @@
                 </ul>
             </div>
             <div class="footer_social">
-                <a href="https://www.linkedin.com/in/daniel-ga88/" class="footer_social_link" target="_blank" aria-label="Visita mi perfil de LinkedIn">
+                <a href="https://www.linkedin.com/in/daniel-ga88/" class="footer_social_link" target="_blank" title="LinkedIn" aria-label="Visita mi perfil de LinkedIn">
                     <i class="ri-linkedin-box-line"></i>
                 </a>
-                <a href="https://www.behance.net/danielsidgarcia" class="footer_social_link" target="_blank" aria-label="Visita mi portafolio en Behance">
+                <a href="https://github.com/DSidCode" class="footer_social_link" target="_blank" title="GitHub" aria-label="Visita mi perfil de GitHub">
+                    <i class="ri-github-line"></i>
+                </a>
+                <a href="https://www.behance.net/danielsidgarcia" class="footer_social_link" target="_blank" title="Behance" aria-label="Visita mi portafolio en Behance">
                     <i class="ri-behance-line"></i>
                 </a>
-                <a href="https://www.instagram.com/danielsid/" class="footer_social_link" target="_blank" aria-label="Visita mi perfil de Instagram">
+                <a href="https://www.instagram.com/danielsid/" class="footer_social_link" target="_blank" title="Instagram" aria-label="Visita mi perfil de Instagram">
                     <i class="ri-instagram-line"></i>
                 </a>
-                <a href="https://wa.me/34641868620" class="footer_social_link" target="_blank" title="Escríbeme" aria-label="Escríbeme por WhatsApp">
+                <a href="https://wa.me/34641868620" class="footer_social_link" target="_blank" title="WhatsApp" aria-label="Escríbeme por WhatsApp">
                     <i class="ri-whatsapp-line"></i>
                 </a>
             </div>
@@ -527,9 +531,6 @@
     </a>
     <!-- scrollreveal -->
      <script src="assets/js/scrollreveal.min.js" defer></script>
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js" defer></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js" defer></script>
 
     <script src="assets/js/javascript.js" defer></script>
 </body>

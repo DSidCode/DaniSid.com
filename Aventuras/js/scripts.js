@@ -1,78 +1,107 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const storageKey = 'adrianMissionsProgress';
-    const allMissions = document.querySelectorAll('details[data-mission-id]');
+    const completeButtons = document.querySelectorAll('.complete-btn');
     const resetButton = document.getElementById('reset-progress-btn');
-    const missionsContainer = document.querySelector('main'); // Asumiendo que las misiones están en <main>
+    const missions = document.querySelectorAll('[data-mission-id]');
+    const progressBar = document.getElementById('progress-bar-fill');
+    const progressText = document.getElementById('progress-text');
 
-    // --- Funciones de Ayuda para localStorage ---
-    const getProgress = () => JSON.parse(localStorage.getItem(storageKey)) || {};
-    const saveProgress = (progress) => localStorage.setItem(storageKey, JSON.stringify(progress));
+    // Función para actualizar la barra de progreso
+    const updateProgress = () => {
+        const completedMissions = document.querySelectorAll('.completed[data-mission-id]').length;
+        const totalMissions = missions.length;
+        const percentage = totalMissions > 0 ? (completedMissions / totalMissions) * 100 : 0;
 
-    // --- Funciones para manipular la UI ---
-
-    /**
-     * Actualiza la apariencia de una misión según su estado (completada o no).
-     * @param {HTMLElement} missionElement - El elemento <details> de la misión.
-     * @param {boolean} isCompleted - True si la misión está completada.
-     */
-    function updateMissionUI(missionElement, isCompleted) {
-        const button = missionElement.querySelector('.complete-btn');
-        missionElement.classList.toggle('completed', isCompleted);
-        if (button) { // Asegurarse de que el botón existe
-            button.textContent = isCompleted ? '¡Misión Lograda! 🎉' : 'Marcar como Misión Cumplida';
-            button.disabled = isCompleted;
+        if (progressBar) {
+            progressBar.style.width = `${percentage}%`;
+            // Añadimos el porcentaje dentro de la barra
+            progressBar.textContent = `${Math.round(percentage)}%`;
         }
-    }
+        if (progressText) {
+            progressText.textContent = `¡Tu Avance: ${completedMissions} de ${totalMissions} completadas!`;
+        }
+    };
 
-    // --- Lógica Principal ---
+    // Función para guardar el estado de una misión
+    const saveProgress = (missionId) => {
+        let completed = JSON.parse(localStorage.getItem('completedMissions')) || [];
+        if (!completed.includes(missionId)) {
+            completed.push(missionId);
+            localStorage.setItem('completedMissions', JSON.stringify(completed));
+        }
+    };
 
-    // 1. Cargar el estado inicial al cargar la página
-    function loadInitialState() {
-        const savedProgress = getProgress();
-        allMissions.forEach(mission => {
-            const missionId = mission.dataset.missionId;
-            updateMissionUI(mission, savedProgress[missionId]);
+    // Función para cargar el progreso guardado
+    const loadProgress = () => {
+        const completed = JSON.parse(localStorage.getItem('completedMissions')) || [];
+        completed.forEach(missionId => {
+            const missionDetail = document.querySelector(`[data-mission-id="${missionId}"]`);
+            if (missionDetail) {
+                missionDetail.classList.add('completed');
+                const button = missionDetail.querySelector('.complete-btn');
+                button.textContent = '¡Misión Cumplida! 🎉';
+                button.disabled = true;
+            }
         });
-    }
+        updateProgress();
+    };
 
-    // 2. Manejar clics en los botones de completar misión (Delegación de eventos)
-    if (missionsContainer) {
-        missionsContainer.addEventListener('click', (event) => {
-            const button = event.target.closest('.complete-btn');
-            if (!button) return; // Si el clic no fue en un botón, no hacer nada
+    // Añadir evento a cada botón de completar
+    completeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const missionDetail = button.closest('[data-mission-id]');
+            const missionId = missionDetail.getAttribute('data-mission-id');
 
-            const missionElement = button.closest('details[data-mission-id]');
-            const missionId = missionElement?.dataset.missionId;
+            missionDetail.classList.add('completed');
+            button.textContent = '¡Misión Cumplida! 🎉';
+            button.disabled = true;
 
-            if (missionId && !button.disabled) {
-                // ¡Lanzar confeti para celebrar!
-                confetti({ particleCount: 150, spread: 90, origin: { y: 0.6 } });
+            // ¡Lanzar confeti!
+            confetti({
+                particleCount: 150,
+                spread: 90,
+                origin: { y: 0.6 }
+            });
 
-                // Actualizar la UI
-                updateMissionUI(missionElement, true);
+            saveProgress(missionId);
+            updateProgress();
+        });
+    });
 
-                // Guardar en localStorage
-                const currentProgress = getProgress();
-                currentProgress[missionId] = true;
-                saveProgress(currentProgress);
+    // Añadir evento al botón de reiniciar
+    if (resetButton) {
+        resetButton.addEventListener('click', () => {
+            // Pedir confirmación antes de borrar
+            const isConfirmed = window.confirm('¿Estás seguro, explorador? ¡Esto borrará todo tu progreso y empezarás de cero!');
+            if (isConfirmed) {
+                localStorage.removeItem('completedMissions');
+                window.location.reload(); // Recargar la página para reiniciar el estado
             }
         });
     }
 
-    // 3. Manejar clic en el botón de reiniciar
-    function handleReset() {
-        if (confirm('¿Estás seguro de que quieres reiniciar todo el progreso? Las misiones volverán a estar sin completar.')) {
-            localStorage.removeItem(storageKey);
-            allMissions.forEach(mission => {
-                updateMissionUI(mission, false);
+    // Cargar el progreso al iniciar la página
+    loadProgress();
+
+    // --- Lógica para ocultar flotantes al llegar al footer ---
+    const footer = document.querySelector('.footer');
+    const floatingElements = document.querySelectorAll('.progress-widget, .floating-yt-btn');
+    const footerYtBtn = document.querySelector('.footer-yt-btn');
+
+    if (footer && floatingElements.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                floatingElements.forEach(el => {
+                    if (entry.isIntersecting) {
+                        el.classList.add('hidden-by-footer');
+                        if(footerYtBtn) footerYtBtn.classList.add('visible');
+                    } else {
+                        el.classList.remove('hidden-by-footer');
+                        if(footerYtBtn) footerYtBtn.classList.remove('visible');
+                    }
+                });
             });
-        }
-    }
+        }, { threshold: 0.1 }); // Se activa cuando el 10% del footer es visible
 
-    // --- Inicialización ---
-
-    loadInitialState();
-    if (resetButton) {
-        resetButton.addEventListener('click', handleReset);
+        observer.observe(footer);
     }
 });

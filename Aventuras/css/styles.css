@@ -2,35 +2,36 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 20px;
-    background-color: #e0f7fa; /* Azul muy claro */
-    color: #333;
+    background-color: #0a0a1a; /* Fondo Cyberpunk Oscuro */
+    color: #e0e0e0; /* Texto claro para contraste */
     line-height: 1.6;
     text-align: center;
 }
 .container {
     max-width: 900px;
     margin: 20px auto;
-    background-color: #ffffff;
+    background-color: #1a1a2e; /* Fondo de contenedor oscuro */
     padding: 30px;
     border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-    border: 5px solid #ff7043; /* Naranja quemado */
+    box-shadow: 0 0 25px rgba(0, 246, 255, 0.3); /* Brillo neón cian */
+    border: 3px solid #00f6ff; /* Borde cian neón */
 }
 h1 {
-    color: #d32f2f; /* Rojo oscuro */
+    color: #ff00ff; /* Magenta Neón */
     font-size: 2.5em;
     margin-bottom: 5px;
-    text-shadow: 2px 2px #ffcdd2;
+    text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff; /* Efecto de brillo */
 }
 h2 {
-    color: #0d47a1; /* Azul oscuro */
+    color: #00f6ff; /* Cian Neón */
     font-size: 1.8em;
     margin-top: 30px;
-    border-bottom: 3px solid #80deea;
+    border-bottom: 2px solid rgba(0, 246, 255, 0.4);
     padding-bottom: 10px;
+    text-shadow: 0 0 5px rgba(0, 246, 255, 0.7);
 }
 h3 {
-    color: #ff6f00; /* Naranja brillante */
+    color: #e0e0e0; /* Texto claro */
     font-size: 1.4em;
     margin-top: 25px;
 }
@@ -38,22 +39,23 @@ p {
     font-size: 1.1em;
     margin-bottom: 15px;
     text-align: left;
+    color: #c0c0c0; /* Gris un poco más suave para párrafos */
 }
 .activity-box {
-    background-color: #e8f5e9; /* Verde muy claro */
-    border-left: 8px solid #388e3c; /* Verde oscuro */
+    background-color: rgba(10, 10, 26, 0.5); /* Fondo aún más oscuro */
+    border-left: 6px solid #ff00ff; /* Borde magenta */
     padding: 20px;
     margin: 25px 0;
     border-radius: 10px;
     text-align: left;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 0 15px rgba(255, 0, 255, 0.2);
 }
 .activity-box strong {
-    color: #0d47a1; /* Azul oscuro */
+    color: #00f6ff; /* Cian Neón */
 }
 .youtube-tip {
-    background-color: #fffde7; /* Amarillo muy claro */
-    border-left: 8px solid #ffb300; /* Amarillo-naranja */
+    background-color: rgba(10, 10, 26, 0.5);
+    border-left: 6px solid #39FF14; /* Verde Neón */
     padding: 15px;
     margin-top: 20px;
     border-radius: 8px;
@@ -63,31 +65,38 @@ p {
 .footer {
     margin-top: 40px;
     font-size: 0.9em;
-    color: #777;
+    color: #888;
 }
 .footer p {
     text-align: center;
     margin-bottom: 10px;
 }
-/* Estilos para el enlace de YouTube en el footer */
-.youtube-link {
-    margin-top: 15px;
+.footer a {
+    color: #00f6ff; /* Cian Neón */
+    font-weight: bold;
+    text-decoration: none;
 }
-.youtube-link a {
+
+/* Botón sutil de YouTube en el footer */
+.footer-yt-btn {
     display: inline-block;
-    transition: transform 0.3s ease;
+    margin-top: 10px;
+    opacity: 0; /* Oculto por defecto */
+    transform: translateY(20px); /* Posición inicial para la animación */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: none; /* No se puede hacer clic mientras está oculto */
 }
-.youtube-link img {
-    width: 50px; /* Tamaño del ícono */
-    height: auto;
-    vertical-align: middle;
+.footer-yt-btn.visible {
+    opacity: 1; /* Se hace visible */
+    transform: translateY(0); /* Vuelve a su posición */
+    pointer-events: auto; /* Se puede hacer clic */
 }
-.youtube-link a:hover {
-    transform: scale(1.1); /* Efecto de zoom al pasar el cursor */
+.footer-yt-btn img {
+    width: 40px;
 }
 .note {
-    background-color: #fff3e0; /* Naranja muy claro */
-    border-left: 8px solid #ff7043; /* Naranja quemado */
+    background-color: rgba(10, 10, 26, 0.5);
+    border-left: 6px solid #00f6ff; /* Cian Neón */
     padding: 15px;
     margin-top: 30px;
     border-radius: 8px;
@@ -95,7 +104,7 @@ p {
 }
 /* --- Estilos para el Header de Navegación (Responsivo) --- */
 .main-header {
-    background-color: #0d47a1; /* Azul oscuro */
+    background-color: #1a1a2e; /* Azul oscuro cyberpunk */
     padding: 10px 15px;
     border-radius: 15px;
     margin-bottom: 30px;
@@ -125,13 +134,14 @@ p {
     display: inline-block; /* Ajusta el tamaño al contenido */
 }
 .main-nav a:hover, .main-nav a.active {
-    background-color: #ff7043; /* Naranja quemado */
+    background-color: #ff00ff; /* Magenta Neón */
+    box-shadow: 0 0 15px #ff00ff;
 }
 .main-nav a span {
     visibility: hidden; /* Oculto por defecto */
     opacity: 0;
     width: 220px;
-    background-color: #ff7043; /* Naranja para que combine */
+    background-color: #ff00ff; /* Magenta Neón */
     color: #fff;
     text-align: center;
     border-radius: 6px;
@@ -156,7 +166,7 @@ p {
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: #ff7043 transparent transparent transparent;
+    border-color: #ff00ff transparent transparent transparent;
 }
 .main-nav li:hover a span {
     visibility: visible;
@@ -165,33 +175,47 @@ p {
 
 /* --- Estilos para las misiones interactivas --- */
 details {
-    background-color: #fdfdfd;
+    background-color: #1a1a2e;
     border-radius: 10px;
     margin-bottom: 20px;
-    border: 1px solid #e0e0e0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0, 246, 255, 0.3);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
     transition: box-shadow 0.3s ease;
 }
 details:hover {
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 0 15px rgba(0, 246, 255, 0.5);
 }
 summary {
-    padding: 5px 15px;
+    padding: 15px;
     cursor: pointer;
     outline: none;
     list-style: none; /* Oculta el marcador por defecto */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 summary::-webkit-details-marker {
     display: none; /* Oculta el marcador en Chrome/Safari */
 }
+summary h2 {
+    margin: 0; /* Reseteamos el margen del h2 dentro del summary */
+    border: none;
+    padding: 0;
+}
+summary::after {
+    content: '+';
+    font-size: 2.5em;
+    color: #00f6ff; /* Cian Neón */
+    transition: transform 0.3s ease;
+}
 /* El div de la actividad dentro del 'details' no necesita margen superior */
-details > .activity-box { margin-top: 0; border-top: 1px solid #eee; border-left-width: 0; border-top-left-radius: 0; border-top-right-radius: 0;}
+details > .activity-box { margin-top: 0; border-top: 1px solid rgba(255,0,255,0.3); border-left-width: 0; border-top-left-radius: 0; border-top-right-radius: 0;}
 
 /* --- Estilos para el botón de completar misión --- */
 .complete-btn {
     display: inline-block;
-    background-color: #2196F3; /* Azul brillante */
-    color: white;
+    background-color: #00f6ff; /* Cian Neón */
+    color: #0a0a1a; /* Texto oscuro para contraste */
     padding: 10px 20px;
     border: none;
     border-radius: 8px;
@@ -200,16 +224,22 @@ details > .activity-box { margin-top: 0; border-top: 1px solid #eee; border-left
     font-weight: bold;
     margin-top: 20px;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 0 10px rgba(0, 246, 255, 0.5);
 }
 .complete-btn:hover {
-    background-color: #1976D2;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    background-color: #fff;
+    color: #00f6ff;
+    box-shadow: 0 0 20px rgba(0, 246, 255, 0.8);
 }
 .complete-btn:disabled {
-    background-color: #9E9E9E; /* Gris */
+    background-color: #444; /* Gris oscuro */
+    color: white;
     cursor: not-allowed;
     box-shadow: none;
+}
+details[open] > summary::after {
+    content: '−'; /* Cambia a un signo de menos */
+    transform: rotate(180deg);
 }
 details.completed > summary h2 {
     text-decoration: line-through;
@@ -219,10 +249,10 @@ details.completed > summary h2 {
 .controls {
     margin-top: 30px;
     padding-top: 20px;
-    border-top: 1px solid #eee;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 #reset-progress-btn {
-    background-color: #f44336; /* Rojo */
+    background-color: #ff00ff; /* Magenta Neón */
     color: white;
     padding: 10px 20px;
     border: none;
@@ -233,7 +263,142 @@ details.completed > summary h2 {
     transition: background-color 0.3s ease;
 }
 #reset-progress-btn:hover {
-    background-color: #d32f2f; /* Rojo oscuro */
+    box-shadow: 0 0 15px #ff00ff;
+}
+
+/* --- Estilos para el widget de progreso flotante --- */
+.progress-widget {
+    position: fixed; /* Cambiado a 'fixed' para anclarlo a la ventana */
+    bottom: 20px; /* Distancia desde la parte inferior */
+    right: 20px; /* Distancia desde la derecha */
+    width: 320px; /* Ancho fijo para que no ocupe toda la pantalla */
+    z-index: 100; /* Asegura que esté por encima de otros elementos */
+    background-color: rgba(26, 26, 46, 0.8); /* Fondo oscuro semi-transparente */
+    backdrop-filter: blur(5px); /* Efecto de desenfoque para el fondo */
+    padding: 10px 15px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4); /* Sombra más oscura */
+    transition: transform 0.3s ease; /* Para futuras animaciones */
+}
+
+/* --- Estilos para la barra de progreso --- */
+.progress-container {
+    width: 100%;
+    background-color: #0a0a1a; /* Fondo de barra oscuro */
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.2), 0 0 5px #39FF14; /* Sombra interior y brillo exterior */
+    border-radius: 10px; /* Bordes redondeados para el contenedor */
+    border: 2px solid #39FF14; /* Borde sólido de color verde neón */
+    padding: 2px; /* Pequeño espacio para que la barra interior no toque el borde */
+}
+
+#progress-bar-fill {
+    width: 0%; /* Inicia en 0, JS lo actualizará */
+    height: 25px;
+    background-color: #39FF14; /* Verde Neón */
+    box-shadow: 0 0 10px #39FF14, 0 0 20px #39FF14; /* Efecto de brillo neón */
+    border-radius: 10px;
+    text-align: center;
+    line-height: 25px;
+    color: #000; /* Texto negro para mejor contraste con el neón */
+    font-weight: bold;
+    text-shadow: 0 0 2px white; /* Sombra blanca para que el texto resalte más */
+    transition: width 0.5s ease-in-out;
+}
+.progress-label {
+    font-weight: bold;
+    color: #e0e0e0; /* Texto claro */
+    margin: 0 0 8px 0; /* Espacio entre el título y la barra */
+    font-size: 1.2em; /* Hacemos el texto un poco más grande y motivador */
+}
+
+/* --- Estilos para las tarjetas de aventura en index.html --- */
+.adventure-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.card {
+    display: block;
+    background-color: #1a1a2e;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    text-decoration: none;
+    color: #e0e0e0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0, 246, 255, 0.3);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(0, 246, 255, 0.5);
+    border-color: #00f6ff;
+}
+
+/* --- Estilos para el botón flotante de YouTube --- */
+.floating-yt-btn {
+    position: fixed;
+    bottom: 20px; /* Distancia desde la parte inferior */
+    left: 20px; /* Lo movemos a la izquierda */
+    width: 60px;
+    height: 60px;
+    background-color: #1a1a2e;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    border: 2px solid #ff00ff; /* Borde magenta neón */
+    z-index: 100;
+    transition: all 0.3s ease;
+}
+.floating-yt-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #ff00ff;
+}
+.floating-yt-btn img {
+    width: 40px;
+    height: auto;
+}
+.floating-yt-btn span {
+    visibility: hidden;
+    opacity: 0;
+    width: max-content;
+    background-color: #ff00ff;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 12px;
+    position: absolute;
+    z-index: 10;
+    left: 110%; /* A la derecha del botón */
+    bottom: 15px;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+.floating-yt-btn span::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%; /* A la izquierda del tooltip, apuntando al botón */
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent #ff00ff transparent transparent;
+}
+.floating-yt-btn:hover span {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Clase para ocultar los flotantes cuando el footer es visible */
+.hidden-by-footer {
+    opacity: 0 !important; /* Usamos !important para sobreescribir otras reglas de opacidad */
+    transform: translateY(100px); /* Desplazamiento hacia abajo */
+    pointer-events: none; /* Desactiva clics */
 }
 
 /* --- Media Queries para Responsividad --- */
@@ -279,5 +444,37 @@ details.completed > summary h2 {
         display: none;
         visibility: hidden;
         opacity: 0;
+    }
+
+    /* Centrar y apilar los botones flotantes en tablet y móvil */
+    .progress-widget, .floating-yt-btn {
+        left: 50%;
+        transform: translateX(-50%);
+        right: auto; /* Anula el posicionamiento de escritorio */
+        opacity: 0.85; /* Hacemos los botones un poco más sutiles */
+        transition: opacity 0.3s ease;
+    }
+
+    .progress-widget:hover, .floating-yt-btn:hover {
+        opacity: 1; /* Opacidad completa al pasar el ratón */
+    }
+
+    .floating-yt-btn {
+        bottom: 120px; /* Aumentamos la distancia para más separación */
+    }
+
+    .progress-widget {
+        width: calc(100% - 40px);
+        max-width: 320px; /* Mantenemos un ancho máximo razonable */
+        bottom: 20px; /* La barra de progreso queda abajo */
+        /* Eliminamos la regla de 400px que causaba el conflicto */
+    }
+}
+
+@media (max-width: 400px) {
+    .floating-yt-btn {
+        width: 50px;
+        height: 50px;
+        bottom: 130px; /* Ajuste fino para pantallas muy pequeñas */
     }
 }

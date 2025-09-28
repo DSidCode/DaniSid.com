@@ -374,3 +374,75 @@ Esta sección documenta el proceso de sincronización del repositorio local con 
         - **Beneficio**: La tipografía y los colores ahora son consistentes con el tema cyberpunk, mejorando la coherencia visual.
 
 **Estado Actual**: El portafolio principal ahora tiene una identidad visual audaz, moderna y coherente con la marca personal del autor.
+
+---
+
+## 24. Modernización del Proyecto 'Aventuras de Adrián'
+
+- **Objetivo**: Transformar el sub-proyecto "Aventuras de Adrián" de un sitio estático a una experiencia web interactiva, moderna y motivadora, aplicando una estética cyberpunk consistente con la marca principal.
+
+- **Acciones Realizadas**:
+
+    - **Rediseño Visual a Cyberpunk**:
+        - **Acción**: Se implementó una nueva paleta de colores de modo oscuro con acentos neón (cian, magenta, verde) en todo el sub-proyecto.
+        - **Beneficio**: Se unificó la estética con el portafolio principal, creando una experiencia de marca coherente y atractiva.
+
+    - **Implementación de Sistema de Progreso Interactivo**:
+        - **Acción**: Se desarrolló un sistema en JavaScript para que el usuario pueda marcar "misiones" como completadas. El progreso se guarda en `localStorage`, persistiendo entre sesiones.
+        - **Recompensas Visuales**: Se añadió una animación de confeti al completar una misión y una barra de progreso flotante que muestra el avance en tiempo real.
+        - **Beneficio**: Se gamificó la experiencia, aumentando la motivación y el engagement del usuario (Adrián).
+
+    - **Mejoras de UI/UX**:
+        - **Navegación por Tarjetas**: Se rediseñó la página de inicio (`index.html`) para usar tarjetas visuales en lugar de una lista de enlaces, mejorando la intuición.
+        - **Acordeón de Misiones**: Se refactorizó la estructura de las misiones para usar un sistema de acordeón (`<details>`), permitiendo al usuario enfocarse en una tarea a la vez.
+        - **Botones Flotantes Inteligentes**:
+            - Se añadió un botón flotante para el canal de YouTube y se posicionó el widget de progreso.
+            - Se implementó un `IntersectionObserver` para que los elementos flotantes se oculten suavemente al llegar al pie de página, evitando obstruir el contenido.
+            - En la página de inicio, el botón de YouTube se integra de forma elegante en el pie de página al final del scroll.
+
+- **Estado Actual**: El proyecto "Aventuras de Adrián" ha sido completamente modernizado, ofreciendo una experiencia de usuario rica, interactiva y visualmente impactante, alineada con los estándares profesionales del portafolio principal.
+
+## 23. Refinamiento y UX del CV Profesional (`cv.html`)
+
+- **Objetivo**: Mejorar la funcionalidad y la experiencia de usuario del CV profesional, especialmente en dispositivos móviles, y refactorizar su estructura técnica.
+
+- **Acciones Realizadas**:
+    - **Corrección de Botones Flotantes**:
+        - **Problema**: El botón "Imprimir / PDF" se superponía con el título en la versión móvil y presentaba problemas de tamaño.
+        - **Solución 1 (Iterativa)**: Se refactorizó el código para aislar el botón del header, solucionando los conflictos de estilo y creando un botón flotante estable.
+        - **Solución 2 (UX Mejorada)**: Se añadió un botón flotante de WhatsApp. Para evitar que ambos botones taparan el pie de página, se implementó un `IntersectionObserver` en JavaScript. Ahora, los botones flotantes se ocultan suavemente al llegar al footer y, en su lugar, aparecen versiones estáticas de los mismos como iconos en el pie de página.
+        - **Refinamiento**: Se ajustaron las transiciones CSS para que la animación de ocultar/mostrar sea más lenta y armoniosa.
+
+    - **Refactorización Técnica del CV**:
+        - **Acción**: Se movió todo el código CSS y JavaScript que estaba en línea en `cv.html` a archivos externos dedicados (`assets/css/cv-style.css` y `assets/js/cv-script.js`).
+        - **Beneficio**: El código del CV ahora es más limpio, modular y fácil de mantener, siguiendo las mejores prácticas de desarrollo web.
+
+**Estado Actual**: El CV profesional es ahora completamente responsivo, funcional y ofrece una experiencia de usuario inteligente y sin fricciones. Su base de código ha sido profesionalizada para facilitar futuras actualizaciones.
+
+---
+
+## 25. Funcionalidad del Formulario y Mejoras de UX
+
+- **Objetivo**: Implementar una solución robusta para el formulario de contacto principal y refinar la experiencia de usuario en base a las últimas implementaciones.
+- **Acciones Realizadas**:
+    - **Migración a Netlify Forms**: Se configuró el formulario de contacto principal para usar Netlify Forms, eliminando la dependencia de Firebase. Se implementó una lógica de envío asíncrona para una experiencia de usuario fluida sin recargas de página.
+    - **Mejoras de Usabilidad**:
+        - Se añadió un cuadro de diálogo de confirmación al botón "Reiniciar Progreso" en el proyecto "Aventuras" para prevenir la pérdida accidental de datos.
+        - Se corrigió un problema de superposición de los botones flotantes en la versión de escritorio del proyecto "Aventuras", logrando un diseño equilibrado.
+        - Se optimizó la velocidad de las animaciones de carga en la página principal para una experiencia más ágil.
+- **Estado Actual**: El portafolio es ahora más funcional y robusto, con un formulario de contacto operativo y una experiencia de usuario mejorada en todos sus componentes.
+
+- **Objetivo**: Mejorar la funcionalidad y la experiencia de usuario del CV profesional, especialmente en dispositivos móviles, y refactorizar su estructura técnica.
+
+- **Acciones Realizadas**:
+    - **Corrección de Botones Flotantes**:
+        - **Problema**: El botón "Imprimir / PDF" se superponía con el título en la versión móvil y presentaba problemas de tamaño.
+        - **Solución 1 (Iterativa)**: Se refactorizó el código para aislar el botón del header, solucionando los conflictos de estilo y creando un botón flotante estable.
+        - **Solución 2 (UX Mejorada)**: Se añadió un botón flotante de WhatsApp. Para evitar que ambos botones taparan el pie de página, se implementó un `IntersectionObserver` en JavaScript. Ahora, los botones flotantes se ocultan suavemente al llegar al footer y, en su lugar, aparecen versiones estáticas de los mismos como iconos en el pie de página.
+        - **Refinamiento**: Se ajustaron las transiciones CSS para que la animación de ocultar/mostrar sea más lenta y armoniosa.
+
+    - **Refactorización Técnica del CV**:
+        - **Acción**: Se movió todo el código CSS y JavaScript que estaba en línea en `cv.html` a archivos externos dedicados (`assets/css/cv-style.css` y `assets/js/cv-script.js`).
+        - **Beneficio**: El código del CV ahora es más limpio, modular y fácil de mantener, siguiendo las mejores prácticas de desarrollo web.
+
+**Estado Actual**: El CV profesional es ahora completamente responsivo, funcional y ofrece una experiencia de usuario inteligente y sin fricciones. Su base de código ha sido profesionalizada para facilitar futuras actualizaciones.

@@ -21,64 +21,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="shortcut icon" href="../assets/img/code.png" type="image/x-icon">
-    <style>
-        body { scroll-behavior: smooth; font-family: 'Inter', sans-serif; }
-        .section-header { 
-            position: relative; 
-            padding-bottom: 0.5rem; 
-            color: #1e3a8a;
-        }
-        .section-header::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(to right, #1e3a8a, #2dc0d4);
-        }
-        .hover-scale { transition: transform 0.3s ease, color 0.3s ease; }
-        .hover-scale:hover { transform: scale(1.03); color: #13474e; }
-        .fade-in { 
-            opacity: 0; 
-            transform: translateY(20px); 
-            animation: fadeIn 0.8s ease forwards; 
-        }
-        @keyframes fadeIn {
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .fade-in-delay-1 { animation-delay: 0.2s; }
-        .fade-in-delay-2 { animation-delay: 0.4s; }
-        .fade-in-delay-3 { animation-delay: 0.6s; }
-        .bg-gradient { 
-            background: linear-gradient(135deg, #1e3a8a 0%, #2dadd4 100%); 
-        }
-        .shadow-custom { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); }
-        @media (max-width: 640px) {
-            .section-header { font-size: 1.5rem; }
-            h3 { font-size: 1.25rem; }
-            .grid-cols-1 { grid-template-columns: 1fr; }
-            .text-5xl { font-size: 2.5rem; }
-            .text-xl { font-size: 1.125rem; }
-            .space-x-6 { gap: 1rem; flex-wrap: wrap; }
-        }
-
-        /* Estilos para impresión */
-        @media print {
-            body {
-                -webkit-print-color-adjust: exact; /* Chrome, Safari */
-                print-color-adjust: exact; /* Standard property */
-            }
-            /* Ocultar elementos no deseados en la impresión */
-            header, footer, .print-hide {
-                display: none !important;
-            }
-            main {
-                margin: 0;
-                box-shadow: none;
-            }
-        }
-    </style>
+  <link rel="stylesheet" href="assets/css/cv-style.css">
+  
 </head>
 <body class="bg-gray-50 text-gray-800">
     <!-- Header -->
@@ -92,9 +36,6 @@
                 <a href="mailto:danisidcode@gmail.com" class="hover:text-blue-200 hover-scale"><i class="fas fa-at mr-2"></i>danisidcode@gmail.com</a>
                 <a href="tel:+34641868620" class="hover:text-blue-200 hover-scale"><i class="fas fa-phone mr-2"></i>+34 641868620</a>
             </div>
-            <button onclick="window.print()" class="print-hide absolute top-4 right-4 bg-white text-blue-800 px-3 py-2 rounded-lg shadow-md hover:bg-gray-100 transition-transform hover:scale-105">
-                <i class="fas fa-print mr-2"></i>Imprimir / PDF
-            </button>
         </div>
     </header>
 
@@ -245,35 +186,28 @@
                 <a href="https://www.instagram.com/danielsid/" class="text-gray-400 hover:text-white" target="_blank" aria-label="Instagram">
                     <i class="fab fa-instagram fa-lg"></i>
                 </a>
+                <!-- Botones que aparecen en el footer -->
+                <a href="https://wa.me/34641868620" target="_blank" class="text-gray-400 hover:text-white footer-action-btn" id="footer-whatsapp-btn" aria-label="Contactar por WhatsApp">
+                    <i class="fab fa-whatsapp fa-lg"></i>
+                </a>
+                <a href="#" onclick="window.print(); return false;" class="text-gray-400 hover:text-white footer-action-btn" id="footer-print-btn" aria-label="Imprimir / PDF">
+                    <i class="fas fa-print fa-lg"></i>
+                </a>
             </div>
             <p class="text-sm text-gray-500">&#169; 2025 Daniel H. Garcia Alzate. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <!-- JavaScript for smooth scrolling and lazy loading animations -->
-    <script>
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+     <!-- Botón de Imprimir/PDF (movido aquí para evitar conflictos de estilo) -->
+    <button onclick="window.print()" class="print-hide print-btn">
+        <i class="fas fa-print mr-2"></i>Imprimir / PDF
+    </button>
+    <!-- Botón de WhatsApp -->
+    <a href="https://wa.me/34641868620" target="_blank" class="print-hide whatsapp-btn" aria-label="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp fa-2x"></i>
+    </a>
 
-        // Lazy load animations on scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.fade-in').forEach(element => {
-            observer.observe(element);
-        });
-    </script>
+    <!-- Enlace al nuevo archivo JavaScript -->
+    <script src="assets/js/cv-script.js" defer></script>
 </body>
 </html>

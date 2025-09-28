@@ -19,28 +19,51 @@
 <body>
     <div class="container">
         <header class="main-header">
-            <!-- El menú principal que servirá como índice interactivo -->
             <nav class="main-nav">
                 <ul>
-                    <li><a href="Aventuras.html">Aventuras Creativas<span>Diseñadas para su estancia con la Nonita, pero abiertas para que las complete con mamita o la abuelita Glorita.</span></a></li>
-                    <li><a href="Aventuras-2.html">Misiones Interactivas<span>Desafíos de ingenio y emociones para resolver en equipo.</span></a></li>
-                    <li><a href="Misiones-de-papa.html">Proyectos de Liderazgo<span>Retos para usar tu mente de líder, construir y resolver problemas.</span></a></li>
+                    <li><a href="index.html" class="active">Inicio<span>Volver a la página principal.</span></a></li>
+                    <li><a href="Aventuras.html">Aventuras Creativas<span>Ideas originales con materiales caseros.</span></a></li>
+                    <li><a href="Aventuras-2.html">Misiones Interactivas<span>Desafíos de ingenio, creatividad y emociones.</span></a></li>
+                    <li><a href="Misiones-de-papa.html">Proyectos de Liderazgo<span>Retos para usar tu ingenio y creatividad.</span></a></li>
                 </ul>
             </nav>
         </header>
         <h1>Las Aventuras de Adrián</h1>
         <p><em>Un espacio de creatividad, liderazgo y diversión.</em></p>
         <p>¡Bienvenido, explorador! Esta es tu base de operaciones. Desde aquí puedes navegar a todas las misiones y proyectos que papá ha diseñado para ti. Cada sección es una nueva oportunidad para crear, aprender y demostrar el gran líder que eres.</p>
-        <p>Elige una categoría para comenzar tu próxima gran aventura. ¡Diviértete!</p>
+        
+        <!-- Nueva sección de tarjetas de navegación -->
+        <div class="adventure-cards">
+            <a href="Aventuras.html" class="card">
+                <h2>🎨 Aventuras Creativas</h2>
+                <p>Diseñadas para su estancia con la Nonita, pero abiertas para que las complete con mamita o la abuelita Glorita.</p>
+            </a>
+            <a href="Aventuras-2.html" class="card">
+                <h2>🚀 Misiones Interactivas</h2>
+                <p>Desafíos de ingenio y emociones para resolver en equipo.</p>
+            </a>
+            <a href="Misiones-de-papa.html" class="card">
+                <h2>🌟 Proyectos de Liderazgo</h2>
+                <p>Retos para usar tu mente de líder, construir y resolver problemas.</p>
+            </a>
+        </div>
 
         <div class="footer">
-            <p>Hecho con todo el corazón para Adrián.</p>
-            <div class="youtube-link">
-                <a href="https://www.youtube.com/@MichiBlue28" target="_blank" title="Ver los videos en YouTube">
-                    <img src="michiblue.svg" alt="Canal de YouTube MichiBlue">
-                </a>
-            </div>
+            <p>
+                Hecho con todo el corazón para Adrián. <br>
+                &copy; 2025 | Creado por <a href="https://danisid.com" target="_blank">DaniSid.com</a>
+            </p>
+            <!-- Botón sutil de YouTube para el footer -->
+            <a href="https://www.youtube.com/@MichiBlue28" target="_blank" class="footer-yt-btn">
+                <img src="michiblue.svg" alt="Canal de YouTube MichiBlue">
+            </a>
         </div>
     </div>
+    <!-- Botón flotante de YouTube -->
+    <a href="https://www.youtube.com/@MichiBlue28" target="_blank" class="floating-yt-btn">
+        <img src="michiblue.svg" alt="Canal de YouTube MichiBlue">
+        <span>¡Ver canal MichiBlue!</span>
+    </a>
+    <script src="js/scripts.js"></script>
 </body>
 </html>

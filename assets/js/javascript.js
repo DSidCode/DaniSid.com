@@ -1,43 +1,31 @@
-/* =============== FIREBASE FORM ============*/
-// 1. Pega aquí la configuración de Firebase que copiaste en el Paso 3
-const firebaseConfig = {
-  apiKey: "TU_API_KEY",
-  authDomain: "TU_AUTH_DOMAIN",
-  projectId: "TU_PROJECT_ID",
-  storageBucket: "TU_STORAGE_BUCKET",
-  messagingSenderId: "TU_MESSAGING_SENDER_ID",
-  appId: "TU_APP_ID"
-};
-
-// 2. Inicializa Firebase
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
-
+/* =============== CONTACT FORM (NETLIFY) ============*/
 const   contactForm = document.getElementById('contact-form'),
         contactMessage = document.getElementById('contact-message');
 
 const submitForm = (e) =>{
     e.preventDefault();
-    
-    // 3. Obtenemos los datos del formulario
-    const name = contactForm.user_name.value;
-    const email = contactForm.user_email.value;
-    const message = contactForm.user_message.value;
 
-    // 4. Guardamos los datos en una colección de Firestore llamada "messages"
-    db.collection("messages").add({
-        name: name,
-        email: email,
-        message: message,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp()
-    }).then(() => {
+    const formData = new FormData(contactForm);
+
+    fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" }, // Netlify requiere este encabezado
+        body: new URLSearchParams(formData).toString()
+    })
+    .then(() => {
+        // Muestra el mensaje de éxito
         contactMessage.textContent = 'Tu mensaje ha sido enviado ✔';
+        // Limpia el formulario
         contactForm.reset();
-    }).catch((error) => {
+        // Oculta el mensaje después de 5 segundos
+        setTimeout(() => { contactMessage.textContent = '' }, 5000);
+    })
+    .catch((error) => {
         contactMessage.textContent = 'Mensaje no Enviado (error de servidor) ❌';
-        console.error("Error al escribir en la base de datos: ", error);
+        console.error("Error al enviar el formulario: ", error);
     });
 }
+
 contactForm.addEventListener('submit', submitForm);
 /* =============== SHOW SCROLL UP ============*/
 const scrollUp = () =>{
@@ -69,15 +57,15 @@ window.addEventListener('scroll', scrollActive)
 const sr = ScrollReveal({
     origin: 'top',
     distance: '60px',
-    duration: 2000,
-    delay: 300,
+    duration: 800, // Reducimos la duración a menos de 1 segundo
+    delay: 100,    // Reducimos el retraso base
     // reset: true, //repeticin de la animacion
 })
-sr.reveal(`.pefil, .contact_from`)
-sr.reveal(`.info`, {origin: 'left', delay:600})
-sr.reveal(`.skills`, {origin: 'left', delay:800})
-sr.reveal(`.about`, {origin: 'right', delay:700})
-sr.reveal(`.projects_card, .services_card, .experience_card`, {interval: 100})
+
+sr.reveal(`.hero_data, .contact-form`, {origin: 'top'})
+sr.reveal(`.hero_image`, {origin: 'right', delay: 400})
+sr.reveal(`.skills_wrapper`, {origin: 'bottom', delay: 500})
+sr.reveal(`.projects_card, .services_card, .experience_card, .lab_card`, {interval: 80}) // Intervalo más rápido
 
 // Seleccionar todos los canvases con la clase matrix-effect
 const canvases = document.querySelectorAll('.matrix-effect');
