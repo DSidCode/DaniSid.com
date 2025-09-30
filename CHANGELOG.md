@@ -472,3 +472,47 @@ Esta sección documenta el proceso de sincronización del repositorio local con 
         - **Vista Móvil**: Se transformó el layout para que funcione como una página web con scroll natural. Los menús de navegación del libro se integran en el flujo del contenido (arriba y abajo del poema) y el pie de página principal es visible al final, eliminando por completo los problemas de superposición.
 
 - **Estado Actual**: El proyecto "Antología" es ahora estable, completamente funcional y ofrece una experiencia de usuario pulida y coherente en todos los dispositivos. La base de código es limpia, robusta y fácil de mantener.
+
+---
+
+## 27. Inicio de la Migración a React: Profesionalización del Proyecto 'Antología'
+
+- **Objetivo**: Reconstruir el proyecto "Antología" utilizando React para crear una aplicación más robusta, mantenible y escalable, eliminando de raíz los bugs de estado y visibilidad.
+
+- **Acciones Realizadas**:
+    - **Decisión Estratégica**: Se determinó que la arquitectura de un único archivo HTML con manipulación del DOM mediante JavaScript era propensa a errores. Se decidió migrar a una arquitectura de componentes moderna con React.
+    - **Configuración del Entorno Profesional**:
+        - Se creó un nuevo proyecto React utilizando Vite, la herramienta estándar de la industria.
+        - Se resolvió un error crítico de permisos del sistema de archivos (`EPERM: operation not permitted, symlink`) al mover el entorno de desarrollo a un directorio nativo de Linux (`~/Projects`), una práctica profesional esencial.
+    - **Inicio de la Migración**:
+        - Se movieron los activos existentes (CSS, imágenes) al nuevo proyecto React (`antologia-react`).
+        - Se refactorizó el componente principal `App.jsx` para replicar la lógica inicial de la Antología.
+        - Se implementó el hook `useState` para gestionar el estado de la aplicación (libro abierto/cerrado), reemplazando la manipulación directa del DOM y sentando las bases para una aplicación sin bugs de estado.
+
+- **Estado Actual**: El esqueleto de la aplicación React está configurado y funcionando en un servidor de desarrollo local. La portada se renderiza correctamente y el botón "Leer Antología" cambia el estado de la aplicación para mostrar un placeholder del contenido del libro, validando el flujo de estado inicial.
+
+---
+
+## 28. Mejoras en UI y Build del Proyecto 'Antología' (React)
+
+- **Objetivo**: Avanzar en el desarrollo de la nueva versión de 'Antología' en React, mejorando la interfaz de usuario y la configuración de compilación.
+
+- **Acciones Realizadas**:
+    - **Mejoras de UI**:
+        - Se implementó un efecto de "brillo neón" en los botones de redes sociales y donaciones para mejorar la retroalimentación visual.
+        - Se refactorizaron los estilos `:hover` de los botones para combinar una transición de color de fondo con el nuevo efecto de brillo.
+    - **Corrección de Build (Vite)**:
+        - Se solucionó un error de compilación que impedía resolver importaciones con alias (ej. `@/components/...`).
+        - Se configuró `vite.config.js` para mapear el alias `@` al directorio `src`, garantizando rutas de importación consistentes.
+    - **Actualización en Portafolio Principal**:
+        - Se actualizó el enlace del proyecto 'Antología' en `index.html` para apuntar al nuevo subdominio `antologia.danisid.com`.
+        - Se cambió la imagen de previsualización a `antologia-v4.webp` para reflejar la versión más reciente.
+
+---
+
+## 29. Limpieza de Repositorio: Eliminación de Proyecto Obsoleto
+
+- **Objetivo**: Consolidar la arquitectura del proyecto y eliminar código obsoleto tras la migración exitosa de 'Antología' a React en su propio subdominio.
+- **Acciones Realizadas**:
+    - Se ha eliminado por completo la carpeta `Antologia/` del repositorio principal (`danisid.com`). Esta carpeta contenía la versión antigua del proyecto, desarrollada con HTML, CSS y JavaScript puro.
+- **Resultado**: El repositorio principal está ahora más limpio y ligero. El proyecto 'Antología' vive de forma independiente en su propio entorno y es referenciado desde el portafolio a través del subdominio, siguiendo las mejores prácticas de desarrollo.
