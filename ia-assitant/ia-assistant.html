@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='15' y='25' width='70' height='55' rx='8' fill='%2300ffd5'/><circle cx='40' cy='50' r='8' fill='%231f1f2f'/><circle cx='60' cy='50' r='8' fill='%231f1f2f'/><rect x='35' y='65' width='30' height='5' fill='%231f1f2f'/><rect x='47' y='15' width='6' height='10' fill='%2300ffd5'/></svg>" type="image/svg+xml">
   <title>IA Assistant - En construcción</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
@@ -44,14 +45,15 @@
       border: 2px solid #00ffd5;
       padding: 2rem;
       border-radius: 20px;
-      box-shadow: 0 0 20px #00ffd588;
+      box-shadow: 0 0 20px #00ffd566;
       background-color: #1f1f2f;
       animation: pulse 3s infinite;
+      transition: transform 0.1s ease-out;
     }
 
     @keyframes pulse {
       0%, 100% {
-        box-shadow: 0 0 20px #00ffd588;
+        box-shadow: 0 0 20px #00ffd566;
       }
       50% {
         box-shadow: 0 0 40px #00ffd5cc;
@@ -61,6 +63,16 @@
     .icon {
       font-size: 4rem;
       margin-bottom: 1rem;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
     }
 
     a {
@@ -74,11 +86,25 @@
 
     a:hover {
       color: #ffffff;
+      text-shadow: 0 0 10px #00ffd5;
     }
 
     .glow-text {
       color: #ffffff;
       text-shadow: 0 0 10px #00ffd5, 0 0 20px #00ffd5;
+    }
+
+    .typing-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 2.5rem;
+      background-color: #00ffd5;
+      margin-left: 8px;
+      animation: blink 0.7s infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
     }
   </style>
 </head>
@@ -86,7 +112,7 @@
   <div class="container">
     <div class="neon-box">
       <div class="icon">🤖✨</div>
-      <h1 class="glow-text">IA Assistant en construcción</h1>
+      <h1 class="glow-text" id="typing-title"></h1>
       <p>
         Estamos desarrollando una herramienta web que combina inteligencia artificial y diseño para ayudarte a crear contenido visual y textual mediante las APIs de <strong>OpenAI</strong>.
       </p>
@@ -94,5 +120,38 @@
       <a href="https://danisid.com/ia-assistant" target="_blank">🔗 danisid.com/ia-assistant</a>
     </div>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const neonBox = document.querySelector('.neon-box');
+      const titleElement = document.getElementById('typing-title');
+      const textToType = 'IA Assistant en construcción';
+
+      // 1. Parallax Effect
+      document.addEventListener('mousemove', (e) => {
+        const { clientX, clientY } = e;
+        const { innerWidth, innerHeight } = window;
+        const x = (clientX / innerWidth - 0.5) * 30; // Multiplier for effect intensity
+        const y = (clientY / innerHeight - 0.5) * 30;
+
+        neonBox.style.transform = `rotateY(${-x / 2}deg) rotateX(${y / 2}deg)`;
+      });
+
+      // 2. Typing Effect
+      let i = 0;
+      function typeWriter() {
+        if (i < textToType.length) {
+          titleElement.innerHTML = textToType.substring(0, i + 1) + '<span class="typing-cursor"></span>';
+          i++;
+          setTimeout(typeWriter, 100); // Typing speed
+        } else {
+          // Keep cursor blinking at the end
+          titleElement.innerHTML = textToType + '<span class="typing-cursor"></span>';
+        }
+      }
+
+      typeWriter();
+    });
+  </script>
 </body>
 </html>

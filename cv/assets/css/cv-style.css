@@ -1,103 +1,138 @@
-body { scroll-behavior: smooth; font-family: 'Inter', sans-serif; }
-.section-header { 
-    position: relative; 
-    padding-bottom: 0.5rem; 
-    color: #1e3a8a;
+body {
+    font-family: 'Inter', sans-serif;
 }
-.section-header::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(to right, #1e3a8a, #2dc0d4);
+
+.font-mono {
+    font-family: 'Roboto Mono', monospace;
 }
-.hover-scale { transition: transform 0.3s ease, color 0.3s ease; }
-.hover-scale:hover { transform: scale(1.03); color: #13474e; }
-.fade-in { 
-    opacity: 0; 
-    transform: translateY(20px); 
-    animation: fadeIn 0.8s ease forwards; 
+
+.section-title {
+    font-size: 1.125rem; /* 18px */
+    font-weight: 700;
+    color: #1e293b; /* slate-800 */
+    border-bottom-width: 2px;
+    border-color: #06b6d4; /* cyan-500 */
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-family: 'Roboto Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
-@keyframes fadeIn {
-    to { opacity: 1; transform: translateY(0); }
+
+.sidebar-subtitle {
+    font-size: 0.875rem; /* 14px */
+    font-weight: 600;
+    color: #475569; /* slate-600 */
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
-.fade-in-delay-1 { animation-delay: 0.2s; }
-.fade-in-delay-2 { animation-delay: 0.4s; }
-.fade-in-delay-3 { animation-delay: 0.6s; }
-.bg-gradient { 
-    background: linear-gradient(135deg, #1e3a8a 0%, #2dadd4 100%); 
+
+.achievement-card {
+    padding: 1rem;
+    background-color: #f8fafc; /* slate-50 */
+    border-left-width: 4px;
+    border-color: #e2e8f0; /* slate-200 */
+    border-radius: 0.25rem;
 }
-.shadow-custom { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); }
+
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.skills-container span {
+    background-color: #e2e8f0; /* slate-200 */
+    color: #334155; /* slate-700 */
+    font-size: 0.75rem; /* 12px */
+    font-weight: 500;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+}
+
 .print-btn {
-    /* Estilos base del botón */
-    position: fixed; /* Posición fija para que flote */
-    bottom: 1.5rem;
-    right: 1.5rem;
-    z-index: 100;
-    background-color: white;
-    color: #1e3a8a; /* text-blue-800 */
-    padding: 0.5rem 1rem; /* Equivalente a py-2 px-4 */
-    border-radius: 0.5rem; /* rounded-lg */
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
-    transition: transform 0.5s ease-in-out, background-color 0.3s ease;
-    cursor: pointer;
-}
-.print-btn:hover {
-    background-color: #f3f4f6; /* hover:bg-gray-100 */
-}
-.whatsapp-btn {
-    position: fixed;
-    bottom: 5.5rem; /* Posicionado encima del botón de imprimir */
-    right: 1.5rem;
-    z-index: 100;
-    background-color: #25D366;
+    background-color: #334155; /* slate-700 */
     color: white;
-    width: 3.5rem; /* 56px */
-    height: 3.5rem; /* 56px */
-    border-radius: 50%;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 9999px;
     display: grid;
-    place-items: center; 
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
-    transition: transform 0.5s ease-in-out 0.05s; /* Animación más lenta y con un pequeño retraso */
+    place-items: center;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    transition: transform 0.3s;
 }
-.whatsapp-btn:hover {
+
+.print-btn:hover {
+    background-color: #1e293b; /* slate-800 */
     transform: scale(1.1);
 }
-/* Estilos para los botones de acción en el footer */
-.footer-action-btn {
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    pointer-events: none; /* Evita clics cuando está oculto */
+
+.whatsapp-btn {
+    background-color: #22c55e; /* green-500 */
+    color: white;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 9999px;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    transition: transform 0.3s;
 }
-.footer-action-btn.visible {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-}
-@media (max-width: 640px) {
-    .section-header { font-size: 1.5rem; }
-    h3 { font-size: 1.25rem; }
-    .grid-cols-1 { grid-template-columns: 1fr; }
-    .text-5xl { font-size: 2.5rem; }
-    .text-xl { font-size: 1.125rem; }
-    .space-x-6 { gap: 1rem; flex-wrap: wrap; }
+
+.whatsapp-btn:hover {
+    background-color: #16a34a; /* green-600 */
+    transform: scale(1.1);
 }
 
 /* Estilos para impresión */
 @media print {
     body {
-        -webkit-print-color-adjust: exact; /* Chrome, Safari */
-        print-color-adjust: exact; /* Standard property */
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
     }
-    /* Ocultar elementos no deseados en la impresión */ 
-    header, footer, .print-hide {
+
+    .print-hide {
         display: none !important;
     }
-    main {
-        margin: 0;
+
+    .max-w-5xl {
         box-shadow: none;
+        margin: 0;
+        max-width: 100%;
+    }
+
+    header {
+        background-color: #f8fafc !important; /* bg-slate-50 */
+    }
+    header h1, header p {
+        color: #1e293b !important; /* text-slate-800 */
+    }
+
+    aside {
+        background-color: #f8fafc !important; /* bg-slate-50 */
+    }
+
+    .skills-container span {
+        background-color: #e2e8f0 !important; /* bg-slate-200 */
+        color: #334155 !important; /* text-slate-700 */
+    }
+
+    .achievement-card {
+        background-color: #f8fafc !important; /* bg-slate-50 */
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .section-title {
+        border-color: #94a3b8 !important; /* border-slate-400 */
+    }
+
+    .fa-fw {
+        color: #475569 !important; /* text-slate-600 */
     }
 }
