@@ -526,6 +526,40 @@ Esta sección documenta el proceso de sincronización del repositorio local con 
 
 ---
 
+## 32. Actualización de la Documentación Principal (README.md)
+
+- **Objetivo**: Reflejar el estado actual y el nuevo enfoque profesional del proyecto en el `README.md`.
+- **Acciones Realizadas**:
+    - Se reescribió la introducción para alinearla con el perfil de **Ingeniero de Soluciones Web**.
+    - Se actualizó la lista de "Características Principales" para incluir el soporte bilingüe (ES/EN) y la integración con Netlify Forms.
+    - Se limpió y actualizó la descripción general del proyecto para que coincida con su evolución técnica y conceptual.
+- **Estado Actual**: El `README.md` ahora sirve como una carta de presentación precisa y potente del proyecto y su autor.
+
+---
+
+## 33. Optimización SEO de la Página Principal
+
+- **Objetivo**: Mejorar el posicionamiento en buscadores y la visibilidad en redes sociales del portafolio principal.
+- **Acciones Realizadas**:
+    - **Actualización de Metadatos Clave**: Se actualizaron las etiquetas `<title>` y `<meta name="description">` en `index.html` y `index-en.html` para reflejar el nuevo perfil de **Ingeniero de Soluciones Web**.
+    - **Optimización para Redes Sociales**: Se reescribieron los metadatos de Open Graph (Facebook/WhatsApp) y Twitter Cards para que las previsualizaciones de los enlaces sean más atractivas y descriptivas.
+    - **Implementación de SEO Internacional (`hreflang`)**: Se añadieron las etiquetas `<link rel="alternate" hreflang="...">` en ambas versiones de la página principal para indicar a Google la relación entre las páginas en español e inglés, mejorando el SEO para audiencias multilingües y evitando penalizaciones por contenido duplicado.
+- **Estado Actual**: El sitio principal está ahora técnicamente optimizado para un mejor rendimiento en búsquedas orgánicas y al ser compartido en plataformas sociales.
+
+---
+
+## 34. Revisión de Accesibilidad y Reversión Parcial
+
+- **Objetivo**: Mejorar la accesibilidad (a11y) y la semántica de la página principal.
+- **Acciones Realizadas**:
+    - Se intentó refactorizar la jerarquía de encabezados en la sección "Experiencia" para una estructura semántica más correcta.
+    - Se añadieron estilos para deshabilitar visualmente los enlaces sin destino (`href="#"`).
+    - Se mejoró el contraste del texto del copyright en el footer.
+- **Problema y Reversión**: El cambio en la estructura de la sección "Experiencia" rompió el layout visual en la vista de escritorio. Se decidió revertir los cambios en el HTML y CSS de dicha sección para restaurar el diseño funcional, manteniendo las otras mejoras de accesibilidad que no generaban conflicto.
+- **Estado Actual**: El diseño visual está restaurado. Se ha identificado la necesidad de una refactorización más profunda (posiblemente a un framework como React) para implementar mejoras estructurales sin romper el diseño.
+
+---
+
 ## 28. Mejoras en UI y Build del Proyecto 'Antología' (React)
 
 - **Objetivo**: Avanzar en el desarrollo de la nueva versión de 'Antología' en React, mejorando la interfaz de usuario y la configuración de compilación.

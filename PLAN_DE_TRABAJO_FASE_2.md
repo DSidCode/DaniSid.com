@@ -232,3 +232,20 @@ El objetivo es convertir la Antología en un proyecto web robusto, funcional y f
     *   Diseñar la interfaz de usuario (UI) y la experiencia de usuario (UX).
     *   Investigar las APIs de OpenAI o Gemini necesarias para su implementación.
     *   Crear una página de proyecto dedicada para documentar el progreso y el objetivo.
+
+---
+
+## 7. Refactorización Completa del Portafolio a React (Próxima Fase)
+
+- **Objetivo Estratégico**: Migrar el sitio principal `danisid.com` de una arquitectura de HTML/CSS/JS puro a una Single Page Application (SPA) moderna con **React y Vite**.
+
+- **Justificación**:
+    - **Conflictos de Mantenibilidad**: El proyecto actual, basado en la manipulación directa del DOM, está mostrando los mismos problemas de escalabilidad, conflictos de estado y dificultades para implementar cambios estructurales (como se vio en la revisión de accesibilidad) que se encontraron en el proyecto 'Antología' antes de su migración.
+    - **Coherencia Tecnológica**: Unificar el stack tecnológico del portafolio con el de los sub-proyectos más modernos ('Antología React'), demostrando una apuesta clara por las tecnologías actuales.
+    - **Profesionalización y Escalabilidad**: Adoptar un enfoque basado en componentes, estado gestionado y un entorno de build profesional (Vite) para facilitar el desarrollo futuro, la implementación de nuevas funcionalidades complejas y la depuración.
+
+- **Acciones Propuestas (para la próxima sesión de trabajo)**:
+    1.  **Configuración del Entorno**: Crear un nuevo proyecto React + Vite para el portafolio principal.
+    2.  **Plan de Migración por Componentes**: Analizar y desglosar la página `index.html` actual en una estructura de componentes reutilizables (ej: `Hero`, `Navbar`, `ProjectsGrid`, `ExperienceTimeline`, `ContactForm`, etc.).
+    3.  **Migración Inicial**: Comenzar la migración de los componentes más sencillos y los estilos CSS para establecer la base de la nueva aplicación.
+    4.  **Reevaluación de Librerías**: Analizar si librerías como `ScrollReveal` pueden ser reemplazadas por soluciones más modernas del ecosistema React, como `Framer Motion` o `IntersectionObserver` hooks.
