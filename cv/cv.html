@@ -10,6 +10,19 @@
     <meta name="author" content="Daniel Garcia">
     <meta name="robots" content="index, follow">
 
+    <!-- Metadatos para Redes Sociales (Open Graph & Twitter Cards) -->
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="https://danisid.com/cv/cv.html">
+    <meta property="og:title" content="Daniel Garcia - Ingeniero de Soluciones Web | CV">
+    <meta property="og:description" content="CV profesional de Daniel Garcia, experto en modernización de arquitecturas (Jamstack), CI/CD y desarrollo con React.">
+    <meta property="og:image" content="https://danisid.com/assets/img/og-image.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://danisid.com/cv/cv.html">
+    <meta name="twitter:title" content="Daniel Garcia - Ingeniero de Soluciones Web | CV">
+    <meta name="twitter:description" content="CV profesional de Daniel Garcia, experto en modernización de arquitecturas (Jamstack), CI/CD y desarrollo con React.">
+    <meta name="twitter:image" content="https://danisid.com/assets/img/og-image.png">
+
     <!-- Datos Estructurados (Schema.org) para SEO Avanzado -->
     <script type="application/ld+json">
     {
@@ -35,9 +48,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="assets/css/cv-style.css">
     <style>
-    @media print {
-        /* Los estilos de impresión ya están en cv-style.css */
-    }
+    /* Estilos de impresión ya están en cv-style.css */
   </style>
   
 </head>
@@ -183,6 +194,12 @@
 
 <!-- Botones Flotantes -->
 <div class="print-hide fixed bottom-6 right-6 space-y-4">
+    <a href="cv-en.html" class="lang-btn" aria-label="Switch to English">
+        <span class="font-bold">EN</span>
+    </a>
+    <a href="carta-presentacion.html" target="_blank" class="cover-letter-btn" aria-label="Ver Carta de Presentación">
+        <i class="fas fa-envelope fa-lg"></i>
+    </a>
     <a href="https://wa.me/34641868620" target="_blank" class="whatsapp-btn" aria-label="Contactar por WhatsApp">
         <i class="fab fa-whatsapp fa-2x"></i>
     </a>

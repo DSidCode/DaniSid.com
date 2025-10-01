@@ -86,6 +86,40 @@ body {
     transform: scale(1.1);
 }
 
+.cover-letter-btn {
+    background-color: #3b82f6; /* blue-500 */
+    color: white;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 9999px;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    transition: transform 0.3s;
+}
+
+.cover-letter-btn:hover {
+    background-color: #2563eb; /* blue-600 */
+    transform: scale(1.1);
+}
+
+.lang-btn {
+    background-color: #64748b; /* slate-500 */
+    color: white;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 9999px;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    transition: transform 0.3s;
+}
+
+.lang-btn:hover {
+    background-color: #475569; /* slate-600 */
+    transform: scale(1.1);
+}
+
 /* Estilos para impresión */
 @media print {
     body {

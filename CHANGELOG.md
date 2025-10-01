@@ -493,6 +493,26 @@ Esta sección documenta el proceso de sincronización del repositorio local con 
 
 ---
 
+## 30. Overhaul del CV y Documentos Profesionales
+
+- **Objetivo**: Mejorar los materiales de presentación profesional añadiendo una carta de presentación, habilitando el soporte bilingüe (español/inglés) y mejorando el diseño y la funcionalidad general.
+
+- **Acciones Realizadas**:
+    - **Creación de Carta de Presentación Reutilizable**:
+        - Se añadió una nueva carta de presentación (`carta-presentacion.html`) con un diseño profesional y placeholders editables para facilitar su adaptación a diferentes ofertas de empleo.
+        - Se centralizaron sus estilos en una hoja dedicada (`cv/assets/css/carta-style.css`) para una mejor mantenibilidad y se actualizó la ubicación a Madrid.
+    - **Internacionalización (EN/ES)**:
+        - Se crearon traducciones completas al inglés tanto para el CV (`cv-en.html`) como para la carta de presentación (`carta-presentacion-en.html`).
+        - Se implementaron botones flotantes para cambiar de idioma en los cuatro documentos, permitiendo una navegación fluida entre las versiones en español e inglés.
+    - **Mejoras de UI/UX**:
+        - Se añadió un nuevo botón flotante en los CVs para dar acceso directo a la carta de presentación correspondiente.
+        - Se estilizaron todos los botones nuevos para que fueran coherentes con el diseño moderno existente del CV.
+        - Se aseguró la consistencia de la marca añadiendo el favicon del sitio a las páginas de la carta de presentación.
+
+- **Estado Actual**: El CV y sus documentos de apoyo son ahora una herramienta de presentación bilingüe, funcional y profesional, lista para ser utilizada en procesos de selección tanto nacionales como internacionales.
+
+---
+
 ## 28. Mejoras en UI y Build del Proyecto 'Antología' (React)
 
 - **Objetivo**: Avanzar en el desarrollo de la nueva versión de 'Antología' en React, mejorando la interfaz de usuario y la configuración de compilación.
