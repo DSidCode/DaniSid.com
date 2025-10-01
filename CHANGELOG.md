@@ -513,6 +513,19 @@ Esta sección documenta el proceso de sincronización del repositorio local con 
 
 ---
 
+## 31. Internacionalización de la Página Principal
+
+- **Objetivo**: Ampliar el alcance del portafolio principal (`danisid.com`) a una audiencia global mediante la creación de una versión en inglés.
+
+- **Acciones Realizadas**:
+    - **Creación de Versión en Inglés**: Se ha creado un nuevo archivo `index-en.html` que contiene una traducción completa de la página principal, incluyendo textos, metadatos SEO y atributos de accesibilidad.
+    - **Implementación de Cambio de Idioma**: Se han añadido botones de cambio de idioma (`ES`/`EN`) en la barra de navegación de `index.html` y `index-en.html`, permitiendo una transición fluida entre ambas versiones.
+    - **Actualización de Enlaces**: El enlace al CV en `index-en.html` ahora dirige a la versión en inglés del currículum (`cv/cv-en.html`).
+
+- **Estado Actual**: El sitio principal del portafolio es ahora completamente bilingüe, mejorando su accesibilidad y alcance profesional a nivel internacional.
+
+---
+
 ## 28. Mejoras en UI y Build del Proyecto 'Antología' (React)
 
 - **Objetivo**: Avanzar en el desarrollo de la nueva versión de 'Antología' en React, mejorando la interfaz de usuario y la configuración de compilación.
