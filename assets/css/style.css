@@ -116,10 +116,7 @@ img{
     text-align: center;
     margin-bottom: 2rem;
 }
-.main{
-    /* overflow: hidden; */ /* Se comenta para que el glitch no se corte */
 
-}
 .visually-hidden {
     position: absolute;
     width: 1px;

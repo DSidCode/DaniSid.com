@@ -32,7 +32,7 @@ El proyecto está organizado de la siguiente manera para facilitar su mantenimie
 - **/cv**: Almacena las diferentes versiones de mi currículum en formato HTML.
 - **/personal**: Incluye páginas con un toque más personal y proyectos específicos como dedicatorias.
 - **/projects**: Contiene sub-proyectos autocontenidos, como la web de estética Cyberpunk.
-- **/Aventuras**: Un proyecto pedagógico muy especial para mi hijo Adrián, enfocado en desarrollar su creatividad y liderazgo a través de "misiones" y juegos.
+- **/Aventuras**: Un proyecto pedagógico muy especial para mi hijo Adrián. Combina juegos y "misiones" de liderazgo con conceptos de la pedagogía Waldorf, conectando la creatividad con los ritmos de la naturaleza y los elementales.
 
 ## Contacto
 

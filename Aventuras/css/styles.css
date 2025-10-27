@@ -1,37 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Nunito+Sans:wght@400;600&display=swap');
+
+:root {
+    --color-bg: #F8F5F2; /* Un blanco roto, como papel reciclado */
+    --color-container-bg: #FFFFFF;
+    --color-text: #4A4441; /* Marrón oscuro para texto */
+    --color-primary: #2A7F62; /* Verde bosque */
+    --color-secondary: #D9A404; /* Ocre/Dorado */
+    --color-accent: #5A9EC6; /* Azul cielo */
+    --color-subtle-bg: #F1F3F2; /* Un gris muy suave verdoso */
+    --font-title: 'Merriweather', serif;
+    --font-text: 'Nunito Sans', sans-serif;
+}
+
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: var(--font-text);
     margin: 0;
     padding: 20px;
-    background-color: #0a0a1a; /* Fondo Cyberpunk Oscuro */
-    color: #e0e0e0; /* Texto claro para contraste */
+    background-color: var(--color-bg);
+    color: var(--color-text);
     line-height: 1.6;
     text-align: center;
 }
 .container {
     max-width: 900px;
     margin: 20px auto;
-    background-color: #1a1a2e; /* Fondo de contenedor oscuro */
+    background-color: var(--color-container-bg);
     padding: 30px;
     border-radius: 20px;
-    box-shadow: 0 0 25px rgba(0, 246, 255, 0.3); /* Brillo neón cian */
-    border: 3px solid #00f6ff; /* Borde cian neón */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid #EAE2DA;
 }
 h1 {
-    color: #ff00ff; /* Magenta Neón */
+    font-family: var(--font-title);
+    color: var(--color-primary);
     font-size: 2.5em;
     margin-bottom: 5px;
-    text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff; /* Efecto de brillo */
+    text-shadow: none;
 }
 h2 {
-    color: #00f6ff; /* Cian Neón */
+    font-family: var(--font-title);
+    color: var(--color-secondary);
     font-size: 1.8em;
     margin-top: 30px;
-    border-bottom: 2px solid rgba(0, 246, 255, 0.4);
+    border-bottom: 2px solid #EAE2DA;
     padding-bottom: 10px;
-    text-shadow: 0 0 5px rgba(0, 246, 255, 0.7);
+    text-shadow: none;
 }
 h3 {
-    color: #e0e0e0; /* Texto claro */
+    font-family: var(--font-title);
+    color: var(--color-primary);
     font-size: 1.4em;
     margin-top: 25px;
 }
@@ -39,23 +56,23 @@ p {
     font-size: 1.1em;
     margin-bottom: 15px;
     text-align: left;
-    color: #c0c0c0; /* Gris un poco más suave para párrafos */
+    color: var(--color-text);
 }
 .activity-box {
-    background-color: rgba(10, 10, 26, 0.5); /* Fondo aún más oscuro */
-    border-left: 6px solid #ff00ff; /* Borde magenta */
+    background-color: var(--color-subtle-bg);
+    border-left: 6px solid var(--color-secondary);
     padding: 20px;
     margin: 25px 0;
     border-radius: 10px;
     text-align: left;
-    box-shadow: inset 0 0 15px rgba(255, 0, 255, 0.2);
+    box-shadow: none;
 }
 .activity-box strong {
-    color: #00f6ff; /* Cian Neón */
+    color: var(--color-primary);
 }
 .youtube-tip {
-    background-color: rgba(10, 10, 26, 0.5);
-    border-left: 6px solid #39FF14; /* Verde Neón */
+    background-color: #E4F0E8;
+    border-left: 6px solid var(--color-primary);
     padding: 15px;
     margin-top: 20px;
     border-radius: 8px;
@@ -65,14 +82,14 @@ p {
 .footer {
     margin-top: 40px;
     font-size: 0.9em;
-    color: #888;
+    color: #8F8A87;
 }
 .footer p {
     text-align: center;
     margin-bottom: 10px;
 }
 .footer a {
-    color: #00f6ff; /* Cian Neón */
+    color: var(--color-accent);
     font-weight: bold;
     text-decoration: none;
 }
@@ -95,16 +112,16 @@ p {
     width: 40px;
 }
 .note {
-    background-color: rgba(10, 10, 26, 0.5);
-    border-left: 6px solid #00f6ff; /* Cian Neón */
-    padding: 15px;
+    background-color: #FEFBF5;
+    border-left: 6px solid var(--color-accent);
+    padding: 20px;
     margin-top: 30px;
     border-radius: 8px;
     font-style: italic;
 }
 /* --- Estilos para el Header de Navegación (Responsivo) --- */
 .main-header {
-    background-color: #1a1a2e; /* Azul oscuro cyberpunk */
+    background-color: var(--color-container-bg);
     padding: 10px 15px;
     border-radius: 15px;
     margin-bottom: 30px;
@@ -124,24 +141,24 @@ p {
     position: relative; /* Para el tooltip */
 }
 .main-nav a {
-    color: white;
+    color: var(--color-text);
     text-decoration: none;
     font-weight: bold;
     font-size: 0.9em; /* Botones más pequeños */
     padding: 8px 12px;
     border-radius: 8px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
     display: inline-block; /* Ajusta el tamaño al contenido */
 }
 .main-nav a:hover, .main-nav a.active {
-    background-color: #ff00ff; /* Magenta Neón */
-    box-shadow: 0 0 15px #ff00ff;
+    background-color: var(--color-primary);
+    color: white;
 }
 .main-nav a span {
     visibility: hidden; /* Oculto por defecto */
     opacity: 0;
     width: 220px;
-    background-color: #ff00ff; /* Magenta Neón */
+    background-color: var(--color-primary);
     color: #fff;
     text-align: center;
     border-radius: 6px;
@@ -166,7 +183,7 @@ p {
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: #ff00ff transparent transparent transparent;
+    border-color: var(--color-primary) transparent transparent transparent;
 }
 .main-nav li:hover a span {
     visibility: visible;
@@ -175,15 +192,16 @@ p {
 
 /* --- Estilos para las misiones interactivas --- */
 details {
-    background-color: #1a1a2e;
+    background-color: var(--color-container-bg);
     border-radius: 10px;
     margin-bottom: 20px;
-    border: 1px solid rgba(0, 246, 255, 0.3);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
-    transition: box-shadow 0.3s ease;
+    border: 1px solid #EAE2DA;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 details:hover {
-    box-shadow: 0 0 15px rgba(0, 246, 255, 0.5);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
 }
 summary {
     padding: 15px;
@@ -204,18 +222,18 @@ summary h2 {
 }
 summary::after {
     content: '+';
-    font-size: 2.5em;
-    color: #00f6ff; /* Cian Neón */
+    font-size: 2em;
+    color: var(--color-accent);
     transition: transform 0.3s ease;
 }
 /* El div de la actividad dentro del 'details' no necesita margen superior */
-details > .activity-box { margin-top: 0; border-top: 1px solid rgba(255,0,255,0.3); border-left-width: 0; border-top-left-radius: 0; border-top-right-radius: 0;}
+details > .activity-box { margin-top: 0; border-top: 1px solid #EAE2DA; border-left-width: 0; border-top-left-radius: 0; border-top-right-radius: 0;}
 
 /* --- Estilos para el botón de completar misión --- */
 .complete-btn {
     display: inline-block;
-    background-color: #00f6ff; /* Cian Neón */
-    color: #0a0a1a; /* Texto oscuro para contraste */
+    background-color: var(--color-accent);
+    color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 8px;
@@ -223,13 +241,11 @@ details > .activity-box { margin-top: 0; border-top: 1px solid rgba(255,0,255,0.
     font-size: 1em;
     font-weight: bold;
     margin-top: 20px;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 10px rgba(0, 246, 255, 0.5);
+    transition: background-color 0.3s ease;
 }
 .complete-btn:hover {
-    background-color: #fff;
-    color: #00f6ff;
-    box-shadow: 0 0 20px rgba(0, 246, 255, 0.8);
+    background-color: var(--color-primary);
+    color: white;
 }
 .complete-btn:disabled {
     background-color: #444; /* Gris oscuro */
@@ -249,10 +265,10 @@ details.completed > summary h2 {
 .controls {
     margin-top: 30px;
     padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid #EAE2DA;
 }
 #reset-progress-btn {
-    background-color: #ff00ff; /* Magenta Neón */
+    background-color: var(--color-secondary);
     color: white;
     padding: 10px 20px;
     border: none;
@@ -260,10 +276,10 @@ details.completed > summary h2 {
     cursor: pointer;
     font-size: 0.9em;
     font-weight: bold;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 #reset-progress-btn:hover {
-    box-shadow: 0 0 15px #ff00ff;
+    background-color: #b88a03;
 }
 
 /* --- Estilos para el widget de progreso flotante --- */
@@ -273,8 +289,8 @@ details.completed > summary h2 {
     right: 20px; /* Distancia desde la derecha */
     width: 320px; /* Ancho fijo para que no ocupe toda la pantalla */
     z-index: 100; /* Asegura que esté por encima de otros elementos */
-    background-color: rgba(26, 26, 46, 0.8); /* Fondo oscuro semi-transparente */
-    backdrop-filter: blur(5px); /* Efecto de desenfoque para el fondo */
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
     padding: 10px 15px;
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4); /* Sombra más oscura */
@@ -284,29 +300,28 @@ details.completed > summary h2 {
 /* --- Estilos para la barra de progreso --- */
 .progress-container {
     width: 100%;
-    background-color: #0a0a1a; /* Fondo de barra oscuro */
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.2), 0 0 5px #39FF14; /* Sombra interior y brillo exterior */
+    background-color: var(--color-subtle-bg);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
     border-radius: 10px; /* Bordes redondeados para el contenedor */
-    border: 2px solid #39FF14; /* Borde sólido de color verde neón */
+    border: 1px solid #E0E0E0;
     padding: 2px; /* Pequeño espacio para que la barra interior no toque el borde */
 }
 
 #progress-bar-fill {
     width: 0%; /* Inicia en 0, JS lo actualizará */
     height: 25px;
-    background-color: #39FF14; /* Verde Neón */
-    box-shadow: 0 0 10px #39FF14, 0 0 20px #39FF14; /* Efecto de brillo neón */
+    background: linear-gradient(90deg, var(--color-accent), var(--color-primary));
     border-radius: 10px;
     text-align: center;
     line-height: 25px;
-    color: #000; /* Texto negro para mejor contraste con el neón */
+    color: white;
     font-weight: bold;
-    text-shadow: 0 0 2px white; /* Sombra blanca para que el texto resalte más */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
     transition: width 0.5s ease-in-out;
 }
 .progress-label {
     font-weight: bold;
-    color: #e0e0e0; /* Texto claro */
+    color: var(--color-text);
     margin: 0 0 8px 0; /* Espacio entre el título y la barra */
     font-size: 1.2em; /* Hacemos el texto un poco más grande y motivador */
 }
@@ -322,20 +337,20 @@ details.completed > summary h2 {
 
 .card {
     display: block;
-    background-color: #1a1a2e;
+    background-color: var(--color-container-bg);
     padding: 25px;
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     text-decoration: none;
-    color: #e0e0e0;
+    color: var(--color-text);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid rgba(0, 246, 255, 0.3);
+    border: 1px solid #EAE2DA;
 }
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 0 25px rgba(0, 246, 255, 0.5);
-    border-color: #00f6ff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    border-color: var(--color-accent);
 }
 
 /* --- Estilos para el botón flotante de YouTube --- */
@@ -345,29 +360,30 @@ details.completed > summary h2 {
     left: 20px; /* Lo movemos a la izquierda */
     width: 60px;
     height: 60px;
-    background-color: #1a1a2e;
+    background-color: var(--color-container-bg);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
-    border: 2px solid #ff00ff; /* Borde magenta neón */
+    border: 2px solid var(--color-secondary);
     z-index: 100;
     transition: all 0.3s ease;
 }
 .floating-yt-btn:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 20px #ff00ff;
+    box-shadow: 0 0 20px var(--color-secondary);
 }
 .floating-yt-btn img {
     width: 40px;
     height: auto;
+    filter: grayscale(100%) contrast(100%) brightness(1.5); /* Icono más sutil */
 }
 .floating-yt-btn span {
     visibility: hidden;
     opacity: 0;
     width: max-content;
-    background-color: #ff00ff;
+    background-color: var(--color-secondary);
     color: #fff;
     text-align: center;
     border-radius: 6px;
@@ -387,7 +403,7 @@ details.completed > summary h2 {
     margin-top: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: transparent #ff00ff transparent transparent;
+    border-color: transparent var(--color-secondary) transparent transparent;
 }
 .floating-yt-btn:hover span {
     visibility: visible;

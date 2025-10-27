@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de Actividades: Hispanidad 2025</title>
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7;
+            min-height: 100vh;
+        }
+        .tab-button.active {
+            background-color: #A0522D; /* Tono terroso/colonial */
+            color: #FFFFFF;
+            font-weight: 700;
+        }
+        .card-shadow {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+
+    <div class="max-w-4xl mx-auto bg-white rounded-xl card-shadow overflow-hidden">
+        
+        <!-- Encabezado -->
+        <header class="p-6 bg-red-700 text-white text-center">
+            <h1 class="text-3xl sm:text-4xl font-extrabold mb-1">Guía Oficial Hispanidad 2025</h1>
+            <p class="text-lg">Del 3 al 12 de octubre en Madrid. ¡Actividades, conciertos y danza!</p>
+        </header>
+
+        <!-- Contenedor de Pestañas (Días) -->
+        <div class="p-4 sm:p-6">
+            <div id="tabs-container" class="flex flex-wrap gap-2 justify-center mb-6 border-b border-gray-200 pb-4">
+                <!-- Los botones de los días se generarán aquí por JS -->
+            </div>
+
+            <!-- Contenido de las Pestañas (Eventos) -->
+            <div id="events-content">
+                <!-- El contenido de los eventos se generará aquí por JS -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const eventsData = {
+            '03 Oct. (Vie)': [
+                { time: '17:00 h', event: 'Danza: Chia (1ª sesión)', artist: 'Danza inspirada en cosmogonía muisca', location: 'Galería de las Colecciones Reales', price: 'Incluido con entrada Galería (14€ general)' },
+                { time: '18:30 h', event: 'Danza: Chia (2ª sesión)', artist: 'Danza inspirada en cosmogonía muisca', location: 'Galería de las Colecciones Reales', price: 'Incluido con entrada Galería (14€ general)' },
+                { time: '19:00 h', event: 'Concierto / Homenaje', artist: 'Compositoras españolas vinculadas a Latinoamérica', location: 'Ateneo de Madrid', price: 'Consultar costo' },
+                { time: '20:00 h', event: 'Teatro: La verdadera historia de Ricardo III', artist: 'Calixto Bieito', location: 'Teatros del Canal (Sala Roja)', price: 'Con costo' },
+                { time: 'Todo el día', event: 'FIRCO 2025 (Festival Iberoamericano de Circo)', artist: 'Artistas de Iberoamérica', location: 'Teatro Circo Price y otros', price: 'Consultar costo' }
+            ],
+            '04 Oct. (Sáb)': [
+                { time: '11:30 h', event: 'Tango en Matadero', artist: 'Clases abiertas y exhibiciones', location: 'Matadero Madrid', price: 'Gratuito' },
+                { time: '12:00 h', event: 'Danza: Orilla (1ª sesión)', artist: 'Fusión de moda y flamenco', location: 'Museo del Traje', price: 'Consultar costo' },
+                { time: '13:30 h', event: 'Danza: Orilla (2ª sesión)', artist: 'Fusión de moda y flamenco', location: 'Museo del Traje', price: 'Consultar costo' },
+                { time: '20:00 h', event: 'Teatro: Fuenteovejuna', artist: 'Clásico español', location: 'Centro Comarcal de Humanidades Sierra Norte', price: 'Consultar costo' }
+            ],
+            '05 Oct. (Dom)': [
+                { time: '12:00 h', event: 'Concierto Único', artist: 'Gloria Estefan', location: 'Plaza de Colón', price: '¡GRATUITO!' },
+                { time: 'Tarde', event: 'Cabalgata de la Hispanidad', artist: 'Agrupaciones folclóricas de países hispanos', location: 'Gran Vía (Recorrido)', price: 'Gratuito' }
+            ],
+            '09 Oct. (Jue)': [
+                { time: '18:30 h', event: 'Concierto', artist: 'Chita', location: 'Plaza de España', price: 'Gratuito' },
+                { time: '19:00 h', event: 'Concierto', artist: 'Çantamarta', location: 'Plaza Mayor', price: 'Gratuito' },
+                { time: '19:00 h', event: 'Concierto', artist: 'Aleesha', location: 'Plaza de España', price: 'Gratuito' },
+                { time: '19:00 h', event: 'Concierto', artist: 'Nidia Góngora (Colombia)', location: 'Puerta del Sol', price: 'Gratuito' },
+                { time: '19:00 h', event: 'Concierto', artist: 'Orquesta El Macabeo (Puerto Rico)', location: 'Puente del Rey – Madrid Río', price: 'Gratuito' },
+                { time: '20:00 h', event: 'Concierto', artist: 'Orquesta del Plata', location: 'Puente del Rey – Madrid Río', price: 'Gratuito' },
+                { time: '21:30 h', event: 'Concierto', artist: 'Henry Méndez (República Dominicana)', location: 'Puerta del Sol', price: 'Gratuito' },
+                { time: '21:30 h', event: 'Concierto', artist: 'Los Estanques + El Canijo de Jerez', location: 'Plaza Mayor', price: 'Gratuito' },
+                { time: '22:00 h', event: 'Concierto', artist: 'Bon Calso', location: 'Plaza de España', price: 'Gratuito' }
+            ],
+            '10 Oct. (Vie)': [
+                { time: '18:00 h', event: 'Concierto', artist: 'Maestro Espada (España)', location: 'Plaza Mayor', price: 'Gratuito' },
+                { time: '19:00 h', event: 'Concierto', artist: 'Miranda! (Argentina)', location: 'Puerta del Sol', price: 'Gratuito' },
+                { time: '19:00 h', event: 'Concierto', artist: 'Muerdo (España)', location: 'Plaza de España', price: 'Gratuito' },
+                { time: '19:30 h', event: 'Concierto', artist: 'Rita Payés (España)', location: 'Plaza Mayor', price: 'Gratuito' },
+                { time: '20:00 h', event: 'Concierto', artist: 'Nacho Nacif', location: 'Puente del Rey – Madrid Río', price: 'Gratuito' },
+                { time: '21:30 h', event: 'Concierto', artist: 'Babasónicos (Argentina)', location: 'Puerta del Sol', price: 'Gratuito' },
+                { time: '21:30 h', event: 'Concierto', artist: 'Dillom', location: 'Plaza de España', price: 'Gratuito' },
+                { time: '21:30 h', event: 'Concierto', artist: 'Niña Polaca', location: 'Puente del Rey – Madrid Río', price: 'Gratuito' },
+                { time: '21:30 h', event: 'Concierto', artist: 'Silvana Estrada + Ensemble ESM Reina Sofía (México)', location: 'Plaza Mayor', price: 'Gratuito' }
+            ],
+            '11 Oct. (Sáb)': [
+                { time: '13:00 h', event: 'Concierto', artist: 'Gerardo Morán y Los más queridos (Ecuador)', location: 'Puente del Rey – Madrid Río', price: 'Gratuito' },
+                { time: '18:50 h', event: 'Concierto', artist: 'OnOff', location: 'Puerta del Sol', price: 'Gratuito' },
+                { time: '19:00 h', event: 'Concierto', artist: 'Orquesta Aragón (Cuba)', location: 'Plaza Mayor', price: 'Gratuito' },
+                { time: '19:00 h', event: 'Concierto', artist: 'La Ganga Calé (España)', location: 'Plaza de España', price: 'Gratuito' },
+                { time: '19:00 h', event: 'Concierto', artist: 'Bareto (Perú)', location: 'Puente del Rey – Madrid Río', price: 'Gratuito' },
+                { time: '20:00 h', event: 'Concierto', artist: 'Kevin Johansen + Liniers + The Nada (Argentina)', location: 'Puerta del Sol', price: 'Gratuito' },
+                { time: '21:30 h', event: 'Concierto', artist: 'María José Llergo (España)', location: 'Plaza Mayor', price: 'Gratuito' },
+                { time: '21:30 h', event: 'Concierto', artist: 'Alizzz (España)', location: 'Plaza de España', price: 'Gratuito' },
+                { time: '21:30 h', event: 'Concierto', artist: 'Karina La Princesita (Argentina)', location: 'Puente del Rey – Madrid Río', price: 'Gratuito' }
+            ],
+            '12 Oct. (Dom)': [
+                { time: '12:00 h', event: 'Concierto', artist: 'ORCAM (Orquesta de la Comunidad de Madrid)', location: 'Plaza Mayor', price: 'Gratuito' },
+                { time: '13:00 h', event: 'Concierto', artist: 'Mocedades y Los Panchos', location: 'Plaza Mayor', price: 'Gratuito' },
+                { time: '18:00 h', event: 'Sesión DJ', artist: 'Tiraya (Venezuela)', location: 'Plaza de España', price: 'Gratuito' },
+                { time: '18:00 h', event: 'Concierto', artist: 'Naíza', location: 'Puerta del Sol', price: 'Gratuito' },
+                { time: '19:00 h', event: 'Fiesta de Cierre', artist: 'Los 40 Hispanidad Pop', location: 'Puerta del Sol', price: 'Gratuito' },
+                { time: '19:30 h', event: 'Concierto de Cierre', artist: 'Bomba Estéreo (Colombia)', location: 'Plaza de España', price: 'Gratuito' },
+                { time: '21:00 h', event: 'Espectáculo Flamenco', artist: 'Corral de la Morería', location: 'Plaza Mayor', price: 'Gratuito' }
+            ]
+        };
+
+        const tabsContainer = document.getElementById('tabs-container');
+        const eventsContent = document.getElementById('events-content');
+
+        function createButton(day, isActive = false) {
+            const button = document.createElement('button');
+            button.className = `tab-button px-4 py-2 rounded-lg text-sm transition duration-150 ease-in-out whitespace-nowrap ${isActive ? 'active' : 'bg-gray-200 text-gray-700 hover:bg-red-200'}`;
+            button.textContent = day;
+            button.dataset.day = day;
+            button.addEventListener('click', () => switchTab(day));
+            tabsContainer.appendChild(button);
+        }
+
+        function renderEvents(day) {
+            eventsContent.innerHTML = '';
+            const events = eventsData[day];
+
+            if (!events || events.length === 0) {
+                eventsContent.innerHTML = '<p class="text-center text-gray-500 p-8">No hay eventos programados para este día o la información está pendiente.</p>';
+                return;
+            }
+
+            events.forEach(event => {
+                const eventCard = document.createElement('div');
+                eventCard.className = 'flex flex-col sm:flex-row bg-white border border-gray-100 rounded-xl p-4 mb-4 shadow-sm hover:shadow-md transition duration-300';
+                
+                // Columna de Hora
+                const timeCol = `<div class="w-full sm:w-1/4 mb-2 sm:mb-0 sm:pr-4">
+                                    <p class="text-2xl font-bold text-red-700">${event.time}</p>
+                                    <p class="text-xs text-gray-500">${event.price}</p>
+                                 </div>`;
+                
+                // Columna de Evento
+                const detailCol = `<div class="w-full sm:w-3/4">
+                                    <h3 class="text-xl font-semibold text-gray-800 mb-1">${event.event}</h3>
+                                    <p class="text-base text-gray-600 mb-1">${event.artist}</p>
+                                    <p class="text-sm text-amber-700 font-medium">📍 ${event.location}</p>
+                                 </div>`;
+                
+                eventCard.innerHTML = timeCol + detailCol;
+                eventsContent.appendChild(eventCard);
+            });
+        }
+
+        function switchTab(targetDay) {
+            // Desactiva todos los botones
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+                btn.classList.remove('bg-red-700', 'text-white', 'hover:bg-red-600');
+                btn.classList.add('bg-gray-200', 'text-gray-700', 'hover:bg-red-200');
+            });
+
+            // Activa el botón seleccionado
+            const activeBtn = document.querySelector(`.tab-button[data-day="${targetDay}"]`);
+            if (activeBtn) {
+                activeBtn.classList.add('active', 'bg-red-700', 'text-white');
+                activeBtn.classList.remove('bg-gray-200', 'text-gray-700', 'hover:bg-red-200');
+            }
+
+            // Renderiza el contenido
+            renderEvents(targetDay);
+        }
+
+        // Inicialización
+        window.onload = function() {
+            const days = Object.keys(eventsData);
+            let activeDay = days[0];
+
+            // Determinar si hoy es uno de los días
+            const today = new Date();
+            const todayDay = today.getDate().toString().padStart(2, '0');
+            const todayMonth = (today.getMonth() + 1).toString().padStart(2, '0'); // Mes + 1
+
+            const todayKey = `${todayDay} Oct.`; // Ejemplo: '03 Oct.'
+            
+            for (const dayKey of days) {
+                if (dayKey.startsWith(todayKey)) {
+                    activeDay = dayKey;
+                    break;
+                }
+            }
+
+            // Crea los botones y establece la pestaña activa inicial
+            days.forEach(day => createButton(day, day === activeDay));
+            switchTab(activeDay);
+        };
+    </script>
+</body>
+</html>
