@@ -38,7 +38,7 @@ contactForm.addEventListener('submit', submitForm);
 /* =============== SHOW SCROLL UP ============*/
 const scrollUp = () =>{
     const scrollUp = document.getElementById('scroll-up')
-    this.scrollY >= 350 ? scrollUp.classList.add('show-scroll') : scrollUp.classList.remove('show-scroll')
+    window.scrollY >= 350 ? scrollUp.classList.add('show-scroll') : scrollUp.classList.remove('show-scroll')
 }
 window.addEventListener('scroll', scrollUp)
 /* =============== SCROLL SECTION ACTIVE LINK ============*/
@@ -75,77 +75,6 @@ sr.reveal(`.hero_image`, {origin: 'right', delay: 400})
 sr.reveal(`.skills_wrapper`, {origin: 'bottom', delay: 500})
 sr.reveal(`.projects_card, .services_card, .experience_card, .lab_card`, {interval: 80}) // Intervalo más rápido
 
-// Seleccionar todos los canvases con la clase matrix-effect
-const canvases = document.querySelectorAll('.matrix-effect');
-
-// Configuración común
-const binary = '01'; // Solo 0 y 1 para simular código binario
-const fontSize = 16;
-
-// Función para ajustar el tamaño del canvas al contenedor padre
-function resizeCanvas(canvas) {
-    const parent = canvas.parentElement;
-    canvas.width = parent.offsetWidth;
-    canvas.height = parent.offsetHeight;
-}
-
-// Configurar cada canvas
-canvases.forEach(canvas => {
-    const ctx = canvas.getContext('2d');
-    resizeCanvas(canvas);
-
-    const columns = canvas.width / fontSize;
-    const drops = Array(Math.floor(columns)).fill(1);
-
-    function draw() {
-        // Fondo con opacidad baja para efecto de desvanecimiento
-        ctx.fillStyle = 'rgba(26, 26, 30, 0.05)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        // Fuente para los números binarios
-        ctx.font = `${fontSize}px monospace`;
-
-        for (let i = 0; i < drops.length; i++) {
-            const text = binary.charAt(Math.floor(Math.random() * binary.length));
-            const glow = Math.random();
-
-            // Efecto de brillo
-            if (glow > 0.95) {
-                ctx.fillStyle = '#00D4FF'; // Cian brillante
-                ctx.globalAlpha = 1;
-            } else if (glow > 0.7) {
-                ctx.fillStyle = '#00A3CC';
-                ctx.globalAlpha = 0.7;
-            } else {
-                ctx.fillStyle = '#007A99';
-                ctx.globalAlpha = 0.4;
-            }
-
-            // Dibujar el carácter
-            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-            // Reiniciar la gota cuando llegue al fondo
-            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                drops[i] = 0;
-            }
-            drops[i]++;
-        }
-
-        ctx.globalAlpha = 1; // Restaurar opacidad
-    }
-
-    // Animación
-    setInterval(draw, 35);
-});
-
-// Ajustar el tamaño al redimensionar la ventana
-window.addEventListener('resize', () => {
-    canvases.forEach(canvas => {
-        resizeCanvas(canvas);
-        const newColumns = Math.floor(canvas.width / fontSize);
-        const drops = Array(newColumns).fill(1);
-    });
-});
 
 /*=============== SKILLS TOGGLE ===============*/
 const skillsToggle = document.getElementById('skills-toggle'),

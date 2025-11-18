@@ -130,15 +130,14 @@ El objetivo es convertir la Antología en un proyecto web robusto, funcional y f
 
 ---
 
-## 4. Página de CV (`cv/cv.html`) - Limpieza y Estructura
+## 4. Página de CV (`cv/cv.html`) - Refactorización y Rediseño (Completado)
 
-*   **Objetivo:** Corregir problemas estructurales y de contenido en la página del CV principal para asegurar una presentación profesional y limpia.
+*   **Objetivo Cumplido:** Se ha reemplazado el diseño anterior por una versión moderna, profesional y fácil de mantener.
 *   **Acciones:**
-    *   **Auditoría de Contenido:** Realizar un análisis del HTML para identificar cualquier texto o elemento que se encuentre fuera de lugar (ej. después del `<footer>`).
-    *   **Reubicación o Eliminación:** Integrar el contenido relevante en las secciones correspondientes del CV o eliminarlo si es redundante o un vestigio de versiones anteriores.
-    *   **Asegurar la Integridad del Diseño:** Confirmar que no haya elementos fuera de las etiquetas semánticas principales (`<main>`, `<footer>`) que afecten la maquetación y la experiencia de usuario.
-    *   **Añadir Botón de Impresión:** Integrar un botón visible (ej. "Imprimir CV") en la página `cv.html`.
-    *   **Crear Estilos de Impresión:** Desarrollar una hoja de estilos específica para impresión (`@media print`) que formatee el contenido del CV para que se ajuste estéticamente en una o dos páginas A4, ocultando elementos no necesarios como la navegación, el footer y el propio botón de imprimir.
+    *   **Rediseño Completo:** Se implementó un nuevo layout de dos columnas con una estética moderna.
+    *   **Refactorización de Código:** Se centralizaron todos los estilos en una única hoja de estilos (`cv-style.css`), mejorando la mantenibilidad.
+    *   **Optimización de Contenido:** Se ajustaron los textos para enfocarlos en el perfil de "Desarrollador Web Frontend".
+    *   **Funcionalidad de Impresión:** Se han perfeccionado los estilos `@media print` para asegurar un ajuste perfecto en una sola página A4.
 
 ---
 
