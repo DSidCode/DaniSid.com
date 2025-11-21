@@ -2,6 +2,24 @@
 
 ---
 
+## 38. Inicio de la Migración del Portafolio Principal a React
+
+- **Objetivo**: Comenzar la refactorización completa de `danisid.com` a una arquitectura moderna con React y Vite, siguiendo el `PLAN_MIGRACION_REACT.md`.
+
+- **Acciones Realizadas**:
+    - **Creación del Proyecto**: Se ha inicializado un nuevo proyecto (`danisid-react`) utilizando Vite con la plantilla de React.
+    - **Construcción del Esqueleto**:
+        - Se ha creado la estructura de carpetas `src/components` y `src/assets`.
+        - Se han copiado todos los activos estáticos (CSS, imágenes, JS) del proyecto original a la nueva estructura.
+        - Se han creado los archivos `.jsx` vacíos para todos los componentes planificados (ej. `Nav.jsx`, `Hero.jsx`, `ProjectCard.jsx`).
+    - **Configuración Inicial**:
+        - Se ha configurado el punto de entrada de la aplicación (`src/main.jsx`) para importar la hoja de estilos global `style.css`, asegurando la coherencia visual desde el inicio.
+        - Se ha limpiado y ensamblado el componente principal `App.jsx`, importando y organizando los componentes estructurales (`Nav`, `Main`, `Footer`, `ScrollUp`).
+
+- **Estado Actual**: El esqueleto de la nueva aplicación en React está montado y es funcional. La estructura de componentes está definida y los estilos globales se aplican correctamente. El proyecto está listo para la **Fase 3: Migración Paulatina de Contenido**, comenzando por rellenar los componentes uno por uno.
+
+---
+
 ## 37. Profesionalización del Ecosistema y Expansión de Proyectos
 
 - **Objetivo**: Dar un salto cualitativo en la estructura del proyecto, estableciendo las bases para un ecosistema de aplicaciones web profesionales y documentadas.
@@ -20,10 +38,9 @@
 
 ---
 
-Este documento resume las mejoras y acciones realizadas en el proyecto `danisid.com`.
+## 1. Análisis y Planificación
 
-### 1. Análisis y Planificación
-
+- **Objetivo**: Diagnosticar el estado inicial del proyecto y trazar un plan de acción.
 - Se analizó la estructura de archivos y los logs del servidor.
 - Se detectó tráfico de bots buscando vulnerabilidades de WordPress (`xmlrpc.php`) y una estructura de archivos desorganizada.
 - Se creó un plan de acción documentado en `PLAN_DE_MEJORAS.md`.
@@ -31,22 +48,25 @@ Este documento resume las mejoras y acciones realizadas en el proyecto `danisid.
 ### 2. Mejoras de Seguridad
 
 - **Bloqueo de Bots**: Se creó un archivo `.htaccess` en la raíz del proyecto.
-- Se añadió una regla para denegar todas las peticiones al archivo `xmlrpc.php`, eliminando eficazmente el tráfico de bots y reduciendo la carga innecesaria del servidor.
+- **Acción**: Se añadió una regla para denegar todas las peticiones al archivo `xmlrpc.php`, eliminando eficazmente el tráfico de bots y reduciendo la carga innecesaria del servidor.
 
-### 3. Organización de Archivos
+## 3. Organización de Archivos
 
+- **Objetivo**: Reestructurar el proyecto para mejorar la organización y mantenibilidad.
 - **Limpieza del Directorio Raíz**: Se reorganizaron los archivos HTML que estaban sueltos en la carpeta principal para mejorar la estructura del proyecto.
 - Se creó una nueva carpeta `cv/`.
 - Se movieron todos los archivos relacionados con los currículums (`cv.html`, `cv-diseno-dev-v1.html`, etc.) a la carpeta `cv/`.
 - Se movieron los archivos personales (`Dani.html`, `To-my-dad.html`, etc.) a la carpeta `personal/` existente.
 
-### 4. Corrección de Enlaces Rotos
+## 4. Corrección de Enlaces Rotos
 
+- **Objetivo**: Asegurar la integridad de la navegación tras la reorganización de archivos.
 - Se buscaron los enlaces que se rompieron debido a la reorganización de archivos.
 - Se identificaron y corrigieron dos enlaces en `index.html` que apuntaban a la antigua ubicación de `cv.html`, actualizándolos a la nueva ruta `cv/cv.html`.
 
-### 5. Integración con Git y GitHub
+## 5. Integración con Git y GitHub
 
+- **Objetivo**: Implementar el control de versiones para el proyecto.
 - **Inicialización de Repositorio**: Se inicializó un repositorio de Git local en el directorio del proyecto.
 - **Archivo `.gitignore`**: Se creó un archivo `.gitignore` para excluir la carpeta `logs/` del control de versiones.
 - **Primer Commit**: Se añadieron todos los archivos del proyecto y se realizó un commit inicial para establecer una línea base del proyecto.
@@ -59,7 +79,7 @@ Este documento resume las mejoras y acciones realizadas en el proyecto `danisid.
 
 **Estado Actual**: El proyecto está ahora más seguro, mejor organizado y completamente versionado en GitHub.
 
-### 6. Automatización del Despliegue (CI/CD) con GitHub Actions
+## 6. Automatización del Despliegue (CI/CD) con GitHub Actions
 
 - **Objetivo**: Eliminar la necesidad de usar FileZilla para las actualizaciones, automatizando el proceso de despliegue al hosting de IONOS.
 - **Implementación**:
@@ -69,7 +89,7 @@ Este documento resume las mejoras y acciones realizadas en el proyecto `danisid.
 - **Seguridad de Credenciales**:
     - Se crearon "Repository Secrets" en GitHub (`FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`) para almacenar de forma segura las credenciales de IONOS, evitando exponerlas en el código.
 
-### 7. Expansión de Contenido y Proyectos
+## 7. Expansión de Contenido y Proyectos
 
 - **Proyecto "Antología"**:
     - Se añadió una nueva carpeta `antologia/` para albergar un proyecto web dedicado a la escritura poética del autor.
@@ -144,7 +164,7 @@ Se inicia una nueva fase enfocada en refinar la marca personal, mejorar la exper
 
 ---
 
-## 21. Optimización y Refactorización (Fase 2)
+## 12. Optimización y Refactorización (Fase 2)
 
 - **Objetivo**: Mejorar la visibilidad en redes, el rendimiento, la estructura de los sub-proyectos y la consistencia de la marca.
 
@@ -173,7 +193,7 @@ Se inicia una nueva fase enfocada en refinar la marca personal, mejorar la exper
         - **Desacierto**: Los intentos iniciales de refactorización del CSS rompieron el efecto de escalado y no lograron el resultado deseado debido a conflictos en las reglas de `filter`.
         - **Acierto (Solución Pragmática)**: Se revirtieron los cambios en el CSS al estado original y se tomó la decisión de mover los iconos de IA a la cuadrícula principal de herramientas para mantener la consistencia visual y funcional sin necesidad de CSS complejo.
 
-## 12. Resolución Final del Despliegue Automático y Limpieza
+## 13. Resolución Final del Despliegue Automático y Limpieza
 
 - **Diagnóstico Final**: La ejecución del comando `ls -l` en el servidor de IONOS reveló la causa raíz del problema de autenticación:
     1.  **Error Tipográfico**: El archivo de claves se llamaba `autho**tiz**ed_keys` en lugar del nombre correcto `autho**riz**ed_keys`.
@@ -187,7 +207,7 @@ Se inicia una nueva fase enfocada en refinar la marca personal, mejorar la exper
 
 ---
 
-## 13. Anexo: Guía Detallada de la Solución de Autenticación SSH
+## 14. Anexo: Guía Detallada de la Solución de Autenticación SSH
 
 Esta sección documenta en detalle el diagnóstico y la solución del error de autenticación `ssh: handshake failed`, que impedía el despliegue automático.
 
@@ -221,7 +241,7 @@ Una vez que los secretos en GitHub estuvieron correctos y, fundamentalmente, el 
 
 ---
 
-## 14. Bitácora de Conversación: Hacking y Migración Web
+## 15. Bitácora de Conversación: Hacking y Migración Web
 
 Esta sección resume una conversación clave sobre la conexión con el hosting, la naturaleza de los archivos de configuración SSH y las recomendaciones para el despliegue de sitios estáticos.
 
@@ -254,7 +274,7 @@ Esta sección resume una conversación clave sobre la conexión con el hosting, 
 
 ---
 
-## 15. Decisión Estratégica: Abandono de IONOS y Migración a Plataformas Modernas
+## 16. Decisión Estratégica: Abandono de IONOS y Migración a Plataformas Modernas
 
 - **Diagnóstico Final del Despliegue**: Aunque se resolvieron los problemas técnicos de autenticación SSH, se ha determinado que el despliegue automatizado en IONOS no es una solución viable. La plataforma parece estar diseñada para desincentivar o cobrar como un servicio extra este tipo de automatización, lo cual va en contra de las prácticas de desarrollo modernas.
 
@@ -269,7 +289,7 @@ Esta sección resume una conversación clave sobre la conexión con el hosting, 
 
 ---
 
-## 16. Migración de Hosting: Despliegue Exitoso en Netlify y Migración de Dominio
+## 17. Migración de Hosting: Despliegue Exitoso en Netlify y Migración de Dominio
 
 - **Hito Alcanzado**: El proyecto `danisid.com` ha sido desplegado con éxito en **Netlify**.
 - **Resultado**: El sitio ahora está en vivo y funcionando en una infraestructura moderna, con despliegues automáticos directamente desde la rama `main` del repositorio de GitHub. El antiguo flujo de trabajo de despliegue a IONOS (`deploy.yml`) ha sido desactivado.
@@ -278,7 +298,7 @@ Esta sección resume una conversación clave sobre la conexión con el hosting, 
 
 ---
 
-## 17. Sincronización del Repositorio y Resolución de Conflictos Git
+## 18. Sincronización del Repositorio y Resolución de Conflictos Git
 
 Esta sección documenta el proceso de sincronización del repositorio local con los cambios realizados en remoto (desde otro dispositivo), superando varios desafíos comunes de Git.
 
@@ -301,7 +321,7 @@ Esta sección documenta el proceso de sincronización del repositorio local con 
 
 ---
 
-## 18. Consolidación en Netlify y Planificación de Nuevas Tareas
+## 19. Consolidación en Netlify y Planificación de Nuevas Tareas
 
 - **Hito Confirmado**: El despliegue en Netlify es completamente funcional y estable. Múltiples cambios realizados localmente se han reflejado correctamente en producción, validando el flujo de CI/CD.
 
@@ -317,7 +337,7 @@ Esta sección documenta el proceso de sincronización del repositorio local con 
 
 ---
 
-## 19. Expansión de Proyectos y Funcionalidades (Fase 2)
+## 20. Expansión de Proyectos y Funcionalidades (Fase 2)
 
 - **Objetivo**: Profesionalizar los sub-proyectos, añadir nuevas funcionalidades y mejorar la presentación del portafolio principal.
 
@@ -342,7 +362,7 @@ Esta sección documenta el proceso de sincronización del repositorio local con 
 
 ---
 
-## 20. Depuración y Verificación Final de Funcionalidades
+## 21. Depuración y Verificación Final de Funcionalidades
 
 - **Objetivo**: Asegurar que todas las nuevas implementaciones estén 100% operativas y libres de errores.
 
@@ -355,7 +375,7 @@ Esta sección documenta el proceso de sincronización del repositorio local con 
 
 ---
 
-## 21. Optimización de Rendimiento del Proyecto Cyberpunk
+## 22. Optimización de Rendimiento del Proyecto Cyberpunk
 
 - **Objetivo**: Mejorar el rendimiento del sub-proyecto `cyberpunk`, reduciendo el tiempo de carga inicial y el consumo de recursos de las animaciones.
 
@@ -372,7 +392,7 @@ Esta sección documenta el proceso de sincronización del repositorio local con 
 
 ---
 
-## 22. Modernización de la Estética a Cyberpunk
+## 23. Modernización de la Estética a Cyberpunk
 
 - **Objetivo**: Renovar la identidad visual del portafolio principal (`danisid.com`) para alinearla con una estética cyberpunk más vibrante y moderna, inspirada en el sub-proyecto `cyberpunk`.
 
@@ -397,7 +417,25 @@ Esta sección documenta el proceso de sincronización del repositorio local con 
 
 ---
 
-## 24. Modernización del Proyecto 'Aventuras de Adrián'
+## 24. Refinamiento y UX del CV Profesional (`cv.html`)
+
+- **Objetivo**: Transformar el sub-proyecto "Aventuras de Adrián" de un sitio estático a una experiencia web interactiva, moderna y motivadora, aplicando una estética cyberpunk consistente con la marca principal.
+
+- **Acciones Realizadas**:
+
+    - **Rediseño Visual a Cyberpunk**:
+        - **Acción**: Se implementó una nueva paleta de colores de modo oscuro con acentos neón (cian, magenta, verde) en todo el sub-proyecto.
+        - **Beneficio**: Se unificó la estética con el portafolio principal, creando una experiencia de marca coherente y atractiva.
+
+    - **Refactorización Técnica del CV**:
+        - **Acción**: Se movió todo el código CSS y JavaScript que estaba en línea en `cv.html` a archivos externos dedicados (`assets/css/cv-style.css` y `assets/js/cv-script.js`).
+        - **Beneficio**: El código del CV ahora es más limpio, modular y fácil de mantener, siguiendo las mejores prácticas de desarrollo web.
+
+**Estado Actual**: El CV profesional es ahora completamente responsivo, funcional y ofrece una experiencia de usuario inteligente y sin fricciones. Su base de código ha sido profesionalizada para facilitar futuras actualizaciones.
+
+---
+
+## 25. Modernización del Proyecto 'Aventuras de Adrián'
 
 - **Objetivo**: Transformar el sub-proyecto "Aventuras de Adrián" de un sitio estático a una experiencia web interactiva, moderna y motivadora, aplicando una estética cyberpunk consistente con la marca principal.
 
@@ -422,26 +460,7 @@ Esta sección documenta el proceso de sincronización del repositorio local con 
 
 - **Estado Actual**: El proyecto "Aventuras de Adrián" ha sido completamente modernizado, ofreciendo una experiencia de usuario rica, interactiva y visualmente impactante, alineada con los estándares profesionales del portafolio principal.
 
-## 23. Refinamiento y UX del CV Profesional (`cv.html`)
-
-- **Objetivo**: Mejorar la funcionalidad y la experiencia de usuario del CV profesional, especialmente en dispositivos móviles, y refactorizar su estructura técnica.
-
-- **Acciones Realizadas**:
-    - **Corrección de Botones Flotantes**:
-        - **Problema**: El botón "Imprimir / PDF" se superponía con el título en la versión móvil y presentaba problemas de tamaño.
-        - **Solución 1 (Iterativa)**: Se refactorizó el código para aislar el botón del header, solucionando los conflictos de estilo y creando un botón flotante estable.
-        - **Solución 2 (UX Mejorada)**: Se añadió un botón flotante de WhatsApp. Para evitar que ambos botones taparan el pie de página, se implementó un `IntersectionObserver` en JavaScript. Ahora, los botones flotantes se ocultan suavemente al llegar al footer y, en su lugar, aparecen versiones estáticas de los mismos como iconos en el pie de página.
-        - **Refinamiento**: Se ajustaron las transiciones CSS para que la animación de ocultar/mostrar sea más lenta y armoniosa.
-
-    - **Refactorización Técnica del CV**:
-        - **Acción**: Se movió todo el código CSS y JavaScript que estaba en línea en `cv.html` a archivos externos dedicados (`assets/css/cv-style.css` y `assets/js/cv-script.js`).
-        - **Beneficio**: El código del CV ahora es más limpio, modular y fácil de mantener, siguiendo las mejores prácticas de desarrollo web.
-
-**Estado Actual**: El CV profesional es ahora completamente responsivo, funcional y ofrece una experiencia de usuario inteligente y sin fricciones. Su base de código ha sido profesionalizada para facilitar futuras actualizaciones.
-
----
-
-## 25. Funcionalidad del Formulario y Mejoras de UX
+## 26. Funcionalidad del Formulario y Mejoras de UX
 
 - **Objetivo**: Implementar una solución robusta para el formulario de contacto principal y refinar la experiencia de usuario en base a las últimas implementaciones.
 - **Acciones Realizadas**:
@@ -455,25 +474,7 @@ Esta sección documenta el proceso de sincronización del repositorio local con 
         - Se optimizó la velocidad de las animaciones de carga en la página principal para una experiencia más ágil.
 - **Estado Actual**: El portafolio es ahora más funcional y robusto, con un formulario de contacto 100% operativo y una experiencia de usuario mejorada en todos sus componentes.
 
-- **Objetivo**: Mejorar la funcionalidad y la experiencia de usuario del CV profesional, especialmente en dispositivos móviles, y refactorizar su estructura técnica.
-
-- **Acciones Realizadas**:
-    - **Corrección de Botones Flotantes**:
-        - **Problema**: El botón "Imprimir / PDF" se superponía con el título en la versión móvil y presentaba problemas de tamaño.
-        - **Solución 1 (Iterativa)**: Se refactorizó el código para aislar el botón del header, solucionando los conflictos de estilo y creando un botón flotante estable.
-        - **Solución 2 (UX Mejorada)**: Se añadió un botón flotante de WhatsApp. Para evitar que ambos botones taparan el pie de página, se implementó un `IntersectionObserver` en JavaScript. Ahora, los botones flotantes se ocultan suavemente al llegar al footer y, en su lugar, aparecen versiones estáticas de los mismos como iconos en el pie de página.
-        - **Refinamiento**: Se ajustaron las transiciones CSS para que la animación de ocultar/mostrar sea más lenta y armoniosa.
-
-    - **Refactorización Técnica del CV**:
-        - **Acción**: Se movió todo el código CSS y JavaScript que estaba en línea en `cv.html` a archivos externos dedicados (`assets/css/cv-style.css` y `assets/js/cv-script.js`).
-        - **Beneficio**: El código del CV ahora es más limpio, modular y fácil de mantener, siguiendo las mejores prácticas de desarrollo web.
-
-**Estado Actual**: El CV profesional es ahora completamente responsivo, funcional y ofrece una experiencia de usuario inteligente y sin fricciones. Su base de código ha sido profesionalizada para facilitar futuras actualizaciones.
-
-
----
-
-## 26. Estabilización y Refactorización Completa de 'Antología'
+## 27. Estabilización y Refactorización Completa de 'Antología'
 
 - **Objetivo**: Transformar el proyecto "Antología" en una experiencia de lectura digital más inmersiva y profesional, mejorando la navegación y la estética.
 
@@ -495,7 +496,7 @@ Esta sección documenta el proceso de sincronización del repositorio local con 
 
 ---
 
-## 27. Inicio de la Migración a React: Profesionalización del Proyecto 'Antología'
+## 28. Inicio de la Migración a React: Profesionalización del Proyecto 'Antología'
 
 - **Objetivo**: Reconstruir el proyecto "Antología" utilizando React para crear una aplicación más robusta, mantenible y escalable, eliminando de raíz los bugs de estado y visibilidad.
 
@@ -513,7 +514,7 @@ Esta sección documenta el proceso de sincronización del repositorio local con 
 
 ---
 
-## 30. Overhaul del CV y Documentos Profesionales
+## 29. Overhaul del CV y Documentos Profesionales
 
 - **Objetivo**: Mejorar los materiales de presentación profesional añadiendo una carta de presentación, habilitando el soporte bilingüe (español/inglés) y mejorando el diseño y la funcionalidad general.
 
@@ -533,7 +534,7 @@ Esta sección documenta el proceso de sincronización del repositorio local con 
 
 ---
 
-## 31. Internacionalización de la Página Principal
+## 30. Internacionalización de la Página Principal
 
 - **Objetivo**: Ampliar el alcance del portafolio principal (`danisid.com`) a una audiencia global mediante la creación de una versión en inglés.
 
@@ -546,7 +547,7 @@ Esta sección documenta el proceso de sincronización del repositorio local con 
 
 ---
 
-## 32. Actualización de la Documentación Principal (README.md)
+## 31. Actualización de la Documentación Principal (README.md)
 
 - **Objetivo**: Reflejar el estado actual y el nuevo enfoque profesional del proyecto en el `README.md`.
 - **Acciones Realizadas**:
@@ -557,7 +558,7 @@ Esta sección documenta el proceso de sincronización del repositorio local con 
 
 ---
 
-## 33. Optimización SEO de la Página Principal
+## 32. Optimización SEO de la Página Principal
 
 - **Objetivo**: Mejorar el posicionamiento en buscadores y la visibilidad en redes sociales del portafolio principal.
 - **Acciones Realizadas**:
@@ -568,7 +569,7 @@ Esta sección documenta el proceso de sincronización del repositorio local con 
 
 ---
 
-## 34. Revisión de Accesibilidad y Reversión Parcial
+## 33. Revisión de Accesibilidad y Reversión Parcial
 
 - **Objetivo**: Mejorar la accesibilidad (a11y) y la semántica de la página principal.
 - **Acciones Realizadas**:
@@ -580,7 +581,7 @@ Esta sección documenta el proceso de sincronización del repositorio local con 
 
 ---
 
-## 35. Refactorización Pedagógica de 'Misiones Rítmicas'
+## 34. Refactorización Pedagógica de 'Misiones Rítmicas'
 
 - **Objetivo**: Profundizar el valor pedagógico del proyecto "Aventuras", integrando conceptos de la pedagogía Waldorf y la antroposofía.
 
@@ -595,7 +596,7 @@ Esta sección documenta el proceso de sincronización del repositorio local con 
 
 ---
 
-## 36. Refinamiento Narrativo y Visión a Futuro de 'Aventuras'
+## 35. Refinamiento Narrativo y Visión a Futuro de 'Aventuras'
 
 - **Objetivo**: Infundir el proyecto con una voz más personal y poética, y planificar su evolución técnica.
 
@@ -610,10 +611,9 @@ Esta sección documenta el proceso de sincronización del repositorio local con 
 
 ---
 
+## 36. Mejoras en UI y Build del Proyecto 'Antología' (React)
 
-
-## 28. Mejoras en UI y Build del Proyecto 'Antología' (React)
-
+- **Objetivo**: Avanzar en el desarrollo de la nueva versión de 'Antología' en React, mejorando la interfaz de usuario y la configuración de compilación.
 - **Objetivo**: Avanzar en el desarrollo de la nueva versión de 'Antología' en React, mejorando la interfaz de usuario y la configuración de compilación.
 
 - **Acciones Realizadas**:
@@ -629,7 +629,7 @@ Esta sección documenta el proceso de sincronización del repositorio local con 
 
 ---
 
-## 29. Limpieza de Repositorio: Eliminación de Proyecto Obsoleto
+## 37. Limpieza de Repositorio: Eliminación de Proyecto Obsoleto
 
 - **Objetivo**: Consolidar la arquitectura del proyecto y eliminar código obsoleto tras la migración exitosa de 'Antología' a React en su propio subdominio.
 - **Acciones Realizadas**:

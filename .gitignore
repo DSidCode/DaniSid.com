@@ -1,1 +1,25 @@
 logs/
+
+# Dependencias de Node.js
+node_modules/
+
+# Archivos de build (Vite/React)
+dist/
+.vite/
+
+# Archivos de entorno - ¡MUY IMPORTANTE!
+.env
+.env.local
+.env.*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Archivos del editor
+.vscode/
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db

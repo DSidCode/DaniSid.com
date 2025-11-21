@@ -1,0 +1,100 @@
+const   contactForm = document.getElementById('contact-form'),
+        contactMessage = document.getElementById('contact-message');
+
+// Función auxiliar para codificar los datos del formulario para Netlify
+const encode = (data) => {
+    return Object.keys(data)
+        .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+        .join("&");
+}
+
+const submitForm = (e) =>{
+    e.preventDefault();
+
+    const formData = new FormData(contactForm);
+    const formObject = Object.fromEntries(formData.entries());
+
+    fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode(formObject)
+    })
+    .then(() => {
+        // Muestra el mensaje de éxito
+        contactMessage.textContent = 'Tu mensaje ha sido enviado ✔';
+        // Limpia el formulario
+        contactForm.reset();
+        // Oculta el mensaje después de 5 segundos
+        setTimeout(() => { contactMessage.textContent = '' }, 5000);
+    })
+    .catch((error) => {
+        contactMessage.textContent = 'Mensaje no Enviado (error de servidor) ❌';
+        console.error("Error al enviar el formulario: ", error);
+    });
+}
+
+contactForm.addEventListener('submit', submitForm);
+
+/* =============== SHOW SCROLL UP ============*/
+const scrollUp = () =>{
+    const scrollUp = document.getElementById('scroll-up')
+    window.scrollY >= 350 ? scrollUp.classList.add('show-scroll') : scrollUp.classList.remove('show-scroll')
+}
+window.addEventListener('scroll', scrollUp)
+/* =============== SCROLL SECTION ACTIVE LINK ============*/
+const sections = document.querySelectorAll('section[id]')
+
+const scrollActive =() =>{
+    const scrollDown = window.scrollY
+
+    sections.forEach(current =>{
+        const sectionHeight = current.offsetHeight,
+            sectionTop = current.offsetTop - 58,
+            sectionId = current.getAttribute('id'),
+            sectionClass = document.querySelector('.nav_list a[href*=' + sectionId + ']')
+
+            if(scrollDown > sectionTop && scrollDown <= sectionTop +sectionHeight){
+                sectionClass.classList.add('active-link')
+            }else{
+                sectionClass.classList.remove('active-link')
+            }
+    })
+}
+window.addEventListener('scroll', scrollActive)
+/* =============== SCROLL REVEAL ANIMATION ============*/
+const sr = ScrollReveal({
+    origin: 'top',
+    distance: '60px',
+    duration: 800, // Reducimos la duración a menos de 1 segundo
+    delay: 100,    // Reducimos el retraso base
+    // reset: true, //repeticin de la animacion
+})
+
+sr.reveal(`.hero_data, .contact-form`, {origin: 'top'})
+sr.reveal(`.hero_image`, {origin: 'right', delay: 400})
+sr.reveal(`.skills_wrapper`, {origin: 'bottom', delay: 500})
+sr.reveal(`.projects_card, .services_card, .experience_card, .lab_card`, {interval: 80}) // Intervalo más rápido
+
+
+/*=============== SKILLS TOGGLE ===============*/
+const skillsToggle = document.getElementById('skills-toggle'),
+      skillsSecondary = document.getElementById('skills-secondary')
+
+if (skillsToggle) {
+    skillsToggle.addEventListener('click', () => {
+        // Add the show-skills class to the div tag with the skills_secondary class
+        skillsSecondary.classList.toggle('show-skills')
+
+        // Change icon
+        const icon = skillsToggle.querySelector('i');
+        if (icon.classList.contains('ri-add-line')) {
+            icon.classList.remove('ri-add-line');
+            icon.classList.add('ri-subtract-line');
+            skillsToggle.title = "Ver menos habilidades";
+        } else {
+            icon.classList.remove('ri-subtract-line');
+            icon.classList.add('ri-add-line');
+            skillsToggle.title = "Ver más habilidades";
+        }
+    })
+}
