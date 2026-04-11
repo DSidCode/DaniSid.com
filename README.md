@@ -15,13 +15,13 @@
 
 ## Tecnologías Utilizadas
 
-Este sitio está construido principalmente con tecnologías web fundamentales:
+Este sitio está construido con una arquitectura frontend moderna (React) orientada a la escalabilidad visual y técnica:
 
-- **HTML5**: Para la estructura del contenido.
-- **CSS3**: Para el diseño y los estilos visuales.
-- **JavaScript (Vanilla)**: Para la interactividad y los efectos dinámicos.
-- **Netlify**: Para el hosting y el despliegue continuo (CI/CD).
-- **ScrollReveal.js**: Para las animaciones de scroll que revelan elementos de la página.
+- **React Vite**: Framework rápido y moderno para la construcción de interfaces modulares (SPA).
+- **Tailwind CSS v4**: Sistema de utilidad orientado a "Glassmorphism" y diseños premium y fluidos.
+- **Framer Motion**: Motor de animaciones fluidas para transiciones y micro-interacciones.
+- **Netlify (WebOps)**: Para el hosting y el despliegue continuo estructurado (CI/CD).
+- **Integración de IA**: Construido y mejorado asistido activamente por Gemini para optimizaciones de código y arquitectura.
 
 ## Estructura del Repositorio
 

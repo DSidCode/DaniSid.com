@@ -1,0 +1,203 @@
+/* === Estilos para la Sección de Proyectos === */
+
+.projects_container {
+  row-gap: 2rem;
+}
+
+.projects_category_title {
+  font-size: var(--h3-font-size);
+  color: var(--first-color);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  grid-column: 1 / -1; /* Ocupa todo el ancho del grid */
+}
+
+/* --- Estilos para la Tarjeta de Proyecto y Hover --- */
+.projects_card {
+  position: relative; /* Clave para el posicionamiento de la capa de datos */
+  border-radius: 1rem;
+  overflow: hidden; /* Oculta lo que se salga de los bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s ease-out;
+}
+
+.projects_card:hover {
+  transform: translateY(-10px); /* Efecto de levitación */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.projects_image {
+  width: 100%;
+  height: 100%;
+}
+
+.projects_img,
+.projects_video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Asegura que la imagen/video cubra la tarjeta sin deformarse */
+}
+
+.projects_data {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.95) 80%);
+  color: #fff;
+  padding: 1.5rem 1rem;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Alinea el contenido abajo */
+
+  /* Transición para el efecto hover */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+.projects_card:hover .projects_data {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.projects_title {
+  font-size: var(--h3-font-size);
+  margin-bottom: 0.25rem;
+  color: #fff;
+}
+
+.projects_description {
+  font-size: var(--small-font-size);
+  margin-bottom: 1rem;
+}
+
+.projects_skills {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.projects_skill {
+  width: 24px;
+  height: 24px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  padding: 4px;
+}
+
+.projects_button {
+  align-self: flex-start; /* Alinea el botón a la izquierda */
+  pointer-events: all; /* Asegura que el botón sea clickeable */
+}
+
+/* --- Estilos para la Ventana Modal --- */
+.project_modal {
+  position: fixed; /* ¡Clave! Lo saca del flujo normal del documento */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(5px);
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 1000; /* Asegura que esté por encima de todo */
+
+  /* Transición para la aparición */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.project_modal.active-modal {
+  opacity: 1;
+  visibility: visible;
+}
+
+.project_modal-content {
+  position: relative;
+  background-color: var(--body-color);
+  color: var(--text-color);
+  padding: 2.5rem;
+  border-radius: 1rem;
+  max-width: 650px;
+  width: 100%;
+  text-align: center;
+  border: 1px solid var(--first-color-alt);
+  box-shadow: 0 0 20px rgba(var(--first-color-rgb), 0.3);
+
+  /* Animación de entrada */
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.project_modal.active-modal .project_modal-content {
+    transform: scale(1);
+}
+
+.project_modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: 1.75rem;
+  color: var(--first-color);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.project_modal-close:hover {
+    transform: rotate(90deg);
+}
+
+.project_modal-img,
+.project_modal-video {
+  width: 100%;
+  border-radius: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.project_modal-title {
+  font-size: var(--h2-font-size);
+  margin-bottom: 0.5rem;
+  color: var(--title-color);
+}
+
+.project_modal-description {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  font-size: var(--normal-font-size);
+}
+
+.project_modal-skills_container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.project_modal-skill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--container-color);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+}
+
+.project_modal-skill_icon {
+    width: 20px;
+    height: 20px;
+}
+
+.project_modal-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}

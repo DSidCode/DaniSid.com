@@ -1,0 +1,82 @@
+/*=============== MANIFESTO ===============*/
+.manifesto_container {
+    text-align: center;
+    display: grid;
+    gap: 2.5rem;
+}
+
+.manifesto_intro {
+    font-size: var(--h3-font-size);
+    line-height: 1.6;
+    max-width: 700px;
+    justify-self: center;
+    color: var(--text-color);
+}
+
+.manifesto_intro strong {
+    color: var(--first-color);
+    font-weight: var(--font-semi-bold);
+}
+
+.pillars_container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.pillar_card {
+    background-color: var(--container-color);
+    padding: 2rem 1.5rem;
+    border-radius: 1.5rem;
+    border: 1px solid transparent;
+    transition: border-color .4s, transform .3s ease, box-shadow .3s ease;
+    text-align: left;
+}
+
+.pillar_card:hover {
+    transform: translateY(-8px);
+    border-color: var(--first-color-alt);
+    box-shadow: 0 0 20px hsla(var(--hue-magenta), 100%, 60%, 0.3);
+}
+
+.pillar_title {
+    font-size: var(--h3-font-size);
+    color: var(--first-color);
+    margin-bottom: 1rem;
+}
+
+.pillar_description {
+    font-size: var(--normal-font-size);
+    line-height: 1.5;
+}
+
+.pillar_description strong {
+    color: var(--third-color); /* Verde neón para resaltar */
+    font-weight: var(--font-medium);
+}
+
+.manifesto_pitch {
+    background-color: var(--body-color);
+    border-left: 4px solid var(--first-color);
+    padding: 1.5rem 2rem;
+    margin-top: 2rem;
+    border-radius: 0 .5rem .5rem 0;
+    max-width: 800px;
+    justify-self: center;
+}
+
+.manifesto_pitch p {
+    font-style: italic;
+    font-size: var(--h3-font-size);
+    line-height: 1.7;
+}
+
+.manifesto_pitch strong {
+    color: var(--first-color-alt);
+}
+
+/* Responsive */
+@media screen and (min-width: 768px) {
+    .pillars_container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
