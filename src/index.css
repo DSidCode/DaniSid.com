@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@theme {
+  /* ===== PALETA MENTE, ALMA Y LUJO ===== */
+  --color-ds-bg: #0A0F1C; /* Deep navy background (El Lienzo Oscuro) */
+  --color-ds-surface: #131A2B; /* Darker navy for cards */
+  --color-ds-primary: #00F0FF; /* Cian Láser (La Mente / Ingeniería) */
+  --color-ds-secondary: #FFB800; /* Oro Puro (El Lujo / Estatus) */
+  --color-ds-accent: #FF2A2A; /* Rojo Escarlata (El Alma / Pasión) */
+
+  /* ===== Colores Neutros ===== */
+  --color-ds-text: #F1F5F9;
+  --color-ds-muted: #94A3B8;
+  --color-ds-border: #1E293B;
+
+  /* ===== Fonts ===== */
+  --font-sans: 'Outfit', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-ds-bg);
+    color: var(--color-ds-text);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: rgba(0, 240, 255, 0.25);
+    color: #fff;
+  }
+}
+
+@layer utilities {
+  .zettel-card {
+    background: var(--color-ds-surface);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .zettel-card:hover {
+    border-color: rgba(0, 240, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 240, 255, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #D4AF37 0%, #F5D77A 50%, #D4AF37 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-cyber {
+    background: linear-gradient(135deg, var(--color-ds-secondary) 0%, var(--color-ds-accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glow-amber {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.15), 0 0 60px rgba(212, 175, 55, 0.05);
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.15), 0 0 60px rgba(0, 240, 255, 0.05);
+  }
+}
