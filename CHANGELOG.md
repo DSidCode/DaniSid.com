@@ -17,6 +17,7 @@ Todos los cambios notables de este proyecto serán documentados en este archivo.
 - **Copywriting Corporativo:** Textos de nivel CTO que reflejan "El Protocolo de la Excelencia", destacando la fusión de ingeniería y pasión.
 - **Laboratorio I+D:** Renombre y re-enfoque de los proyectos experimentales (Motor Quimera IA, Eddy Soundscapes) para demostrar liderazgo técnico y visión Data Engineering.
 - **Botones Call To Action:** Modificados para apuntar al Atelier de Maison Quintessence.
+- **Corrección de Dominio:** Actualizados los enlaces internos para apuntar a la URL correcta en producción (`maison-quintessence.netlify.app`).
 
 ### Removed (Eliminado)
 - **Estética Hacker Limitante:** Se eliminaron las fuentes Serif delgadas que restaban peso corporativo a favor de una tipografía geométrica contundente.
