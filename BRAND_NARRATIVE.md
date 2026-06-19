@@ -24,7 +24,7 @@ Tu presencia online se divide en dos grandes templos, diseñados para atrapar a 
     *   **El Laboratorio:** Tus locuras experimentales. La App de Guitarra (Aura), tus scripts de Python, la IA educativa. Demuestra que programas por pura pasión y curiosidad científica.
     *   **El Arte:** La Antología poética. Demuestra que tienes sensibilidad humana.
 
-### B. La Firma de Lujo (`Maison Quintessence` / `quintessence.studio`)
+### B. La Firma de Lujo (`Maison Quintessence` / `maison-quintessence.netlify.app`)
 *   **El Vibe:** Frío, calculador, oscuro (OLED), minimalista, ultra-premium. Lujo silencioso.
 *   **El Objetivo:** Cerrar contratos B2B de alto valor económico (3k - 10k €). 
 *   **Lo que contiene:**

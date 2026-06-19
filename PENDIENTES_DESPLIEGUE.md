@@ -15,7 +15,7 @@ Hemos blindado la narrativa. `danisid.com` ahora tiene la infraestructura mental
 *   Ejecutar `npm run build`.
 *   Desplegar en la plataforma final (Netlify/Vercel) y vincular dominio.
 
-### 3. Despliegue de `quintessence.studio` (Maison)
+### 3. Despliegue de `maison-quintessence.netlify.app` (Maison)
 *   Alinear la agencia con los últimos cambios de DaniSid.
 *   Ejecutar build y subir a producción.
 

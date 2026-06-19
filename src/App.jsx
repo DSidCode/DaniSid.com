@@ -170,7 +170,7 @@ function App() {
           <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto font-light leading-relaxed mb-10">
             Mientras <span className="font-bold text-white">DaniSid</span> es la mente arquitectónica, <strong className="text-white font-black tracking-tight">Maison Quintessence</strong> es mi Atelier exclusivo. Es la corte donde nuestra ingeniería se transmuta en portales B2B de lujo y SaaS de alto rendimiento corporativo.
           </p>
-          <a href="https://quintessence.studio" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 border-2 border-[var(--color-ds-secondary)] text-[#0A0F1C] bg-[var(--color-ds-secondary)] hover:bg-transparent hover:text-[var(--color-ds-secondary)] px-10 py-4 text-sm font-black tracking-widest uppercase transition-all rounded-sm shadow-[0_0_30px_rgba(0,255,163,0.2)]">
+          <a href="https://maison-quintessence.netlify.app/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 border-2 border-[var(--color-ds-secondary)] text-[#0A0F1C] bg-[var(--color-ds-secondary)] hover:bg-transparent hover:text-[var(--color-ds-secondary)] px-10 py-4 text-sm font-black tracking-widest uppercase transition-all rounded-sm shadow-[0_0_30px_rgba(0,255,163,0.2)]">
                 Explorar La Agencia <Rocket className="w-5 h-5" />
           </a>
         </div>
