@@ -8,7 +8,9 @@ import {
   ShieldCheck, 
   Sparkles, 
   BookOpen, 
-  UserCircle 
+  UserCircle,
+  Mail,
+  MessageCircle
 } from 'lucide-react';
 
 /* ════════════════════════════════════════════
@@ -57,7 +59,9 @@ function DataLog({ status, tags, title, subtitle, mission, id, link }) {
    ════════════════════════════════════════════ */
 function App() {
   return (
-    <div className="min-h-screen bg-[var(--color-ds-bg)] text-[var(--color-ds-text)] selection:bg-[var(--color-ds-primary)] selection:text-[#0A0F1C]">
+    <div className="min-h-screen bg-[var(--color-ds-bg)] text-[var(--color-ds-text)] selection:bg-[var(--color-ds-primary)] selection:text-[#0A0F1C] relative">
+      {/* Textura de Lujo (Quiet Luxury) */}
+      <div className="noise-overlay fixed" />
       
       {/* ─── NAVEGACIÓN ─── */}
       <nav className="fixed top-0 w-full z-50 bg-[var(--color-ds-bg)]/80 backdrop-blur-md border-b border-[var(--color-ds-border)]/50">
@@ -65,10 +69,18 @@ function App() {
           <div className="font-sans font-black text-xl tracking-tighter">
             DaniSid<span className="text-[var(--color-ds-primary)] animate-pulse">.</span>
           </div>
-          <div className="hidden md:flex gap-6 font-mono text-xs text-slate-400 uppercase tracking-widest">
+          <div className="hidden md:flex gap-6 font-mono text-xs text-slate-400 uppercase tracking-widest items-center">
             <a href="#proposito" className="hover:text-[var(--color-ds-primary)] transition-colors">La Filosofía</a>
             <a href="#atelier" className="hover:text-[var(--color-ds-primary)] transition-colors">El Atelier</a>
             <a href="#experiencia" className="hover:text-[var(--color-ds-primary)] transition-colors">La Corte</a>
+            <a href="#contacto" className="hover:text-[var(--color-ds-primary)] transition-colors">Contacto</a>
+            <div className="w-px h-4 bg-slate-800 mx-2"></div>
+            <a href="https://github.com/DaniSidCode" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors" title="GitHub">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.02c3.14-.35 6.5-1.4 6.5-7a4.6 4.6 0 0 0-1.39-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.35-3.5 1.25a11.39 11.39 0 0 0-7 0C6.1 2.75 5 3.1 5 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 3.5 9.5c0 5.6 3.35 6.65 6.5 7a4.8 4.8 0 0 0-1 3.02V22"/><path d="M9 20c-5 1.5-5-2.5-7-3"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/danisidcode/" target="_blank" rel="noopener noreferrer" className="hover:text-[#0077b5] transition-colors" title="LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
           </div>
         </div>
       </nav>
@@ -106,10 +118,10 @@ function App() {
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <a href="#atelier" className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[var(--color-ds-secondary)] to-[var(--color-ds-accent)] text-[#0A0F1C] hover:opacity-90 px-8 py-3.5 text-sm font-bold tracking-wide uppercase transition-all rounded-sm shadow-[0_0_20px_rgba(255,184,0,0.3)]">
+              <a href="#atelier" className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[var(--color-ds-secondary)] to-[var(--color-ds-accent)] text-[#050505] hover:opacity-90 px-8 py-3.5 text-sm font-bold tracking-wide uppercase transition-all rounded-sm shadow-[0_0_20px_rgba(255,184,0,0.3)] relative z-10">
                 Entrar al Atelier <Rocket className="w-4 h-4" />
               </a>
-              <a href="#" className="inline-flex items-center justify-center gap-2 border border-[var(--color-ds-primary)]/30 text-[var(--color-ds-primary)] hover:bg-[var(--color-ds-primary)]/10 px-8 py-3.5 text-sm font-mono tracking-widest uppercase transition-all rounded-sm">
+              <a href="mailto:garciadanielsid@gmail.com" className="inline-flex items-center justify-center gap-2 border border-[var(--color-ds-primary)]/30 text-[var(--color-ds-primary)] hover:bg-[var(--color-ds-primary)]/10 px-8 py-3.5 text-sm font-mono tracking-widest uppercase transition-all rounded-sm relative z-10">
                 Agendar Audiencia <TerminalSquare className="w-4 h-4" />
               </a>
             </div>
@@ -205,6 +217,7 @@ function App() {
                 objective: "Posicionar una marca personal en el segmento de lujo para la captación directa de contratos y eventos privados."
               }}
               id="EDY-02"
+              link="https://eddycamusic.netlify.app/"
             />
 
             <DataLog 
@@ -218,12 +231,24 @@ function App() {
               }}
               id="QMR-03"
             />
+
+            <DataLog 
+              status="CLASSIFIED"
+              tags="Ciberseguridad.Infraestructura.RBAC"
+              title="Terminal Zero"
+              subtitle="Auditoría de Red y Bypass ISP"
+              mission={{
+                desc: "Diagnóstico y restablecimiento de conectividad de nodos transaccionales físicos bajo bloqueo de ISP. Implementación de control de acceso (RBAC) y pasarelas seguras independientes.",
+                objective: "Garantizar alta disponibilidad en operaciones comerciales críticas, evadiendo restricciones a través de ingeniería de redes (Secure Gateway)."
+              }}
+              id="TZ-04"
+            />
           </div>
         </div>
       </section>
 
       {/* ─── EXPERIENCIA PROFESIONAL ─── */}
-      <section id="experiencia" className="py-24 px-6 bg-[#0E1324] border-t border-slate-800/50">
+      <section id="experiencia" className="py-24 px-6 bg-[#050505] border-t border-slate-800/50 relative z-10">
         <div className="max-w-5xl mx-auto">
           <h2 className="font-sans font-black tracking-tighter text-4xl text-gradient-cyber mb-16 text-center">La Corte (Experiencia)</h2>
           
@@ -322,10 +347,10 @@ function App() {
               <h3 className="text-sm font-mono text-[var(--color-ds-secondary)] font-bold uppercase tracking-widest mb-8">[ PALETA CROMÁTICA ]</h3>
               <div className="flex flex-col gap-5">
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-xl bg-[#0A0F1C] border border-slate-700 shadow-inner"></div>
+                  <div className="w-14 h-14 rounded-xl bg-[#050505] border border-slate-800 shadow-inner"></div>
                   <div>
-                    <div className="text-base text-white font-bold">Deep Navy (El Lienzo Oscuro)</div>
-                    <div className="text-xs font-mono text-slate-500">#0A0F1C</div>
+                    <div className="text-base text-white font-bold">OLED Black (El Lienzo Oscuro)</div>
+                    <div className="text-xs font-mono text-slate-500">#050505</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
@@ -355,9 +380,55 @@ function App() {
         </div>
       </section>
 
+      {/* ─── CONTACTO ─── */}
+      <section id="contacto" className="py-24 px-6 relative border-t border-slate-800/50 bg-[#050505]">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="inline-block border border-[var(--color-ds-primary)]/30 px-4 py-1 text-xs font-mono text-[var(--color-ds-primary)] mb-6 tracking-widest uppercase">Canal de Comunicación</div>
+          <h2 className="text-4xl md:text-5xl font-sans font-black tracking-tighter text-white mb-6">
+            Inicia el Protocolo
+          </h2>
+          <p className="text-lg text-slate-400 max-w-2xl mx-auto font-light leading-relaxed mb-10">
+            ¿Buscas elevar la arquitectura digital de tu negocio o tienes algún proyecto en mente? Hablemos de sistemas, rendimiento y diseño premium.
+          </p>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            <a href="mailto:garciadanielsid@gmail.com" className="zettel-card p-8 flex flex-col items-center justify-center hover:border-[var(--color-ds-primary)]/50 transition-colors group">
+              <Mail className="w-10 h-10 text-[var(--color-ds-primary)] mb-4 group-hover:scale-110 transition-transform" />
+              <h3 className="font-sans font-bold text-lg text-white mb-2">Correo Electrónico</h3>
+              <p className="text-xs text-slate-400">garciadanielsid@gmail.com</p>
+            </a>
+            
+            <a href="https://wa.me/34641868620" target="_blank" rel="noopener noreferrer" className="zettel-card p-8 flex flex-col items-center justify-center hover:border-[var(--color-ds-secondary)]/50 transition-colors group">
+              <MessageCircle className="w-10 h-10 text-[var(--color-ds-secondary)] mb-4 group-hover:scale-110 transition-transform" />
+              <h3 className="font-sans font-bold text-lg text-white mb-2">WhatsApp</h3>
+              <p className="text-xs text-slate-400">+34 641 86 86 20</p>
+            </a>
+            
+            <a href="https://www.linkedin.com/in/danisidcode/" target="_blank" rel="noopener noreferrer" className="zettel-card p-8 flex flex-col items-center justify-center hover:border-[#0077b5]/50 transition-colors group">
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-linkedin text-[#0077b5] mb-4 group-hover:scale-110 transition-transform"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+              <h3 className="font-sans font-bold text-lg text-white mb-2">LinkedIn</h3>
+              <p className="text-xs text-slate-400">Red Profesional</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* ─── FOOTER ─── */}
-      <footer className="border-t border-slate-800/30 py-12 text-center bg-[#070A13]">
+      <footer className="border-t border-slate-800/30 py-12 text-center bg-[#050505] relative z-10">
         <div className="font-sans font-black text-white text-3xl mb-4 tracking-tighter">DaniSid.</div>
+        
+        <div className="flex justify-center gap-6 mb-6">
+          <a href="https://github.com/DaniSidCode" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors" title="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.02c3.14-.35 6.5-1.4 6.5-7a4.6 4.6 0 0 0-1.39-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.35-3.5 1.25a11.39 11.39 0 0 0-7 0C6.1 2.75 5 3.1 5 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 3.5 9.5c0 5.6 3.35 6.65 6.5 7a4.8 4.8 0 0 0-1 3.02V22"/><path d="M9 20c-5 1.5-5-2.5-7-3"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/danisidcode/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-[#0077b5] transition-colors" title="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="mailto:garciadanielsid@gmail.com" className="text-slate-400 hover:text-[var(--color-ds-primary)] transition-colors" title="Contacto">
+            <Mail className="w-5 h-5" />
+          </a>
+        </div>
+
         <p className="text-xs text-[var(--color-ds-primary)] font-mono tracking-widest uppercase opacity-80">
           © {new Date().getFullYear()} El protocolo de la excelencia.
         </p>

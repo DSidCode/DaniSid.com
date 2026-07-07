@@ -2,8 +2,8 @@
 
 @theme {
   /* ===== PALETA MENTE, ALMA Y LUJO ===== */
-  --color-ds-bg: #0A0F1C; /* Deep navy background (El Lienzo Oscuro) */
-  --color-ds-surface: #131A2B; /* Darker navy for cards */
+  --color-ds-bg: #050505; /* OLED Black (Fatiga Visual Nula) */
+  --color-ds-surface: #0C0C0C; /* Darker navy for cards */
   --color-ds-primary: #00F0FF; /* Cian Láser (La Mente / Ingeniería) */
   --color-ds-secondary: #FFB800; /* Oro Puro (El Lujo / Estatus) */
   --color-ds-accent: #FF2A2A; /* Rojo Escarlata (El Alma / Pasión) */
@@ -11,7 +11,7 @@
   /* ===== Colores Neutros ===== */
   --color-ds-text: #F1F5F9;
   --color-ds-muted: #94A3B8;
-  --color-ds-border: #1E293B;
+  --color-ds-border: #1E1E1E;
 
   /* ===== Fonts ===== */
   --font-sans: 'Outfit', system-ui, -apple-system, sans-serif;
@@ -79,5 +79,14 @@
 
   .glow-cyan {
     box-shadow: 0 0 20px rgba(0, 240, 255, 0.15), 0 0 60px rgba(0, 240, 255, 0.05);
+  }
+
+  .noise-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.03;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjAwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZmlsdGVyIGlkPSJub2lzZUZpbHRlciI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNjUiIG51bU9jdGF2ZXM9IjMiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgibm9pc2VGaWx0ZXIpIi8+PC9zdmc+');
   }
 }

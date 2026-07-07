@@ -2,6 +2,16 @@
 
 Todos los cambios notables de este proyecto serán documentados en este archivo.
 
+## [1.1.0] - 2026-07-05 - Mejora de Accesibilidad y Filosofía B2B
+
+### Added (Añadido)
+- **Sección de Contacto (Canal de Comunicación):** Nueva sección dedicada antes del footer con tarjetas interactivas (Glassmorphism B2B) para Email, WhatsApp y LinkedIn.
+- **Iconografía Dedicada:** Integración del icono `MessageCircle` (Lucide-React) para la interacción directa por WhatsApp.
+
+### Changed (Modificado)
+- **Actualización de Enlaces:** Migración global (Navbar, Contacto, Footer) de los enlaces de LinkedIn a la nueva URL corporativa (`/in/danisidcode/`).
+- **Navegación Dinámica:** Añadido el enlace ancla `#contacto` en el menú principal para facilitar el embudo de comunicación.
+
 ## [1.0.0] - 2026-06-19 - The B2B Luxury Update
 
 ### Added (Añadido)
