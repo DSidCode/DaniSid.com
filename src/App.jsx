@@ -220,29 +220,7 @@ function App() {
               link="https://eddycamusic.netlify.app/"
             />
 
-            <DataLog 
-              status="FUNCTIONAL"
-              tags="Python.DataMining.AI.Automation"
-              title="Motor Quimera IA"
-              subtitle="Automatización de Datos Complejos"
-              mission={{
-                desc: "Sistema local de ingeniería inversa para la extracción, clasificación y empaquetado de gigabytes de conversaciones desestructuradas y archivos multimedia.",
-                objective: "Optimizar la recopilación y limpieza de datos (Data Engineering) para sentar las bases de entrenamiento de modelos NLP personalizados."
-              }}
-              id="QMR-03"
-            />
 
-            <DataLog 
-              status="CLASSIFIED"
-              tags="Ciberseguridad.Infraestructura.RBAC"
-              title="Terminal Zero"
-              subtitle="Auditoría de Red y Bypass ISP"
-              mission={{
-                desc: "Diagnóstico y restablecimiento de conectividad de nodos transaccionales físicos bajo bloqueo de ISP. Implementación de control de acceso (RBAC) y pasarelas seguras independientes.",
-                objective: "Garantizar alta disponibilidad en operaciones comerciales críticas, evadiendo restricciones a través de ingeniería de redes (Secure Gateway)."
-              }}
-              id="TZ-04"
-            />
           </div>
         </div>
       </section>
