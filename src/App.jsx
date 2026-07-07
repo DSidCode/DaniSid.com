@@ -301,62 +301,6 @@ function App() {
         </div>
       </section>
 
-      {/* ─── IDENTIDAD CORPORATIVA (MANUAL) ─── */}
-      <section className="py-24 px-6 relative border-t border-slate-800/50 bg-[#0B101E]">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="font-sans font-black tracking-tighter text-4xl text-white mb-12 text-center">Manual de Identidad</h2>
-          
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Typography */}
-            <div className="zettel-card p-8">
-              <h3 className="text-sm font-mono text-[var(--color-ds-secondary)] font-bold uppercase tracking-widest mb-8">[ TIPOGRAFÍA ]</h3>
-              <div className="mb-8 p-4 bg-[#0A0F1C] border border-slate-800 rounded-lg">
-                <div className="text-4xl font-sans font-black tracking-tighter text-gradient-cyber mb-2">Outfit ExtraBold</div>
-                <div className="text-xs font-mono text-slate-400">TITULARES / IMPACTO / LUJO MODERNO</div>
-              </div>
-              <div className="p-4 bg-[#0A0F1C] border border-slate-800 rounded-lg">
-                <div className="text-2xl font-mono text-[var(--color-ds-primary)] mb-2">JetBrains Mono</div>
-                <div className="text-xs font-mono text-slate-400">DATOS / CÓDIGO / PROTOCOLO TÉCNICO</div>
-              </div>
-            </div>
-
-            {/* Colors */}
-            <div className="zettel-card p-8">
-              <h3 className="text-sm font-mono text-[var(--color-ds-secondary)] font-bold uppercase tracking-widest mb-8">[ PALETA CROMÁTICA ]</h3>
-              <div className="flex flex-col gap-5">
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-xl bg-[#050505] border border-slate-800 shadow-inner"></div>
-                  <div>
-                    <div className="text-base text-white font-bold">OLED Black (El Lienzo Oscuro)</div>
-                    <div className="text-xs font-mono text-slate-500">#050505</div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-xl bg-[#00F0FF] shadow-[0_0_20px_rgba(0,240,255,0.4)]"></div>
-                  <div>
-                    <div className="text-base text-white font-bold">Cian Láser (La Mente / Ingeniería)</div>
-                    <div className="text-xs font-mono text-slate-500">#00F0FF</div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-xl bg-[#FFB800] shadow-[0_0_20px_rgba(255,184,0,0.4)]"></div>
-                  <div>
-                    <div className="text-base text-white font-bold">Oro Puro (El Lujo / Excelencia)</div>
-                    <div className="text-xs font-mono text-slate-500">#FFB800</div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-xl bg-[#FF2A2A] shadow-[0_0_20px_rgba(255,42,42,0.4)]"></div>
-                  <div>
-                    <div className="text-base text-white font-bold">Rojo Escarlata (El Alma / Pasión Colombiana)</div>
-                    <div className="text-xs font-mono text-slate-500">#FF2A2A</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ─── CONTACTO ─── */}
       <section id="contacto" className="py-24 px-6 relative border-t border-slate-800/50 bg-[#050505]">
