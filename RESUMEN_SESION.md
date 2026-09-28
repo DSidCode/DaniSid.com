@@ -3,7 +3,8 @@
 **Última sesión:** 28 de septiembre de 2026
 
 ## ✅ Hecho y publicado
-- **Nueva danisid.com en vivo** (commit `8ac8d51`, rama `main` de `DSidCode/DaniSid.com`; Netlify despliega al hacer push).
+- **Nueva danisid.com en vivo** (commits `8ac8d51` y `7700806`, rama `main` de `DSidCode/DaniSid.com`; Netlify despliega al hacer push).
+- Segunda tanda (28-09-2026, tarde): constelaciones del hero dibujadas como impulso eléctrico, estrellas más sutiles, cielo más visible en móvil, foto nueva con retrato-red (el rostro se forma con estrellas y luego aparecen constelaciones sueltas) y biografía corta.
 - Esta carpeta ya es el repositorio: para publicar, `git add` → `git commit` → `git push`. No uses la copia antigua de `08_Legacy_y_Archivo/.../Portfolio_Vite_Cyberpunk_2026`.
 - Detalle de todos los cambios en `CHANGELOG.md`.
 
@@ -18,6 +19,7 @@
 - El detalle está en `CVs_Daniel_Garcia_2026/CHANGELOG.md` (28-09-2026).
 
 ### 2. danisid.com
+- Siguiente proyecto a trabajar: **Maison Quintessence** (ver punto 3).
 - Pasar las capturas de `public/screenshots/` a WebP (`public/` pesa 14 MB).
 - Dar de alta `www.danisid.com` en Google Search Console y enviar el sitemap.
 - Una página propia por proyecto (el mayor salto de SEO).
