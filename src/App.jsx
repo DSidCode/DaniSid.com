@@ -104,7 +104,7 @@ const PORTFOLIO_PROJECTS = [
     }
   },
   { 
-    id: '07', title: 'Asoc. Creando Sueños', subtitle: 'WEB PARA UNA ONG', desc: 'Web de la ONG: servicios, voluntariado y donaciones.', url: 'https://asociacioncreandosuenos.com', cat: 2, categoryName: 'Clientes', hero: true,
+    id: '07', title: 'Asoc. Creando Sueños', subtitle: 'WEB PARA UNA ASOCIACIÓN', desc: 'Web de una asociación sin ánimo de lucro de apoyo a migrantes: servicios, voluntariado y donaciones.', url: 'https://asociacioncreandosuenos.com', cat: 2, categoryName: 'Clientes', hero: true,
     media: ['/screenshots/creando/creando_1.webp'], 
     stack: ['HTML5', 'Tailwind CSS', 'JavaScript'], 
     caseStudy: { 
