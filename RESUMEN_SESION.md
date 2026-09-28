@@ -1,35 +1,32 @@
-# Resumen de Sesión - Actualización de Portafolio
+# Resumen de Sesión - danisid.com
 
-**Fecha:** 25 de Septiembre, 2026
+**Última sesión:** 28 de septiembre de 2026
 
-## ✅ Tareas Completadas (Guardadas y en código)
+## ✅ Hecho y publicado
+- **Nueva danisid.com en vivo** (commit `8ac8d51`, rama `main` de `DSidCode/DaniSid.com`; Netlify despliega al hacer push).
+- Esta carpeta ya es el repositorio: para publicar, `git add` → `git commit` → `git push`. No uses la copia antigua de `08_Legacy_y_Archivo/.../Portfolio_Vite_Cyberpunk_2026`.
+- Detalle de todos los cambios en `CHANGELOG.md`.
 
-1. **Restauración de Entorno y Assets:**
-   - Se configuró el servidor en Vite.
-   - Se restauró la carpeta `/public` asegurando que las imágenes base y los fondos (`hero-abstract.jpg`) cargaran correctamente.
-   
-2. **Simplificación de la UI:**
-   - Se eliminó el componente `ThemeSwitcher` a petición, para mantener la estética pura por defecto.
+## ⏳ Pendiente para la próxima sesión
 
-3. **Inmersión y Mejoras Visuales:**
-   - Se creó y agregó un favicon de lujo (*Luxury Vector Code Symbol `</>`* dorado) en `index.html`.
-   - Se ajustó el título del documento a `DaniSid | Portafolio Tech`.
-   - Los proyectos 03 (Asoc. Creando Sueños) y 04 (Eddy Soundscapes) pasaron a tener la categoría "Hero" (formato apaisado e inmersivo).
+### 1. LinkedIn (aplicarlo en LinkedIn)
+- Subir el banner nuevo `recursos/banner_linkedin_danisid.jpg` (también en `CVs_Daniel_Garcia_2026/`).
+- Titular: "Design Engineer · Full Stack (.NET · React) · Creative Coding | Diseño y construyo experiencias digitales | Madrid".
+- Nombre con tilde (García). #OpenToWork en "Solo reclutadores".
+- Experiencia actual → "Design Engineer · Freelance". Textos de "Acerca de" y "Destacados".
+- Pasar capturas de Acerca de, Experiencia, Educación y Aptitudes para revisarlas.
+- El detalle está en `CVs_Daniel_Garcia_2026/CHANGELOG.md` (28-09-2026).
 
-4. **Integración de Proyectos a Nivel de Ingeniería (Textos y Screenshots en vivo):**
-   - **03 - Asoc. Creando Sueños:** Redacción enfocada en su diseño de embudo B2B, estética y misión social. Captura 1080p acoplada.
-   - **04 - Eddy Soundscapes:** Redacción sobre el EPK musical, minimalismo multimedia y estilo "Dark Mode" para la industria. Captura acoplada.
-   - **05 - Cancionero Pro:** Redacción sobre su "Transposer algorítmico", modo "Manos Libres" y motor musical interactivo. Captura acoplada.
-   - **06 - Quimera Autómata:** Redacción sobre genética neón, catástrofes dinámicas (Conway) y síntesis procedural con Web Audio API (Ballenas NOAA). Captura acoplada.
-   - **07 - Antología Poética:** Redacción sobre refactor de Vanilla a React, ofuscación de números de pago contra bots y SEO. Captura acoplada.
-   - **08 - ERÊS • Realismo Mágico:** Redacción profunda de nivel matemático (simulador astronómico IAU 360°, motor de rotación, render aeroelástico 3D). Captura acoplada.
+### 2. danisid.com
+- Pasar las capturas de `public/screenshots/` a WebP (`public/` pesa 14 MB).
+- Dar de alta `www.danisid.com` en Google Search Console y enviar el sitemap.
+- Una página propia por proyecto (el mayor salto de SEO).
+- Revisar el texto de la barra de estado (`src/components/StatusTicker.jsx`: "En curso" y "Estudiando").
+- Opcional: frase de poesía en "Sobre mí" y botón para descargar el CV.
 
-5. **Documentación:**
-   - Todo lo anterior quedó registrado en el archivo oficial `CHANGELOG.md` dentro de la carpeta del proyecto.
-
-## ⏳ Pendientes para la siguiente sesión
-
-- Terminar de integrar la información técnica (Stack, Problem/Solution/Result) y tomar capturas para los proyectos finales:
-  - **09 - Landing Odontología**
-  - **10 - API Sistema Citas**
-  - **11 - Bot WhatsApp**
+### 3. Otros proyectos
+- **Maison Quintessence:** revocar el token de GitHub que aparece en el remoto de git y lanzar la refactorización con `MaisonQuintessence/PROMPT_REFACTOR_MQ.md`.
+- **Quimera Autómata:** revisar bugs y el rendimiento del Motor 5.
+- **ERÊS:** mejorar la usabilidad de la carta celeste.
+- **Quimera-Sniper-Bot:** sacar del repositorio público el PDF del historial de trading y los registros personales. Subir la corrección de `radar.html`.
+- **CV:** confirmar lo de los "2.500 usuarios concurrentes".

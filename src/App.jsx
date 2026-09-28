@@ -4,6 +4,7 @@ import ProjectModal from './components/ProjectModal';
 import HeroCosmos from './components/HeroCosmos';
 import StatusTicker from './components/StatusTicker';
 import NeuralProtocol from './components/NeuralProtocol';
+import PortraitReveal from './components/PortraitReveal';
 import WhatsAppButton, { WhatsAppIcon, WHATSAPP_URL } from './components/WhatsApp';
 import { track } from './lib/analytics';
 import { Mail, ArrowRight, Terminal, Shield, Cpu, Code2, Database, Globe, Network, Layers, GitBranch, TerminalSquare, ExternalLink, Server, Zap, Lock, Menu, X } from 'lucide-react';
@@ -247,12 +248,12 @@ function App() {
       {/* Cielo real sobre Madrid + mariposas (canvas interactivo) */}
       <HeroCosmos />
       {/* Velo suave en móvil para que el texto se lea sobre el cielo */}
-      <div className="md:hidden absolute inset-0 z-[1] bg-[var(--color-ds-bg)]/40 pointer-events-none" />
+      <div className="md:hidden absolute inset-0 z-[1] bg-[var(--color-ds-bg)]/20 pointer-events-none" />
 
       <div className="relative z-10 max-w-screen-2xl mx-auto flex flex-col md:flex-row border-x border-[var(--color-ds-border)] min-h-[calc(100vh-64px)] pointer-events-none">
 
         {/* Lado Izquierdo: Texto Editorial Brutalista */}
-        <div className="w-full md:w-1/2 p-6 lg:p-16 flex flex-col justify-center min-w-0 md:bg-gradient-to-r md:from-[var(--color-ds-bg)] md:via-[var(--color-ds-bg)]/60 md:to-transparent [&_a]:pointer-events-auto">
+        <div className="w-full md:w-1/2 p-6 lg:p-16 flex flex-col justify-center min-w-0 md:bg-gradient-to-r md:from-[var(--color-ds-bg)] md:via-[var(--color-ds-bg)]/60 md:to-transparent [&_a]:pointer-events-auto [text-shadow:0_1px_14px_rgba(10,10,10,0.95)] md:[text-shadow:none]">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -412,50 +413,35 @@ function App() {
       </section>
 
       {/* ─── SOBRE MÍ ─── */}
-      <section id="sobre-mi" className="bg-[var(--color-ds-bg)] border-b border-[var(--color-ds-border)]">
+      <section id="sobre-mi" className="bg-[var(--color-ds-bg)] border-b border-[var(--color-ds-border)] overflow-hidden">
         <div className="max-w-screen-xl mx-auto px-6 py-20 md:py-28 grid md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-12 md:gap-20 items-start">
 
           {/* Retrato */}
-          <div className="relative max-w-sm mx-auto md:mx-0 w-full">
-            <div className="absolute -inset-3 border border-[var(--color-ds-primary)]/40 pointer-events-none" />
-            <picture>
-              <source srcSet="/daniel-garcia.webp" type="image/webp" />
-              <img
-                src="/daniel-garcia.jpg"
-                alt="Retrato de Daniel García en blanco y negro"
-                width="800"
-                height="800"
-                loading="lazy"
-                className="relative w-full aspect-square object-cover grayscale"
-              />
-            </picture>
-            <p className="mt-6 font-mono text-[10px] tracking-widest uppercase text-[var(--color-ds-muted)]">
-              Daniel García · DaniSid
-            </p>
-          </div>
+          <PortraitReveal />
 
           {/* Historia */}
           <div>
             <p className="font-mono text-xs text-[var(--color-ds-primary)] tracking-widest uppercase mb-4">[ Sobre mí ]</p>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tight text-[var(--color-ds-text)] leading-tight mb-10">
-              Empecé mirando el mundo como diseñador y terminé escribiéndolo en código.
+            <h2 className="text-3xl md:text-5xl font-black tracking-tight text-[var(--color-ds-text)] leading-tight mb-3">
+              Daniel García
             </h2>
+            <p className="font-mono text-sm md:text-base text-[var(--color-ds-primary)] mb-10">
+              Design Engineer · Madrid
+            </p>
 
             <div className="space-y-6 text-sm md:text-base text-[var(--color-ds-text)]/85 leading-relaxed max-w-2xl">
               <p>
-                Me formé en Diseño Visual en la Universidad de Caldas, en Manizales (Colombia), y en animación 3D.
-                Allí aprendí a mirar: composición, luz, ritmo. Ya en Madrid descubrí que el código era la herramienta
-                que me faltaba para que esas imágenes se movieran, sonaran y respondieran a quien las mira.
+                Soy desarrollador de software. Construyo productos web completos, desde la arquitectura del servidor
+                hasta la última interacción de la interfaz.
               </p>
               <p>
-                Desde 2022 diseño y construyo webs para restaurantes, autores, artistas y asociaciones. En paralelo creo
-                piezas propias: un planetario que calcula el cielo real y un ecosistema de vida artificial que canta con
-                voces de ballena. Trabajo con React y TypeScript en la interfaz y .NET en el servidor, y administro mis
-                propios servidores Linux.
+                Trato la ingeniería y la experiencia con el mismo rigor: código limpio, probado y bien desplegado, y
+                también los detalles de movimiento e interacción que hacen que un producto se recuerde. El código es
+                además mi herramienta creativa, y lo que aprendo experimentando lo llevo a cada proyecto.
               </p>
               <p>
-                En Madrid me formé como desarrollador web y pasé por la Piscina de 42. No he dejado de aprender:
-                ahora mismo, Kubernetes y cloud.
+                Vengo del diseño visual en Colombia, me formé como desarrollador en Madrid y sigo aprendiendo cada día;
+                ahora, cloud y Kubernetes.
               </p>
             </div>
 
