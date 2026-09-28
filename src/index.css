@@ -1,21 +1,158 @@
 @import "tailwindcss";
 
 @theme {
-  /* ===== PALETA MENTE, ALMA Y LUJO ===== */
-  --color-ds-bg: #050505; /* OLED Black (Fatiga Visual Nula) */
-  --color-ds-surface: #0C0C0C; /* Darker navy for cards */
-  --color-ds-primary: #00F0FF; /* Cian Láser (La Mente / Ingeniería) */
-  --color-ds-secondary: #FFB800; /* Oro Puro (El Lujo / Estatus) */
-  --color-ds-accent: #FF2A2A; /* Rojo Escarlata (El Alma / Pasión) */
-
-  /* ===== Colores Neutros ===== */
-  --color-ds-text: #F1F5F9;
-  --color-ds-muted: #94A3B8;
-  --color-ds-border: #1E1E1E;
-
   /* ===== Fonts ===== */
   --font-sans: 'Outfit', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
+  --font-serif: 'Playfair Display', serif;
+  --font-cormorant: 'Cormorant Garamond', serif;
+  --font-space: 'Space Grotesk', sans-serif;
+}
+
+@layer base {
+  /* ===== PALETAS DE COLORES (EVOLUCIÓN HISTÓRICA) ===== */
+  
+  /* Evolución 1: Legacy (Mente, Alma y Lujo) */
+  .theme-legacy {
+    --color-ds-bg: #050505;
+    --color-ds-surface: #0C0C0C;
+    --color-ds-primary: #00F0FF;
+    --color-ds-secondary: #FFB800;
+    --color-ds-accent: #FF2A2A;
+    --color-ds-text: #F1F5F9;
+    --color-ds-muted: #94A3B8;
+    --color-ds-border: #1E1E1E;
+  }
+
+  /* Evolución 2: Deep Ocean (Corporativo Transitorio) */
+  .theme-ocean {
+    --color-ds-bg: #020617;
+    --color-ds-surface: #0F172A;
+    --color-ds-primary: #38BDF8;
+    --color-ds-secondary: #34D399;
+    --color-ds-accent: #818CF8;
+    --color-ds-text: #F8FAFC;
+    --color-ds-muted: #94A3B8;
+    --color-ds-border: #1E293B;
+  }
+
+  /* Evolución 3: Apex Predator (Gangster Cyberpunk Luxury) */
+  .theme-apex {
+    --color-ds-bg: #030305;
+    --color-ds-surface: #0A0A0E;
+    --color-ds-primary: #00E5FF;
+    --color-ds-secondary: #C5A059;
+    --color-ds-accent: #990F02;
+    --color-ds-text: #E2E8F0;
+    --color-ds-muted: #64748B;
+    --color-ds-border: rgba(255, 255, 255, 0.05);
+  }
+
+  /* Evolución 4: Vintage Mafia (Tonos Apagados / Grisáceos) */
+  .theme-vintage {
+    --color-ds-bg: #050505;
+    --color-ds-surface: #0C0C0C;
+    --color-ds-primary: #009099; /* Cian apagado */
+    --color-ds-secondary: #996E00; /* Oro apagado */
+    --color-ds-accent: #991919; /* Rojo apagado */
+    --color-ds-text: #B0B5B9; /* Texto más oscuro */
+    --color-ds-muted: #4A5568;
+    --color-ds-border: #1A1A1A;
+  }
+
+  /* Evolución 5: Pastel Canvas (Fondo blanco, tonos suaves) */
+  .theme-pastel {
+    --color-ds-bg: #FFFFFF;
+    --color-ds-surface: #F8FAFC;
+    --color-ds-primary: #6EFBFF;
+    --color-ds-secondary: #FFDA73;
+    --color-ds-accent: #FF8A8A;
+    --color-ds-text: #64748B;
+    --color-ds-muted: #CBD5E1;
+    --color-ds-border: #E2E8F0;
+  }
+
+  /* Evolución 6: Nigredo (Technical Luxury Dark) - AHORA ES DEFAULT (:root) */
+  :root, .theme-nigredo {
+    --color-ds-bg: #0A0A0A;
+    --color-ds-surface: #0F0E0D;
+    --color-ds-primary: #D4AF37; /* Aurum / Gold */
+    --color-ds-secondary: #F4F0EB; /* Off-White */
+    --color-ds-accent: #D4AF37; 
+    --color-ds-text: #F4F0EB;
+    --color-ds-muted: #8C8273;
+    --color-ds-border: rgba(212, 175, 55, 0.2); /* Subtle Gold Border */
+    --font-sans: 'Space Grotesk', sans-serif;
+  }
+
+  /* Evolución 7: Albedo (Technical Luxury Light) */
+  .theme-albedo {
+    --color-ds-bg: #F7F5F0;
+    --color-ds-surface: #FFFFFF;
+    --color-ds-primary: #C5A059; /* Old Gold */
+    --color-ds-secondary: #0A0A0A; /* Pure Black */
+    --color-ds-accent: #C5A059;
+    --color-ds-text: #0A0A0A;
+    --color-ds-muted: #8C8273;
+    --color-ds-border: rgba(197, 160, 89, 0.3); /* Subtle Gold Border */
+    --font-sans: 'Space Grotesk', sans-serif;
+  }
+
+  /* Eliminada la inyección de Cormorant Garamond. Space Grotesk reina en Quimera. */
+  .theme-nigredo h1, .theme-nigredo h2, .theme-nigredo h3, .theme-nigredo h4,
+  .theme-albedo h1, .theme-albedo h2, .theme-albedo h3, .theme-albedo h4 {
+    font-family: var(--font-sans) !important;
+    font-style: normal;
+    letter-spacing: -0.05em;
+    text-transform: uppercase;
+  }
+
+  /* Corrección crítica de contraste para Albedo (Modo Claro) */
+  .theme-albedo .text-white {
+    color: var(--color-ds-text) !important;
+  }
+  .theme-albedo .border-white {
+    border-color: var(--color-ds-text) !important;
+  }
+
+  /* Purificación Luxury Grid */
+  .theme-nigredo *, .theme-albedo * {
+    box-shadow: none !important;
+  }
+  
+  /* Botones estilo Hardware Luxury */
+  .theme-nigredo a.bg-gradient-to-r, .theme-albedo a.bg-gradient-to-r {
+    background: transparent !important;
+    border: 1px solid var(--color-ds-primary) !important;
+    color: var(--color-ds-primary) !important;
+    letter-spacing: 0.15em !important;
+    text-transform: uppercase;
+    font-family: var(--font-mono);
+  }
+  
+  /* Hover effect Luxury */
+  .theme-nigredo a.bg-gradient-to-r:hover, .theme-albedo a.bg-gradient-to-r:hover {
+    background: var(--color-ds-primary) !important;
+    color: var(--color-ds-bg) !important;
+  }
+
+  /* Dot Matrix Pattern con borde luxury */
+  .bg-dot-matrix {
+    background-image: radial-gradient(var(--color-ds-border) 1px, transparent 1px);
+    background-size: 16px 16px;
+  }
+
+  /* Tema 3: Light Luxury (Minimalismo Boutique) */
+  .theme-luxury {
+    --color-ds-bg: #FDFBF7;
+    --color-ds-surface: #FFFFFF;
+    --color-ds-primary: #D4AF37;
+    --color-ds-secondary: #F15A29;
+    --color-ds-accent: #680F10;
+    --color-ds-text: #1A1A1A;
+    --color-ds-muted: #6B7280;
+    --color-ds-border: #E5E7EB;
+  }
 }
 
 @layer base {
@@ -25,9 +162,7 @@
     padding: 0;
   }
 
-  html {
-    scroll-behavior: smooth;
-  }
+  /* Sin scroll-behavior: smooth: no avanza en móvil; el scroll suave lo hace goToSection (App.jsx) */
 
   body {
     background-color: var(--color-ds-bg);
@@ -39,7 +174,7 @@
   }
 
   ::selection {
-    background: rgba(0, 240, 255, 0.25);
+    background: rgba(56, 189, 248, 0.25);
     color: #fff;
   }
 }
@@ -54,8 +189,8 @@
   }
 
   .zettel-card:hover {
-    border-color: rgba(0, 240, 255, 0.3);
-    box-shadow: 0 8px 32px rgba(0, 240, 255, 0.1);
+    border-color: rgba(56, 189, 248, 0.3);
+    box-shadow: 0 8px 32px rgba(56, 189, 248, 0.1);
     transform: translateY(-2px);
   }
 
@@ -78,7 +213,7 @@
   }
 
   .glow-cyan {
-    box-shadow: 0 0 20px rgba(0, 240, 255, 0.15), 0 0 60px rgba(0, 240, 255, 0.05);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.15), 0 0 60px rgba(56, 189, 248, 0.05);
   }
 
   .noise-overlay {
@@ -89,4 +224,36 @@
     opacity: 0.03;
     background-image: url('data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjAwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZmlsdGVyIGlkPSJub2lzZUZpbHRlciI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNjUiIG51bU9jdGF2ZXM9IjMiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgibm9pc2VGaWx0ZXIpIi8+PC9zdmc+');
   }
+}
+
+/* Anclas: compensar la barra de navegación fija (el scroll suave lo hace goToSection en App.jsx) */
+section[id] { scroll-margin-top: 4rem; }
+
+/* Barra de estado (StatusTicker): dos grupos idénticos, cada uno >= ancho de pantalla */
+@keyframes status-ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.status-ticker__track { animation: status-ticker 45s linear infinite; }
+.status-ticker:hover .status-ticker__track { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .status-ticker__track { animation: none; }
+}
+
+/* Maison: nombre con brillo dorado lento (lujo silencioso) */
+.maison-wordmark {
+  font-family: 'Outfit', sans-serif;
+  background: linear-gradient(100deg, #8C7A4A 0%, #D4AF37 30%, #FFF3C4 45%, #D4AF37 60%, #8C7A4A 100%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: maison-shine 9s ease-in-out infinite;
+}
+@keyframes maison-shine {
+  0%, 100% { background-position: 100% 0; }
+  50% { background-position: 0% 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .maison-wordmark { animation: none; background-position: 50% 0; }
 }
