@@ -37,7 +37,7 @@ const WORK_STEPS = [
 ];
 
 const MAISON_SERVICES = [
-  { n: '01', title: 'Digital Boutique', desc: 'Webs de marca a medida: rápidas, cuidadas al detalle y fáciles de encontrar.' },
+  { n: '01', title: 'Webs a medida', desc: 'Webs de marca rápidas, cuidadas al detalle y fáciles de encontrar en Google.' },
   { n: '02', title: 'Experiencias interactivas', desc: 'Piezas generativas con movimiento y sonido para marcas, artistas y eventos.' },
   { n: '03', title: 'Presencia para artistas', desc: 'Portafolios y EPK para músicos y creadores, con contacto y reservas directas.' },
 ];
@@ -124,7 +124,7 @@ const PORTFOLIO_PROJECTS = [
     }
   },
   { 
-    id: '09', title: 'Aurum-CRM', subtitle: 'SISTEMA EMPRESARIAL (.NET 10 + REACT TS)', desc: 'CRM completo en .NET y React, con arquitectura limpia y CQRS.', url: '', github: 'https://github.com/DSidCode/Aurum-CRM', tag: 'Proyecto Personal / Showcase Técnico', cat: 3, categoryName: 'Ingeniería',
+    id: '09', title: 'Aurum-CRM', subtitle: 'SISTEMA EMPRESARIAL (.NET 10 + REACT TS)', desc: 'CRM completo en .NET y React, con arquitectura limpia y CQRS.', url: '', github: 'https://github.com/DSidCode/Aurum-CRM', tag: 'Proyecto personal', cat: 3, categoryName: 'Ingeniería',
     media: ['/screenshots/aurum/aurum_1.webp', '/screenshots/aurum/aurum_2.webp', '/screenshots/aurum/aurum_3.webp', '/screenshots/aurum/aurum_4.webp', '/screenshots/aurum/aurum_5.webp', '/screenshots/aurum/aurum_6.webp'],
     stack: ['.NET 10', 'C#', 'MediatR (CQRS)', 'EF Core', 'React 19', 'TypeScript', 'Tailwind CSS', 'xUnit'],
     caseStudy: {

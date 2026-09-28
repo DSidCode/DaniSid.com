@@ -31,4 +31,4 @@
 - **Quimera Autómata:** revisar bugs y el rendimiento del Motor 5.
 - **ERÊS:** mejorar la usabilidad de la carta celeste.
 - **Quimera-Sniper-Bot:** sacar del repositorio público el PDF del historial de trading y los registros personales. Subir la corrección de `radar.html`.
-- **CV:** confirmar lo de los "2.500 usuarios concurrentes".
+- ~~**CV:** confirmar lo de los "2.500 usuarios concurrentes".~~ Hecho (28-09): no era real; La Leyenda del Dorado queda como Diseñador Gráfico en el CV.
