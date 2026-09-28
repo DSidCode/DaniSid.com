@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import CONSTELLATIONS from '../data/constellations.json';
-import { Butterfly, Dust } from '../lib/macondo';
+import { Butterfly, Dust, PERF } from '../lib/macondo';
 
 /* ════════════════════════════════════════════
    HERO COSMOS: cielo real sobre Madrid + mariposas de Macondo
@@ -113,6 +113,8 @@ export default function HeroCosmos() {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     let w = 0, h = 0, dpr = 1;
+    let lite = false;     // modo ligero (móvil)
+    let lastFrame = 0;
     let raf = 0;
     let visible = true;
     const pointer = { x: 0, y: 0, nx: 0, ny: 0, active: false };
@@ -137,7 +139,9 @@ export default function HeroCosmos() {
 
     function resize() {
       const rect = canvas.parentElement.getBoundingClientRect();
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      lite = isNarrow(rect.width);
+      PERF.lite = lite;
+      dpr = Math.min(window.devicePixelRatio || 1, lite ? 1.5 : 2);  // en móvil, 1,5x: casi la mitad de píxeles
       w = rect.width; h = rect.height;
       canvas.width = w * dpr; canvas.height = h * dpr;
       canvas.style.width = `${w}px`; canvas.style.height = `${h}px`;
@@ -185,12 +189,16 @@ export default function HeroCosmos() {
       ctx.fillStyle = sky;
       ctx.fillRect(0, 0, w, h);
 
-      haze.forEach(s => {
+      (lite ? haze.slice(0, 110) : haze).forEach(s => {
         const tw = reduceMotion ? 1 : 0.6 + Math.sin(now * 0.001 + s.t) * 0.4;
         ctx.fillStyle = `rgba(${IVORY}, ${s.a * tw})`;
-        ctx.beginPath();
-        ctx.arc(s.x * w, s.y * h, s.r, 0, Math.PI * 2);
-        ctx.fill();
+        if (lite) {
+          ctx.fillRect(s.x * w - s.r, s.y * h - s.r, s.r * 2, s.r * 2);
+        } else {
+          ctx.beginPath();
+          ctx.arc(s.x * w, s.y * h, s.r, 0, Math.PI * 2);
+          ctx.fill();
+        }
       });
 
       // Proyección de constelaciones reales
@@ -250,7 +258,7 @@ export default function HeroCosmos() {
           if (isHover) {
             const e = at(hoverGlow);
             ctx.strokeStyle = `rgba(${GOLD}, ${0.25 + hoverGlow * 0.6})`;
-            ctx.shadowBlur = 8;
+            ctx.shadowBlur = lite ? 0 : 8;
             ctx.beginPath(); ctx.moveTo(p1.x, p1.y); ctx.lineTo(e.x, e.y); ctx.stroke();
             return;
           }
@@ -264,7 +272,7 @@ export default function HeroCosmos() {
 
           // Trazo ya recorrido
           ctx.strokeStyle = `rgba(${GOLD}, ${baseAlpha + glow * 0.45})`;
-          ctx.shadowBlur = glow * 6;
+          ctx.shadowBlur = lite ? 0 : glow * 6;
           ctx.beginPath(); ctx.moveTo(p1.x, p1.y); ctx.lineTo(tip.x, tip.y); ctx.stroke();
 
           if (raw < 1) {
@@ -275,13 +283,13 @@ export default function HeroCosmos() {
             grad.addColorStop(1, `rgba(${IVORY}, 0.95)`);
             ctx.strokeStyle = grad;
             ctx.lineWidth = narrow ? 1.8 : 1.5;
-            ctx.shadowBlur = 12;
+            ctx.shadowBlur = lite ? 0 : 12;
             ctx.beginPath(); ctx.moveTo(tail.x, tail.y); ctx.lineTo(tip.x, tip.y); ctx.stroke();
             // Chispa con chisporroteo
             const flicker = 0.65 + Math.random() * 0.35;
             ctx.fillStyle = `rgba(${IVORY}, ${flicker})`;
             ctx.shadowColor = `rgba(${GOLD}, 1)`;
-            ctx.shadowBlur = 14 * flicker;
+            ctx.shadowBlur = lite ? 0 : 14 * flicker;
             ctx.beginPath(); ctx.arc(tip.x, tip.y, 1.6 + flicker * 0.8, 0, Math.PI * 2); ctx.fill();
           } else {
             // Destello de la estrella al llegar el impulso
@@ -302,7 +310,7 @@ export default function HeroCosmos() {
           const pulse = reduceMotion ? 0.7 : 0.5 + 0.5 * Math.sin(now * 0.0012 * tw.speed + tw.phase);
           ctx.fillStyle = `rgba(${isHover ? GOLD : IVORY}, ${Math.min(1, fade * starFade * (0.35 + 0.55 * pulse) + flash)})`;
           ctx.shadowColor = `rgba(${GOLD}, 0.7)`;
-          ctx.shadowBlur = r * (1.5 + pulse * 2) + flash * 14;
+          ctx.shadowBlur = lite ? 0 : r * (1.5 + pulse * 2) + flash * 14;
           ctx.beginPath();
           ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
           ctx.fill();
@@ -323,9 +331,16 @@ export default function HeroCosmos() {
 
       // Mariposas y polvo de oro
       if (!reduceMotion) {
-        butterflies.forEach(b => b.update(w, h, pointer, dust));
-        if (dust.length > 400) dust.splice(0, dust.length - 400);
-        dust.forEach(d => { d.update(); d.draw(ctx); });
+        // Paso fijo: si el móvil va a menos fps, se hacen 2-3 pasos por fotograma
+        const dt = lastFrame ? now - lastFrame : 16.7;
+        const steps = Math.min(3, Math.max(1, Math.round(dt / 16.7)));
+        for (let k = 0; k < steps; k++) {
+          butterflies.forEach(b => b.update(w, h, pointer, dust));
+          dust.forEach(d => d.update());
+        }
+        const maxDust = lite ? 120 : 400;
+        if (dust.length > maxDust) dust.splice(0, dust.length - maxDust);
+        dust.forEach(d => d.draw(ctx));
         dust = dust.filter(d => d.life > 0);
       }
       butterflies.forEach(b => b.draw(ctx));
@@ -337,7 +352,7 @@ export default function HeroCosmos() {
     }
 
     function loop(now) {
-      if (visible && !document.hidden) draw(now);
+      if (visible && !document.hidden) { draw(now); lastFrame = now; } else { lastFrame = 0; }
       raf = requestAnimationFrame(loop);
     }
 

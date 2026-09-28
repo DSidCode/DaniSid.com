@@ -2,6 +2,9 @@
 
 /* ─── Mariposas de Macondo: port fiel del motor de ERÊS (AlchemicalMacondoButterfly),
        con la paleta "Oro Macondo Alquímico" ─── */
+// Modo ligero para móviles: sin halos (shadowBlur, muy caro en Android) y menos polvo
+export const PERF = { lite: false };
+
 export const MACONDO = { core: '#ffffff', mid: '#fde047', amber: '#f59e0b', dark: '#78350f', outline: '#451a03', neon: '#fbbf24' };
 
 export class Dust {
@@ -19,6 +22,13 @@ export class Dust {
   update() { this.x += this.vx; this.y += this.vy; this.alpha -= this.decay; }
   draw(ctx) {
     if (this.alpha <= 0) return;
+    if (PERF.lite) {
+      ctx.globalAlpha = this.alpha;
+      ctx.fillStyle = this.color;
+      ctx.fillRect(this.x - this.size / 2, this.y - this.size / 2, this.size, this.size);
+      ctx.globalAlpha = 1;
+      return;
+    }
     ctx.save();
     ctx.globalAlpha = this.alpha;
     ctx.fillStyle = this.color;
@@ -90,7 +100,7 @@ export class Butterfly {
       this.vx *= 0.94;
       this.vy *= 0.94;
       this.flapSpeed = 0.05;
-      if (Math.random() < 0.4) dust.push(new Dust(this.x, this.y, MACONDO.neon));
+      if (Math.random() < (PERF.lite ? 0.12 : 0.4)) dust.push(new Dust(this.x, this.y, MACONDO.neon));
       if (this.constellationTimer <= 0) {
         this.isConstellation = false;
         this.flapSpeed = 0.14 + Math.random() * 0.18;
@@ -162,7 +172,7 @@ export class Butterfly {
 
     this.flapPhase += this.isGliding ? 0.04 : this.flapSpeed;
 
-    if (Math.random() < 0.35 * this.z) dust.push(new Dust(this.x, this.y, MACONDO.mid));
+    if (Math.random() < (PERF.lite ? 0.1 : 0.35) * this.z) dust.push(new Dust(this.x, this.y, MACONDO.mid));
 
     if (this.x < -90 || this.x > w + 90 || this.y < -90 || this.y > h + 90) this.reset(w, h);
   }
@@ -187,7 +197,7 @@ export class Butterfly {
     if (this.isConstellation) {
       ctx.globalAlpha = 0.95;
       ctx.shadowColor = p.neon;
-      ctx.shadowBlur = 18 * zScale;
+      ctx.shadowBlur = PERF.lite ? 0 : 18 * zScale;
       for (const dir of [-1, 1]) {
         ctx.save();
         ctx.scale(dir * absSpan, 1.0);
@@ -220,7 +230,7 @@ export class Butterfly {
     // Renderizado vectorial orgánico translúcido
     ctx.globalAlpha = Math.min(0.92, 0.40 + this.z * 0.55);
     ctx.shadowColor = p.amber;
-    ctx.shadowBlur = 12 * zScale;
+    ctx.shadowBlur = PERF.lite ? 0 : 12 * zScale;
 
     for (const dir of [-1, 1]) {
       ctx.save();
@@ -293,7 +303,7 @@ export class Butterfly {
     }
 
     // Cuerpo, anillos, cabeza, ojos y antenas
-    ctx.shadowBlur = 4;
+    ctx.shadowBlur = PERF.lite ? 0 : 4;
     ctx.shadowColor = '#000000';
     ctx.fillStyle = '#1c0c02';
     ctx.beginPath();

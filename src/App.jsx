@@ -14,10 +14,10 @@ import { Mail, ArrowRight, Terminal, Shield, Cpu, Code2, Database, Globe, Networ
    ════════════════════════════════════════════ */
 
 const NAV_LINKS = [
-  { href: '#portfolio', label: 'Obra' },
+  { href: '#portfolio', label: 'Proyectos' },
   { href: '#sobre-mi', label: 'Sobre mí' },
-  { href: '#atelier', label: 'Proceso' },
-  { href: '#maison', label: 'Maison Quintessence' },
+  { href: '#atelier', label: 'Cómo trabajo' },
+  { href: '#maison', label: 'Estudio' },
   { href: 'mailto:garciadanielsid@gmail.com', label: 'Contacto' },
 ];
 
@@ -28,6 +28,14 @@ const ABOUT_FACTS = [
   { label: 'Herramientas', items: ['React · TypeScript · .NET', 'Canvas · Web Audio API', 'Linux · Docker · CI/CD'] },
 ];
 
+const WORK_STEPS = [
+  { n: '01', title: 'Escuchar', desc: 'Entiendo qué necesita el proyecto y qué tiene que conseguir quien lo va a usar.' },
+  { n: '02', title: 'Diseñar', desc: 'Defino la experiencia y la interfaz, y las pruebo con un prototipo antes de construir.' },
+  { n: '03', title: 'Construir', desc: 'Desarrollo el producto completo, del frontend al servidor, con código limpio.' },
+  { n: '04', title: 'Verificar', desc: 'Tests, rendimiento y accesibilidad, para que funcione bien en cualquier dispositivo.' },
+  { n: '05', title: 'Publicar', desc: 'Lo pongo en producción con despliegue automático, mido cómo se usa y lo sigo mejorando.' },
+];
+
 const MAISON_SERVICES = [
   { n: '01', title: 'Digital Boutique', desc: 'Webs de marca a medida: rápidas, cuidadas al detalle y fáciles de encontrar.' },
   { n: '02', title: 'Experiencias interactivas', desc: 'Piezas generativas con movimiento y sonido para marcas, artistas y eventos.' },
@@ -36,88 +44,88 @@ const MAISON_SERVICES = [
 
 const PORTFOLIO_PROJECTS = [
   { 
-    id: '01', title: 'ERÊS • Realismo Mágico', subtitle: 'PLANETARIO STELLARIUM & WEB AUDIO API', desc: 'Simulador astronómico 360° con cosmovisión alquímica.', url: 'https://umbanda-eres.netlify.app', cat: 1, categoryName: 'Obra & Arte Generativo', hero: true,
-    media: ['/screenshots/umbanda/umbanda_1.png'], 
-    stack: ['JavaScript (OOP)', 'HTML5 Canvas', 'Web Audio API', 'Stellarium Math'], 
+    id: '01', title: 'ERÊS • Realismo Mágico', subtitle: 'EXPERIENCIA CULTURAL INTERACTIVA', desc: 'Experiencia web sobre la Umbanda y los Erês: realismo mágico, un cielo astronómico real y música generativa.', url: 'https://umbanda-eres.netlify.app', cat: 1, categoryName: 'Proyectos creativos', hero: true,
+    media: ['/screenshots/umbanda/umbanda_1.webp'], 
+    stack: ['JavaScript', 'HTML5 Canvas', 'Web Audio API', 'Astronomía (tiempo sidéreo)'], 
     caseStudy: { 
-      problem: 'Construir un ecosistema web inmersivo que fusionara la exactitud científica de un planetario astronómico con el misticismo del realismo mágico (Gabriel García Márquez) y la cosmovisión de la Umbanda, asegurando 60 FPS en dispositivos móviles sin librerías externas pesadas (como Three.js).', 
-      solution: 'Se desarrolló un "Motor Planetario 1:1" nativo en Canvas capaz de calcular el Tiempo Sidéreo Local (LST) real de tres coordenadas geográficas (Madrid, Bahía, Manizales). Integra cámara esférica panorámica (180° FOV) con zoom direccional, 30 constelaciones oficiales de la IAU, un sistema de audio polifónico (Bossa Nova, tambores Batá, 432 Hz) y físicas complejas de enjambre aeroelástico 3D para mariposas generativas.', 
-      result: 'Un "Multiverso" interactivo espectacular que actúa como simulador astronómico, caja de música generativa y compendio de saberes. Logra fluidez absoluta con Glassmorphism luxury UI y diseño arquitectónico simétrico, consolidándose como una obra maestra de programación Front-end matemática.' 
+      problem: 'Crear una experiencia web que divulgue la Umbanda y la tradición de los Ibejis y los Erês, contada con la estética del realismo mágico de García Márquez, y que funcione con fluidez en el móvil sin librerías 3D pesadas.', 
+      solution: 'Una web interactiva que reúne un compendio sobre la Umbanda (su historia, los Orixás y sus relatos), un tráiler narrativo en clave de realismo mágico y un planetario hecho a mano en Canvas, que calcula el cielo real de Madrid, Bahía y Manizales con 30 constelaciones. El paisaje sonoro (tambor batá, campanas y bossa nova) se genera en el navegador con Web Audio, y las mariposas amarillas vuelan con un motor de animación propio.', 
+      result: 'Una experiencia que se recorre como un relato: divulga una tradición cultural, funciona como pieza artística y resuelve con código propio la parte técnica (astronomía, animación y sonido), sin librerías externas.' 
     }
   },
   { 
-    id: '02', title: 'Quimera Autómata', subtitle: 'SIMULADOR CANVAS / WEB AUDIO API', desc: 'El Juego de la Vida de Conway optimizado para alto rendimiento visual.', url: 'https://quimera-automata.netlify.app', cat: 1, categoryName: 'Obra & Arte Generativo', hero: true,
-    media: ['/screenshots/quimera/quimera_1.png'], 
-    stack: ['JavaScript (Vanilla)', 'HTML5 Canvas', 'Web Audio API', 'OOP Architecture'], 
+    id: '02', title: 'Quimera Autómata', subtitle: 'VIDA ARTIFICIAL Y SONIDO GENERATIVO', desc: 'Simulación de vida artificial con sonido generativo.', url: 'https://quimera-automata.netlify.app', cat: 1, categoryName: 'Proyectos creativos', hero: true,
+    media: ['/screenshots/quimera/quimera_1.webp'], 
+    stack: ['JavaScript', 'HTML5 Canvas', 'Web Audio API'], 
     caseStudy: { 
-      problem: 'Llevar el clásico autómata celular de Conway al siguiente nivel: romper la estática del clásico blanco y negro, evitar el "estancamiento matemático" (cuando las células se quedan atascadas en bucles) y añadir una dimensión bio-acústica hiperrealista.', 
-      solution: 'Desarrollé un motor físico y acústico de 5 niveles con arquitectura OOP. Implementé genética de herencia cromática neón, un sistema de "Catástrofes Inactivas" que detecta entropía para inyectar eventos (meteoritos, gliders, extinciones masivas), y síntesis matemática (Web Audio API) que reproduce cantos de ballenas y orcas basados en la masa biológica poblacional en tiempo real.', 
-      result: 'Un ecosistema generativo y audiovisual inmersivo en formato God Mode, optimizado para escalar hasta pantallas 4K que simula una biología viva con fluidos gravitacionales, donde las células experimentan mitosis, mutaciones y reproducen acústica marina científica proporcionada por la NOAA.' 
+      problem: 'Partir del Juego de la Vida de Conway, un autómata celular clásico en blanco y negro, y convertirlo en algo vivo: con color, con sonido y sin quedarse atascado en patrones que se repiten.', 
+      solution: 'Un simulador en Canvas con cinco motores. Cada célula hereda el color de sus padres; un sistema detecta cuándo el tablero se estanca y provoca eventos (meteoritos, oleadas de planeadores, extinciones); y el sonido se genera en tiempo real con Web Audio a partir de la población, con síntesis propia y grabaciones de ballenas y orcas de la NOAA.', 
+      result: 'Una pieza generativa audiovisual que no se repite: se puede observar, intervenir con el ratón y escuchar. Funciona a pantalla completa y se adapta a la resolución de cada pantalla.' 
     }
   },
   { 
-    id: '03', title: 'Antología Poética', subtitle: 'EXPERIENCIA DE LECTURA DIGITAL (REACT)', desc: 'Migración a React de un libro interactivo con diseño editorial.', url: 'https://antologia.danisid.com', cat: 1, categoryName: 'Obra & Arte Generativo',
-    media: ['/screenshots/antologia/antologia_1.png'], 
+    id: '03', title: 'Antología Poética', subtitle: 'LIBRO DE POESÍA DIGITAL', desc: 'Libro de poesía digital, rehecho en React.', url: 'https://antologia.danisid.com', cat: 1, categoryName: 'Proyectos creativos',
+    media: ['/screenshots/antologia/antologia_1.webp'], 
     stack: ['React', 'Vite', 'CSS3', 'SEO & Open Graph'], 
     caseStudy: { 
-      problem: 'La versión original (construida en Vanilla JS puro) sufría de fragilidad en el manejo de estado al navegar por los poemas y conflictos de layout en pantallas pequeñas, rompiendo la inmersión que requiere la lectura literaria.', 
-      solution: 'Se ejecutó una migración profesional a React usando Vite, componentizando la arquitectura (Book, Page, Index). Se integró un layout responsivo que simula una hoja A4 en escritorio y un scroll natural en móvil. Además, se ofuscaron números de donaciones contra bots y se inyectaron metadatos Open Graph para SEO en redes sociales.', 
-      result: 'Una experiencia de lectura digital fluida, libre de bugs de renderizado, con soporte completo para navegación por teclado, pasarela de donaciones con códigos QR flotantes e ilustraciones embebidas, creando un ecosistema inmersivo para el lector.' 
+      problem: 'La primera versión, hecha en JavaScript sin framework, perdía el estado al pasar de un poema a otro y se descolocaba en pantallas pequeñas, justo lo contrario de lo que pide una lectura tranquila.', 
+      solution: 'La rehice en React con Vite, separada en componentes (libro, página, índice). En escritorio cada poema se lee como una hoja; en móvil, con scroll natural. Añadí navegación con teclado, ilustraciones dentro de los poemas, donaciones con códigos QR (con los números protegidos frente a bots) y metadatos para compartir en redes.', 
+      result: 'Una lectura digital estable y cómoda en cualquier pantalla, fácil de ampliar con nuevos poemas e ilustraciones.' 
     }
   },
   { 
-    id: '04', title: 'Cancionero Pro', subtitle: 'SAAS MUSICAL INTERACTIVO (REACT)', desc: 'Transposición de acordes y búsqueda reactiva en tiempo real.', url: 'https://guitarra.danisid.com', cat: 1, categoryName: 'Obra & Arte Generativo',
-    media: ['/screenshots/cancionero/cancionero_1.png'], 
-    stack: ['React', 'Vite', 'Tailwind CSS', 'Lucide React'], 
+    id: '04', title: 'Cancionero Pro', subtitle: 'APP DE ACORDES PARA MÚSICOS', desc: 'App de acordes que cambia el tono de las canciones en tiempo real.', url: 'https://guitarra.danisid.com', cat: 1, categoryName: 'Proyectos creativos',
+    media: ['/screenshots/cancionero/cancionero_1.webp'], 
+    stack: ['React', 'Vite', 'Tailwind CSS'], 
     caseStudy: { 
-      problem: 'Los músicos y cantantes suelen enfrentarse al problema de tener que transponer acordes mentalmente cuando una canción está fuera de su rango vocal. Además, las plataformas de acordes tradicionales están saturadas de publicidad y no son interactivas (no muestran digitaciones ni permiten autoscroll en tiempo real).', 
-      solution: 'Desarrollé una aplicación web (SaaS) con estética Cyberpunk Luxury que incluye un "Transposer Vocal" algorítmico, capaz de subir y bajar la tonalidad de cualquier canción (±5 semitonos) actualizando las letras y el diccionario de acordes en tiempo real. Cuenta con un diapasón interactivo para visualizar la digitación y funciones como Autoscroll Manos Libres y zoom ajustable.', 
-      result: 'Una herramienta técnica de alto rendimiento, optimizada para ensayos en vivo y uso en atriles, que fusiona código algorítmico musical avanzado con un diseño inmersivo y sin fricción.' 
+      problem: 'Cuando una canción no está en tu tono, hay que transportar los acordes de cabeza. Y las webs de acordes habituales están llenas de publicidad y no muestran cómo se toca cada acorde.', 
+      solution: 'Una aplicación web en React que sube o baja el tono de cualquier canción (hasta ±5 semitonos) y actualiza al momento la letra y los acordes. Incluye un diapasón que muestra cómo tocar cada acorde, desplazamiento automático para tocar sin manos y ajuste del tamaño del texto.', 
+      result: 'Una herramienta pensada para ensayar y tocar en directo, con el móvil o la tablet en el atril.' 
     }
   },
   { 
-    id: '05', title: 'El Rincón de Tetuán', subtitle: 'CARTA DIGITAL Y SAAS HORECA', desc: 'Sistema web ultra-rápido para gestión y pedidos en sala.', url: 'https://elrincontetuan.com', cat: 2, categoryName: 'Clientes en Producción', hero: true,
-    media: ['/screenshots/rincon/rincon_1.png', '/screenshots/rincon/rincon_2.png', '/screenshots/rincon/rincon_3.png'], 
-    stack: ['HTML5', 'CSS3 (Glassmorphism)', 'JavaScript', 'Netlify', 'Cloudflare'], 
+    id: '05', title: 'El Rincón de Tetuán', subtitle: 'CARTA DIGITAL PARA RESTAURANTE', desc: 'Carta digital del restaurante, pensada para leerse en el móvil.', url: 'https://elrincontetuan.com', cat: 2, categoryName: 'Clientes', hero: true,
+    media: ['/screenshots/rincon/rincon_1.webp', '/screenshots/rincon/rincon_2.webp', '/screenshots/rincon/rincon_3.webp'], 
+    stack: ['HTML5', 'CSS3', 'JavaScript', 'Netlify', 'Cloudflare'], 
     caseStudy: { 
       problem: 'El restaurante no tenía presencia digital ni forma de comunicar su carta a un público mixto (español y brasileño). No existía una versión digital de la carta para consultar desde el móvil sin necesidad de tocar la carta física, ni material visual que mostrara sus platos de forma atractiva.', 
-      solution: 'Diseño y desarrollo de una carta digital web, responsive, con estética luxury cuidada a nivel de diseño, fotografía de los platos en alta resolución pero optimizada para carga rápida en web, y precios claros por plato.', 
-      result: 'Una carta accesible desde cualquier móvil sin fricción, que muestra los platos de forma atractiva para generar más ganas de consumir, y permite a quien está lejos consultar el menú antes de pedir a domicilio.' 
+      solution: 'Diseñé y desarrollé una carta digital adaptada al móvil, con fotografías de los platos optimizadas para cargar rápido y precios claros.', 
+      result: 'Los clientes consultan la carta desde su móvil, en la mesa o antes de pedir a domicilio, y los platos se presentan de forma apetecible.' 
     }
   },
   { 
-    id: '06', title: 'Marian Isac', subtitle: 'PLATAFORMA DE AUTOR (CYBERPUNK NOIR)', desc: 'Despliegue web con diseño arquitectónico elegante e inmersivo.', url: 'https://marianisac.com', cat: 2, categoryName: 'Clientes en Producción', hero: true,
-    media: ['/screenshots/marian/marian_1.png', '/screenshots/marian/marian_2.png', '/screenshots/marian/marian_3.png'], 
+    id: '06', title: 'Marian Isac', subtitle: 'WEB DE AUTOR', desc: 'Web de autor con el catálogo de sus libros y venta directa.', url: 'https://marianisac.com', cat: 2, categoryName: 'Clientes', hero: true,
+    media: ['/screenshots/marian/marian_1.webp', '/screenshots/marian/marian_2.webp', '/screenshots/marian/marian_3.webp'], 
     stack: ['HTML5', 'CSS3', 'JavaScript', 'Netlify', 'Cloudflare', 'Google Analytics'], 
     caseStudy: { 
       problem: 'Marian Isac es autor publicado (Editorial Círculo Rojo, 6 libros) sin una presencia digital que reflejara su marca ni facilitara la venta directa de sus obras a lectores.', 
-      solution: 'Diseño y desarrollo de una landing page de autor con estética oscura y elegante, catálogo completo de sus 6 libros, galería multimedia (fotos y vídeos de presentaciones y eventos), y un embudo de venta directo vía WhatsApp para cada título — sin depender solo de distribuidoras externas.', 
-      result: 'Web en producción con dominio propio, analítica integrada, y canal de venta directo activo al autor, facilitando tanto la compra de libros como la contratación de presentaciones.' 
+      solution: 'Una web de autor con estética oscura y elegante: el catálogo de sus 6 libros, una galería de fotos y vídeos de presentaciones y un botón de compra por WhatsApp en cada título, sin depender solo de las distribuidoras.', 
+      result: 'Web en producción con dominio propio y analítica, y un canal directo con los lectores para comprar libros y contratar presentaciones.' 
     }
   },
   { 
-    id: '07', title: 'Asoc. Creando Sueños', subtitle: 'PORTAL INSTITUCIONAL (ONG)', desc: 'Plataforma de impacto social con embudo de donaciones y captación.', url: 'https://asociacioncreandosuenos.com', cat: 2, categoryName: 'Clientes en Producción', hero: true,
-    media: ['/screenshots/creando/creando_1.png'], 
-    stack: ['HTML5', 'Tailwind CSS', 'JavaScript', 'Diseño UX/UI Solidario'], 
+    id: '07', title: 'Asoc. Creando Sueños', subtitle: 'WEB PARA UNA ONG', desc: 'Web de la ONG: servicios, voluntariado y donaciones.', url: 'https://asociacioncreandosuenos.com', cat: 2, categoryName: 'Clientes', hero: true,
+    media: ['/screenshots/creando/creando_1.webp'], 
+    stack: ['HTML5', 'Tailwind CSS', 'JavaScript'], 
     caseStudy: { 
       problem: 'La Asociación Creando Sueños, enfocada en apoyar a migrantes en España, necesitaba presencia digital profesional para centralizar sus servicios de extranjería, deporte (Equipo La Banda) y brigadas solidarias, además de captar voluntarios y donaciones.', 
-      solution: 'Desarrollo de un portal institucional moderno, accesible y rápido. Se implementó una arquitectura clara tipo One-Page, diseño con estética corporativa (Navy/Gold), embudos hacia WhatsApp y formularios de colaboración B2B.', 
-      result: 'Una web que dignifica la imagen de la ONG, facilita el contacto rápido de asesoría y automatiza la captación de colaboradores, consolidando su presencia oficial en Madrid.' 
+      solution: 'Una web de una sola página, clara, rápida y accesible, con la identidad de la asociación (azul marino y dorado), contacto directo por WhatsApp y formularios para voluntarios y colaboradores.', 
+      result: 'La asociación tiene una presencia profesional en internet: quien necesita asesoría contacta en un clic y los colaboradores se apuntan desde la propia web.' 
     }
   },
   { 
-    id: '08', title: 'Eddy Soundscapes', subtitle: 'EPK Y PORTAFOLIO MUSICAL', desc: 'Arquitectura minimalista enfocada en rendimiento multimedia.', url: 'https://eddycamusic.netlify.app', cat: 2, categoryName: 'Clientes en Producción', hero: true,
-    media: ['/screenshots/eddy/eddy_1.png'], 
+    id: '08', title: 'Eddy Soundscapes', subtitle: 'DOSSIER DE PRENSA MUSICAL (EPK)', desc: 'Dossier de prensa (EPK) de un músico, con contacto para contrataciones.', url: 'https://eddycamusic.netlify.app', cat: 2, categoryName: 'Clientes', hero: true,
+    media: ['/screenshots/eddy/eddy_1.webp'], 
     stack: ['React', 'Vite', 'Tailwind CSS', 'Framer Motion'], 
     caseStudy: { 
       problem: 'Eddy Castaño (cantautor y guitarrista) necesitaba un Electronic Press Kit (EPK) moderno y altamente visual para presentar sus sesiones acústicas a promotores y salas de conciertos, sin que el contenido multimedia ralentizara la carga.', 
-      solution: 'Se diseñó una interfaz inmersiva y de estilo "dark mode" centrada en la fotografía artística y tipografías expresivas (Playfair Display & Outfit). El portafolio incluye integración de reproductores sin fricción y una galería dinámica.', 
-      result: 'Una plataforma rápida, elegante y minimalista que proyecta la sensibilidad del artista, optimizando su carta de presentación para contratación en la industria musical.' 
+      solution: 'Diseñé una web oscura centrada en la fotografía y en tipografías con carácter (Playfair Display y Outfit), con reproductores de música integrados y una galería, cuidando que el contenido multimedia no ralentice la carga.', 
+      result: 'Una carta de presentación rápida y cuidada para promotores y salas, con contacto directo para contrataciones.' 
     }
   },
   { 
-    id: '09', title: 'Aurum-CRM', subtitle: 'SISTEMA EMPRESARIAL (.NET 10 + REACT TS)', desc: 'Arquitectura limpia y escalable implementando el patrón CQRS.', url: '', github: 'https://github.com/DSidCode/Aurum-CRM', tag: 'Proyecto Personal / Showcase Técnico', cat: 3, categoryName: 'Ingeniería & Sistemas',
-    media: ['/screenshots/aurum/aurum_1.png', '/screenshots/aurum/aurum_2.png', '/screenshots/aurum/aurum_3.png', '/screenshots/aurum/aurum_4.png', '/screenshots/aurum/aurum_5.png', '/screenshots/aurum/aurum_6.png'],
+    id: '09', title: 'Aurum-CRM', subtitle: 'SISTEMA EMPRESARIAL (.NET 10 + REACT TS)', desc: 'CRM completo en .NET y React, con arquitectura limpia y CQRS.', url: '', github: 'https://github.com/DSidCode/Aurum-CRM', tag: 'Proyecto Personal / Showcase Técnico', cat: 3, categoryName: 'Ingeniería',
+    media: ['/screenshots/aurum/aurum_1.webp', '/screenshots/aurum/aurum_2.webp', '/screenshots/aurum/aurum_3.webp', '/screenshots/aurum/aurum_4.webp', '/screenshots/aurum/aurum_5.webp', '/screenshots/aurum/aurum_6.webp'],
     stack: ['.NET 10', 'C#', 'MediatR (CQRS)', 'EF Core', 'React 19', 'TypeScript', 'Tailwind CSS', 'xUnit'],
     caseStudy: {
       problem: 'En muchos sistemas de gestión comercial la lógica de negocio acaba repartida entre controladores y consultas a base de datos: cambiar la persistencia rompe media aplicación, las reglas (qué puede pasarle a una venta y cuándo) no están en ningún sitio concreto y probarlas exige levantar todo el sistema.',
@@ -126,8 +134,8 @@ const PORTFOLIO_PROJECTS = [
     }
   },
   { 
-    id: '10', title: 'Quimera-Sniper-Bot', subtitle: 'ALGORITMIA FINANCIERA (PYTHON)', desc: 'Escáner cuantitativo multi-temporalidad con forward testing y terminal local.', url: '', cat: 3, categoryName: 'Ingeniería & Sistemas',
-    media: ['/screenshots/sniper/sniper_1.png', '/screenshots/sniper/sniper_2.png', '/screenshots/sniper/sniper_3.png'],
+    id: '10', title: 'Quimera-Sniper-Bot', subtitle: 'ALGORITMIA FINANCIERA (PYTHON)', desc: 'Escáner de criptomonedas con indicadores técnicos y simulador de operaciones.', url: '', cat: 3, categoryName: 'Ingeniería',
+    media: ['/screenshots/sniper/sniper_1.webp', '/screenshots/sniper/sniper_2.webp', '/screenshots/sniper/sniper_3.webp'],
     stack: ['Python', 'Pandas', 'CCXT (Binance API)', 'Flask', 'JavaScript (Vanilla)', 'HTML5 / CSS3', 'Linux notify-send'],
     caseStudy: {
       problem: 'Vigilar a mano 16 criptomonedas en varias temporalidades a la vez es inviable: las buenas entradas aparecen de madrugada o durante las aperturas de Asia y Wall Street, y los cruces de medias móviles aislados generan muchísimas señales falsas en mercados laterales.',
@@ -136,8 +144,8 @@ const PORTFOLIO_PROJECTS = [
     }
   },
   { 
-    id: '11', title: 'Cyberpunk Luxury Cluster', subtitle: 'INFRAESTRUCTURA HOMELAB', desc: 'Clúster Linux de 3 nodos para cómputo desatendido y análisis forense.', url: '', cat: 3, categoryName: 'Ingeniería & Sistemas',
-    media: ['/screenshots/cluster/cluster_1.png', '/screenshots/cluster/cluster_2.png'],
+    id: '11', title: 'Cyberpunk Luxury Cluster', subtitle: 'INFRAESTRUCTURA HOMELAB', desc: 'Homelab Linux de 3 equipos para tareas automáticas y análisis forense.', url: '', cat: 3, categoryName: 'Ingeniería',
+    media: ['/screenshots/cluster/cluster_1.webp', '/screenshots/cluster/cluster_2.webp'],
     stack: ['Linux (Nobara · Mint · Kali)', 'Bash', 'Python', 'SSH / rsync', 'The Sleuth Kit', 'dd + SHA-256', 'GPT / parted'],
     caseStudy: {
       problem: 'Necesitaba un entorno propio para ejecutar tareas pesadas sin bloquear mi equipo de desarrollo (indexación, recuperación de datos, copias espejo) y para practicar análisis forense digital sin arriesgarme a alterar las pruebas. Mientras tanto, varios portátiles antiguos estaban parados y un disco de casi 800 GB acumulaba años de datos sin clasificar.',
@@ -271,14 +279,13 @@ function App() {
             </h2>
 
             <p className="text-sm font-mono text-[var(--color-ds-text)] max-w-md leading-relaxed mb-12">
-              &gt; Diseño y construyo experiencias digitales donde el arte y la ingeniería son la misma cosa.<br/>
-              &gt; Vengo del diseño visual y escribo el código de principio a fin: React y TypeScript en la interfaz, .NET en el servidor.<br/>
-              &gt; <span className="text-[var(--color-ds-primary)]">Este cielo es real:</span> son las constelaciones que hay ahora mismo sobre Madrid.
+              &gt; Desarrollador de software y diseñador en Madrid.<br/>
+              &gt; Construyo productos web completos: la interfaz, el código y la puesta en producción.
             </p>
 
             <div className="flex flex-wrap gap-4">
               <a href="#portfolio" onClick={(e) => goToSection(e, '#portfolio')} className="bg-[var(--color-ds-primary)] text-black px-8 py-3 text-xs font-bold transition-all hover:bg-[#b5952f]">
-                VER LA OBRA
+                VER PROYECTOS
               </a>
               <a href="mailto:garciadanielsid@gmail.com" onClick={() => track('contact_email')} className="border border-[var(--color-ds-primary)] text-[var(--color-ds-primary)] px-8 py-3 text-xs font-bold transition-all hover:bg-[var(--color-ds-primary)] hover:text-black">
                 HABLEMOS
@@ -298,7 +305,7 @@ function App() {
           <div className="flex justify-between items-end mb-16 border-b border-[var(--color-ds-border)] pb-6">
             <div>
               <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-[var(--color-ds-text)] uppercase">
-                Portafolio
+                Proyectos
               </h2>
               <p className="font-mono text-xs text-[var(--color-ds-muted)] mt-2 uppercase tracking-widest">
                 [ Proyectos seleccionados ]
@@ -487,40 +494,20 @@ function App() {
           {/* Lado Derecho: Texto de Especificaciones */}
           <div className="w-full md:w-1/2 p-6 md:p-16 flex flex-col justify-center bg-dot-matrix">
             <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-[var(--color-ds-text)] mb-12 uppercase">
-              EL PROTOCOLO
+              CÓMO TRABAJO
             </h2>
             
-            <div className="space-y-8 border-l-2 border-[var(--color-ds-border)] pl-6">
-              <div>
-                <h3 className="text-xl font-bold text-[var(--color-ds-text)] mb-2 uppercase flex items-center gap-3">
-                  <span className="w-2 h-2 bg-[var(--color-ds-primary)] inline-block"></span>
-                  MOD_01: Arquitectura Sólida
-                </h3>
-                <p className="font-mono text-[var(--color-ds-muted)] text-xs leading-relaxed">
-                  [CLEAN_CODE] El código invisible es el que sostiene el negocio. Diseño estructuras modulares pensadas para la escalabilidad y el rendimiento a largo plazo.
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="text-xl font-bold text-[var(--color-ds-text)] mb-2 uppercase flex items-center gap-3">
-                  <span className="w-2 h-2 bg-[var(--color-ds-primary)] inline-block"></span>
-                  MOD_02: Diseño Minimalista
-                </h3>
-                <p className="font-mono text-[var(--color-ds-muted)] text-xs leading-relaxed">
-                  [RENDERED IN REACT] Creación de interfaces limpias y directas. Eliminar el ruido visual para potenciar la usabilidad y la experiencia del usuario.
-                </p>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-bold text-[var(--color-ds-text)] mb-2 uppercase flex items-center gap-3">
-                  <span className="w-2 h-2 bg-[var(--color-ds-primary)] inline-block"></span>
-                  MOD_03: Orquestación Inteligente
-                </h3>
-                <p className="font-mono text-[var(--color-ds-muted)] text-xs leading-relaxed">
-                  [AI_INTEGRATION] Implementación de agentes y LLMs para optimizar procesos y flujos de trabajo, aportando valor real y medible.
-                </p>
-              </div>
-            </div>
+            <ol className="space-y-6 border-l-2 border-[var(--color-ds-border)] pl-6 list-none m-0">
+              {WORK_STEPS.map(step => (
+                <li key={step.n}>
+                  <h3 className="text-lg md:text-xl font-bold text-[var(--color-ds-text)] mb-1 flex items-center gap-3">
+                    <span className="font-mono text-sm text-[var(--color-ds-primary)]">{step.n}</span>
+                    {step.title}
+                  </h3>
+                  <p className="text-sm text-[var(--color-ds-muted)] leading-relaxed">{step.desc}</p>
+                </li>
+              ))}
+            </ol>
           </div>
         </div>
       </section>
@@ -566,7 +553,7 @@ function App() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a href="https://maison-quintessence.netlify.app/" onClick={() => track('maison_click')} target="_blank" rel="noopener noreferrer" className="bg-[var(--color-ds-primary)] text-black px-10 py-4 text-xs font-bold tracking-[0.25em] transition-colors hover:bg-white">
-              SOLICITAR AUDIENCIA
+              CONTACTAR CON EL ESTUDIO
             </a>
             <a href={WHATSAPP_URL} onClick={() => track('contact_whatsapp', { location: 'maison' })} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 border border-[var(--color-ds-border)] text-[var(--color-ds-text)] px-8 py-4 text-xs font-bold tracking-[0.2em] transition-colors hover:border-[var(--color-ds-primary)] hover:text-[var(--color-ds-primary)]">
               <WhatsAppIcon size={14} /> HABLAR POR WHATSAPP
@@ -598,7 +585,7 @@ function App() {
           </div>
           
           <div className="font-mono text-[10px] text-[var(--color-ds-muted)] tracking-widest uppercase">
-            SYS.VERSION 2026.1 // END OF FILE
+            © 2026 Daniel García · Madrid
           </div>
         </div>
       </footer>

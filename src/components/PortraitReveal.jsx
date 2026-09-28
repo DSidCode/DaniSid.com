@@ -236,7 +236,11 @@ export default function PortraitReveal() {
       });
     };
 
-    const loop = now => { if (!document.hidden) draw(now); raf = requestAnimationFrame(loop); };
+    // Solo se anima mientras el retrato está en pantalla
+    let onScreen = true;
+    const io = new IntersectionObserver(([entry]) => { onScreen = entry.isIntersecting; });
+    io.observe(boxRef.current);
+    const loop = now => { if (onScreen && !document.hidden) draw(now); raf = requestAnimationFrame(loop); };
 
     img.onload = () => {
       setup();
@@ -247,7 +251,7 @@ export default function PortraitReveal() {
 
     const ro = new ResizeObserver(() => { if (img.complete && img.naturalWidth) setup(); });
     ro.observe(boxRef.current);
-    return () => { cancelAnimationFrame(raf); ro.disconnect(); };
+    return () => { cancelAnimationFrame(raf); ro.disconnect(); io.disconnect(); };
   }, [shown, reduceMotion]);
 
   return (

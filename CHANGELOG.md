@@ -19,6 +19,24 @@ Todos los cambios notables en este proyecto (01_Web_Activa_Vite) serán document
   - Tarjetas pequeñas muestran la descripción en móvil.
   - Modal: a pantalla completa en móvil, botón de cerrar fijo arriba a la derecha, sin doble scroll y con menos márgenes. Se cierra con Escape (`role="dialog"`).
   - Navegación interna con `goToSection` (App.jsx): desplazamiento suave hecho con `requestAnimationFrame` y compensación de la barra fija. Se elimina `scroll-behavior: smooth` del CSS porque no avanzaba en navegadores móviles (el menú móvil y "Ver la obra" cambiaban la URL pero no desplazaban la página). Respeta `prefers-reduced-motion`.
+- **Textos claros (tras la opinión de una usuaria):** la personalidad se queda en lo visual; los nombres y textos pasan a decir las cosas directamente.
+  - Menú: Obra → **Proyectos**, Proceso → **Cómo trabajo**, Maison Quintessence → **Estudio**.
+  - Hero: se sustituye "…donde el arte y la ingeniería son la misma cosa…" por "Desarrollador de software y diseñador en Madrid. Construyo productos web completos: la interfaz, el código y la puesta en producción." Botón "Ver proyectos". "Este cielo es real" queda solo en el pie del cielo.
+  - Sección "El Protocolo" con "MOD_01 [CLEAN_CODE]…" → **"Cómo trabajo"**: 1. Entender el problema · 2. Diseñar y construir · 3. Publicar y mejorar.
+  - Título "Portafolio" → "Proyectos". Categorías: Proyectos creativos · Clientes · Ingeniería.
+  - ERÊS: subtítulo "EXPERIENCIA CULTURAL INTERACTIVA" y descripción centrada en lo que es (Umbanda y los Erês, realismo mágico, cielo astronómico real y música generativa). Ficha reescrita sin superlativos ("Multiverso espectacular", "fluidez absoluta", "obra maestra"): divulgación cultural + pieza artística + técnica propia en Canvas y Web Audio.
+  - Fichas de Quimera, Antología, Cancionero, El Rincón, Marian Isac, Creando Sueños y Eddy reescritas sin jerga ni superlativos ("God Mode", "4K", "hiperrealista", "SaaS", "Cyberpunk Luxury", "sin fricción", "dignifica"…), manteniendo los datos reales. Subtítulos claros (p. ej. "CARTA DIGITAL PARA RESTAURANTE" en vez de "CARTA DIGITAL Y SAAS HORECA").
+  - "Cómo trabajo" sigue las mismas 5 fases que la red animada: Escuchar, Diseñar, Construir, Verificar, Publicar (`WORK_STEPS`).
+  - Maison: "Solicitar audiencia" → "Contactar con el estudio". Pie: "SYS.VERSION 2026.1 // END OF FILE" → "© 2026 Daniel García · Madrid".
+- **Imágenes a WebP:** las 23 capturas de proyectos pasan de PNG a WebP (máximo 1600 px de ancho), de 13,4 MB a 1,4 MB; `public/` pasa de 14 MB a 1,6 MB.
+  - Descripciones de las tarjetas reescritas en lenguaje llano y fiel a cada proyecto (p. ej. El Rincón: "Carta digital del restaurante…", antes "Sistema web ultra-rápido para gestión y pedidos en sala", que no era exacto).
+- **Rendimiento en móvil (modo ligero):** en móviles de gama media la animación del hero iba lenta (medido: 19 fps con la CPU simulada 6 veces más lenta). Cambios:
+  - En pantallas estrechas no se usan halos `shadowBlur` en estrellas, líneas, polvo ni mariposas (`PERF.lite` en `src/lib/macondo.js`).
+  - La mitad de polvo de fondo, dibujado como cuadrados; menos polvo dorado (máximo 120 partículas).
+  - Resolución de dibujo 1,5× en móvil (antes 2×).
+  - Las mariposas y el polvo avanzan con paso fijo según el tiempo real (hasta 3 pasos por fotograma), así que no van a cámara lenta si bajan los fps.
+  - El retrato de "Sobre mí" se pausa cuando no está en pantalla.
+  - Resultado en la misma prueba: 43 fps (antes 19).
 - **Retrato-red (`PortraitReveal.jsx`): "detrás de la persona hay código".** Formato 3:4 (600×800), foto en blanco y negro neutro.
   - Al entrar en la sección, cientos de puntos de luz dispersos vuelan a su sitio y forman el rostro. Se colocan según los bordes y el contraste de la propia foto, así que ojos, pelo y barba se reconocen.
   - Los puntos se unen a sus 3-4 vecinos más cercanos con hilos dorados, como una red neuronal. Densidad reducida (malla de w/50): menos estrellas y más líneas.
