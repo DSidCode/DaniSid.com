@@ -11,3 +11,8 @@ recursos/
 *.log
 .env
 .env.*
+
+# Documentos internos de planificación
+RESUMEN_SESION.md
+INFORME_REFERENCIA_DHF.md
+PROMPT_GEMINI_MEJORAS.md
