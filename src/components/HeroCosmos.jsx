@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { canvasColors } from '../lib/palette';
 import CONSTELLATIONS from '../data/constellations.json';
 import { Butterfly, Dust, PERF } from '../lib/macondo';
+import { T } from '../i18n';
 
 /* ════════════════════════════════════════════
    HERO COSMOS: cielo real sobre Madrid + mariposas de Macondo
@@ -9,8 +11,9 @@ import { Butterfly, Dust, PERF } from '../lib/macondo';
 
 const MADRID = { lat: 40.4168, lon: -3.7038 };
 const DEG = Math.PI / 180;
-const GOLD = '212, 175, 55';
-const IVORY = '244, 240, 235';
+// Colores según el tema (claro/oscuro): se actualizan al empezar cada fotograma
+let GOLD = '212, 175, 55';
+let IVORY = '244, 240, 235';
 const HFOV = 115 * DEG;          // campo de visión horizontal (escritorio)
 const MOBILE_DFOV = 150 * DEG;   // campo de visión diagonal en pantallas estrechas
 const isNarrow = w => w < 700;
@@ -100,7 +103,7 @@ CONSTELLATIONS.forEach(c => c.stars.forEach(s => {
 const REVEAL = { first: 400, perConstellation: 450, line: 1300, afterglow: 2600, trail: 0.22, flash: 700 };
 
 function madridTime(date) {
-  return date.toLocaleTimeString('es-ES', { timeZone: 'Europe/Madrid', hour: '2-digit', minute: '2-digit' });
+  return date.toLocaleTimeString(T.locale, { timeZone: 'Europe/Madrid', hour: '2-digit', minute: '2-digit' });
 }
 
 export default function HeroCosmos() {
@@ -166,10 +169,11 @@ export default function HeroCosmos() {
       if (!pointer.active) return;
       butterflies.forEach(b => { if (Math.hypot(b.x - pointer.x, b.y - pointer.y) < 380) b.scare(pointer.x, pointer.y, 5.5); });
       const burst = w < 700 ? 8 : 22;
-      for (let i = 0; i < burst; i++) dust.push(new Dust(pointer.x, pointer.y, ['#fde047', '#fbbf24', '#ffffff'][i % 3]));
+      for (let i = 0; i < burst; i++) dust.push(new Dust(pointer.x, pointer.y, canvasColors().dust[i % 3]));
     }
 
     function draw(now) {
+      ({ gold: GOLD, ink: IVORY } = canvasColors());
       const date = new Date();
       const lst = localSiderealDeg(date, MADRID.lon);
 
@@ -325,7 +329,7 @@ export default function HeroCosmos() {
           ctx.font = '600 11px "JetBrains Mono", monospace';
           ctx.textAlign = 'center';
           ctx.fillStyle = `rgba(${GOLD}, ${hoverGlow})`;
-          ctx.fillText(c.name, cx, top - 18);
+          ctx.fillText(T.constellations[c.name] ?? c.name, cx, top - 18);
         }
       });
 
@@ -390,8 +394,8 @@ export default function HeroCosmos() {
       <canvas ref={canvasRef} className="block" />
       {caption && (
         <div className="absolute bottom-4 left-4 md:left-auto md:right-28 font-mono text-[9px] md:text-[10px] tracking-widest uppercase text-[var(--color-ds-muted)] pointer-events-none">
-          Cielo real sobre Madrid · {caption.split('|')[0]}
-          <span className="hidden sm:inline"> · {caption.split('|')[1]} constelaciones a la vista</span>
+          {T.hero.sky} · {caption.split('|')[0]}
+          <span className="hidden sm:inline"> · {caption.split('|')[1]} {T.hero.skyVisible}</span>
         </div>
       )}
     </div>

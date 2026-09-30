@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useInView, useReducedMotion } from 'framer-motion';
+import { T } from '../i18n';
 
 /* ════════════════════════════════════════════
    RETRATO-RED: "detrás de la persona hay código".
@@ -280,10 +281,11 @@ export default function PortraitReveal() {
           )}
         </svg>
 
-        {/* Foto real (debajo) + red de luz (encima) */}
+        {/* Foto real (debajo) + red de luz (encima). Fondo oscuro también en modo claro:
+            la luz se mezcla en modo "screen" y sobre crema lo blanquearía todo */}
         <div
           ref={boxRef}
-          className="relative overflow-hidden bg-[var(--color-ds-bg)] select-none"
+          className="theme-nigredo relative overflow-hidden bg-[var(--color-ds-bg)] select-none"
           onPointerEnter={onEnter}
           onPointerMove={onMove}
           onPointerLeave={onLeave}
@@ -294,7 +296,7 @@ export default function PortraitReveal() {
             <img
               ref={imgRef}
               src="/daniel-garcia.jpg"
-              alt="Retrato de Daniel García"
+              alt={T.about.portraitAlt}
               width="600"
               height="800"
               loading="lazy"
@@ -309,7 +311,7 @@ export default function PortraitReveal() {
       </div>
 
       <p className="mt-8 font-mono text-[10px] tracking-widest uppercase text-[var(--color-ds-muted)]">
-        Daniel García · Madrid
+        {T.about.portraitCaption}
       </p>
     </div>
   );

@@ -10,69 +10,10 @@
 }
 
 @layer base {
-  /* ===== PALETAS DE COLORES (EVOLUCIÓN HISTÓRICA) ===== */
-  
-  /* Evolución 1: Legacy (Mente, Alma y Lujo) */
-  .theme-legacy {
-    --color-ds-bg: #050505;
-    --color-ds-surface: #0C0C0C;
-    --color-ds-primary: #00F0FF;
-    --color-ds-secondary: #FFB800;
-    --color-ds-accent: #FF2A2A;
-    --color-ds-text: #F1F5F9;
-    --color-ds-muted: #94A3B8;
-    --color-ds-border: #1E1E1E;
-  }
+  /* ===== TEMAS: Nigredo (oscuro, por defecto) y Albedo (claro, opcional) =====
+     El tema lo aplica index.html antes de pintar y lo cambia ThemeToggle.jsx. */
 
-  /* Evolución 2: Deep Ocean (Corporativo Transitorio) */
-  .theme-ocean {
-    --color-ds-bg: #020617;
-    --color-ds-surface: #0F172A;
-    --color-ds-primary: #38BDF8;
-    --color-ds-secondary: #34D399;
-    --color-ds-accent: #818CF8;
-    --color-ds-text: #F8FAFC;
-    --color-ds-muted: #94A3B8;
-    --color-ds-border: #1E293B;
-  }
-
-  /* Evolución 3: Apex Predator (Gangster Cyberpunk Luxury) */
-  .theme-apex {
-    --color-ds-bg: #030305;
-    --color-ds-surface: #0A0A0E;
-    --color-ds-primary: #00E5FF;
-    --color-ds-secondary: #C5A059;
-    --color-ds-accent: #990F02;
-    --color-ds-text: #E2E8F0;
-    --color-ds-muted: #64748B;
-    --color-ds-border: rgba(255, 255, 255, 0.05);
-  }
-
-  /* Evolución 4: Vintage Mafia (Tonos Apagados / Grisáceos) */
-  .theme-vintage {
-    --color-ds-bg: #050505;
-    --color-ds-surface: #0C0C0C;
-    --color-ds-primary: #009099; /* Cian apagado */
-    --color-ds-secondary: #996E00; /* Oro apagado */
-    --color-ds-accent: #991919; /* Rojo apagado */
-    --color-ds-text: #B0B5B9; /* Texto más oscuro */
-    --color-ds-muted: #4A5568;
-    --color-ds-border: #1A1A1A;
-  }
-
-  /* Evolución 5: Pastel Canvas (Fondo blanco, tonos suaves) */
-  .theme-pastel {
-    --color-ds-bg: #FFFFFF;
-    --color-ds-surface: #F8FAFC;
-    --color-ds-primary: #6EFBFF;
-    --color-ds-secondary: #FFDA73;
-    --color-ds-accent: #FF8A8A;
-    --color-ds-text: #64748B;
-    --color-ds-muted: #CBD5E1;
-    --color-ds-border: #E2E8F0;
-  }
-
-  /* Evolución 6: Nigredo (Technical Luxury Dark) - AHORA ES DEFAULT (:root) */
+  /* Nigredo (Technical Luxury Dark) - DEFAULT (:root) */
   :root, .theme-nigredo {
     --color-ds-bg: #0A0A0A;
     --color-ds-surface: #0F0E0D;
@@ -85,16 +26,17 @@
     --font-sans: 'Space Grotesk', sans-serif;
   }
 
-  /* Evolución 7: Albedo (Technical Luxury Light) */
+  /* Albedo (Technical Luxury Light). Oro y gris más oscuros que en Nigredo
+     para que el texto pequeño se lea sobre crema (contraste >= 4.5:1). */
   .theme-albedo {
     --color-ds-bg: #F7F5F0;
     --color-ds-surface: #FFFFFF;
-    --color-ds-primary: #C5A059; /* Old Gold */
+    --color-ds-primary: #8A6A1F; /* Oro viejo oscuro */
     --color-ds-secondary: #0A0A0A; /* Pure Black */
-    --color-ds-accent: #C5A059;
+    --color-ds-accent: #8A6A1F;
     --color-ds-text: #0A0A0A;
-    --color-ds-muted: #8C8273;
-    --color-ds-border: rgba(197, 160, 89, 0.3); /* Subtle Gold Border */
+    --color-ds-muted: #6B6255;
+    --color-ds-border: rgba(138, 106, 31, 0.28); /* Subtle Gold Border */
     --font-sans: 'Space Grotesk', sans-serif;
   }
 
@@ -107,13 +49,6 @@
     text-transform: uppercase;
   }
 
-  /* Corrección crítica de contraste para Albedo (Modo Claro) */
-  .theme-albedo .text-white {
-    color: var(--color-ds-text) !important;
-  }
-  .theme-albedo .border-white {
-    border-color: var(--color-ds-text) !important;
-  }
 
   /* Purificación Luxury Grid */
   .theme-nigredo *, .theme-albedo * {
@@ -142,17 +77,6 @@
     background-size: 16px 16px;
   }
 
-  /* Tema 3: Light Luxury (Minimalismo Boutique) */
-  .theme-luxury {
-    --color-ds-bg: #FDFBF7;
-    --color-ds-surface: #FFFFFF;
-    --color-ds-primary: #D4AF37;
-    --color-ds-secondary: #F15A29;
-    --color-ds-accent: #680F10;
-    --color-ds-text: #1A1A1A;
-    --color-ds-muted: #6B7280;
-    --color-ds-border: #E5E7EB;
-  }
 }
 
 @layer base {
@@ -257,3 +181,30 @@ section[id] { scroll-margin-top: 4rem; }
 @media (prefers-reduced-motion: reduce) {
   .maison-wordmark { animation: none; background-position: 50% 0; }
 }
+
+/* Albedo: el brillo claro (#FFF3C4) desaparece sobre crema; oro más oscuro */
+.theme-albedo .maison-wordmark {
+  background-image: linear-gradient(100deg, #4F3C0F 0%, #8A6A1F 30%, #C5A059 45%, #8A6A1F 60%, #4F3C0F 100%);
+}
+
+/* Albedo: los botones dorados llevan texto crema (el negro sobre oro oscuro se lee peor).
+   Fuera de @layer para ganar a la utilidad text-black de Tailwind. */
+.theme-albedo .bg-\[var\(--color-ds-primary\)\].text-black {
+  color: var(--color-ds-bg);
+}
+.theme-albedo .bg-\[var\(--color-ds-primary\)\].text-black:hover {
+  color: #0A0A0A; /* al pasar el ratón el fondo pasa a blanco */
+}
+
+/* ===== Albedo (modo claro): piezas que en oscuro llevan colores fijos ===== */
+/* Hero: el halo del texto en móvil pasa a crema */
+.theme-albedo .hero-text { text-shadow: 0 1px 14px rgba(247, 245, 240, 0.95); }
+@media (min-width: 768px) { .theme-albedo .hero-text { text-shadow: none; } }
+
+/* Tarjetas grandes con foto: velo crema en lugar de negro y texto oscuro */
+.theme-albedo .project-hero__fade { background-image: linear-gradient(to right, #F7F5F0, rgba(247, 245, 240, 0.88), transparent); }
+.theme-albedo .project-hero__veil { background-color: rgba(247, 245, 240, 0.35); }
+.theme-albedo .project-hero .text-white { color: var(--color-ds-text); }
+.theme-albedo .project-hero .text-gray-400 { color: var(--color-ds-muted); }
+.theme-albedo .project-hero .text-gray-300 { color: #2E2A24; }
+.theme-albedo .project-hero:hover h4 { color: var(--color-ds-primary); }

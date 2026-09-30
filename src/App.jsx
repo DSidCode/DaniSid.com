@@ -5,156 +5,107 @@ import HeroCosmos from './components/HeroCosmos';
 import StatusTicker from './components/StatusTicker';
 import NeuralProtocol from './components/NeuralProtocol';
 import PortraitReveal from './components/PortraitReveal';
+import ThemeToggle from './components/ThemeToggle';
+import EnglishHint from './components/EnglishHint';
 import WhatsAppButton, { WhatsAppIcon, WHATSAPP_URL } from './components/WhatsApp';
 import { track } from './lib/analytics';
+import { T, LANG, LANG_URLS } from './i18n';
 import { Mail, ArrowRight, Terminal, Shield, Cpu, Code2, Database, Globe, Network, Layers, GitBranch, TerminalSquare, ExternalLink, Server, Zap, Lock, Menu, X } from 'lucide-react';
 
 /* ════════════════════════════════════════════
    APP PRINCIPAL: LUXURY B2B & PORTFOLIO
    ════════════════════════════════════════════ */
 
-const NAV_LINKS = [
-  { href: '#portfolio', label: 'Proyectos' },
-  { href: '#sobre-mi', label: 'Sobre mí' },
-  { href: '#atelier', label: 'Cómo trabajo' },
-  { href: '#maison', label: 'Estudio' },
-  { href: 'mailto:garciadanielsid@gmail.com', label: 'Contacto' },
-];
-
-const ABOUT_FACTS = [
-  { label: 'Base', items: ['Madrid, España'] },
-  { label: 'Origen', items: ['Manizales, Colombia'] },
-  { label: 'Formación', items: ['Diseño Visual · Universidad de Caldas', 'Animación 3D · Unitécnica', 'Piscina 42 Madrid', 'Certificado de Profesionalidad en Desarrollo Web (Madrid)', 'Extensión universitaria · URJC (Madrid)'] },
-  { label: 'Herramientas', items: ['React · TypeScript · .NET', 'Canvas · Web Audio API', 'Linux · Docker · CI/CD'] },
-];
-
-const WORK_STEPS = [
-  { n: '01', title: 'Escuchar', desc: 'Entiendo qué necesita el proyecto y qué tiene que conseguir quien lo va a usar.' },
-  { n: '02', title: 'Diseñar', desc: 'Defino la experiencia y la interfaz, y las pruebo con un prototipo antes de construir.' },
-  { n: '03', title: 'Construir', desc: 'Desarrollo el producto completo, del frontend al servidor, con código limpio.' },
-  { n: '04', title: 'Verificar', desc: 'Tests, rendimiento y accesibilidad, para que funcione bien en cualquier dispositivo.' },
-  { n: '05', title: 'Publicar', desc: 'Lo pongo en producción con despliegue automático, mido cómo se usa y lo sigo mejorando.' },
-];
-
-const MAISON_SERVICES = [
-  { n: '01', title: 'Webs a medida', desc: 'Webs de marca rápidas, cuidadas al detalle y fáciles de encontrar en Google.' },
-  { n: '02', title: 'Experiencias interactivas', desc: 'Piezas generativas con movimiento y sonido para marcas, artistas y eventos.' },
-  { n: '03', title: 'Presencia para artistas', desc: 'Portafolios y EPK para músicos y creadores, con contacto y reservas directas.' },
-];
-
+// Datos de los proyectos que no dependen del idioma.
+// Los textos (título, descripción, caso de estudio) están en src/i18n/es.js y en.js.
 const PORTFOLIO_PROJECTS = [
-  { 
-    id: '01', title: 'ERÊS • Realismo Mágico', subtitle: 'EXPERIENCIA CULTURAL INTERACTIVA', desc: 'Experiencia web sobre la Umbanda y los Erês: realismo mágico, un cielo astronómico real y música generativa.', url: 'https://umbanda-eres.netlify.app', cat: 1, categoryName: 'Proyectos creativos', hero: true,
-    media: ['/screenshots/umbanda/umbanda_1.webp'], 
-    stack: ['JavaScript', 'HTML5 Canvas', 'Web Audio API', 'Astronomía (tiempo sidéreo)'], 
-    caseStudy: { 
-      problem: 'Crear una experiencia web que divulgue la Umbanda y la tradición de los Ibejis y los Erês, contada con la estética del realismo mágico de García Márquez, y que funcione con fluidez en el móvil sin librerías 3D pesadas.', 
-      solution: 'Una web interactiva que reúne un compendio sobre la Umbanda (su historia, los Orixás y sus relatos), un tráiler narrativo en clave de realismo mágico y un planetario hecho a mano en Canvas, que calcula el cielo real de Madrid, Bahía y Manizales con 30 constelaciones. El paisaje sonoro (tambor batá, campanas y bossa nova) se genera en el navegador con Web Audio, y las mariposas amarillas vuelan con un motor de animación propio.', 
-      result: 'Una experiencia que se recorre como un relato: divulga una tradición cultural, funciona como pieza artística y resuelve con código propio la parte técnica (astronomía, animación y sonido), sin librerías externas.' 
-    }
+  {
+    id: '01', url: 'https://umbanda-eres.netlify.app', cat: 1, hero: true,
+    media: ['/screenshots/umbanda/umbanda_1.webp'],
+    stack: ['JavaScript', 'HTML5 Canvas', 'Web Audio API', 'Astronomía (tiempo sidéreo)'],
   },
-  { 
-    id: '02', title: 'Quimera Autómata', subtitle: 'VIDA ARTIFICIAL Y SONIDO GENERATIVO', desc: 'Simulación de vida artificial con sonido generativo.', url: 'https://quimera-automata.netlify.app', cat: 1, categoryName: 'Proyectos creativos', hero: true,
-    media: ['/screenshots/quimera/quimera_1.webp'], 
-    stack: ['JavaScript', 'HTML5 Canvas', 'Web Audio API'], 
-    caseStudy: { 
-      problem: 'Partir del Juego de la Vida de Conway, un autómata celular clásico en blanco y negro, y convertirlo en algo vivo: con color, con sonido y sin quedarse atascado en patrones que se repiten.', 
-      solution: 'Un simulador en Canvas con cinco motores. Cada célula hereda el color de sus padres; un sistema detecta cuándo el tablero se estanca y provoca eventos (meteoritos, oleadas de planeadores, extinciones); y el sonido se genera en tiempo real con Web Audio a partir de la población, con síntesis propia y grabaciones de ballenas y orcas de la NOAA.', 
-      result: 'Una pieza generativa audiovisual que no se repite: se puede observar, intervenir con el ratón y escuchar. Funciona a pantalla completa y se adapta a la resolución de cada pantalla.' 
-    }
+  {
+    id: '02', url: 'https://quimera-automata.netlify.app', cat: 1, hero: true,
+    media: ['/screenshots/quimera/quimera_1.webp'],
+    stack: ['JavaScript', 'HTML5 Canvas', 'Web Audio API'],
   },
-  { 
-    id: '03', title: 'Antología Poética', subtitle: 'LIBRO DE POESÍA DIGITAL', desc: 'Libro de poesía digital, rehecho en React.', url: 'https://antologia.danisid.com', cat: 1, categoryName: 'Proyectos creativos',
-    media: ['/screenshots/antologia/antologia_1.webp'], 
-    stack: ['React', 'Vite', 'CSS3', 'SEO & Open Graph'], 
-    caseStudy: { 
-      problem: 'La primera versión, hecha en JavaScript sin framework, perdía el estado al pasar de un poema a otro y se descolocaba en pantallas pequeñas, justo lo contrario de lo que pide una lectura tranquila.', 
-      solution: 'La rehice en React con Vite, separada en componentes (libro, página, índice). En escritorio cada poema se lee como una hoja; en móvil, con scroll natural. Añadí navegación con teclado, ilustraciones dentro de los poemas, donaciones con códigos QR (con los números protegidos frente a bots) y metadatos para compartir en redes.', 
-      result: 'Una lectura digital estable y cómoda en cualquier pantalla, fácil de ampliar con nuevos poemas e ilustraciones.' 
-    }
+  {
+    id: '03', url: 'https://antologia.danisid.com', cat: 1,
+    media: ['/screenshots/antologia/antologia_1.webp'],
+    stack: ['React', 'Vite', 'CSS3', 'SEO & Open Graph'],
   },
-  { 
-    id: '04', title: 'Cancionero Pro', subtitle: 'APP DE ACORDES PARA MÚSICOS', desc: 'App de acordes que cambia el tono de las canciones en tiempo real.', url: 'https://guitarra.danisid.com', cat: 1, categoryName: 'Proyectos creativos',
-    media: ['/screenshots/cancionero/cancionero_1.webp'], 
-    stack: ['React', 'Vite', 'Tailwind CSS'], 
-    caseStudy: { 
-      problem: 'Cuando una canción no está en tu tono, hay que transportar los acordes de cabeza. Y las webs de acordes habituales están llenas de publicidad y no muestran cómo se toca cada acorde.', 
-      solution: 'Una aplicación web en React que sube o baja el tono de cualquier canción (hasta ±5 semitonos) y actualiza al momento la letra y los acordes. Incluye un diapasón que muestra cómo tocar cada acorde, desplazamiento automático para tocar sin manos y ajuste del tamaño del texto.', 
-      result: 'Una herramienta pensada para ensayar y tocar en directo, con el móvil o la tablet en el atril.' 
-    }
+  {
+    id: '04', url: 'https://guitarra.danisid.com', cat: 1,
+    media: ['/screenshots/cancionero/cancionero_1.webp'],
+    stack: ['React', 'Vite', 'Tailwind CSS'],
   },
-  { 
-    id: '05', title: 'El Rincón de Tetuán', subtitle: 'CARTA DIGITAL PARA RESTAURANTE', desc: 'Carta digital del restaurante, pensada para leerse en el móvil.', url: 'https://elrincontetuan.com', cat: 2, categoryName: 'Clientes', hero: true,
-    media: ['/screenshots/rincon/rincon_1.webp', '/screenshots/rincon/rincon_2.webp', '/screenshots/rincon/rincon_3.webp'], 
-    stack: ['HTML5', 'CSS3', 'JavaScript', 'Netlify', 'Cloudflare'], 
-    caseStudy: { 
-      problem: 'El restaurante no tenía presencia digital ni forma de comunicar su carta a un público mixto (español y brasileño). No existía una versión digital de la carta para consultar desde el móvil sin necesidad de tocar la carta física, ni material visual que mostrara sus platos de forma atractiva.', 
-      solution: 'Diseñé y desarrollé una carta digital adaptada al móvil, con fotografías de los platos optimizadas para cargar rápido y precios claros.', 
-      result: 'Los clientes consultan la carta desde su móvil, en la mesa o antes de pedir a domicilio, y los platos se presentan de forma apetecible.' 
-    }
+  {
+    id: '05', url: 'https://elrincontetuan.com', cat: 2, hero: true,
+    media: ['/screenshots/rincon/rincon_1.webp', '/screenshots/rincon/rincon_2.webp', '/screenshots/rincon/rincon_3.webp'],
+    stack: ['HTML5', 'CSS3', 'JavaScript', 'Netlify', 'Cloudflare'],
   },
-  { 
-    id: '06', title: 'Marian Isac', subtitle: 'WEB DE AUTOR', desc: 'Web de autor con el catálogo de sus libros y venta directa.', url: 'https://marianisac.com', cat: 2, categoryName: 'Clientes', hero: true,
-    media: ['/screenshots/marian/marian_1.webp', '/screenshots/marian/marian_2.webp', '/screenshots/marian/marian_3.webp'], 
-    stack: ['HTML5', 'CSS3', 'JavaScript', 'Netlify', 'Cloudflare', 'Google Analytics'], 
-    caseStudy: { 
-      problem: 'Marian Isac es autor publicado (Editorial Círculo Rojo, 6 libros) sin una presencia digital que reflejara su marca ni facilitara la venta directa de sus obras a lectores.', 
-      solution: 'Una web de autor con estética oscura y elegante: el catálogo de sus 6 libros, una galería de fotos y vídeos de presentaciones y un botón de compra por WhatsApp en cada título, sin depender solo de las distribuidoras.', 
-      result: 'Web en producción con dominio propio y analítica, y un canal directo con los lectores para comprar libros y contratar presentaciones.' 
-    }
+  {
+    id: '06', url: 'https://marianisac.com', cat: 2, hero: true,
+    media: ['/screenshots/marian/marian_1.webp', '/screenshots/marian/marian_2.webp', '/screenshots/marian/marian_3.webp'],
+    stack: ['HTML5', 'CSS3', 'JavaScript', 'Netlify', 'Cloudflare', 'Google Analytics'],
   },
-  { 
-    id: '07', title: 'Asoc. Creando Sueños', subtitle: 'WEB PARA UNA ASOCIACIÓN', desc: 'Web de una asociación sin ánimo de lucro de apoyo a migrantes: servicios, voluntariado y donaciones.', url: 'https://asociacioncreandosuenos.com', cat: 2, categoryName: 'Clientes', hero: true,
-    media: ['/screenshots/creando/creando_1.webp'], 
-    stack: ['HTML5', 'Tailwind CSS', 'JavaScript'], 
-    caseStudy: { 
-      problem: 'La Asociación Creando Sueños, enfocada en apoyar a migrantes en España, necesitaba presencia digital profesional para centralizar sus servicios de extranjería, deporte (Equipo La Banda) y brigadas solidarias, además de captar voluntarios y donaciones.', 
-      solution: 'Una web de una sola página, clara, rápida y accesible, con la identidad de la asociación (azul marino y dorado), contacto directo por WhatsApp y formularios para voluntarios y colaboradores.', 
-      result: 'La asociación tiene una presencia profesional en internet: quien necesita asesoría contacta en un clic y los colaboradores se apuntan desde la propia web.' 
-    }
+  {
+    id: '07', url: 'https://asociacioncreandosuenos.com', cat: 2, hero: true,
+    media: ['/screenshots/creando/creando_1.webp'],
+    stack: ['HTML5', 'Tailwind CSS', 'JavaScript'],
   },
-  { 
-    id: '08', title: 'Eddy Soundscapes', subtitle: 'DOSSIER DE PRENSA MUSICAL (EPK)', desc: 'Dossier de prensa (EPK) de un músico, con contacto para contrataciones.', url: 'https://eddycamusic.netlify.app', cat: 2, categoryName: 'Clientes', hero: true,
-    media: ['/screenshots/eddy/eddy_1.webp'], 
-    stack: ['React', 'Vite', 'Tailwind CSS', 'Framer Motion'], 
-    caseStudy: { 
-      problem: 'Eddy Castaño (cantautor y guitarrista) necesitaba un Electronic Press Kit (EPK) moderno y altamente visual para presentar sus sesiones acústicas a promotores y salas de conciertos, sin que el contenido multimedia ralentizara la carga.', 
-      solution: 'Diseñé una web oscura centrada en la fotografía y en tipografías con carácter (Playfair Display y Outfit), con reproductores de música integrados y una galería, cuidando que el contenido multimedia no ralentice la carga.', 
-      result: 'Una carta de presentación rápida y cuidada para promotores y salas, con contacto directo para contrataciones.' 
-    }
+  {
+    id: '08', url: 'https://eddycamusic.netlify.app', cat: 2, hero: true,
+    media: ['/screenshots/eddy/eddy_1.webp'],
+    stack: ['React', 'Vite', 'Tailwind CSS', 'Framer Motion'],
   },
-  { 
-    id: '09', title: 'Aurum-CRM', subtitle: 'SISTEMA EMPRESARIAL (.NET 10 + REACT TS)', desc: 'CRM completo en .NET y React, con arquitectura limpia y CQRS.', url: '', github: 'https://github.com/DSidCode/Aurum-CRM', tag: 'Proyecto personal', cat: 3, categoryName: 'Ingeniería',
+  {
+    id: '09', url: '', github: 'https://github.com/DSidCode/Aurum-CRM', cat: 3,
     media: ['/screenshots/aurum/aurum_1.webp', '/screenshots/aurum/aurum_2.webp', '/screenshots/aurum/aurum_3.webp', '/screenshots/aurum/aurum_4.webp', '/screenshots/aurum/aurum_5.webp', '/screenshots/aurum/aurum_6.webp'],
     stack: ['.NET 10', 'C#', 'MediatR (CQRS)', 'EF Core', 'React 19', 'TypeScript', 'Tailwind CSS', 'xUnit'],
-    caseStudy: {
-      problem: 'En muchos sistemas de gestión comercial la lógica de negocio acaba repartida entre controladores y consultas a base de datos: cambiar la persistencia rompe media aplicación, las reglas (qué puede pasarle a una venta y cuándo) no están en ningún sitio concreto y probarlas exige levantar todo el sistema.',
-      solution: 'Diseñé un CRM full-stack con Clean Architecture en cuatro capas (Dominio, Aplicación, Infraestructura y API) y el patrón CQRS con MediatR, separando los Commands de escritura de las Queries de lectura. Las entidades del dominio protegen sus propias reglas (una oportunidad no retrocede ni cambia tras cerrarse) y la API devuelve errores estándar RFC 7807. El frontend en React 19 usa useOptimistic para mover oportunidades por el pipeline sin esperar al servidor e incluye un Auditor CQRS en vivo que muestra cada Command y Query que atraviesa la arquitectura.',
-      result: 'Una base de código desacoplada y verificable: 22 tests automatizados cubren las reglas de negocio y los casos de uso sin necesidad de base de datos, y el auditor visual permite explicar la arquitectura en funcionamiento en lugar de solo describirla. Código completo disponible en GitHub.'
-    }
   },
-  { 
-    id: '10', title: 'Quimera-Sniper-Bot', subtitle: 'ALGORITMIA FINANCIERA (PYTHON)', desc: 'Escáner de criptomonedas con indicadores técnicos y simulador de operaciones.', url: '', cat: 3, categoryName: 'Ingeniería',
+  {
+    id: '10', url: '', cat: 3,
     media: ['/screenshots/sniper/sniper_1.webp', '/screenshots/sniper/sniper_2.webp', '/screenshots/sniper/sniper_3.webp'],
     stack: ['Python', 'Pandas', 'CCXT (Binance API)', 'Flask', 'JavaScript (Vanilla)', 'HTML5 / CSS3', 'Linux notify-send'],
-    caseStudy: {
-      problem: 'Vigilar a mano 16 criptomonedas en varias temporalidades a la vez es inviable: las buenas entradas aparecen de madrugada o durante las aperturas de Asia y Wall Street, y los cruces de medias móviles aislados generan muchísimas señales falsas en mercados laterales.',
-      solution: 'Desarrollé un escáner en Python que consulta la API pública de Binance (vía CCXT) cada 30 segundos y analiza 16 pares en 15m, 30m y 1h. Los indicadores están calculados a mano con Pandas: cruce de EMAs 9/21, RSI de Wilder (14), SMA de volumen, MACD (12, 26, 9) y detección de "squeeze" con Bandas de Bollinger. Solo se lanza una alerta nativa del sistema cuando todos los filtros coinciden. Cada señal abre una operación simulada con Stop Loss y Take Profit propios de su temporalidad, y una terminal web (Radar + Terminal, JavaScript vanilla sobre un servidor Flask) muestra el estado en tiempo real.',
-      result: 'Un laboratorio cuantitativo con validación honesta: el forward testing destapó un 10% de acierto inicial (30 señales). Diagnostiqué la causa (un filtro de volumen que entraba en el techo del movimiento y Stops demasiado ajustados para la volatilidad cripto), rediseñé los márgenes con ratio 2:1 y el acierto acumulado subió al 39% sobre 210 señales. Es un proyecto de investigación, no un sistema de inversión automático.'
-    }
   },
-  { 
-    id: '11', title: 'Cyberpunk Luxury Cluster', subtitle: 'INFRAESTRUCTURA HOMELAB', desc: 'Homelab Linux de 3 equipos para tareas automáticas y análisis forense.', url: '', cat: 3, categoryName: 'Ingeniería',
+  {
+    id: '11', url: '', cat: 3,
     media: ['/screenshots/cluster/cluster_1.webp', '/screenshots/cluster/cluster_2.webp'],
     stack: ['Linux (Nobara · Mint · Kali)', 'Bash', 'Python', 'SSH / rsync', 'The Sleuth Kit', 'dd + SHA-256', 'GPT / parted'],
-    caseStudy: {
-      problem: 'Necesitaba un entorno propio para ejecutar tareas pesadas sin bloquear mi equipo de desarrollo (indexación, recuperación de datos, copias espejo) y para practicar análisis forense digital sin arriesgarme a alterar las pruebas. Mientras tanto, varios portátiles antiguos estaban parados y un disco de casi 800 GB acumulaba años de datos sin clasificar.',
-      solution: 'Reutilicé tres equipos como clúster en red local. AETHER es el nodo maestro (orquestación, desarrollo e IA); ORÁCULO trabaja 24/7 sin pantalla (desactivada por parámetro del kernel) y recibe un espejo del vault por SSH y rsync; NYX es la estación forense. Además forjé el "Grimorio", un disco de 1 TB con tabla GPT y dos particiones: una FAT32 arrancable con Kali Live y una exFAT como bóveda de evidencias. El protocolo sigue la norma ISO/IEC 27037: bloqueo de escritura con blockdev, imagen bit a bit con dd y verificación con hash SHA-256.',
-      result: 'Recuperé archivos borrados de un disco propio de 793 GB mapeando sus inodos con The Sleuth Kit, y un script en Python deduplicó lo recuperado por hash MD5: 168 archivos únicos (44 vídeos, 113 imágenes y 11 comprimidos), con análisis de metadatos para fechar su origen. La auditoría identificó unos 635 GB purgables y 72 GB esenciales a preservar. Todo el proceso está documentado y automatizado con scripts de Bash.'
-    }
-  }
-
+  },
 ];
+
+// Proyectos con los textos del idioma de la página
+const PROJECTS = PORTFOLIO_PROJECTS.map(p => ({
+  ...p,
+  ...T.projects.items[p.id],
+  categoryName: T.projects.categories[p.cat],
+  stack: p.stack.map(tech => T.projects.stackTerms[tech] ?? tech),
+}));
+
+// Selector ES · EN: enlaces reales a cada versión; el idioma activo, en oro
+function LanguageSwitch({ className = '' }) {
+  return (
+    <div className={`items-center font-mono text-xs tracking-widest ${className}`} aria-label={T.nav.language} role="group">
+      {['es', 'en'].map((lang, i) => (
+        <React.Fragment key={lang}>
+          {i > 0 && <span className="text-[var(--color-ds-border)] px-0.5" aria-hidden="true">·</span>}
+          <a
+            href={LANG_URLS[lang]}
+            hrefLang={lang}
+            lang={lang}
+            aria-current={lang === LANG ? 'true' : undefined}
+            onClick={() => { if (lang !== LANG) track('language_switch', { to: lang }); }}
+            className={`min-w-11 min-h-11 flex items-center justify-center uppercase transition-colors ${lang === LANG ? 'text-[var(--color-ds-primary)] font-bold' : 'text-[var(--color-ds-muted)] hover:text-[var(--color-ds-text)]'}`}
+          >
+            {lang}
+          </a>
+        </React.Fragment>
+      ))}
+    </div>
+  );
+}
 
 function App() {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -198,28 +149,36 @@ function App() {
           <div className="font-sans font-black text-xl lg:text-2xl tracking-tighter uppercase shrink-0">
             DaniSid<span className="text-[var(--color-ds-primary)] animate-pulse">_</span>
           </div>
+          <div className="flex items-center">
           <div className="hidden md:flex font-mono text-[10px] lg:text-xs text-[var(--color-ds-muted)] uppercase tracking-widest items-center">
-            {NAV_LINKS.map((link, i) => (
+            {T.nav.links.map((link, i) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={(e) => goToSection(e, link.href)}
-                className={`hover:text-[var(--color-ds-text)] transition-colors h-16 flex items-center ${i < NAV_LINKS.length - 1 ? 'px-4 lg:px-6 border-r border-[var(--color-ds-border)]' : 'pl-4 lg:pl-6 hover:text-[var(--color-ds-primary)]'}`}
+                className={`hover:text-[var(--color-ds-text)] transition-colors h-16 flex items-center ${i < T.nav.links.length - 1 ? 'px-4 lg:px-6 border-r border-[var(--color-ds-border)]' : 'pl-4 lg:pl-6 hover:text-[var(--color-ds-primary)]'}`}
               >
                 {link.label}
               </a>
             ))}
           </div>
 
+          {/* Idioma (escritorio; en móvil está dentro del menú) */}
+          <LanguageSwitch className="hidden md:flex md:ml-4 lg:ml-6 md:pl-4 lg:pl-6 md:border-l border-[var(--color-ds-border)] h-16" />
+
+          {/* Modo claro / oscuro (escritorio y móvil) */}
+          <ThemeToggle className="md:ml-2 lg:ml-4" />
+
           {/* Botón de menú (móvil) */}
           <button
             onClick={() => setMenuOpen(open => !open)}
             className="md:hidden -mr-2 p-2 text-[var(--color-ds-text)]"
-            aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
+            aria-label={menuOpen ? T.nav.closeMenu : T.nav.openMenu}
             aria-expanded={menuOpen}
           >
             {menuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
+          </div>
         </div>
 
         {/* Menú desplegable (móvil) */}
@@ -232,7 +191,7 @@ function App() {
               transition={{ duration: 0.25, ease: 'easeOut' }}
               className="md:hidden overflow-hidden border-t border-[var(--color-ds-border)] bg-[var(--color-ds-bg)]"
             >
-              {NAV_LINKS.map(link => (
+              {T.nav.links.map(link => (
                 <a
                   key={link.href}
                   href={link.href}
@@ -242,6 +201,7 @@ function App() {
                   {link.label}
                 </a>
               ))}
+              <LanguageSwitch className="flex px-4 py-1 border-b border-[var(--color-ds-border)]" />
             </motion.div>
           )}
         </AnimatePresence>
@@ -261,34 +221,34 @@ function App() {
       <div className="relative z-10 max-w-screen-2xl mx-auto flex flex-col md:flex-row border-x border-[var(--color-ds-border)] min-h-[calc(100vh-64px)] pointer-events-none">
 
         {/* Lado Izquierdo: Texto Editorial Brutalista */}
-        <div className="w-full md:w-1/2 p-6 lg:p-16 flex flex-col justify-center min-w-0 md:bg-gradient-to-r md:from-[var(--color-ds-bg)] md:via-[var(--color-ds-bg)]/60 md:to-transparent [&_a]:pointer-events-auto [text-shadow:0_1px_14px_rgba(10,10,10,0.95)] md:[text-shadow:none]">
+        <div className="w-full md:w-1/2 p-6 lg:p-16 flex flex-col justify-center min-w-0 md:bg-gradient-to-r md:from-[var(--color-ds-bg)] md:via-[var(--color-ds-bg)]/60 md:to-transparent [&_a]:pointer-events-auto [text-shadow:0_1px_14px_rgba(10,10,10,0.95)] md:[text-shadow:none] hero-text">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
             <div className="inline-block border border-[var(--color-ds-border)] px-3 py-1 text-[9px] font-mono text-[var(--color-ds-muted)] mb-8 tracking-widest uppercase bg-[var(--color-ds-bg)] opacity-70">
-              Madrid · Diseño + Código
+              {T.hero.tag}
             </div>
 
             <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter mb-6 text-[var(--color-ds-text)] leading-[0.9] break-words">
               DANIEL<br/>GARCÍA
             </h1>
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight mb-8 text-[var(--color-ds-muted)]">
-              Design Engineer · Artista digital
+              {T.hero.role}
             </h2>
 
             <p className="text-sm font-mono text-[var(--color-ds-text)] max-w-md leading-relaxed mb-12">
-              &gt; Desarrollador de software y diseñador en Madrid.<br/>
-              &gt; Construyo productos web completos: la interfaz, el código y la puesta en producción.
+              &gt; {T.hero.lines[0]}<br/>
+              &gt; {T.hero.lines[1]}
             </p>
 
             <div className="flex flex-wrap gap-4">
               <a href="#portfolio" onClick={(e) => goToSection(e, '#portfolio')} className="bg-[var(--color-ds-primary)] text-black px-8 py-3 text-xs font-bold transition-all hover:bg-[#b5952f]">
-                VER PROYECTOS
+                {T.hero.ctaProjects}
               </a>
               <a href="mailto:garciadanielsid@gmail.com" onClick={() => track('contact_email')} className="border border-[var(--color-ds-primary)] text-[var(--color-ds-primary)] px-8 py-3 text-xs font-bold transition-all hover:bg-[var(--color-ds-primary)] hover:text-black">
-                HABLEMOS
+                {T.hero.ctaTalk}
               </a>
             </div>
           </motion.div>
@@ -305,20 +265,20 @@ function App() {
           <div className="flex justify-between items-end mb-16 border-b border-[var(--color-ds-border)] pb-6">
             <div>
               <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-[var(--color-ds-text)] uppercase">
-                Proyectos
+                {T.projects.title}
               </h2>
               <p className="font-mono text-xs text-[var(--color-ds-muted)] mt-2 uppercase tracking-widest">
-                [ Proyectos seleccionados ]
+                {T.projects.kicker}
               </p>
             </div>
             <div className="hidden md:block font-mono text-[10px] text-[var(--color-ds-primary)]">
-              11 PROYECTOS
+              {T.projects.count}
             </div>
           </div>
 
           <div className="space-y-12">
             {[1, 2, 3].map(catId => {
-              const categoryProjects = PORTFOLIO_PROJECTS.filter(p => p.cat === catId);
+              const categoryProjects = PROJECTS.filter(p => p.cat === catId);
               if (categoryProjects.length === 0) return null;
               return (
                 <div key={catId}>
@@ -335,13 +295,13 @@ function App() {
                           onClick={() => { setSelectedProject(project); track('open_project', { project_id: project.id, project_title: project.title }); }}
                           whileHover={{ scale: 1.01 }}
                           transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                          className={`w-full text-left group block border border-[var(--color-ds-border)] hover:border-[var(--color-ds-primary)] transition-colors relative overflow-hidden flex flex-col md:flex-row ${isHero ? 'min-h-[400px] md:min-h-[500px]' : 'bg-[var(--color-ds-bg)] p-4 md:p-6'}`}
+                          className={`w-full text-left group block border border-[var(--color-ds-border)] hover:border-[var(--color-ds-primary)] transition-colors relative overflow-hidden flex flex-col md:flex-row ${isHero ? 'project-hero min-h-[400px] md:min-h-[500px]' : 'bg-[var(--color-ds-bg)] p-4 md:p-6'}`}
                         >
-                          {/* HERO BACKGROUND */}
+                          {/* HERO BACKGROUND (en modo claro, velo crema: ver index.css) */}
                           {isHero && project.media && project.media.length > 0 && (
                             <div className="absolute inset-0 z-0">
-                              <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-10" />
-                              <div className="absolute inset-0 bg-black/40 z-10" />
+                              <div className="project-hero__fade absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-10" />
+                              <div className="project-hero__veil absolute inset-0 bg-black/40 z-10" />
                               <motion.img 
                                 src={project.media[0]} 
                                 alt={project.title}
@@ -428,33 +388,21 @@ function App() {
 
           {/* Historia */}
           <div>
-            <p className="font-mono text-xs text-[var(--color-ds-primary)] tracking-widest uppercase mb-4">[ Sobre mí ]</p>
+            <p className="font-mono text-xs text-[var(--color-ds-primary)] tracking-widest uppercase mb-4">{T.about.kicker}</p>
             <h2 className="text-3xl md:text-5xl font-black tracking-tight text-[var(--color-ds-text)] leading-tight mb-3">
               Daniel García
             </h2>
             <p className="font-mono text-sm md:text-base text-[var(--color-ds-primary)] mb-10">
-              Design Engineer · Madrid
+              {T.about.role}
             </p>
 
             <div className="space-y-6 text-sm md:text-base text-[var(--color-ds-text)]/85 leading-relaxed max-w-2xl">
-              <p>
-                Soy desarrollador de software. Construyo productos web completos, desde la arquitectura del servidor
-                hasta la última interacción de la interfaz.
-              </p>
-              <p>
-                Trato la ingeniería y la experiencia con el mismo rigor: código limpio, probado y bien desplegado, y
-                también los detalles de movimiento e interacción que hacen que un producto se recuerde. El código es
-                además mi herramienta creativa, y lo que aprendo experimentando lo llevo a cada proyecto.
-              </p>
-              <p>
-                Vengo del diseño visual en Colombia, me formé como desarrollador en Madrid y sigo aprendiendo cada día;
-                ahora, cloud y Kubernetes.
-              </p>
+              {T.about.paragraphs.map(text => <p key={text}>{text}</p>)}
             </div>
 
             {/* Ficha */}
             <dl className="mt-12 grid sm:grid-cols-2 gap-x-10 gap-y-6 border-t border-[var(--color-ds-border)] pt-8 font-mono text-xs">
-              {ABOUT_FACTS.map(fact => (
+              {T.about.facts.map(fact => (
                 <div key={fact.label}>
                   <dt className="text-[var(--color-ds-primary)] uppercase tracking-widest mb-2">{fact.label}</dt>
                   {fact.items.map(item => (
@@ -472,7 +420,7 @@ function App() {
                 LinkedIn
               </a>
               <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" onClick={() => track('contact_whatsapp', { location: 'about' })} className="flex items-center gap-2 bg-[var(--color-ds-primary)] text-black px-5 py-3 font-mono text-xs font-bold uppercase tracking-widest hover:bg-white transition-colors">
-                <WhatsAppIcon size={14} /> Hablemos
+                <WhatsAppIcon size={14} /> {T.about.talk}
               </a>
             </div>
           </div>
@@ -494,11 +442,11 @@ function App() {
           {/* Lado Derecho: Texto de Especificaciones */}
           <div className="w-full md:w-1/2 p-6 md:p-16 flex flex-col justify-center bg-dot-matrix">
             <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-[var(--color-ds-text)] mb-12 uppercase">
-              CÓMO TRABAJO
+              {T.work.title}
             </h2>
             
             <ol className="space-y-6 border-l-2 border-[var(--color-ds-border)] pl-6 list-none m-0">
-              {WORK_STEPS.map(step => (
+              {T.work.steps.map(step => (
                 <li key={step.n}>
                   <h3 className="text-lg md:text-xl font-bold text-[var(--color-ds-text)] mb-1 flex items-center gap-3">
                     <span className="font-mono text-sm text-[var(--color-ds-primary)]">{step.n}</span>
@@ -521,7 +469,7 @@ function App() {
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1px] h-16 bg-[var(--color-ds-primary)]"></div>
 
           <p className="font-mono text-[10px] md:text-xs tracking-[0.4em] uppercase text-[var(--color-ds-muted)] mt-6 mb-10">
-            El estudio
+            {T.maison.kicker}
           </p>
 
           <h2 className="maison-wordmark font-light uppercase leading-tight tracking-[0.18em] md:tracking-[0.3em] text-3xl sm:text-5xl md:text-7xl">
@@ -535,14 +483,14 @@ function App() {
           </div>
 
           <p className="text-lg md:text-2xl text-[var(--color-ds-text)] max-w-2xl mx-auto leading-relaxed mb-4">
-            Mi estudio de encargos.
+            {T.maison.lead}
           </p>
           <p className="font-mono text-xs md:text-sm text-[var(--color-ds-muted)] max-w-xl mx-auto leading-relaxed mb-16">
-            Lo que ves en esta web, hecho para tu marca: diseño y código a medida para quien cuida cada detalle.
+            {T.maison.text}
           </p>
 
           <div className="grid md:grid-cols-3 gap-px bg-[var(--color-ds-border)] border border-[var(--color-ds-border)] max-w-5xl mx-auto text-left mb-16">
-            {MAISON_SERVICES.map(service => (
+            {T.maison.services.map(service => (
               <div key={service.n} className="bg-[var(--color-ds-surface)] p-8 md:p-10 transition-colors hover:bg-[var(--color-ds-bg)]">
                 <span className="font-mono text-xs text-[var(--color-ds-primary)]">{service.n}</span>
                 <h3 className="text-xl md:text-2xl font-bold text-[var(--color-ds-text)] mt-4 mb-3">{service.title}</h3>
@@ -553,10 +501,10 @@ function App() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a href="https://maison-quintessence.netlify.app/" onClick={() => track('maison_click')} target="_blank" rel="noopener noreferrer" className="bg-[var(--color-ds-primary)] text-black px-10 py-4 text-xs font-bold tracking-[0.25em] transition-colors hover:bg-white">
-              CONTACTAR CON EL ESTUDIO
+              {T.maison.cta}
             </a>
             <a href={WHATSAPP_URL} onClick={() => track('contact_whatsapp', { location: 'maison' })} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 border border-[var(--color-ds-border)] text-[var(--color-ds-text)] px-8 py-4 text-xs font-bold tracking-[0.2em] transition-colors hover:border-[var(--color-ds-primary)] hover:text-[var(--color-ds-primary)]">
-              <WhatsAppIcon size={14} /> HABLAR POR WHATSAPP
+              <WhatsAppIcon size={14} /> {T.maison.whatsapp}
             </a>
           </div>
         </div>
@@ -585,13 +533,14 @@ function App() {
           </div>
           
           <div className="font-mono text-[10px] text-[var(--color-ds-muted)] tracking-widest uppercase">
-            © 2026 Daniel García · Madrid
+            {T.footer}
           </div>
         </div>
       </footer>
 
 
       <WhatsAppButton />
+      <EnglishHint />
 
       <ProjectModal 
         project={selectedProject} 

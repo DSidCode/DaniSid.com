@@ -1,4 +1,6 @@
 import React, { useEffect, useRef } from 'react';
+import { canvasColors } from '../lib/palette';
+import { T } from '../i18n';
 
 /* ════════════════════════════════════════════
    EL PROTOCOLO: red neuronal viva con el ciclo de trabajo.
@@ -6,17 +8,14 @@ import React, { useEffect, useRef } from 'react';
    y el clic dispara una cascada de impulsos.
    ════════════════════════════════════════════ */
 
-const GOLD = '212, 175, 55';
-const IVORY = '244, 240, 235';
-const MUTED = '140, 130, 115';
+// Colores según el tema (claro/oscuro): se actualizan al empezar cada fotograma
+let GOLD = '212, 175, 55';
+let IVORY = '244, 240, 235';
+let MUTED = '140, 130, 115';
+let SURFACE = '#0F0E0D';
+let BG = '#0A0A0A';
 
-const PHASES = [
-  { title: '01 · ESCUCHAR', sub: 'el problema real, no el encargo' },
-  { title: '02 · DISEÑAR', sub: 'UI/UX · prototipo interactivo' },
-  { title: '03 · CONSTRUIR', sub: 'React · TypeScript · .NET' },
-  { title: '04 · VERIFICAR', sub: 'tests · rendimiento · a11y' },
-  { title: '05 · PUBLICAR', sub: 'CI/CD · Netlify · Cloudflare' },
-];
+const PHASES = T.work.phases; // textos en src/i18n
 
 // Generador pseudoaleatorio con semilla: la red es la misma en cada visita
 function seeded(seed) {
@@ -150,6 +149,7 @@ export default function NeuralProtocol() {
     };
 
     function draw(now) {
+      ({ gold: GOLD, ink: IVORY, muted: MUTED, surface: SURFACE, bg: BG } = canvasColors());
       const time = now * 0.001;
       ctx.clearRect(0, 0, w, h);
 
@@ -254,7 +254,7 @@ export default function NeuralProtocol() {
 
       // Centro: DISEÑO + CÓDIGO
       const hubR = Math.min(w, h) * 0.13;
-      ctx.fillStyle = '#0F0E0D';
+      ctx.fillStyle = SURFACE;
       ctx.strokeStyle = `rgba(${GOLD}, 0.9)`;
       ctx.lineWidth = 1.5;
       ctx.beginPath(); ctx.arc(net.cx, net.cy, hubR, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
@@ -263,8 +263,8 @@ export default function NeuralProtocol() {
       ctx.textBaseline = 'middle';
       ctx.fillStyle = `rgba(${IVORY}, 1)`;
       ctx.font = `700 ${hubFont}px "Space Grotesk", sans-serif`;
-      ctx.fillText('DISEÑO', net.cx, net.cy - hubFont * 0.85);
-      ctx.fillText('CÓDIGO', net.cx, net.cy + hubFont * 0.85);
+      ctx.fillText(T.work.hub[0], net.cx, net.cy - hubFont * 0.85);
+      ctx.fillText(T.work.hub[1], net.cx, net.cy + hubFont * 0.85);
       ctx.fillStyle = `rgba(${GOLD}, 1)`;
       ctx.font = `400 ${hubFont * 0.8}px "JetBrains Mono", monospace`;
       ctx.fillText('+', net.cx, net.cy);
@@ -278,7 +278,7 @@ export default function NeuralProtocol() {
         const isActive = n.phase === activePhase && !reduceMotion;
         const hover = pointer.active && Math.hypot(n.x - pointer.x, n.y - pointer.y) < 60;
         const lit = Math.min(1, n.glow + (isActive ? 0.6 : 0) + (hover ? 1 : 0));
-        ctx.fillStyle = lit > 0.3 ? `rgba(${GOLD}, 1)` : '#0A0A0A';
+        ctx.fillStyle = lit > 0.3 ? `rgba(${GOLD}, 1)` : BG;
         ctx.strokeStyle = `rgba(${GOLD}, 1)`;
         ctx.lineWidth = 2;
         ctx.shadowColor = `rgba(${GOLD}, 1)`;
@@ -327,7 +327,7 @@ export default function NeuralProtocol() {
       ctx.textBaseline = 'alphabetic';
       ctx.font = `400 ${small ? 9 : 11}px "JetBrains Mono", monospace`;
       ctx.fillStyle = `rgba(${GOLD}, 0.8)`;
-      ctx.fillText('↻ ITERAR HASTA QUE SE SIENTA BIEN', 14, h - 14);
+      ctx.fillText(T.work.loop, 14, h - 14);
     }
 
     function loop(now) {
@@ -360,7 +360,7 @@ export default function NeuralProtocol() {
   }, []);
 
   return (
-    <div className="absolute inset-0" role="img" aria-label="Ciclo de trabajo: escuchar, diseñar, construir, verificar y publicar, alrededor de diseño y código">
+    <div className="absolute inset-0" role="img" aria-label={T.work.aria}>
       <canvas ref={canvasRef} className="block" />
     </div>
   );

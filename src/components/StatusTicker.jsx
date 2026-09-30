@@ -1,20 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { T } from '../i18n';
 
 /* ════════════════════════════════════════════
    BARRA DE ESTADO: qué estoy haciendo ahora.
-   Para actualizarla basta con editar STATUS_ITEMS.
+   Los textos están en src/i18n (ticker).
    ════════════════════════════════════════════ */
 
-const STATUS_ITEMS = [
-  { label: 'Estado', text: 'Disponible para proyectos y equipos', dot: true },
-  { label: 'En curso', text: 'Puliendo Quimera Autómata y la carta celeste de ERÊS' },
-  { label: 'Estudiando', text: 'Kubernetes y fundamentos Cloud (AWS · GCP)' },
-  { label: 'Último proyecto', text: 'Aurum-CRM · .NET 10 + React 19' },
-  { label: 'Madrid', text: null }, // hora local en vivo
-];
+const STATUS_ITEMS = T.ticker;
 
 function madridTime() {
-  return new Date().toLocaleTimeString('es-ES', { timeZone: 'Europe/Madrid', hour: '2-digit', minute: '2-digit' });
+  return new Date().toLocaleTimeString(T.locale, { timeZone: 'Europe/Madrid', hour: '2-digit', minute: '2-digit' });
 }
 
 function Group({ time, hidden }) {

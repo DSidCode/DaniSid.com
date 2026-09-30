@@ -1,10 +1,11 @@
 import React from 'react';
 import { track } from '../lib/analytics';
+import { T } from '../i18n';
 
 /* Contacto por WhatsApp: botón flotante e icono reutilizable */
 
 const PHONE = '34641868620';
-const MESSAGE = 'Hola Daniel, he visto tu web danisid.com y me gustaría hablar contigo.';
+const MESSAGE = T.whatsapp.message;
 export const WHATSAPP_URL = `https://wa.me/${PHONE}?text=${encodeURIComponent(MESSAGE)}`;
 
 export function WhatsAppIcon({ size = 16, className = '' }) {
@@ -22,11 +23,11 @@ export default function WhatsAppButton() {
       onClick={() => track('contact_whatsapp', { location: 'floating' })}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Escríbeme por WhatsApp"
+      aria-label={T.whatsapp.label}
       className="group fixed bottom-5 right-5 md:bottom-8 md:right-8 z-50 flex items-center gap-3"
     >
       <span className="hidden md:block opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 font-mono text-[10px] uppercase tracking-widest text-[var(--color-ds-text)] bg-[var(--color-ds-bg)]/90 border border-[var(--color-ds-border)] px-3 py-2 whitespace-nowrap">
-        Escríbeme por WhatsApp
+        {T.whatsapp.label}
       </span>
       <span className="w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center bg-[var(--color-ds-bg)]/90 backdrop-blur-sm border border-[var(--color-ds-primary)] text-[var(--color-ds-primary)] shadow-[0_0_24px_rgba(212,175,55,0.25)] group-hover:bg-[var(--color-ds-primary)] group-hover:text-black transition-colors duration-300">
         <WhatsAppIcon size={22} />

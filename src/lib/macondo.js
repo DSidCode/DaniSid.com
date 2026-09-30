@@ -1,4 +1,5 @@
-/* Mariposas de Macondo compartidas por el hero y el retrato de "Sobre mí". */
+/* Mariposas de Macondo del hero. */
+import { canvasColors } from './palette';
 
 /* ─── Mariposas de Macondo: port fiel del motor de ERÊS (AlchemicalMacondoButterfly),
        con la paleta "Oro Macondo Alquímico" ─── */
@@ -100,7 +101,7 @@ export class Butterfly {
       this.vx *= 0.94;
       this.vy *= 0.94;
       this.flapSpeed = 0.05;
-      if (Math.random() < (PERF.lite ? 0.12 : 0.4)) dust.push(new Dust(this.x, this.y, MACONDO.neon));
+      if (Math.random() < (PERF.lite ? 0.12 : 0.4)) dust.push(new Dust(this.x, this.y, canvasColors().sleep.line));
       if (this.constellationTimer <= 0) {
         this.isConstellation = false;
         this.flapSpeed = 0.14 + Math.random() * 0.18;
@@ -193,15 +194,17 @@ export class Butterfly {
     const absSpan = Math.max(0.08, Math.abs(wingSpan));
     const wingFlex = Math.sin(this.flapPhase) * 0.16;
 
-    // Metamorfosis a constelación (malla estelar luminosa)
+    // Metamorfosis a constelación (malla estelar luminosa).
+    // En modo claro, en oro oscuro como las constelaciones del cielo
     if (this.isConstellation) {
+      const sleep = canvasColors().sleep;
       ctx.globalAlpha = 0.95;
-      ctx.shadowColor = p.neon;
+      ctx.shadowColor = sleep.glow;
       ctx.shadowBlur = PERF.lite ? 0 : 18 * zScale;
       for (const dir of [-1, 1]) {
         ctx.save();
         ctx.scale(dir * absSpan, 1.0);
-        ctx.strokeStyle = p.neon;
+        ctx.strokeStyle = sleep.line;
         ctx.lineWidth = 1.2 * zScale;
         ctx.beginPath();
         ctx.moveTo(0, 0);
@@ -212,14 +215,14 @@ export class Butterfly {
         ctx.closePath();
         ctx.stroke();
         [[baseW * 1.15, -baseH * 0.7], [baseW * 0.95, baseH * 0.15], [baseW * 0.7, baseH * 0.85], [0, 0]].forEach(([nx, ny]) => {
-          ctx.fillStyle = '#ffffff';
+          ctx.fillStyle = sleep.node;
           ctx.beginPath();
           ctx.arc(nx, ny, 2.2 * zScale, 0, Math.PI * 2);
           ctx.fill();
         });
         ctx.restore();
       }
-      ctx.fillStyle = '#ffffff';
+      ctx.fillStyle = sleep.node;
       ctx.beginPath();
       ctx.arc(0, 0, 3.5 * zScale, 0, Math.PI * 2);
       ctx.fill();

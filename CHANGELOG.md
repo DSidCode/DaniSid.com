@@ -2,6 +2,22 @@
 
 Todos los cambios notables en este proyecto (01_Web_Activa_Vite) serán documentados en este archivo.
 
+## [1.3.0] - 2026-10-01
+
+### 🌟 Añadido
+- **Versión en inglés en `danisid.com/en/`** (para Fiverr, LinkedIn y clientes internacionales). La home en español no cambia: se comparó el texto renderizado antes y después y solo aparece el selector de idioma.
+  - Dos páginas con el modo multipágina de Vite (`index.html` y `en/index.html` en `vite.config.js`). Las dos cargan la misma app; el idioma sale de `<html lang>` (`src/i18n/index.js`). Sin librerías nuevas ni redirecciones automáticas.
+  - Textos separados del código: `src/i18n/es.js` y `src/i18n/en.js`, con las mismas claves. En `App.jsx` quedan solo los datos que no dependen del idioma (enlaces, capturas, stack, categoría).
+  - Traducidos también el ticker, el modal, la red de "Cómo trabajo", el retrato, el mensaje de WhatsApp, los `aria-label`/`alt`/`title` y los nombres de las constelaciones del hero (TAURO → TAURUS…).
+  - Glosario: "Non-profit association" (no "NGO"), Listen / Design / Build / Verify / Ship, "Contact the studio"… Nombres propios sin traducir (ERÊS, Orixás, Quimera Autómata, Antología Poética, El Rincón de Tetuán…).
+  - Selector **ES · EN** en la barra (escritorio) y en el menú móvil: enlaces reales, idioma activo en oro, zona táctil de 44 px, evento `language_switch`.
+  - Aviso discreto "View this site in English" en la versión española si el navegador está en inglés; se puede cerrar y se recuerda (`EnglishHint.jsx`).
+  - SEO: `canonical` propio y `hreflang` cruzados (es, en, x-default → español) en las dos páginas, `og:locale` y JSON-LD en inglés, `sitemap.xml` con `/en/` y sus alternativas, e imagen para redes `og-image-en.jpg` con el hero en inglés.
+- **Modo claro opcional (Albedo):** botón sol/luna en la barra (`ThemeToggle.jsx`), recordado en `localStorage` y aplicado antes de pintar en `index.html` (sin parpadeo). El oscuro sigue siendo el tema por defecto. Oro y gris más oscuros en claro para que el texto pequeño tenga contraste ≥ 4,5:1. También pasan a claro el cielo del hero y la red de "Cómo trabajo", que leen los colores del tema en cada fotograma (`src/lib/palette.js`) y cambian al momento; las mariposas convertidas en constelación pasan a oro oscuro, como las constelaciones. Las tarjetas grandes con foto llevan un velo crema. El retrato de "Sobre mí" se queda oscuro en los dos modos (sobre crema no se ve su red de luz).
+
+### 🧹 Eliminado
+- `ThemeSwitcher.jsx` y los temas antiguos del CSS (legacy, ocean, apex, vintage, pastel, luxury): no se usaban.
+
 ## [1.2.0] - 2026-09-28
 
 ### 🌟 Añadido

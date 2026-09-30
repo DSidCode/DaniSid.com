@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ExternalLink, Code2, Target, Lightbulb, Zap } from 'lucide-react';
+import { T } from '../i18n';
 
 export default function ProjectModal({ project, onClose }) {
   const [activeMedia, setActiveMedia] = useState(0);
@@ -50,7 +51,7 @@ export default function ProjectModal({ project, onClose }) {
         <button
           onClick={onClose}
           className="md:hidden fixed top-3 right-3 z-[110] p-3 rounded-full bg-[var(--color-ds-bg)]/90 border border-[var(--color-ds-border)] text-[var(--color-ds-text)] shadow-lg"
-          aria-label="Cerrar"
+          aria-label={T.modal.close}
         >
           <X size={20} />
         </button>
@@ -76,7 +77,7 @@ export default function ProjectModal({ project, onClose }) {
               <>
                 <img
                   src={project.media[activeMedia] || project.media[0]}
-                  alt={`Vista previa de ${project.title} (${activeMedia + 1}/${project.media.length})`}
+                  alt={T.modal.preview(project.title, activeMedia + 1, project.media.length)}
                   className="w-full max-h-[60vh] object-contain shadow-2xl border border-[var(--color-ds-border)]"
                 />
                 {project.media.length > 1 && (
@@ -86,7 +87,7 @@ export default function ProjectModal({ project, onClose }) {
                         key={src}
                         onClick={() => setActiveMedia(i)}
                         className={`w-16 h-10 border overflow-hidden transition-all ${i === activeMedia ? 'border-[var(--color-ds-primary)] opacity-100' : 'border-[var(--color-ds-border)] opacity-50 hover:opacity-100'}`}
-                        title={`Captura ${i + 1}`}
+                        title={T.modal.shot(i + 1)}
                       >
                         <img src={src} alt="" className="w-full h-full object-cover object-top" />
                       </button>
@@ -97,8 +98,8 @@ export default function ProjectModal({ project, onClose }) {
             ) : (
               <div className="w-full aspect-[16/10] border border-dashed border-[var(--color-ds-border)] bg-[var(--color-ds-bg)] flex flex-col items-center justify-center text-[var(--color-ds-muted)]">
                 <Code2 size={48} className="mb-4 opacity-50" />
-                <p className="font-mono text-xs uppercase tracking-widest">[ MEDIA PLACEHOLDER ]</p>
-                <p className="font-sans text-xs mt-2 opacity-60">Esperando capturas HQ de {project.title}</p>
+                <p className="font-mono text-xs uppercase tracking-widest">{T.modal.placeholder}</p>
+                <p className="font-sans text-xs mt-2 opacity-60">{T.modal.waiting(project.title)}</p>
               </div>
             )}
           </div>
@@ -113,8 +114,8 @@ export default function ProjectModal({ project, onClose }) {
                 <button 
                   onClick={onClose}
                   className="hidden md:block p-2 text-[var(--color-ds-muted)] hover:text-white bg-red-500/10 hover:bg-red-500 transition-colors rounded-full md:absolute md:top-6 md:right-6"
-                  title="Cerrar (Esc)"
-                  aria-label="Cerrar"
+                  title={T.modal.closeEsc}
+                  aria-label={T.modal.close}
                 >
                   <X size={20} />
                 </button>
@@ -131,35 +132,35 @@ export default function ProjectModal({ project, onClose }) {
             <div className="flex-1 space-y-8 mb-12">
               <div>
                 <h3 className="text-sm font-bold text-[var(--color-ds-text)] mb-3 uppercase flex items-center gap-2">
-                  <Target size={16} className="text-[var(--color-ds-primary)]" /> El Desafío
+                  <Target size={16} className="text-[var(--color-ds-primary)]" /> {T.modal.problem}
                 </h3>
                 <p className="font-mono text-[var(--color-ds-muted)] text-xs leading-relaxed">
-                  {caseStudy.problem || '[ PENDIENTE DE REDACCIÓN: Descripción del problema de negocio o técnico original que motivó este proyecto. ]'}
+                  {caseStudy.problem || T.modal.pending.problem}
                 </p>
               </div>
 
               <div>
                 <h3 className="text-sm font-bold text-[var(--color-ds-text)] mb-3 uppercase flex items-center gap-2">
-                  <Lightbulb size={16} className="text-[var(--color-ds-primary)]" /> La Solución
+                  <Lightbulb size={16} className="text-[var(--color-ds-primary)]" /> {T.modal.solution}
                 </h3>
                 <p className="font-mono text-[var(--color-ds-muted)] text-xs leading-relaxed">
-                  {caseStudy.solution || '[ PENDIENTE DE REDACCIÓN: Explicación de la arquitectura elegida y cómo se abordó el desafío de manera eficiente. ]'}
+                  {caseStudy.solution || T.modal.pending.solution}
                 </p>
               </div>
 
               <div>
                 <h3 className="text-sm font-bold text-[var(--color-ds-text)] mb-3 uppercase flex items-center gap-2">
-                  <Zap size={16} className="text-[var(--color-ds-primary)]" /> El Impacto
+                  <Zap size={16} className="text-[var(--color-ds-primary)]" /> {T.modal.result}
                 </h3>
                 <p className="font-mono text-[var(--color-ds-muted)] text-xs leading-relaxed">
-                  {caseStudy.result || '[ PENDIENTE DE REDACCIÓN: Métrica, resultado tangible o beneficio final entregado al cliente/sistema. ]'}
+                  {caseStudy.result || T.modal.pending.result}
                 </p>
               </div>
 
               {/* Stack Técnico */}
               {stack.length > 0 ? (
                 <div className="pt-4 border-t border-[var(--color-ds-border)]">
-                  <h3 className="text-[10px] font-mono text-[var(--color-ds-muted)] mb-3 uppercase tracking-widest">Stack Principal</h3>
+                  <h3 className="text-[10px] font-mono text-[var(--color-ds-muted)] mb-3 uppercase tracking-widest">{T.modal.stack}</h3>
                   <div className="flex flex-wrap gap-2">
                     {stack.map((tech, i) => (
                       <span key={i} className="px-3 py-1 bg-[var(--color-ds-surface)] border border-[var(--color-ds-border)] text-xs font-mono text-[var(--color-ds-text)]">
@@ -170,9 +171,9 @@ export default function ProjectModal({ project, onClose }) {
                 </div>
               ) : (
                 <div className="pt-4 border-t border-[var(--color-ds-border)]">
-                  <h3 className="text-[10px] font-mono text-[var(--color-ds-muted)] mb-3 uppercase tracking-widest">Stack Principal</h3>
+                  <h3 className="text-[10px] font-mono text-[var(--color-ds-muted)] mb-3 uppercase tracking-widest">{T.modal.stack}</h3>
                   <div className="flex flex-wrap gap-2">
-                    <span className="px-3 py-1 bg-[var(--color-ds-surface)] border border-[var(--color-ds-border)] text-xs font-mono text-[var(--color-ds-muted)]">Stack Pendiente</span>
+                    <span className="px-3 py-1 bg-[var(--color-ds-surface)] border border-[var(--color-ds-border)] text-xs font-mono text-[var(--color-ds-muted)]">{T.modal.stackPending}</span>
                   </div>
                 </div>
               )}
@@ -187,7 +188,7 @@ export default function ProjectModal({ project, onClose }) {
                   rel="noopener noreferrer" 
                   className="w-full flex items-center justify-center gap-3 px-6 py-4 font-mono text-sm font-bold text-black uppercase transition-all bg-[var(--color-ds-primary)] hover:bg-white hover:scale-[1.02]"
                 >
-                  {project.url ? 'Visitar Proyecto en Vivo' : 'Ver Código en GitHub'} <ExternalLink size={18} />
+                  {project.url ? T.modal.live : T.modal.code} <ExternalLink size={18} />
                 </a>
               </div>
             )}
