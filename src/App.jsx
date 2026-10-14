@@ -159,9 +159,18 @@ function App() {
       {/* ─── NAVEGACIÓN ─── */}
       <nav className="fixed top-0 w-full z-40 bg-[var(--color-ds-bg)]/90 backdrop-blur-sm border-b border-[var(--color-ds-border)]">
         <div className="max-w-screen-2xl mx-auto px-4 lg:px-6 h-16 flex items-center justify-between">
-          <div className="font-sans font-black text-xl lg:text-2xl tracking-tighter uppercase shrink-0">
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+              history.replaceState(null, '', ' ');
+            }}
+            className="font-sans font-black text-xl lg:text-2xl tracking-tighter uppercase shrink-0 hover:text-[var(--color-ds-primary)] transition-colors cursor-pointer"
+            aria-label="Ir al inicio"
+          >
             DaniSid<span className="text-[var(--color-ds-primary)] animate-pulse">_</span>
-          </div>
+          </a>
           <div className="flex items-center">
           <div className="hidden md:flex font-mono text-[10px] lg:text-xs text-[var(--color-ds-muted)] uppercase tracking-widest items-center">
             {T.nav.links.map((link, i) => (
@@ -539,9 +548,18 @@ function App() {
       {/* ─── FOOTER ─── */}
       <footer className="bg-[var(--color-ds-bg)]">
         <div className="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-center border-x border-[var(--color-ds-border)] p-6">
-          <div className="font-black text-xl tracking-tighter text-[var(--color-ds-text)] uppercase">
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+              history.replaceState(null, '', ' ');
+            }}
+            className="font-black text-xl tracking-tighter text-[var(--color-ds-text)] uppercase hover:text-[var(--color-ds-primary)] transition-colors cursor-pointer"
+            aria-label="Volver arriba"
+          >
             DaniSid_
-          </div>
+          </a>
           
           <div className="flex gap-4 my-6 md:my-0">
             <a href="https://github.com/DSidCode" target="_blank" rel="noopener noreferrer" className="border border-[var(--color-ds-border)] p-2 text-[var(--color-ds-muted)] hover:text-[var(--color-ds-primary)] transition-colors">
