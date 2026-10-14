@@ -83,6 +83,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&family=Outfit:wght@300;400;700;900&display=swap" rel="stylesheet">
   </head>
   <body>
+    <!-- Formulario oculto para el bot de compilación de Netlify Forms -->
+    <form name="contacto" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="bot-field" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="company" />
+      <select name="service">
+        <option value="web">Webs y Plataformas a Medida</option>
+        <option value="automation">Automatización con IA y Software Interno</option>
+        <option value="editorial">Showcase Editorial Inmersivo</option>
+        <option value="music-ed">Aula Interactiva / Plataforma de Formación</option>
+        <option value="creative-code">Creative Coding y Frontend Dinámico</option>
+        <option value="epk">Presencia y EPK para Músicos</option>
+        <option value="other">Otro / Consulta general</option>
+      </select>
+      <input type="radio" name="request_type" value="quote" />
+      <input type="radio" name="request_type" value="info" />
+      <input type="radio" name="request_type" value="call" />
+      <textarea name="message"></textarea>
+      <input type="checkbox" name="rgpd" />
+      <input type="checkbox" name="newsletter" />
+    </form>
+
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

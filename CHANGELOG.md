@@ -2,6 +2,29 @@
 
 Todos los cambios notables en este proyecto (01_Web_Activa_Vite) serán documentados en este archivo.
 
+## [1.4.0] - 2026-10-14
+
+### 🌟 Añadido
+- **Catálogo de Servicios Maison Quintessence:** Actualización de la sección de servicios en `src/App.jsx` y traducciones (`es.js` y `en.js`) con las 6 ofertas empaquetadas:
+  1. Webs y Plataformas a Medida.
+  2. Automatización con IA y Software Interno.
+  3. Showcase Editorial Inmersivo.
+  4. Aula Interactiva / Formación Musical.
+  5. Creative Coding y Frontend Dinámico.
+  6. Presencia y EPK para Músicos.
+  - Cada tarjeta incorpora botón directo que hace scroll fluido hacia el formulario de contacto y preselecciona automáticamente el servicio correspondiente.
+- **Formulario de Contacto y Captura de Leads (`ContactForm.jsx`):**
+  - Implementación con soporte nativo de **Netlify Forms** y campo honeypot anti-spam (`bot-field`).
+  - Formulario estático gemelo en `index.html` y `en/index.html` para indexación por el bot de Netlify.
+  - Campos: nombre completo, correo, empresa/proyecto, selector de servicio, selector de tipo de solicitud (Presupuesto, Información, Llamada 15 min), mensaje (mínimo 15 caracteres), consentimiento RGPD obligatorio y casilla opcional de novedades técnicas.
+  - Bloque destacado de agendamiento rápido de llamada de 15 minutos conectado a WhatsApp.
+  - Estados interactivos de interfaz: reposo, enviando (con spinner), éxito con mensaje de respuesta en <24h y fallo con botón de fallback directo para enviar mensaje prellenado por WhatsApp.
+  - Evento de analítica GA4: `track('contact_form_submit', { service, type, newsletter })`.
+- **Aviso Legal y Política de Privacidad RGPD (`public/privacidad.html`):**
+  - Página estática integrada con diseño oscuro corporativo (oro y marfil sobre fondo negro), identificando responsable, finalidades, base de legitimación (art. 6.1.a RGPD), almacenamiento seguro en Netlify y derechos ARSLOP.
+- **Navegación:**
+  - Actualización de los enlaces del menú (`NAV_LINKS`) para que el ítem "Contacto" apunte a la sección interactiva `#contacto` en lugar de `mailto:`.
+
 ## [1.3.0] - 2026-10-01
 
 ### 🌟 Añadido

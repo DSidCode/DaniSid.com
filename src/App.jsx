@@ -8,6 +8,7 @@ import PortraitReveal from './components/PortraitReveal';
 import ThemeToggle from './components/ThemeToggle';
 import EnglishHint from './components/EnglishHint';
 import WhatsAppButton, { WhatsAppIcon, WHATSAPP_URL } from './components/WhatsApp';
+import ContactForm from './components/ContactForm';
 import { track } from './lib/analytics';
 import { T, LANG, LANG_URLS } from './i18n';
 import { Mail, ArrowRight, Terminal, Shield, Cpu, Code2, Database, Globe, Network, Layers, GitBranch, TerminalSquare, ExternalLink, Server, Zap, Lock, Menu, X } from 'lucide-react';
@@ -110,6 +111,7 @@ function LanguageSwitch({ className = '' }) {
 function App() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [preselectedService, setPreselectedService] = useState('web');
 
   // Navegación del menú: desplazamiento suave hecho a mano (rAF).
   // `scroll-behavior: smooth` no avanza en navegadores móviles al cerrar el menú.
@@ -138,6 +140,17 @@ function App() {
       if (t < 1) requestAnimationFrame(step);
     };
     requestAnimationFrame(step);
+  };
+
+  const selectServiceAndScroll = (serviceId) => {
+    setPreselectedService(serviceId);
+    track('service_quote_click', { service: serviceId });
+    const target = document.querySelector('#contacto');
+    if (!target) return;
+    const NAV_HEIGHT = 64;
+    const startY = window.scrollY;
+    const endY = target.getBoundingClientRect().top + startY - NAV_HEIGHT;
+    window.scrollTo({ top: endY, behavior: 'smooth' });
   };
 
   return (
@@ -489,18 +502,28 @@ function App() {
             {T.maison.text}
           </p>
 
-          <div className="grid md:grid-cols-3 gap-px bg-[var(--color-ds-border)] border border-[var(--color-ds-border)] max-w-5xl mx-auto text-left mb-16">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-[var(--color-ds-border)] border border-[var(--color-ds-border)] max-w-6xl mx-auto text-left mb-16">
             {T.maison.services.map(service => (
-              <div key={service.n} className="bg-[var(--color-ds-surface)] p-8 md:p-10 transition-colors hover:bg-[var(--color-ds-bg)]">
-                <span className="font-mono text-xs text-[var(--color-ds-primary)]">{service.n}</span>
-                <h3 className="text-xl md:text-2xl font-bold text-[var(--color-ds-text)] mt-4 mb-3">{service.title}</h3>
-                <p className="font-mono text-xs text-[var(--color-ds-muted)] leading-relaxed">{service.desc}</p>
+              <div key={service.n} className="bg-[var(--color-ds-surface)] p-8 md:p-10 transition-colors hover:bg-[var(--color-ds-bg)] flex flex-col justify-between">
+                <div>
+                  <span className="font-mono text-xs text-[var(--color-ds-primary)] font-bold">{service.n}</span>
+                  <h3 className="text-xl md:text-2xl font-bold text-[var(--color-ds-text)] mt-4 mb-3">{service.title}</h3>
+                  <p className="font-mono text-xs text-[var(--color-ds-muted)] leading-relaxed mb-6">{service.desc}</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => selectServiceAndScroll(service.id)}
+                  className="inline-flex items-center gap-2 font-mono text-xs text-[var(--color-ds-primary)] uppercase tracking-wider hover:text-white transition-colors pt-4 border-t border-[var(--color-ds-border)]"
+                >
+                  <span>{service.action}</span>
+                  <ArrowRight size={14} />
+                </button>
               </div>
             ))}
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="https://maison-quintessence.netlify.app/" onClick={() => track('maison_click')} target="_blank" rel="noopener noreferrer" className="bg-[var(--color-ds-primary)] text-black px-10 py-4 text-xs font-bold tracking-[0.25em] transition-colors hover:bg-white">
+            <a href="#contacto" onClick={(e) => goToSection(e, '#contacto')} className="bg-[var(--color-ds-primary)] text-black px-10 py-4 text-xs font-bold tracking-[0.25em] transition-colors hover:bg-white">
               {T.maison.cta}
             </a>
             <a href={WHATSAPP_URL} onClick={() => track('contact_whatsapp', { location: 'maison' })} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 border border-[var(--color-ds-border)] text-[var(--color-ds-text)] px-8 py-4 text-xs font-bold tracking-[0.2em] transition-colors hover:border-[var(--color-ds-primary)] hover:text-[var(--color-ds-primary)]">
@@ -509,6 +532,9 @@ function App() {
           </div>
         </div>
       </section>
+
+      {/* ─── FORMULARIO DE CONTACTO / LEAD CAPTURE (NETLIFY FORMS) ─── */}
+      <ContactForm preselectedService={preselectedService} />
 
       {/* ─── FOOTER ─── */}
       <footer className="bg-[var(--color-ds-bg)]">
