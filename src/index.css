@@ -88,6 +88,16 @@
 
   /* Sin scroll-behavior: smooth: no avanza en móvil; el scroll suave lo hace goToSection (App.jsx) */
 
+  /* Evitar solapamiento con la barra de navegación fija */
+  section[id] {
+    scroll-margin-top: 80px;
+  }
+
+  /* Estilizado refinado para radio y checkbox nativos: fondo oscuro, sin parches blancos */
+  input[type="radio"], input[type="checkbox"] {
+    color-scheme: dark;
+  }
+
   body {
     background-color: var(--color-ds-bg);
     color: var(--color-ds-text);

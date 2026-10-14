@@ -251,27 +251,38 @@ export default function ContactForm({ preselectedService = '' }) {
                   <label className="block font-mono text-xs uppercase tracking-wider text-[var(--color-ds-primary)] mb-2.5">
                     {T.contact.fields.requestType}
                   </label>
-                  <div className="grid sm:grid-cols-3 gap-3">
-                    {T.contact.requestTypes.map(item => (
-                      <label
-                        key={item.id}
-                        className={`flex items-center gap-2 p-3 border text-xs cursor-pointer transition-all ${
-                          formData.request_type === item.id
-                            ? 'border-[var(--color-ds-primary)] bg-[var(--color-ds-primary)]/10 text-[var(--color-ds-text)]'
-                            : 'border-[var(--color-ds-border)] text-[var(--color-ds-muted)] hover:border-[var(--color-ds-primary)]/50'
-                        }`}
-                      >
-                        <input
-                          type="radio"
-                          name="request_type"
-                          value={item.id}
-                          checked={formData.request_type === item.id}
-                          onChange={handleChange}
-                          className="accent-[var(--color-ds-primary)]"
-                        />
-                        <span className="font-mono text-[11px] leading-tight">{item.label}</span>
-                      </label>
-                    ))}
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    {T.contact.requestTypes.map(item => {
+                      const isSelected = formData.request_type === item.id;
+                      return (
+                        <label
+                          key={item.id}
+                          className={`flex items-center gap-3 p-3.5 border text-xs cursor-pointer transition-all ${
+                            isSelected
+                              ? 'border-[var(--color-ds-primary)] bg-[var(--color-ds-primary)]/10 text-[var(--color-ds-text)] shadow-[0_0_15px_rgba(212,175,55,0.08)]'
+                              : 'border-[var(--color-ds-border)] text-[var(--color-ds-muted)] hover:border-[var(--color-ds-primary)]/50 hover:text-[var(--color-ds-text)] bg-[var(--color-ds-bg)]/40'
+                          }`}
+                        >
+                          {/* Indicador custom de radio: círculo oscuro con punto oro cuando está activo */}
+                          <span className={`w-4 h-4 rounded-full border flex items-center justify-center shrink-0 transition-colors ${
+                            isSelected ? 'border-[var(--color-ds-primary)] bg-[var(--color-ds-primary)]/20' : 'border-zinc-700 bg-zinc-950'
+                          }`}>
+                            {isSelected && (
+                              <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-ds-primary)]" />
+                            )}
+                          </span>
+                          <input
+                            type="radio"
+                            name="request_type"
+                            value={item.id}
+                            checked={isSelected}
+                            onChange={handleChange}
+                            className="sr-only"
+                          />
+                          <span className="font-mono text-[11px] leading-tight select-none">{item.label}</span>
+                        </label>
+                      );
+                    })}
                   </div>
                 </div>
 
@@ -294,16 +305,27 @@ export default function ContactForm({ preselectedService = '' }) {
                   </div>
                 </div>
 
-                {/* 5. Casillas RGPD y Marketing */}
-                <div className="space-y-3 pt-2">
-                  <label className="flex items-start gap-3 cursor-pointer group">
+                {/* 5. Casillas RGPD y Marketing con custom checkbox oscuro */}
+                <div className="space-y-3.5 pt-2">
+                  <label className="flex items-start gap-3 cursor-pointer group select-none">
+                    <span className={`w-4 h-4 rounded-sm border flex items-center justify-center shrink-0 mt-0.5 transition-colors ${
+                      formData.rgpd
+                        ? 'border-[var(--color-ds-primary)] bg-[var(--color-ds-primary)] text-black'
+                        : 'border-zinc-700 bg-zinc-950 group-hover:border-[var(--color-ds-primary)]/60'
+                    }`}>
+                      {formData.rgpd && (
+                        <svg viewBox="0 0 12 12" className="w-3 h-3 fill-current stroke-current stroke-1">
+                          <path d="M2 6l3 3 5-5" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      )}
+                    </span>
                     <input
                       type="checkbox"
                       name="rgpd"
                       required
                       checked={formData.rgpd}
                       onChange={handleChange}
-                      className="mt-1 accent-[var(--color-ds-primary)] shrink-0"
+                      className="sr-only"
                     />
                     <span className="font-mono text-xs text-[var(--color-ds-muted)] leading-relaxed group-hover:text-[var(--color-ds-text)] transition-colors">
                       He leído y acepto la{' '}
@@ -319,13 +341,24 @@ export default function ContactForm({ preselectedService = '' }) {
                     </span>
                   </label>
 
-                  <label className="flex items-start gap-3 cursor-pointer group">
+                  <label className="flex items-start gap-3 cursor-pointer group select-none">
+                    <span className={`w-4 h-4 rounded-sm border flex items-center justify-center shrink-0 mt-0.5 transition-colors ${
+                      formData.newsletter
+                        ? 'border-[var(--color-ds-primary)] bg-[var(--color-ds-primary)] text-black'
+                        : 'border-zinc-700 bg-zinc-950 group-hover:border-[var(--color-ds-primary)]/60'
+                    }`}>
+                      {formData.newsletter && (
+                        <svg viewBox="0 0 12 12" className="w-3 h-3 fill-current stroke-current stroke-1">
+                          <path d="M2 6l3 3 5-5" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      )}
+                    </span>
                     <input
                       type="checkbox"
                       name="newsletter"
                       checked={formData.newsletter}
                       onChange={handleChange}
-                      className="mt-1 accent-[var(--color-ds-primary)] shrink-0"
+                      className="sr-only"
                     />
                     <span className="font-mono text-xs text-[var(--color-ds-muted)] leading-relaxed group-hover:text-[var(--color-ds-text)] transition-colors">
                       {T.contact.fields.newsletter}
@@ -404,16 +437,17 @@ export default function ContactForm({ preselectedService = '' }) {
             </div>
 
             {/* Garantías y Seguridad RGPD */}
-            <div className="border border-[var(--color-ds-border)] p-6 font-mono text-xs text-[var(--color-ds-muted)] space-y-3">
+            <div className="border border-[var(--color-ds-border)] p-6 font-mono text-xs text-[var(--color-ds-muted)] space-y-3 bg-[var(--color-ds-surface)]/40">
               <div className="flex items-center gap-2 text-[var(--color-ds-text)] uppercase tracking-wider font-bold">
                 <ShieldCheck size={16} className="text-[var(--color-ds-primary)]" />
                 <span>Privacidad y Confidencialidad</span>
               </div>
-              <p className="leading-relaxed text-[11px]">
+              <p className="leading-relaxed text-[11px] text-[var(--color-ds-muted)]">
                 Tus datos se transmiten con cifrado HTTPS y se procesan exclusivamente para responder a tu proyecto. Sin spam ni cesiones a terceros.
               </p>
-              <div className="pt-2 text-[10px] text-[var(--color-ds-border)] border-t border-[var(--color-ds-border)]">
-                Respuesta media garantizada: &lt; 24h laborables.
+              <div className="pt-3 text-[11px] text-[var(--color-ds-text)] border-t border-[var(--color-ds-border)] flex items-center justify-between">
+                <span className="text-[var(--color-ds-muted)]">Tiempo medio de respuesta:</span>
+                <span className="text-[var(--color-ds-primary)] font-bold tracking-wider">&lt; 24h laborables</span>
               </div>
             </div>
 

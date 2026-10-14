@@ -284,7 +284,7 @@ export default {
         action: 'Pedir información',
       },
     ],
-    cta: 'VER CATÁLOGO COMPLETO',
+    cta: 'SOLICITAR COTIZACIÓN DE PROYECTO',
     whatsapp: 'HABLAR POR WHATSAPP',
   },
 

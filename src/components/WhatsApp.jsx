@@ -17,6 +17,21 @@ export function WhatsAppIcon({ size = 16, className = '' }) {
 }
 
 export default function WhatsAppButton() {
+  const [hidden, setHidden] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      const contactSection = document.getElementById('contacto');
+      if (contactSection) {
+        const rect = contactSection.getBoundingClientRect();
+        // Ocultar si la sección de contacto está a menos de 400px de la vista o en pantalla
+        setHidden(rect.top < window.innerHeight - 100);
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <a
       href={WHATSAPP_URL}
@@ -24,7 +39,9 @@ export default function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={T.whatsapp.label}
-      className="group fixed bottom-5 right-5 md:bottom-8 md:right-8 z-50 flex items-center gap-3"
+      className={`group fixed bottom-5 right-5 md:bottom-8 md:right-8 z-50 flex items-center gap-3 transition-all duration-300 ${
+        hidden ? 'opacity-0 pointer-events-none translate-y-4' : 'opacity-100 translate-y-0'
+      }`}
     >
       <span className="hidden md:block opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 font-mono text-[10px] uppercase tracking-widest text-[var(--color-ds-text)] bg-[var(--color-ds-bg)]/90 border border-[var(--color-ds-border)] px-3 py-2 whitespace-nowrap">
         {T.whatsapp.label}

@@ -481,11 +481,11 @@ function App() {
         <div className="relative max-w-screen-2xl mx-auto px-6 py-20 md:px-16 md:py-28 text-center border-x border-[var(--color-ds-border)]">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1px] h-16 bg-[var(--color-ds-primary)]"></div>
 
-          <p className="font-mono text-[10px] md:text-xs tracking-[0.4em] uppercase text-[var(--color-ds-muted)] mt-6 mb-10">
+          <p className="font-mono text-[10px] md:text-xs tracking-[0.3em] uppercase text-[var(--color-ds-muted)] mt-6 mb-8">
             {T.maison.kicker}
           </p>
 
-          <h2 className="maison-wordmark font-light uppercase leading-tight tracking-[0.18em] md:tracking-[0.3em] text-3xl sm:text-5xl md:text-7xl">
+          <h2 className="maison-wordmark font-normal uppercase leading-none tracking-[0.12em] md:tracking-[0.16em] text-3xl sm:text-5xl md:text-7xl font-sans">
             Maison<br />Quintessence
           </h2>
 
@@ -495,7 +495,7 @@ function App() {
             <span className="h-px w-16 md:w-24 bg-gradient-to-l from-transparent to-[var(--color-ds-primary)]" />
           </div>
 
-          <p className="text-lg md:text-2xl text-[var(--color-ds-text)] max-w-2xl mx-auto leading-relaxed mb-4">
+          <p className="text-lg md:text-2xl text-[var(--color-ds-text)] max-w-2xl mx-auto leading-relaxed mb-4 font-bold">
             {T.maison.lead}
           </p>
           <p className="font-mono text-xs md:text-sm text-[var(--color-ds-muted)] max-w-xl mx-auto leading-relaxed mb-16">
@@ -513,7 +513,7 @@ function App() {
                 <button
                   type="button"
                   onClick={() => selectServiceAndScroll(service.id)}
-                  className="inline-flex items-center gap-2 font-mono text-xs text-[var(--color-ds-primary)] uppercase tracking-wider hover:text-white transition-colors pt-4 border-t border-[var(--color-ds-border)]"
+                  className="inline-flex items-center gap-2 font-mono text-xs text-[var(--color-ds-primary)] uppercase tracking-wider hover:text-white transition-colors pt-4 border-t border-[var(--color-ds-border)] cursor-pointer"
                 >
                   <span>{service.action}</span>
                   <ArrowRight size={14} />
@@ -523,10 +523,10 @@ function App() {
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="#contacto" onClick={(e) => goToSection(e, '#contacto')} className="bg-[var(--color-ds-primary)] text-black px-10 py-4 text-xs font-bold tracking-[0.25em] transition-colors hover:bg-white">
+            <a href="#contacto" onClick={(e) => goToSection(e, '#contacto')} className="bg-[var(--color-ds-primary)] text-black px-10 py-4 text-xs font-bold tracking-[0.2em] transition-colors hover:bg-white uppercase font-mono">
               {T.maison.cta}
             </a>
-            <a href={WHATSAPP_URL} onClick={() => track('contact_whatsapp', { location: 'maison' })} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 border border-[var(--color-ds-border)] text-[var(--color-ds-text)] px-8 py-4 text-xs font-bold tracking-[0.2em] transition-colors hover:border-[var(--color-ds-primary)] hover:text-[var(--color-ds-primary)]">
+            <a href={WHATSAPP_URL} onClick={() => track('contact_whatsapp', { location: 'maison' })} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 border border-[var(--color-ds-border)] text-[var(--color-ds-text)] px-8 py-4 text-xs font-bold tracking-[0.15em] transition-colors hover:border-[var(--color-ds-primary)] hover:text-[var(--color-ds-primary)] uppercase font-mono">
               <WhatsAppIcon size={14} /> {T.maison.whatsapp}
             </a>
           </div>

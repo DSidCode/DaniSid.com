@@ -280,7 +280,7 @@ export default {
         action: 'Request info',
       },
     ],
-    cta: 'EXPLORE FULL CATALOGUE',
+    cta: 'REQUEST PROJECT QUOTE',
     whatsapp: 'CHAT ON WHATSAPP',
   },
 
