@@ -30,11 +30,12 @@ export default {
   englishHint: null, // solo se muestra en la versión española
 
   ticker: [
-    { label: 'Status', text: 'Available for projects and teams', dot: true },
-    { label: 'In progress', text: 'Polishing Quimera Autómata and the ERÊS star chart' },
-    { label: 'Learning', text: 'Kubernetes and cloud fundamentals (AWS · GCP)' },
-    { label: 'Latest project', text: 'Aurum-CRM · .NET 10 + React 19' },
-    { label: 'Madrid', text: null }, // hora local en vivo
+    { label: 'Status', text: 'Available for freelance projects and remote teams', dot: true },
+    { label: 'Services', text: 'Custom websites · AI automation · Interactive experiences' },
+    { label: 'Approach', text: 'User interfaces designed and built directly in code' },
+    { label: 'Lab', text: 'Canvas particle systems and real-time celestial charts' },
+    { label: 'Recent', text: 'Antología Poética · Aurum-CRM · Quimera Autómata' },
+    { label: 'Madrid', text: null }, // live local time
   ],
 
   hero: {
@@ -198,7 +199,7 @@ export default {
     paragraphs: [
       'I\'m a software developer. I build complete web products, from the server architecture to the last interaction in the interface.',
       'I treat engineering and experience with the same rigor: clean, tested, well-deployed code, and also the motion and interaction details that make a product memorable. Code is also my creative tool, and what I learn by experimenting goes into every project.',
-      'I come from visual design in Colombia, trained as a developer in Madrid and keep learning every day; right now, cloud and Kubernetes.',
+      'Coming from visual design in Colombia, I trained as a developer in Madrid, bringing together software architecture, interactive Canvas graphics and AI automation.',
     ],
     facts: [
       { label: 'Based in', items: ['Madrid, Spain'] },

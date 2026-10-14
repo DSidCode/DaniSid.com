@@ -33,10 +33,11 @@ export default {
   },
 
   ticker: [
-    { label: 'Estado', text: 'Disponible para proyectos y equipos', dot: true },
-    { label: 'En curso', text: 'Puliendo Quimera Autómata y la carta celeste de ERÊS' },
-    { label: 'Estudiando', text: 'Kubernetes y fundamentos Cloud (AWS · GCP)' },
-    { label: 'Último proyecto', text: 'Aurum-CRM · .NET 10 + React 19' },
+    { label: 'Estado', text: 'Disponible para proyectos freelance y equipos en remoto', dot: true },
+    { label: 'Servicios', text: 'Webs a medida · Automatización con IA · Experiencias interactivas' },
+    { label: 'Enfoque', text: 'Interfaces diseñadas y construidas directamente en código' },
+    { label: 'Lab', text: 'Sistemas de partículas en Canvas y carta celeste en tiempo real' },
+    { label: 'Reciente', text: 'Antología Poética · Aurum-CRM · Quimera Autómata' },
     { label: 'Madrid', text: null }, // hora local en vivo
   ],
 
@@ -201,7 +202,7 @@ export default {
     paragraphs: [
       'Soy desarrollador de software. Construyo productos web completos, desde la arquitectura del servidor hasta la última interacción de la interfaz.',
       'Trato la ingeniería y la experiencia con el mismo rigor: código limpio, probado y bien desplegado, y también los detalles de movimiento e interacción que hacen que un producto se recuerde. El código es además mi herramienta creativa, y lo que aprendo experimentando lo llevo a cada proyecto.',
-      'Vengo del diseño visual en Colombia, me formé como desarrollador en Madrid y sigo aprendiendo cada día; ahora, cloud y Kubernetes.',
+      'Vengo del diseño visual en Colombia, me formé como desarrollador en Madrid y combino arquitectura de software con gráficos interactivos en Canvas y automatización con IA.',
     ],
     facts: [
       { label: 'Base', items: ['Madrid, España'] },
