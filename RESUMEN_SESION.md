@@ -1,34 +1,68 @@
-# Resumen de Sesión - danisid.com
+# Resumen de Sesión - danisid.com & Freelance Plataformas
 
-**Última sesión:** 28 de septiembre de 2026
+**Última actualización:** 15 de octubre de 2026  
+**Rama activa:** `main` (sincronizada y al día con `origin/main` en GitHub y Netlify)  
+**Último commit:** `2e90385` (`fix(nav): hacer clickeable el logo DaniSid_ en barra superior y footer para subir al inicio`)
 
-## ✅ Hecho y publicado
-- **Nueva danisid.com en vivo** (commits `8ac8d51` y `7700806`, rama `main` de `DSidCode/DaniSid.com`; Netlify despliega al hacer push).
-- Segunda tanda (28-09-2026, tarde): constelaciones del hero dibujadas como impulso eléctrico, estrellas más sutiles, cielo más visible en móvil, foto nueva con retrato-red (el rostro se forma con estrellas y luego aparecen constelaciones sueltas) y biografía corta.
-- Esta carpeta ya es el repositorio: para publicar, `git add` → `git commit` → `git push`. No uses la copia antigua de `08_Legacy_y_Archivo/.../Portfolio_Vite_Cyberpunk_2026`.
-- Detalle de todos los cambios en `CHANGELOG.md`.
+> **Para retomar la siguiente sesión:**  
+> Abre la conversación y di: *"Lee RESUMEN_SESION.md y seguimos con la prospección en Malt y publicación de carruseles"*.
 
-## ⏳ Pendiente para la próxima sesión
+---
 
-### 1. LinkedIn (aplicarlo en LinkedIn)
-- Subir el banner nuevo `recursos/banner_linkedin_danisid.jpg` (también en `CVs_Daniel_Garcia_2026/`).
-- Titular: "Design Engineer · Full Stack (.NET · React) · Creative Coding | Diseño y construyo experiencias digitales | Madrid".
-- Nombre con tilde (García). #OpenToWork en "Solo reclutadores".
-- Experiencia actual → "Design Engineer · Freelance". Textos de "Acerca de" y "Destacados".
-- Pasar capturas de Acerca de, Experiencia, Educación y Aptitudes para revisarlas.
-- El detalle está en `CVs_Daniel_Garcia_2026/CHANGELOG.md` (28-09-2026).
+## ✅ 1. Lo que quedó hecho, verificado y en producción (danisid.com)
 
-### 2. danisid.com
-- Siguiente proyecto a trabajar: **Maison Quintessence** (ver punto 3).
-- Pasar las capturas de `public/screenshots/` a WebP (`public/` pesa 14 MB).
-- Dar de alta `www.danisid.com` en Google Search Console y enviar el sitemap.
-- Una página propia por proyecto (el mayor salto de SEO).
-- Revisar el texto de la barra de estado (`src/components/StatusTicker.jsx`: "En curso" y "Estudiando").
-- Opcional: frase de poesía en "Sobre mí" y botón para descargar el CV.
+1. **Catálogo de Servicios Maison Quintessence (Sección `#maison`):**
+   * Integrada la cuadrícula de **6 servicios empaquetados y comercializables** (Webs a Medida, Automatización con IA, Showcase Editorial, Aula Interactiva/Música, Creative Coding y EPK para Músicos).
+   * Cada tarjeta cuenta con botón interactivo que hace scroll suave a `#contacto` y preselecciona ese servicio en el desplegable.
+   * Ajustada la tipografía de `MAISON QUINTESSENCE` (*Quiet Luxury*, peso normal y espaciado calibrado).
 
-### 3. Otros proyectos
-- **Maison Quintessence:** revocar el token de GitHub que aparece en el remoto de git y lanzar la refactorización con `MaisonQuintessence/PROMPT_REFACTOR_MQ.md`.
-- **Quimera Autómata:** revisar bugs y el rendimiento del Motor 5.
-- **ERÊS:** mejorar la usabilidad de la carta celeste.
-- **Quimera-Sniper-Bot:** sacar del repositorio público el PDF del historial de trading y los registros personales. Subir la corrección de `radar.html`.
-- ~~**CV:** confirmar lo de los "2.500 usuarios concurrentes".~~ Hecho (28-09): no era real; La Leyenda del Dorado queda como Diseñador Gráfico en el CV.
+2. **Formulario de Contacto y Captura de Leads (Netlify Forms en `#contacto`):**
+   * Componente `ContactForm.jsx` con validación completa en cliente (mínimo 15 caracteres en mensaje, nombre y email obligatorios).
+   * Formulario gemelo estático indexado por Netlify en `index.html` y `en/index.html`.
+   * Integración con la **base de datos nativa de Netlify Forms** con protección anti-spam (`bot-field` honeypot).
+   * **Pruebas de envío reales verificadas en producción:** mensajes recibidos con éxito en el panel de Netlify Forms (`200 OK`).
+   * Estados de UI: Reposo, Enviando (spinner), Éxito (<24h + WhatsApp) y Fallo con fallback a WhatsApp.
+   * Estilizado de radio buttons y checkboxes sin fondos blancos nativos (indicadores oscuros estilo *Technical Luxury*).
+   * Tarjeta lateral de atención rápida para agendar llamada de 15 minutos por WhatsApp.
+
+3. **Cumplimiento RGPD y Aviso Legal:**
+   * Creada y publicada la página estática `public/privacidad.html` con diseño oscuro corporativo (oro y marfil sobre fondo negro), detallando responsable, finalidad, base de legitimación (art. 6.1.a RGPD), almacenamiento seguro en Netlify y derechos ARSLOP vía email.
+
+4. **Navegación e Interactividad:**
+   * Enlace "Contacto" del menú actualizado a `#contacto` con desplazamiento suave.
+   * Los logos **`DaniSid_`** de la barra fija superior y del pie de página son clickeables y suben suavemente al Hero astronómico.
+   * El botón flotante (FAB) de WhatsApp se desvanece automáticamente al entrar en la sección `#contacto` para evitar redundancia visual.
+   * Se aplicó `scroll-margin-top: 80px` a las secciones para evitar solapamientos con el header fijo.
+
+5. **Ticker de Estado y Biografía 100% Veraces (Sin humo):**
+   * Se eliminó cualquier referencia a Kubernetes o Cloud que no estés usando hoy.
+   * Ticker actualizado en español e inglés: `Estado`, `Servicios`, `Enfoque`, `Lab` (sistemas de partículas en Canvas y carta celeste en tiempo real) y `Reciente`.
+   * Párrafo de biografía ajustado para reflejar tu valor real: diseño directo en código, gráficos interactivos en Canvas y automatización con IA.
+
+---
+
+## 🎨 2. Material Publicitario y de Captación Creado (`Freelance_Plataformas/`)
+
+En la carpeta `/home/sidzcool/GeminiSolutions/01_Proyectos_Activos/Freelance_Plataformas` han quedado listos:
+* **Carruseles de Instagram (1080×1350, formato 4:5):**
+  * `carrusel_instagram.html`, `carrusel.html`, `carrusel_v2.html` y sus exportaciones en `dist_carrusel/` y `dist_carrusel_v2/`.
+* **Historias y Reels (1080×1920, formato 9:16 vertical):**
+  * `historias_motion.html`, `historias_contactos_v2.html`, `historias_servicios.html` y exports en `dist_videos_historias/`.
+* **Presentaciones interactivas:**
+  * `presentacion_automatizacion.html` (para enviar a despachos, pymes y agencias).
+* **Guiones y Prompts de Automatización:**
+  * `PROMPT_ARGON_AUTOMATIZACION_SHOWCASE.md` (para grabar con Playwright a 60 FPS en Wayland).
+  * `MALT_PERFIL.md` (estrategia y textos para el perfil de Malt España).
+
+---
+
+## ⏳ 3. Siguientes Pasos al Reiniciar
+
+1. **Subir y publicar las piezas a Instagram / LinkedIn:**
+   * Utilizar las diapositivas ya renderizadas en `dist_carrusel_v2/` y vídeos de `dist_videos_historias/`.
+2. **Completar y activar el perfil de Malt España:**
+   * Aplicar los textos de `MALT_PERFIL.md` (titular: `Desarrollador Frontend & Design Engineer`, tarifa 250 €/día, disponibilidad total) y subir los 3 proyectos clave.
+3. **Outreach directo (Prospección activa):**
+   * Enviar los primeros 5 mensajes directos a autores independientes (ofreciendo el formato de lectura interactiva de *Antología*) y a 5 directores de arte/agencias en Madrid.
+4. **Grabar el vídeo showcase final:**
+   * Actualizar `danisid_showcase.mp4` para añadirlo al perfil de LinkedIn y Malt.
