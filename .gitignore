@@ -4,7 +4,7 @@ dist/
 .vite/
 
 # Material personal y de trabajo (no se publica)
-recursos/
+/recursos/
 
 # Sistema / editor
 .DS_Store
@@ -17,3 +17,7 @@ RESUMEN_SESION.md
 INFORME_REFERENCIA_DHF.md
 PROMPT_GEMINI_MEJORAS.md
 PROMPT_ANTIGRAVITY_INGLES.md
+
+# Documentos internos de captación (pueden contener estrategia y datos de contacto)
+docs/
+leads*.csv

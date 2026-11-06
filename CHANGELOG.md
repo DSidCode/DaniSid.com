@@ -2,6 +2,46 @@
 
 Todos los cambios notables en este proyecto (01_Web_Activa_Vite) serán documentados en este archivo.
 
+## 2026-11-06 · Contenido para que los músicos nos encuentren (solo local, sin desplegar)
+- Dos guías estáticas en español, con title/description/canonical, Open Graph, JSON-LD (`Article`, `BreadcrumbList`, `FAQPage`) y CTA con UTM a la landing: `/recursos/que-es-un-epk/` y `/recursos/linktree-vs-web-propia-musicos/` (`public/recursos/`). Búsqueda previa: en «web para músicos» dominan los constructores y Fiverr; en «qué es un EPK» y «alternativa a Linktree» dominan blogs de herramientas, con hueco para guías propias en español.
+- Landing: nueva sección «¿Linktree o web propia?» con enlaces a las dos guías.
+- `public/sitemap.xml`: añadidas las dos guías; `lastmod` de la landing actualizado.
+- `vite.config.js`: el middleware de desarrollo ahora sirve también `/recursos/<x>/`.
+- Honestidad del contenido: sin cifras inventadas; la comparativa no promete posicionamiento. SEO orgánico tarda meses: la captación inmediata sigue siendo prospección + Instagram.
+
+## 2026-11-05 · Embudo de captación (solo local, sin desplegar)
+- Landing de músicos: formulario «Reservar plaza» (Netlify Forms `reserva-musicos`, sin pago), validación, honeypot, RGPD, UTM en campos ocultos y eventos `musicos_form_view/form_start/lead`. En localhost no envía: muestra el JSON.
+- `public/consent.js`: banner de cookies; GA4 solo se carga tras «Aceptar». Sustituye el GA inline de `index.html`, `en/index.html` y la landing. Enlace «Cookies» en el pie de la landing.
+- `public/privacidad.html`: reserva de plaza, seguimiento comercial y sección de cookies (#cookies).
+- `vite.config.js`: middleware solo de desarrollo para servir `public/servicios/<x>/index.html`.
+- `docs/EMBUDO_CAPTACION.md` y `docs/leads_plantilla.csv` (ignorados en git).
+- Landing: sección «Un ejemplo real» con vídeo en bucle (móvil) de la web de Eddy Castaño (`demo-eddy.mp4` 0,47 MB + `demo-eddy.jpg`), grabado con Playwright; respeta `prefers-reduced-motion`. **Pendiente:** confirmar con Eddy que puede aparecer como ejemplo.
+- La maqueta de Sergio NO está en la landing a propósito (no ha confirmado ni pagado): se usa solo en privado para el cierre y la prospección.
+
+## 2026-11-04 · Landing «Web para músicos» (SEO)
+- Nueva página estática `public/servicios/web-para-musicos/index.html` (se sirve en `/servicios/web-para-musicos/`): title y description propios, canonical, Open Graph, JSON-LD (`Service`, `BreadcrumbList`, `FAQPage`), contenido en el HTML inicial, GA4 con eventos `musicos_*`.
+- Imagen para compartir `public/og-web-musicos.jpg` (1200×630).
+- `public/sitemap.xml`: añadida la URL nueva.
+- Home: la tarjeta del servicio «Presencia y EPK para Músicos» (solo ES) enlaza a la landing (`href` en `src/i18n/es.js`, enlace en `src/App.jsx`).
+- Build comprobado (`npm run build`). **Sin desplegar:** falta commit y push a `main`.
+
+## [Sin versión] - 2026-11-04 — Auditoría de captación (sin cambios de código)
+
+### 🔍 Revisado
+- Servidor local de desarrollo levantado (`npm run dev`, http://localhost:5173/).
+- **Formulario de cotización** (`ContactForm.jsx`): operativo; guarda los leads en Netlify Forms (formularios gemelos en `index.html` y `en/index.html`, honeypot `bot-field`).
+- **Privacidad** (`public/privacidad.html`): recoge la casilla de comunicaciones consentidas.
+
+### ⚠️ Pendiente detectado
+- **Landing `/servicios/seo` sin ejecutar:** existe `PROMPT_DANISID_LANDING_SEO.md`, pero no hay `servicios/seo/`, `netlify.toml` ni `public/_redirects`.
+- **`#maison` desactualizado:** sigue con los 6 servicios antiguos, no con la oferta que se factura hoy (auditoría 890 €, rescate por migración, etc.).
+- **Sin herramienta de email marketing:** la newsletter solo queda como campo `newsletter=true` en Netlify. Falta CRM/ESP (p. ej. Brevo, servidores UE) con enlace de baja (LSSI).
+- **Límite de 100 envíos/mes** de Netlify Forms en plan gratuito.
+- **Google Analytics 4 carga sin consentimiento:** falta banner de cookies (RGPD/LSSI).
+- **Sin UTM/atribución** de las piezas de Instagram, LinkedIn y Malt.
+- **Sin commitear:** `PROMPT_DANISID_FORMULARIO_SERVICIOS.md`, `PROMPT_DANISID_LANDING_SEO.md`, `public/presentacion_automatizacion.html`.
+- Siguen abiertos los pendientes del 2026-10-03: honestidad sobre Aurum-CRM (README GitHub y proyecto 09), revisar Quimera-Sniper-Bot y clúster homelab, y apellido García Alzate en Métrica.
+
 ## [1.4.0] - 2026-10-14
 
 ### 🌟 Añadido

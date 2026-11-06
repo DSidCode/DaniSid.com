@@ -519,6 +519,15 @@ function App() {
                   <h3 className="text-xl md:text-2xl font-bold text-[var(--color-ds-text)] mt-4 mb-3">{service.title}</h3>
                   <p className="font-mono text-xs text-[var(--color-ds-muted)] leading-relaxed mb-6">{service.desc}</p>
                 </div>
+                {service.href && (
+                  <a
+                    href={service.href}
+                    onClick={() => track('service_landing_click', { service: service.id })}
+                    className="inline-block font-mono text-xs text-[var(--color-ds-text)] uppercase tracking-wider underline underline-offset-4 decoration-[var(--color-ds-primary)] hover:text-[var(--color-ds-primary)] transition-colors mb-4"
+                  >
+                    {service.hrefLabel}
+                  </a>
+                )}
                 <button
                   type="button"
                   onClick={() => selectServiceAndScroll(service.id)}

@@ -283,6 +283,8 @@ export default {
         title: 'Presencia y EPK para Músicos',
         desc: 'Portafolios artísticos con reproductores embebidos y canal de contratación directa (base técnica: Eddy Soundscapes).',
         action: 'Pedir información',
+        href: '/servicios/web-para-musicos/',
+        hrefLabel: 'Ver precio y detalles',
       },
     ],
     cta: 'SOLICITAR COTIZACIÓN DE PROYECTO',
