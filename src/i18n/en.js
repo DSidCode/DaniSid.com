@@ -11,10 +11,11 @@ export default {
 
   nav: {
     links: [
-      { href: '#portfolio', label: 'Projects' },
+      { href: '#ofertas', label: 'Services' },
+      { href: '#portfolio', label: 'Projects' },      { href: '#atelier', label: 'How I work' },
+
       { href: '#sobre-mi', label: 'About' },
-      { href: '#atelier', label: 'How I work' },
-      { href: '#maison', label: 'Services' },
+      { href: '#maison', label: 'Custom work' },
       { href: '#contacto', label: 'Contact' },
     ],
     openMenu: 'Open menu',
@@ -233,6 +234,83 @@ export default {
     aria: 'Work cycle: listen, design, build, verify and ship, around design and code',
   },
 
+  ofertas: {
+    kicker: 'What I can do for you',
+    title: 'What do you need to solve?',
+    lead: 'Websites that look good and work for you, and automations so the repetitive stuff does itself. Tell me your case and I will reply with a clear proposal.',
+    pains: [
+      { text: 'Your music, brand or project is scattered across five places', to: 'musicos' },
+      { text: 'Your website does not look good on a phone, or you do not have one', to: 'medida' },
+      { text: 'You repeat the same task every week', to: 'automatizacion' },
+    ],
+    painsTitle: 'Sound familiar?',
+    delivery: 'Delivery',
+    cta: 'Tell me your case',
+    waIntro: 'Hi Daniel, I am interested in: ',
+    waOutro: '. My project is: ',
+    items: [
+      {
+        id: 'musicos',
+        tag: 'Most requested',
+        title: 'Website for musicians',
+        price: 'From €220',
+        delivery: '48 h',
+        who: 'Artists and bands',
+        includes: [
+          'Your music, videos and live dates on a single screen',
+          'Spotify, YouTube and direct booking by WhatsApp',
+          'Hosting included',
+          'Looks good on a phone',
+        ],
+        featured: true,
+        href: '/servicios/web-para-musicos/',
+        hrefLabel: 'See details',
+      },
+      {
+        id: 'medida',
+        title: 'Custom website',
+        price: 'Tailored to you',
+        who: 'Brands, artists and businesses',
+        includes: [
+          'Careful design, built around your project',
+          'Fast, clear and comfortable on a phone',
+          'Clear proposal after a 15-minute call',
+        ],
+        href: '#portfolio',
+        hrefLabel: 'See projects',
+      },
+      {
+        id: 'automatizacion',
+        title: 'AI automation',
+        price: 'Tailored to you',
+        who: 'Any project with repetitive tasks',
+        includes: [
+          'WhatsApp alert when a form comes in',
+          'Contacts organised in a spreadsheet, no copy and paste',
+          'Reminders for appointments and deliveries',
+        ],
+      },
+    ],
+    note: 'Tell me your idea and I will reply with a clear proposal. No commitment.',
+    stepsTitle: 'How we work',
+    steps: [
+      { n: '01', title: 'You tell me what you need', text: 'On WhatsApp or in a short 15-minute call.' },
+      { n: '02', title: 'I propose how to do it', text: 'What you get, in what timeframe and at what cost.' },
+      { n: '03', title: 'I build it and you review it', text: 'You see the result and we adjust what is needed.' },
+      { n: '04', title: 'I deliver it ready to use', text: 'Working, with help if anything is unclear.' },
+    ],
+    whoTitle: 'Who it is for',
+    whoText: 'Musicians, creatives, personal brands and small businesses that want to look good and work less. If your project is bigger, we can talk about that too.',
+    bigger: 'See custom projects',
+    faqTitle: 'Frequently asked questions',
+    faq: [
+      { q: 'How much does it cost?', a: 'The musicians website starts at €220. Everything else depends on what you need: I give you a clear, fixed proposal.' },
+      { q: 'What if I do not know what I need?', a: 'No problem. Tell me your idea or what eats your time and I will tell you what I would do.' },
+      { q: 'Can I see your work?', a: 'Yes, it is further down in the projects section, with real client websites.' },
+      { q: 'Which language do we work in?', a: 'Spanish or English, whichever you prefer.' },
+    ],
+  },
+
   maison: {
     kicker: 'Studio Services',
     lead: 'Tailored Services and Engineering Solutions.',
@@ -256,7 +334,7 @@ export default {
         id: 'editorial',
         n: '03',
         title: 'Immersive Editorial Showcase',
-        desc: 'Adapting literary works, poetry, and books into rich digital experiences (technical base: Antología / Marian Isac).',
+        desc: 'Adapting literary works, poetry, and books into rich digital experiences (technical base: a published author website).',
         action: 'Request info',
       },
       {
@@ -277,7 +355,7 @@ export default {
         id: 'epk',
         n: '06',
         title: 'Artist EPK & Booking Portfolios',
-        desc: 'Visual press kits with embedded players and direct booking channels (technical base: Eddy Soundscapes).',
+        desc: 'Visual press kits with embedded players and direct booking channels (technical base: a published musician press kit).',
         action: 'Request info',
       },
     ],

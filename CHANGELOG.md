@@ -2,14 +2,28 @@
 
 Todos los cambios notables en este proyecto (01_Web_Activa_Vite) serán documentados en este archivo.
 
-## 2026-11-06 · Contenido para que los músicos nos encuentren (solo local, sin desplegar)
+## 2026-11-10 · Ofertas centradas en el cliente, orden de secciones y azul eléctrico (desplegado)
+- Sección `#ofertas` reescrita (ES/EN): problemas del cliente («¿Te suena?»), Web para músicos desde 220 €, Web a medida y Automatización con IA (propuesta clara tras una llamada de 15 min), pasos, para quién es y FAQ. Precios orientativos, pendientes de confirmar. Enlaces WhatsApp con mensaje por oferta; evento GA `ofertas_click`.
+- «Mi trabajo» va primero y la numeración sigue el orden mostrado; categorías: Trabajo real · clientes, Experimentos creativos, Ingeniería. Menú: Servicios, Proyectos, Cómo trabajo, Sobre mí, A medida, Contacto. Hero sin cambios.
+- Cian eléctrico `--color-ds-signal` (#22E6FF Nigredo, #0A7C8F Albedo) para kicker, flechas y checks.
+- Inglés alineado con el español. Referencias a clientes en «A medida» sin nombres. Quimera-Sniper-Bot y homelab marcados como «Proyecto personal».
+- `danisid.com` sigue pendiente de renovar (límite 2026-11-17): hasta entonces la web vive en danisid.netlify.app.
+
+## 2026-11-06 · Despliegue y verificación en producción
+- Commit `a182637` subido a `main`; Netlify desplegó. Verificado con curl: landing, vídeo y póster del ejemplo, imagen OG, las dos guías, `consent.js` (también referenciado en `/` y `/en/`), sitemap (5 URLs) y privacidad responden 200.
+- Formulario `reserva-musicos` detectado por Netlify; prueba POST con datos marcados «PRUEBA TÉCNICA - borrar» devolvió 200 (comprobar en Netlify → Forms y borrar).
+- Corregido antes de subir: `.gitignore` ignoraba cualquier carpeta `recursos/` y habría dejado fuera `public/recursos/`; ahora solo ignora `/recursos/` de la raíz.
+- No incluidos en el commit: `PROMPT_DANISID_*.md` (internos) y `public/presentacion_automatizacion.html`.
+- Auditoría de la home y tarea de indexación en `docs/` (ignorada en git): `AUDITORIA_HOME.md`, `TAREA_INDEXACION_SEO.md`.
+
+## 2026-11-06 · Contenido para que los músicos nos encuentren (desplegado, commit a182637)
 - Dos guías estáticas en español, con title/description/canonical, Open Graph, JSON-LD (`Article`, `BreadcrumbList`, `FAQPage`) y CTA con UTM a la landing: `/recursos/que-es-un-epk/` y `/recursos/linktree-vs-web-propia-musicos/` (`public/recursos/`). Búsqueda previa: en «web para músicos» dominan los constructores y Fiverr; en «qué es un EPK» y «alternativa a Linktree» dominan blogs de herramientas, con hueco para guías propias en español.
 - Landing: nueva sección «¿Linktree o web propia?» con enlaces a las dos guías.
 - `public/sitemap.xml`: añadidas las dos guías; `lastmod` de la landing actualizado.
 - `vite.config.js`: el middleware de desarrollo ahora sirve también `/recursos/<x>/`.
 - Honestidad del contenido: sin cifras inventadas; la comparativa no promete posicionamiento. SEO orgánico tarda meses: la captación inmediata sigue siendo prospección + Instagram.
 
-## 2026-11-05 · Embudo de captación (solo local, sin desplegar)
+## 2026-11-05 · Embudo de captación (desplegado el 2026-11-06, commit a182637)
 - Landing de músicos: formulario «Reservar plaza» (Netlify Forms `reserva-musicos`, sin pago), validación, honeypot, RGPD, UTM en campos ocultos y eventos `musicos_form_view/form_start/lead`. En localhost no envía: muestra el JSON.
 - `public/consent.js`: banner de cookies; GA4 solo se carga tras «Aceptar». Sustituye el GA inline de `index.html`, `en/index.html` y la landing. Enlace «Cookies» en el pie de la landing.
 - `public/privacidad.html`: reserva de plaza, seguimiento comercial y sección de cookies (#cookies).

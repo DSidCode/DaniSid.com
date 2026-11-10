@@ -4,7 +4,8 @@ import { T } from '../i18n';
 
 /* Contacto por WhatsApp: botón flotante e icono reutilizable */
 
-const PHONE = '34641868620';
+export const WHATSAPP_PHONE = '34641868620';
+const PHONE = WHATSAPP_PHONE;
 const MESSAGE = T.whatsapp.message;
 export const WHATSAPP_URL = `https://wa.me/${PHONE}?text=${encodeURIComponent(MESSAGE)}`;
 

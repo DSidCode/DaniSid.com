@@ -9,6 +9,7 @@ import ThemeToggle from './components/ThemeToggle';
 import EnglishHint from './components/EnglishHint';
 import WhatsAppButton, { WhatsAppIcon, WHATSAPP_URL } from './components/WhatsApp';
 import ContactForm from './components/ContactForm';
+import Ofertas from './components/Ofertas';
 import { track } from './lib/analytics';
 import { T, LANG, LANG_URLS } from './i18n';
 import { Mail, ArrowRight, Terminal, Shield, Cpu, Code2, Database, Globe, Network, Layers, GitBranch, TerminalSquare, ExternalLink, Server, Zap, Lock, Menu, X } from 'lucide-react';
@@ -84,6 +85,12 @@ const PROJECTS = PORTFOLIO_PROJECTS.map(p => ({
   categoryName: T.projects.categories[p.cat],
   stack: p.stack.map(tech => T.projects.stackTerms[tech] ?? tech),
 }));
+
+// Orden en la página: primero el trabajo real para clientes, luego los experimentos, al final la ingeniería.
+const CATEGORY_ORDER = [2, 1, 3];
+const DISPLAY_NUM = Object.fromEntries(
+  CATEGORY_ORDER.flatMap(c => PROJECTS.filter(p => p.cat === c)).map((p, i) => [p.id, String(i + 1).padStart(2, '0')])
+);
 
 // Selector ES · EN: enlaces reales a cada versión; el idioma activo, en oro
 function LanguageSwitch({ className = '' }) {
@@ -281,6 +288,9 @@ function App() {
       </div>
       </div>
 
+      {/* ─── OFERTAS: servicios con precio, tras el hero ─── */}
+      <Ofertas />
+
       {/* ─── PORTFOLIO / SYS.LOGS (NUEVO) ─── */}
       <section id="portfolio" className="border-y border-[var(--color-ds-border)] bg-[var(--color-ds-surface)] py-20">
         <div className="max-w-screen-xl mx-auto px-6">
@@ -299,13 +309,13 @@ function App() {
           </div>
 
           <div className="space-y-12">
-            {[1, 2, 3].map(catId => {
+            {CATEGORY_ORDER.map((catId, catIdx) => {
               const categoryProjects = PROJECTS.filter(p => p.cat === catId);
               if (categoryProjects.length === 0) return null;
               return (
                 <div key={catId}>
-                  <h3 className={`text-xl font-bold font-mono text-[var(--color-ds-primary)] mb-6 border-b border-[var(--color-ds-border)] pb-2 uppercase tracking-widest ${catId !== 1 ? 'mt-8' : ''}`}>
-                    [0{catId}] {categoryProjects[0].categoryName}
+                  <h3 className={`text-xl font-bold font-mono text-[var(--color-ds-primary)] mb-6 border-b border-[var(--color-ds-border)] pb-2 uppercase tracking-widest ${catIdx !== 0 ? 'mt-8' : ''}`}>
+                    [0{catIdx + 1}] {categoryProjects[0].categoryName}
                   </h3>
                   <div className="space-y-4">
                     {categoryProjects.map(project => {
@@ -355,7 +365,7 @@ function App() {
                               )}
 
                               <span className={`font-mono font-bold ${isHero ? 'text-4xl text-[var(--color-ds-primary)] mb-4 md:mb-0' : 'text-xl text-[var(--color-ds-primary)]'}`}>
-                                {project.id}
+                                {DISPLAY_NUM[project.id]}
                               </span>
                               
                               <div>
@@ -397,6 +407,39 @@ function App() {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── FILOSOFÍA & INGENIERÍA (HW.SPECS) ─── */}
+      <section id="atelier" className="bg-[var(--color-ds-bg)] border-b border-[var(--color-ds-border)]">
+        <div className="max-w-screen-2xl mx-auto flex flex-col-reverse md:flex-row border-x border-[var(--color-ds-border)]">
+          
+          {/* Lado Izquierdo: Código Macro */}
+          <div className="w-full md:w-1/2 border-r border-[var(--color-ds-border)] p-6 relative">
+            <div className="relative w-full h-full min-h-[420px] md:min-h-[560px] border border-[var(--color-ds-border)] bg-[var(--color-ds-bg)] overflow-hidden">
+              {/* Red neuronal interactiva: el ciclo de trabajo */}
+              <NeuralProtocol />
+            </div>
+          </div>
+
+          {/* Lado Derecho: Texto de Especificaciones */}
+          <div className="w-full md:w-1/2 p-6 md:p-16 flex flex-col justify-center bg-dot-matrix">
+            <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-[var(--color-ds-text)] mb-12 uppercase">
+              {T.work.title}
+            </h2>
+            
+            <ol className="space-y-6 border-l-2 border-[var(--color-ds-border)] pl-6 list-none m-0">
+              {T.work.steps.map(step => (
+                <li key={step.n}>
+                  <h3 className="text-lg md:text-xl font-bold text-[var(--color-ds-text)] mb-1 flex items-center gap-3">
+                    <span className="font-mono text-sm text-[var(--color-ds-primary)]">{step.n}</span>
+                    {step.title}
+                  </h3>
+                  <p className="text-sm text-[var(--color-ds-muted)] leading-relaxed">{step.desc}</p>
+                </li>
+              ))}
+            </ol>
           </div>
         </div>
       </section>
@@ -445,39 +488,6 @@ function App() {
                 <WhatsAppIcon size={14} /> {T.about.talk}
               </a>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── FILOSOFÍA & INGENIERÍA (HW.SPECS) ─── */}
-      <section id="atelier" className="bg-[var(--color-ds-bg)] border-b border-[var(--color-ds-border)]">
-        <div className="max-w-screen-2xl mx-auto flex flex-col-reverse md:flex-row border-x border-[var(--color-ds-border)]">
-          
-          {/* Lado Izquierdo: Código Macro */}
-          <div className="w-full md:w-1/2 border-r border-[var(--color-ds-border)] p-6 relative">
-            <div className="relative w-full h-full min-h-[420px] md:min-h-[560px] border border-[var(--color-ds-border)] bg-[var(--color-ds-bg)] overflow-hidden">
-              {/* Red neuronal interactiva: el ciclo de trabajo */}
-              <NeuralProtocol />
-            </div>
-          </div>
-
-          {/* Lado Derecho: Texto de Especificaciones */}
-          <div className="w-full md:w-1/2 p-6 md:p-16 flex flex-col justify-center bg-dot-matrix">
-            <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-[var(--color-ds-text)] mb-12 uppercase">
-              {T.work.title}
-            </h2>
-            
-            <ol className="space-y-6 border-l-2 border-[var(--color-ds-border)] pl-6 list-none m-0">
-              {T.work.steps.map(step => (
-                <li key={step.n}>
-                  <h3 className="text-lg md:text-xl font-bold text-[var(--color-ds-text)] mb-1 flex items-center gap-3">
-                    <span className="font-mono text-sm text-[var(--color-ds-primary)]">{step.n}</span>
-                    {step.title}
-                  </h3>
-                  <p className="text-sm text-[var(--color-ds-muted)] leading-relaxed">{step.desc}</p>
-                </li>
-              ))}
-            </ol>
           </div>
         </div>
       </section>

@@ -10,10 +10,11 @@ export default {
 
   nav: {
     links: [
-      { href: '#portfolio', label: 'Proyectos' },
+      { href: '#ofertas', label: 'Servicios' },
+      { href: '#portfolio', label: 'Proyectos' },      { href: '#atelier', label: 'Cómo trabajo' },
+
       { href: '#sobre-mi', label: 'Sobre mí' },
-      { href: '#atelier', label: 'Cómo trabajo' },
-      { href: '#maison', label: 'Servicios' },
+      { href: '#maison', label: 'A medida' },
       { href: '#contacto', label: 'Contacto' },
     ],
     openMenu: 'Abrir menú',
@@ -55,10 +56,10 @@ export default {
   },
 
   projects: {
-    title: 'Proyectos',
-    kicker: '[ Proyectos seleccionados ]',
+    title: 'Mi trabajo',
+    kicker: '[ Webs reales, hechas para clientes ]',
     count: '11 PROYECTOS',
-    categories: { 1: 'Proyectos creativos', 2: 'Clientes', 3: 'Ingeniería' },
+    categories: { 1: 'Experimentos creativos', 2: 'Trabajo real · clientes', 3: 'Ingeniería' },
     stackTerms: {},
     items: {
     '01': {
@@ -155,6 +156,7 @@ export default {
     '10': {
       title: 'Quimera-Sniper-Bot',
       subtitle: 'ALGORITMIA FINANCIERA (PYTHON)',
+      tag: 'Proyecto personal',
       desc: 'Escáner de criptomonedas con indicadores técnicos y simulador de operaciones.',
       caseStudy: {
         problem: 'Vigilar a mano 16 criptomonedas en varias temporalidades a la vez es inviable: las buenas entradas aparecen de madrugada o durante las aperturas de Asia y Wall Street, y los cruces de medias móviles aislados generan muchísimas señales falsas en mercados laterales.',
@@ -165,6 +167,7 @@ export default {
     '11': {
       title: 'Cyberpunk Luxury Cluster',
       subtitle: 'INFRAESTRUCTURA HOMELAB',
+      tag: 'Proyecto personal',
       desc: 'Homelab Linux de 3 equipos para tareas automáticas y análisis forense.',
       caseStudy: {
         problem: 'Necesitaba un entorno propio para ejecutar tareas pesadas sin bloquear mi equipo de desarrollo (indexación, recuperación de datos, copias espejo) y para practicar análisis forense digital sin arriesgarme a alterar las pruebas. Mientras tanto, varios portátiles antiguos estaban parados y un disco de casi 800 GB acumulaba años de datos sin clasificar.',
@@ -237,6 +240,83 @@ export default {
     aria: 'Ciclo de trabajo: escuchar, diseñar, construir, verificar y publicar, alrededor de diseño y código',
   },
 
+  ofertas: {
+    kicker: 'Qué puedo hacer por ti',
+    title: '¿Qué necesitas resolver?',
+    lead: 'Webs que se ven bien y trabajan por ti, y automatizaciones para que lo repetitivo se haga solo. Cuéntame tu caso y te respondo con una propuesta clara.',
+    pains: [
+      { text: 'Tu música, tu marca o tu proyecto está repartido en cinco sitios', to: 'musicos' },
+      { text: 'Tu web no se ve bien en el móvil, o no tienes ninguna', to: 'medida' },
+      { text: 'Repites la misma tarea cada semana', to: 'automatizacion' },
+    ],
+    painsTitle: '¿Te suena?',
+    delivery: 'Entrega',
+    cta: 'Cuéntame tu caso',
+    waIntro: 'Hola Daniel, me interesa: ',
+    waOutro: '. Mi proyecto es: ',
+    items: [
+      {
+        id: 'musicos',
+        tag: 'La más pedida',
+        title: 'Web para músicos',
+        price: 'Desde 220 €',
+        delivery: '48 h',
+        who: 'Artistas y bandas',
+        includes: [
+          'Tu música, tus vídeos y tus directos en una sola pantalla',
+          'Spotify, YouTube y contratación directa por WhatsApp',
+          'Hosting incluido',
+          'Se ve bien en el móvil',
+        ],
+        featured: true,
+        href: '/servicios/web-para-musicos/',
+        hrefLabel: 'Ver detalles',
+      },
+      {
+        id: 'medida',
+        title: 'Web a medida',
+        price: 'A tu medida',
+        who: 'Marcas, artistas y negocios',
+        includes: [
+          'Diseño cuidado, pensado para tu proyecto',
+          'Rápida, clara y cómoda en el móvil',
+          'Propuesta cerrada tras una llamada de 15 min',
+        ],
+        href: '#portfolio',
+        hrefLabel: 'Ver trabajos',
+      },
+      {
+        id: 'automatizacion',
+        title: 'Automatización con IA',
+        price: 'A tu medida',
+        who: 'Cualquier proyecto con tareas repetitivas',
+        includes: [
+          'Aviso al WhatsApp cuando llega un formulario',
+          'Contactos ordenados en una hoja, sin copiar y pegar',
+          'Recordatorios de citas y entregas',
+        ],
+      },
+    ],
+    note: 'Cuéntame tu idea y te respondo con una propuesta clara. Sin compromiso.',
+    stepsTitle: 'Así trabajamos',
+    steps: [
+      { n: '01', title: 'Me cuentas lo que necesitas', text: 'Por WhatsApp o en una llamada breve de 15 minutos.' },
+      { n: '02', title: 'Te propongo cómo hacerlo', text: 'Qué recibes, en qué plazo y cuánto cuesta.' },
+      { n: '03', title: 'Lo construyo y lo revisas', text: 'Ves el resultado y se ajusta lo que haga falta.' },
+      { n: '04', title: 'Lo entrego listo para usar', text: 'Funcionando, y con ayuda si algo no queda claro.' },
+    ],
+    whoTitle: 'Para quién es',
+    whoText: 'Para músicos, creativos, marcas personales y negocios pequeños que quieren verse bien y trabajar menos. Si tu proyecto es más grande, también lo hablamos.',
+    bigger: 'Ver proyectos a medida',
+    faqTitle: 'Preguntas frecuentes',
+    faq: [
+      { q: '¿Cuánto cuesta?', a: 'La web para músicos parte de 220 €. Lo demás depende de lo que necesites: te doy una propuesta clara y cerrada.' },
+      { q: '¿Y si no sé qué necesito?', a: 'No pasa nada. Cuéntame tu idea o lo que te quita tiempo y te digo qué haría yo.' },
+      { q: '¿Puedo ver trabajos tuyos?', a: 'Sí, están más abajo, en la sección de proyectos, con webs de clientes reales.' },
+      { q: '¿En qué idioma trabajamos?', a: 'En español o en inglés, como prefieras.' },
+    ],
+  },
+
   maison: {
     kicker: 'Servicios de Estudio',
     lead: 'Catálogo de Servicios y Soluciones a Medida.',
@@ -260,7 +340,7 @@ export default {
         id: 'editorial',
         n: '03',
         title: 'Showcase Editorial Inmersivo',
-        desc: 'Adaptación de obras literarias y libros a experiencias web interactivas (base técnica: Antología / Marian Isac).',
+        desc: 'Adaptación de obras literarias y libros a experiencias web interactivas (base técnica: una web de autor ya publicada).',
         action: 'Pedir información',
       },
       {
@@ -281,7 +361,7 @@ export default {
         id: 'epk',
         n: '06',
         title: 'Presencia y EPK para Músicos',
-        desc: 'Portafolios artísticos con reproductores embebidos y canal de contratación directa (base técnica: Eddy Soundscapes).',
+        desc: 'Portafolios artísticos con reproductores embebidos y canal de contratación directa (base técnica: un dossier de prensa musical ya publicado).',
         action: 'Pedir información',
         href: '/servicios/web-para-musicos/',
         hrefLabel: 'Ver precio y detalles',

@@ -20,6 +20,7 @@
     --color-ds-primary: #D4AF37; /* Aurum / Gold */
     --color-ds-secondary: #F4F0EB; /* Off-White */
     --color-ds-accent: #D4AF37; 
+    --color-ds-signal: #22E6FF; /* Azul eléctrico: solo para proceso y detalles técnicos (igual que en los posts) */
     --color-ds-text: #F4F0EB;
     --color-ds-muted: #8C8273;
     --color-ds-border: rgba(212, 175, 55, 0.2); /* Subtle Gold Border */
@@ -34,6 +35,7 @@
     --color-ds-primary: #8A6A1F; /* Oro viejo oscuro */
     --color-ds-secondary: #0A0A0A; /* Pure Black */
     --color-ds-accent: #8A6A1F;
+    --color-ds-signal: #0A7C8F; /* Cian oscuro: 4,5:1 sobre crema y 4,9:1 sobre blanco */
     --color-ds-text: #0A0A0A;
     --color-ds-muted: #6B6255;
     --color-ds-border: rgba(138, 106, 31, 0.28); /* Subtle Gold Border */
