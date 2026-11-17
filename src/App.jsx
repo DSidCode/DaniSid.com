@@ -10,6 +10,7 @@ import EnglishHint from './components/EnglishHint';
 import WhatsAppButton, { WhatsAppIcon, WHATSAPP_URL } from './components/WhatsApp';
 import ContactForm from './components/ContactForm';
 import Ofertas from './components/Ofertas';
+import ComoLlegar from './components/ComoLlegar';
 import { track } from './lib/analytics';
 import { T, LANG, LANG_URLS } from './i18n';
 import { Mail, ArrowRight, Terminal, Shield, Cpu, Code2, Database, Globe, Network, Layers, GitBranch, TerminalSquare, ExternalLink, Server, Zap, Lock, Menu, X } from 'lucide-react';
@@ -564,6 +565,9 @@ function App() {
       {/* ─── FORMULARIO DE CONTACTO / LEAD CAPTURE (NETLIFY FORMS) ─── */}
       <ContactForm preselectedService={preselectedService} />
 
+      {/* ─── CÓMO LLEGAR (mapa de Madrid, sin oficina física) ─── */}
+      <ComoLlegar />
+
       {/* ─── FOOTER ─── */}
       <footer className="bg-[var(--color-ds-bg)]">
         <div className="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-center border-x border-[var(--color-ds-border)] p-6">
@@ -596,6 +600,9 @@ function App() {
           </div>
           
           <div className="font-mono text-[10px] text-[var(--color-ds-muted)] tracking-widest uppercase">
+            {T.ofertas.guides && (
+              <><a href="#guias" className="mr-4 hover:text-[var(--color-ds-primary)] transition-colors">Guías</a></>
+            )}
             {T.footer}
           </div>
         </div>

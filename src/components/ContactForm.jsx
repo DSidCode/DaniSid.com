@@ -142,7 +142,7 @@ export default function ContactForm({ preselectedService = '' }) {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 bg-[var(--color-ds-primary)] text-black px-6 py-3 font-mono text-xs font-bold uppercase tracking-widest hover:bg-white transition-colors"
                   >
-                    <WhatsAppIcon size={14} /> Escribir por WhatsApp
+                    <WhatsAppIcon size={14} /> {T.contact.ui.whatsappBtn}
                   </a>
                   <button
                     type="button"
@@ -212,80 +212,6 @@ export default function ContactForm({ preselectedService = '' }) {
                   </div>
                 </div>
 
-                {/* 2. Empresa / Proyecto y Servicio */}
-                <div className="grid sm:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block font-mono text-xs uppercase tracking-wider text-[var(--color-ds-muted)] mb-2">
-                      {T.contact.fields.company}
-                    </label>
-                    <input
-                      type="text"
-                      name="company"
-                      value={formData.company}
-                      onChange={handleChange}
-                      placeholder={T.contact.fields.companyPlaceholder}
-                      className="w-full bg-[var(--color-ds-bg)] border border-[var(--color-ds-border)] px-4 py-3 text-sm text-[var(--color-ds-text)] focus:border-[var(--color-ds-primary)] focus:outline-none transition-colors"
-                    />
-                  </div>
-                  <div>
-                    <label className="block font-mono text-xs uppercase tracking-wider text-[var(--color-ds-primary)] mb-2">
-                      {T.contact.fields.service} *
-                    </label>
-                    <select
-                      name="service"
-                      value={formData.service}
-                      onChange={handleChange}
-                      className="w-full bg-[var(--color-ds-bg)] border border-[var(--color-ds-border)] px-4 py-3 text-sm text-[var(--color-ds-text)] focus:border-[var(--color-ds-primary)] focus:outline-none transition-colors"
-                    >
-                      {T.contact.servicesList.map(srv => (
-                        <option key={srv.id} value={srv.id} className="bg-[#0A0A0A] text-[#F4F0EB]">
-                          {srv.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                {/* 3. Objetivo de la Solicitud (Radio buttons) */}
-                <div>
-                  <label className="block font-mono text-xs uppercase tracking-wider text-[var(--color-ds-primary)] mb-2.5">
-                    {T.contact.fields.requestType}
-                  </label>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    {T.contact.requestTypes.map(item => {
-                      const isSelected = formData.request_type === item.id;
-                      return (
-                        <label
-                          key={item.id}
-                          className={`flex items-center gap-3 p-3.5 border text-xs cursor-pointer transition-all ${
-                            isSelected
-                              ? 'border-[var(--color-ds-primary)] bg-[var(--color-ds-primary)]/10 text-[var(--color-ds-text)] shadow-[0_0_15px_rgba(212,175,55,0.08)]'
-                              : 'border-[var(--color-ds-border)] text-[var(--color-ds-muted)] hover:border-[var(--color-ds-primary)]/50 hover:text-[var(--color-ds-text)] bg-[var(--color-ds-bg)]/40'
-                          }`}
-                        >
-                          {/* Indicador custom de radio: círculo oscuro con punto oro cuando está activo */}
-                          <span className={`w-4 h-4 rounded-full border flex items-center justify-center shrink-0 transition-colors ${
-                            isSelected ? 'border-[var(--color-ds-primary)] bg-[var(--color-ds-primary)]/20' : 'border-zinc-700 bg-zinc-950'
-                          }`}>
-                            {isSelected && (
-                              <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-ds-primary)]" />
-                            )}
-                          </span>
-                          <input
-                            type="radio"
-                            name="request_type"
-                            value={item.id}
-                            checked={isSelected}
-                            onChange={handleChange}
-                            className="sr-only"
-                          />
-                          <span className="font-mono text-[11px] leading-tight select-none">{item.label}</span>
-                        </label>
-                      );
-                    })}
-                  </div>
-                </div>
-
                 {/* 4. Mensaje */}
                 <div>
                   <label className="block font-mono text-xs uppercase tracking-wider text-[var(--color-ds-primary)] mb-2">
@@ -328,40 +254,16 @@ export default function ContactForm({ preselectedService = '' }) {
                       className="sr-only"
                     />
                     <span className="font-mono text-xs text-[var(--color-ds-muted)] leading-relaxed group-hover:text-[var(--color-ds-text)] transition-colors">
-                      He leído y acepto la{' '}
+                      {T.contact.ui.rgpdPre}{' '}
                       <a
                         href="/privacidad.html"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-[var(--color-ds-primary)] underline underline-offset-2 hover:opacity-80"
                       >
-                        política de privacidad
+                        {T.contact.fields.rgpdLink}
                       </a>{' '}
-                      para el tratamiento de mis datos de contacto. *
-                    </span>
-                  </label>
-
-                  <label className="flex items-start gap-3 cursor-pointer group select-none">
-                    <span className={`w-4 h-4 rounded-sm border flex items-center justify-center shrink-0 mt-0.5 transition-colors ${
-                      formData.newsletter
-                        ? 'border-[var(--color-ds-primary)] bg-[var(--color-ds-primary)] text-black'
-                        : 'border-zinc-700 bg-zinc-950 group-hover:border-[var(--color-ds-primary)]/60'
-                    }`}>
-                      {formData.newsletter && (
-                        <svg viewBox="0 0 12 12" className="w-3 h-3 fill-current stroke-current stroke-1">
-                          <path d="M2 6l3 3 5-5" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      )}
-                    </span>
-                    <input
-                      type="checkbox"
-                      name="newsletter"
-                      checked={formData.newsletter}
-                      onChange={handleChange}
-                      className="sr-only"
-                    />
-                    <span className="font-mono text-xs text-[var(--color-ds-muted)] leading-relaxed group-hover:text-[var(--color-ds-text)] transition-colors">
-                      {T.contact.fields.newsletter}
+                      {T.contact.ui.rgpdPost}
                     </span>
                   </label>
                 </div>
@@ -413,7 +315,7 @@ export default function ContactForm({ preselectedService = '' }) {
             <div className="bg-[var(--color-ds-surface)] border border-[var(--color-ds-border)] p-6 sm:p-8 relative overflow-hidden group">
               <div className="flex items-center gap-2 text-[var(--color-ds-primary)] font-mono text-xs uppercase tracking-widest mb-3">
                 <Clock size={16} />
-                <span>Atención Rápida</span>
+                <span>{T.contact.ui.quickTitle}</span>
               </div>
               <h3 className="text-xl font-bold uppercase tracking-tight text-[var(--color-ds-text)] mb-3">
                 {T.contact.directCallTitle}
@@ -440,14 +342,14 @@ export default function ContactForm({ preselectedService = '' }) {
             <div className="border border-[var(--color-ds-border)] p-6 font-mono text-xs text-[var(--color-ds-muted)] space-y-3 bg-[var(--color-ds-surface)]/40">
               <div className="flex items-center gap-2 text-[var(--color-ds-text)] uppercase tracking-wider font-bold">
                 <ShieldCheck size={16} className="text-[var(--color-ds-primary)]" />
-                <span>Privacidad y Confidencialidad</span>
+                <span>{T.contact.ui.privacyTitle}</span>
               </div>
               <p className="leading-relaxed text-[11px] text-[var(--color-ds-muted)]">
-                Tus datos se transmiten con cifrado HTTPS y se procesan exclusivamente para responder a tu proyecto. Sin spam ni cesiones a terceros.
+                {T.contact.ui.privacyText}
               </p>
               <div className="pt-3 text-[11px] text-[var(--color-ds-text)] border-t border-[var(--color-ds-border)] flex items-center justify-between">
-                <span className="text-[var(--color-ds-muted)]">Tiempo medio de respuesta:</span>
-                <span className="text-[var(--color-ds-primary)] font-bold tracking-wider">&lt; 24h laborables</span>
+                <span className="text-[var(--color-ds-muted)]">{T.contact.ui.responseLabel}</span>
+                <span className="text-[var(--color-ds-primary)] font-bold tracking-wider">{T.contact.ui.responseValue}</span>
               </div>
             </div>
 

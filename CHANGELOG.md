@@ -2,6 +2,29 @@
 
 Todos los cambios notables en este proyecto (01_Web_Activa_Vite) serán documentados en este archivo.
 
+## 2026-11-17 14:10 (CET) · Reposicionamiento a IA, «Cómo llegar» y despliegue (Claude)
+- **Autor / Firma:** Claude Code · **Sonnet 5.5** (`claude-sonnet-5-5`) el 2026-11-17; el trabajo del 2026-11-16 (sección «Cómo llegar», Colombia en `areaServed`) lo hizo **Fable 5.2** (`claude-fable-5-2`). Informe: `docs/INFORME_SESION_2026-11-16.md`.
+- **Web:** hero y ofertas con Automatización con IA primero, formulario de 3 campos, «Sobre mí» orientado al cliente, SEO nuevo (título, descripción, JSON-LD) y versión EN alineada.
+- **Nueva sección «Cómo llegar»** (`src/components/ComoLlegar.jsx`): mapa de Madrid sin dirección (no hay oficina), «Oficina: donde esté tu pantalla», ficha de ruta, botón a WhatsApp. Colombia añadida como zona de servicio.
+- **Corrección antes de publicar:** textos del formulario que estaban fijos en español (RGPD, «Atención Rápida», privacidad, tiempo de respuesta, botón de WhatsApp) pasan a `T.contact.ui` y se ven en inglés en `/en/`.
+- **Blog fuera de esta subida:** el artículo `public/blog/` no se publica hasta tener una semana real de resultados de captación; se quitan el enlace del pie y las URLs del sitemap.
+- **Pendiente de la auditoría de 2026-11-13 aún sin hacer:** CTA secundario del hero (`mailto:`), campo de servicio ciego en el formulario, `loading="lazy"` y peso de `quimera_1.webp`, pesos de la fuente Outfit, solape banner de cookies/botón de WhatsApp en móvil, duplicidad entre `#ofertas` y `#maison`.
+
+## 2026-11-13 · Auditoría de conversión, frontend, rendimiento y configuración de skills (Antigravity)
+- **Autor / Firma:** **Antigravity (Google DeepMind · Gemini 4 Argon)**
+- **Informe y tareas generadas:** `docs/AUDITORIA_CONVERSION_Y_FRONTEND_ANTIGRAVITY.md` y `docs/INFORME_SESION_2026-11-13.md`.
+- **Hallazgos registrados como tareas pre-despliegue:**
+  1. `ContactForm.jsx`: Al acortar el formulario a 3 campos se quitó el `<select name="service">`, dejando ciegas las preselecciones desde `#maison` (`selectServiceAndScroll`).
+  2. `App.jsx`: Cambiar el CTA secundario del Hero (`mailto:`) por `#contacto` o WhatsApp.
+  3. `ContactForm.jsx` + `src/i18n/en.js`: Textos fijos en español en la versión `/en/` (RGPD, Atención Rápida, Privacidad y tiempo de respuesta).
+  4. `Ofertas.jsx` + `App.jsx`: Eliminar duplicidad de servicios y pasos de trabajo entre `#ofertas` y `#maison`/`#atelier`.
+  5. `public/consent.js` + `WhatsApp.jsx`: Revisar solapamiento de banner de cookies y botón flotante en móvil.
+  6. `App.jsx` + `public/screenshots/quimera/quimera_1.webp`: Añadir `loading="lazy" decoding="async"` en portfolio y comprimir `quimera_1.webp` (314 KB).
+  7. `index.html` + `en/index.html`: Limpiar pesos no usados de la fuente `Outfit`.
+- **Entorno global de Antigravity configurado:**
+  - `~/.gemini/config/mcp_config.json` conectado con `chrome-devtools-mcp`.
+  - Skills globales creadas: `~/.gemini/config/skills/frontend-design/SKILL.md` y `~/.gemini/config/skills/conversion-seo-audit/SKILL.md`.
+
 ## 2026-11-10 · Ofertas centradas en el cliente, orden de secciones y azul eléctrico (desplegado)
 - Sección `#ofertas` reescrita (ES/EN): problemas del cliente («¿Te suena?»), Web para músicos desde 220 €, Web a medida y Automatización con IA (propuesta clara tras una llamada de 15 min), pasos, para quién es y FAQ. Precios orientativos, pendientes de confirmar. Enlaces WhatsApp con mensaje por oferta; evento GA `ofertas_click`.
 - «Mi trabajo» va primero y la numeración sigue el orden mostrado; categorías: Trabajo real · clientes, Experimentos creativos, Ingeniería. Menú: Servicios, Proyectos, Cómo trabajo, Sobre mí, A medida, Contacto. Hero sin cambios.

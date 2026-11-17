@@ -22,5 +22,9 @@ npm run build    # build de producción en dist/
 
 El historial de cambios está en [CHANGELOG.md](CHANGELOG.md).
 
+## Última actualización
+- **2026-11-17 14:10 (CET)** · Claude Code con **Sonnet 5.5** (`claude-sonnet-5-5`); el trabajo del 2026-11-16 lo hizo **Fable 5.2** (`claude-fable-5-2`).
+- Web reposicionada a automatización con IA y webs a medida, sección «Cómo llegar» (trabajo remoto desde Madrid), formulario traducido en `/en/`. El blog queda sin publicar hasta tener resultados reales.
+
 ## Contacto
 [garciadanielsid@gmail.com](mailto:garciadanielsid@gmail.com) · [LinkedIn](https://www.linkedin.com/in/danisidcode/) · [GitHub](https://github.com/DSidCode)

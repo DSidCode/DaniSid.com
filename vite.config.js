@@ -12,7 +12,7 @@ function publicDirIndex() {
     configureServer(server) {
       server.middlewares.use((req, _res, next) => {
         const path = (req.url || '').split('?')[0]
-        const m = path.match(/^\/(servicios|recursos)\/[^/.]+\/?$/)
+        const m = path.match(/^\/(servicios|recursos|blog)\/[^/.]+\/?$/) || path.match(/^\/(blog)\/?$/)
         if (m && existsSync(resolve(__dirname, 'public', path.replace(/^\//, '').replace(/\/$/, ''), 'index.html'))) {
           req.url = path.replace(/\/?$/, '/index.html') + (req.url.includes('?') ? '?' + req.url.split('?')[1] : '')
         }

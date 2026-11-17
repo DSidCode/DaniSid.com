@@ -97,6 +97,29 @@ export default function Ofertas() {
         </div>
         <p className="font-mono text-[11px] text-[var(--color-ds-muted)] mb-16">{O.note}</p>
 
+        {O.guides && (
+          <div id="guias" className="mb-16 scroll-mt-24">
+            <h3 className="text-2xl font-black uppercase tracking-tight text-[var(--color-ds-text)] mb-2">{O.guides.title}</h3>
+            <p className="text-sm text-[var(--color-ds-muted)] mb-6">{O.guides.lead}</p>
+            <div className="grid md:grid-cols-3 gap-4">
+              {O.guides.items.map((g) => (
+                <a
+                  key={g.href}
+                  href={g.href}
+                  onClick={() => track('guide_click', { guide: g.href })}
+                  className="group block border border-[var(--color-ds-border)] bg-[var(--color-ds-surface)] p-6 hover:border-[var(--color-ds-primary)] transition-colors"
+                >
+                  <p className="font-bold text-[var(--color-ds-text)] mb-2">{g.title}</p>
+                  <p className="text-sm text-[var(--color-ds-muted)] leading-relaxed mb-4">{g.text}</p>
+                  <span className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-[var(--color-ds-primary)]">
+                    {O.guides.read} <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 mb-16">
           <div>
             <h3 className="text-2xl font-black uppercase tracking-tight text-[var(--color-ds-text)] mb-6">{O.stepsTitle}</h3>

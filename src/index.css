@@ -220,3 +220,12 @@ section[id] { scroll-margin-top: 4rem; }
 .theme-albedo .project-hero .text-gray-400 { color: var(--color-ds-muted); }
 .theme-albedo .project-hero .text-gray-300 { color: #2E2A24; }
 .theme-albedo .project-hero:hover h4 { color: var(--color-ds-primary); }
+
+/* Mapa de "Cómo llegar": se tiñe para que no rompa cada tema. */
+.ds-map {
+  border: 0;
+  filter: grayscale(1) invert(0.92) contrast(0.85);
+}
+.theme-albedo .ds-map {
+  filter: grayscale(1) contrast(0.95);
+}
