@@ -10,6 +10,7 @@ import EnglishHint from './components/EnglishHint';
 import WhatsAppButton, { WhatsAppIcon, WHATSAPP_URL } from './components/WhatsApp';
 import ContactForm from './components/ContactForm';
 import Ofertas from './components/Ofertas';
+import CasoCaptacion from './components/CasoCaptacion';
 import ComoLlegar from './components/ComoLlegar';
 import { track } from './lib/analytics';
 import { T, LANG, LANG_URLS } from './i18n';
@@ -119,7 +120,7 @@ function LanguageSwitch({ className = '' }) {
 function App() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [preselectedService, setPreselectedService] = useState('web');
+  const [preselectedService, setPreselectedService] = useState('');
 
   // Navegación del menú: desplazamiento suave hecho a mano (rAF).
   // `scroll-behavior: smooth` no avanza en navegadores móviles al cerrar el menú.
@@ -277,7 +278,7 @@ function App() {
               <a href="#portfolio" onClick={(e) => goToSection(e, '#portfolio')} className="bg-[var(--color-ds-primary)] text-black px-8 py-3 text-xs font-bold transition-all hover:bg-[#b5952f]">
                 {T.hero.ctaProjects}
               </a>
-              <a href="mailto:garciadanielsid@gmail.com" onClick={() => track('contact_email')} className="border border-[var(--color-ds-primary)] text-[var(--color-ds-primary)] px-8 py-3 text-xs font-bold transition-all hover:bg-[var(--color-ds-primary)] hover:text-black">
+              <a href="#contacto" onClick={(e) => { track('contact_hero_cta'); goToSection(e, '#contacto'); }} className="border border-[var(--color-ds-primary)] text-[var(--color-ds-primary)] px-8 py-3 text-xs font-bold transition-all hover:bg-[var(--color-ds-primary)] hover:text-black">
                 {T.hero.ctaTalk}
               </a>
             </div>
@@ -291,6 +292,9 @@ function App() {
 
       {/* ─── OFERTAS: servicios con precio, tras el hero ─── */}
       <Ofertas />
+
+      {/* ─── CASO REAL: MI PROPIA CAPTACIÓN AUTOMATIZADA (demo del servicio de IA) ─── */}
+      <CasoCaptacion />
 
       {/* ─── PORTFOLIO / SYS.LOGS (NUEVO) ─── */}
       <section id="portfolio" className="border-y border-[var(--color-ds-border)] bg-[var(--color-ds-surface)] py-20">
@@ -601,7 +605,7 @@ function App() {
           
           <div className="font-mono text-[10px] text-[var(--color-ds-muted)] tracking-widest uppercase">
             {T.ofertas.guides && (
-              <><a href="#guias" className="mr-4 hover:text-[var(--color-ds-primary)] transition-colors">Guías</a></>
+              <><a href="#guias" className="mr-4 hover:text-[var(--color-ds-primary)] transition-colors">Guías</a><a href="/blog/" className="mr-4 hover:text-[var(--color-ds-primary)] transition-colors">Blog</a></>
             )}
             {T.footer}
           </div>

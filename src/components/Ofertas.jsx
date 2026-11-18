@@ -120,21 +120,7 @@ export default function Ofertas() {
           </div>
         )}
 
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16 mb-16">
-          <div>
-            <h3 className="text-2xl font-black uppercase tracking-tight text-[var(--color-ds-text)] mb-6">{O.stepsTitle}</h3>
-            <ol className="space-y-6">
-              {O.steps.map((s) => (
-                <li key={s.n} className="flex gap-5">
-                  <span className="font-mono text-sm font-bold text-[var(--color-ds-signal)] pt-1">{s.n}</span>
-                  <div>
-                    <p className="font-bold text-[var(--color-ds-text)]">{s.title}</p>
-                    <p className="text-sm text-[var(--color-ds-muted)] leading-relaxed">{s.text}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
+        <div className="mb-16 max-w-3xl">
           <div>
             <h3 className="text-2xl font-black uppercase tracking-tight text-[var(--color-ds-text)] mb-6">{O.whoTitle}</h3>
             <p className="text-sm md:text-base text-[var(--color-ds-text)] leading-relaxed">{O.whoText}</p>

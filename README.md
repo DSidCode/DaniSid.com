@@ -23,8 +23,9 @@ npm run build    # build de producción en dist/
 El historial de cambios está en [CHANGELOG.md](CHANGELOG.md).
 
 ## Última actualización
-- **2026-11-17 14:10 (CET)** · Claude Code con **Sonnet 5.5** (`claude-sonnet-5-5`); el trabajo del 2026-11-16 lo hizo **Fable 5.2** (`claude-fable-5-2`).
-- Web reposicionada a automatización con IA y webs a medida, sección «Cómo llegar» (trabajo remoto desde Madrid), formulario traducido en `/en/`. El blog queda sin publicar hasta tener resultados reales.
+- **2026-11-17 14:03 (CET)** · Claude Code con **Sonnet 5.5**: caso real «mi propia captación automatizada» como demo de IA, servicios sin duplicar, desplegable de servicio en el formulario. Publicado.
+- **2026-11-17 13:58 (CET)** · Claude Code con **Sonnet 5.5** (`claude-sonnet-5-5`); el trabajo del 2026-11-16 lo hizo **Fable 5.2** (`claude-fable-5-2`).
+- Web reposicionada a automatización con IA y webs a medida, sección «Cómo llegar» (trabajo remoto desde Madrid), formulario traducido en `/en/`. El blog se publica con un solo artículo, el de captación; los otros tres siguen en local.
 
 ## Contacto
 [garciadanielsid@gmail.com](mailto:garciadanielsid@gmail.com) · [LinkedIn](https://www.linkedin.com/in/danisidcode/) · [GitHub](https://github.com/DSidCode)

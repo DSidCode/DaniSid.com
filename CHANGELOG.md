@@ -2,7 +2,15 @@
 
 Todos los cambios notables en este proyecto (01_Web_Activa_Vite) serán documentados en este archivo.
 
-## 2026-11-17 14:10 (CET) · Reposicionamiento a IA, «Cómo llegar» y despliegue (Claude)
+## 2026-11-17 14:03 (CET) · Servicios sin duplicar y caso real de automatización (Claude)
+- **Autor / Firma:** Claude Code · **Sonnet 5.5** (`claude-sonnet-5-5`). Publicado en producción.
+- **Nueva sección `#caso-captacion`** (`src/components/CasoCaptacion.jsx`): la automatización de mi propia captación de clientes como demo del servicio de IA. Cinco pasos con su estado real (construido / a mano), estado fechado y sin resultados inventados, enlace al artículo del blog y botón de WhatsApp. La oferta «Automatización con IA» enlaza a ella.
+- **Servicios:** `#ofertas` conserva los tres paquetes y deja de repetir los pasos de trabajo (queda «Cómo trabajo»); `#maison` pasa a «Otros encargos a medida» con solo los tres encargos que no están en `#ofertas` (obra a web, herramientas de música, animaciones).
+- **Formulario:** vuelve el desplegable «Servicio de interés» (opcional, sin valor por defecto), así las visitas ya no llegan marcadas como «web».
+- **Hero:** el segundo botón ya no abre el correo, lleva a `#contacto`.
+- **Blog:** se publica solo el artículo de captación (`automatice-mi-captacion-de-clientes`) y el índice; vuelve al sitemap y al pie porque el caso enlaza a él. Los otros tres artículos (precio de una web, landing page, cinco tareas) quedan en local hasta que Daniel los revise.
+
+## 2026-11-17 13:58 (CET) · Reposicionamiento a IA, «Cómo llegar» y despliegue (Claude)
 - **Autor / Firma:** Claude Code · **Sonnet 5.5** (`claude-sonnet-5-5`) el 2026-11-17; el trabajo del 2026-11-16 (sección «Cómo llegar», Colombia en `areaServed`) lo hizo **Fable 5.2** (`claude-fable-5-2`). Informe: `docs/INFORME_SESION_2026-11-16.md`.
 - **Web:** hero y ofertas con Automatización con IA primero, formulario de 3 campos, «Sobre mí» orientado al cliente, SEO nuevo (título, descripción, JSON-LD) y versión EN alineada.
 - **Nueva sección «Cómo llegar»** (`src/components/ComoLlegar.jsx`): mapa de Madrid sin dirección (no hay oficina), «Oficina: donde esté tu pantalla», ficha de ruta, botón a WhatsApp. Colombia añadida como zona de servicio.

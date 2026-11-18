@@ -9,7 +9,7 @@ export default function ContactForm({ preselectedService = '' }) {
     name: '',
     email: '',
     company: '',
-    service: preselectedService || 'web',
+    service: preselectedService || '',
     request_type: 'quote',
     message: '',
     rgpd: false,
@@ -152,7 +152,7 @@ export default function ContactForm({ preselectedService = '' }) {
                         name: '',
                         email: '',
                         company: '',
-                        service: 'web',
+                        service: '',
                         request_type: 'quote',
                         message: '',
                         rgpd: false,
@@ -210,6 +210,24 @@ export default function ContactForm({ preselectedService = '' }) {
                       className="w-full bg-[var(--color-ds-bg)] border border-[var(--color-ds-border)] px-4 py-3 text-sm text-[var(--color-ds-text)] focus:border-[var(--color-ds-primary)] focus:outline-none transition-colors"
                     />
                   </div>
+                </div>
+
+                {/* 3b. Servicio de interés (opcional) */}
+                <div>
+                  <label className="block font-mono text-xs uppercase tracking-wider text-[var(--color-ds-primary)] mb-2">
+                    {T.contact.fields.service}
+                  </label>
+                  <select
+                    name="service"
+                    value={formData.service}
+                    onChange={handleChange}
+                    className="w-full bg-[var(--color-ds-bg)] border border-[var(--color-ds-border)] px-4 py-3 text-sm text-[var(--color-ds-text)] focus:border-[var(--color-ds-primary)] focus:outline-none"
+                  >
+                    <option value="">{T.contact.fields.servicePlaceholder}</option>
+                    {T.contact.servicesList.map((srv) => (
+                      <option key={srv.id} value={srv.id}>{srv.label}</option>
+                    ))}
+                  </select>
                 </div>
 
                 {/* 4. Mensaje */}
